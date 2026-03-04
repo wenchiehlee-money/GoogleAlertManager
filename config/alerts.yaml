@@ -1,0 +1,9 @@
+schedule:
+  fetch_interval_hours: 4
+  report_time: "23:55"
+
+# Google Alert 建立選項（套用至所有公司）
+alert_options:
+  language: "zh-TW"
+  region: "TW"
+  how_often: "as_it_happens"
