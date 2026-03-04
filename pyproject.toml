@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "google-alert-manager"
+version = "0.1.0"
+description = "Manage Google Alerts, collect notifications, and extract conclusions via LLM"
+requires-python = ">=3.11"
+dependencies = [
+    "google-alerts",
+    "feedparser",
+    "APScheduler>=3.10",
+    "google-genai",
+    "click",
+    "pyyaml",
+    "python-dotenv",
+    "jinja2",
+    "nltk",
+]
+
+[project.scripts]
+gam = "cli:cli"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

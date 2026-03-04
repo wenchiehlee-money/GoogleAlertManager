@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# 股票觀察名單 CSV（動態下載，不進版控）
+StockID_TWSE_TPEX.csv
+StockID_TWSE_TPEX_focus.csv
+
+# 資料目錄（追蹤以供 GitHub Actions 跨 workflow 共享）
+# data/ — 不忽略，允許 fetch/analyze 結果提交至版控
