@@ -2,7 +2,7 @@
 
 import logging
 import time
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -33,7 +33,7 @@ def run_analyze() -> None:
         logger.info("No entries for today, skipping analysis")
         return
 
-    generated_at = datetime.now(timezone.utc).isoformat()
+    generated_at = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S CST")
     company_reports = []
 
     for company in companies:

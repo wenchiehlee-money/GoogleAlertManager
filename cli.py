@@ -3,7 +3,7 @@
 import logging
 import subprocess
 import sys
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import click
@@ -115,7 +115,7 @@ def analyze(day_str: str | None, stock_id: str | None):
         click.echo(f"找不到 {day} 的 entries，請先執行 fetch。")
         sys.exit(1)
 
-    generated_at = datetime.now(timezone.utc).isoformat()
+    generated_at = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S CST")
     company_reports = []
 
     for company in companies:
