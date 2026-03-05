@@ -12,6 +12,7 @@ class StatsResult:
     entry_count: int = 0
     top_words: list[tuple[str, int]] = field(default_factory=list)
     top_domains: list[tuple[str, int]] = field(default_factory=list)
+    domain_urls: dict[str, list[tuple[str, str]]] = field(default_factory=dict)  # domain -> [(title, url)]
     # 向後兼容舊版（全關鍵字統計）
     keyword_counts: dict[str, int] = field(default_factory=dict)
 
@@ -37,6 +38,7 @@ def analyze(entries: list[dict], top_n: int = 10, stock_id: str = "") -> StatsRe
     """計算文章數、高頻詞彙、主要來源域名。"""
     word_counter: Counter = Counter()
     domain_counter: Counter = Counter()
+    domain_urls: dict[str, list[tuple[str, str]]] = {}
     keyword_counts: Counter = Counter()
 
     for entry in entries:
@@ -53,6 +55,8 @@ def analyze(entries: list[dict], top_n: int = 10, stock_id: str = "") -> StatsRe
                 domain = urlparse(link).netloc
                 if domain:
                     domain_counter[domain] += 1
+                    title = entry.get("title", link)
+                    domain_urls.setdefault(domain, []).append((title, link))
             except Exception:
                 pass
 
@@ -61,5 +65,6 @@ def analyze(entries: list[dict], top_n: int = 10, stock_id: str = "") -> StatsRe
         entry_count=len(entries),
         top_words=word_counter.most_common(top_n),
         top_domains=domain_counter.most_common(top_n),
+        domain_urls=domain_urls,
         keyword_counts=dict(keyword_counts.most_common()),
     )
