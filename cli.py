@@ -146,6 +146,71 @@ def analyze(day_str: str | None, stock_id: str | None):
         click.echo(f"\n彙整報告：{summary_path}")
 
 
+@cli.command("update-readme")
+def update_readme():
+    """更新 README.md 的報告彙整表格（近 7 天）。"""
+    import json
+    import re
+    from datetime import timedelta
+
+    today = date.today()
+    days = [today - timedelta(days=i) for i in range(6, -1, -1)]
+
+    alerts_dir = Path(__file__).parent / "data" / "alerts"
+    reports_dir = Path(__file__).parent / "data" / "reports"
+
+    # 收集各股票各日文章數
+    stocks: dict[str, dict] = {}
+    for day in days:
+        day_dir = alerts_dir / day.isoformat()
+        if not day_dir.exists():
+            continue
+        for json_file in sorted(day_dir.glob("*.json")):
+            stock_id = json_file.stem
+            with open(json_file, encoding="utf-8") as f:
+                entries = json.load(f)
+            name = entries[0].get("name", stock_id) if entries else stock_id
+            if stock_id not in stocks:
+                stocks[stock_id] = {"name": name, "counts": {}, "latest_report": None}
+            stocks[stock_id]["counts"][day] = len(entries)
+
+    # 找最新報告連結
+    for stock_id in stocks:
+        for day in reversed(days):
+            if (reports_dir / day.isoformat() / f"{stock_id}.md").exists():
+                stocks[stock_id]["latest_report"] = day
+                break
+
+    # 建立表格
+    day_cols = " | ".join(d.strftime("%m/%d") for d in days)
+    lines = [
+        f"| 代號 | 名稱 | {day_cols} | 最新報告 |",
+        "| --- | --- |" + " :---: |" * 7 + " --- |",
+    ]
+    for stock_id, info in sorted(stocks.items()):
+        counts = " | ".join(str(info["counts"].get(d, "-")) for d in days)
+        if info["latest_report"]:
+            d = info["latest_report"]
+            link = f"[{d.isoformat()}](data/reports/{d.isoformat()}/{stock_id}.md)"
+        else:
+            link = "-"
+        lines.append(f"| {stock_id} | {info['name']} | {counts} | {link} |")
+
+    table = "\n".join(lines)
+    marker_s = "<!-- REPORT_TABLE_START -->"
+    marker_e = "<!-- REPORT_TABLE_END -->"
+    new_block = f"{marker_s}\n\n## 報告彙整（近 7 天）\n\n{table}\n\n{marker_e}"
+
+    readme = Path(__file__).parent / "README.md"
+    content = readme.read_text(encoding="utf-8")
+    if marker_s in content:
+        content = re.sub(f"{re.escape(marker_s)}.*?{re.escape(marker_e)}", new_block, content, flags=re.DOTALL)
+    else:
+        content = content.rstrip() + "\n\n" + new_block + "\n"
+    readme.write_text(content, encoding="utf-8")
+    click.echo(f"README.md 已更新，共 {len(stocks)} 支股票")
+
+
 @cli.command("export-rss")
 def export_rss():
     """將目前 Google Alert RSS URLs 匯出至 config/rss_urls.json（供 CI 環境使用）。"""

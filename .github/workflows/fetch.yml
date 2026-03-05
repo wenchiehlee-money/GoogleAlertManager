@@ -38,10 +38,13 @@ jobs:
           GOOGLE_ALERT_EMAIL: ${{ secrets.GOOGLE_ALERT_EMAIL }}
           GOOGLE_ALERT_PASSWORD: ${{ secrets.GOOGLE_ALERT_PASSWORD }}
 
+      - name: Update README table
+        run: uv run python cli.py update-readme
+
       - name: Commit fetched data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/alerts/
+          git add data/alerts/ README.md
           git diff --cached --quiet || git commit -m "chore: fetch alerts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
