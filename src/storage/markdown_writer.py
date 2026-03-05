@@ -15,7 +15,15 @@ _COMPANY_TEMPLATE = """\
 ## 文章統計
 
 - 總文章數：{{ entry_count }}
-- 主要來源：{% for domain, count in top_domains %}{{ domain }}({{ count }}) {% endfor %}
+- 主要來源：
+{% for domain, count in top_domains %}
+<details>
+<summary>{{ domain }} ({{ count }})</summary>
+
+{% for title, url in domain_urls.get(domain, []) %}- [{{ title }}]({{ url }})
+{% endfor %}
+</details>
+{% endfor %}
 
 ## LLM 分析結論
 
@@ -74,6 +82,7 @@ def write_company_report(
         date=day.isoformat(),
         entry_count=len(entries),
         top_domains=top_domains,
+        domain_urls=stat_result.domain_urls,
         llm_result=llm_result,
         generated_at=generated_at,
     )
