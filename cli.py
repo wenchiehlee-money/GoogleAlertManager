@@ -132,7 +132,7 @@ def analyze(day_str: str | None, stock_id: str | None):
         click.echo(f"    評分 {len(entries)} 篇文章…")
         new_scores = llm.score_entries(company, entries)
         update_scores(new_scores)
-        all_scores.update(new_scores)
+        all_scores = load_scores()  # 重新載入，確保 manual 標記不被覆蓋
 
         # 統計高分文章數（score >= 4）
         top_count = sum(1 for s in new_scores.values() if s.get("score", 0) >= 4)
