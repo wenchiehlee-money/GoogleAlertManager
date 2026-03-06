@@ -91,11 +91,12 @@ def fetch():
 @click.option("--date", "day_str", default=None, help="分析日期 (YYYY-MM-DD)，預設今天")
 @click.option("--stock-id", "stock_id", default=None, help="僅分析指定股票代碼")
 def analyze(day_str: str | None, stock_id: str | None):
-    """針對每家公司進行 LLM 情緒分析，產出 Markdown 報告。"""
+    """針對每家公司進行 LLM 情緒分析 + Gemini 文章評分，產出 Markdown 報告。"""
     from src.analysis import llm
     from src.companies.watchlist import load_companies
     from src.storage.json_store import load_entries_by_stock_id
     from src.storage.markdown_writer import write_company_report, write_daily_summary
+    from src.storage.scores_store import load_scores, update_scores
 
     day = date.fromisoformat(day_str) if day_str else date.today()
     companies = load_companies()
@@ -116,6 +117,7 @@ def analyze(day_str: str | None, stock_id: str | None):
         sys.exit(1)
 
     generated_at = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S CST")
+    all_scores = load_scores()
     company_reports = []
 
     for company in companies:
@@ -126,10 +128,19 @@ def analyze(day_str: str | None, stock_id: str | None):
 
         click.echo(f"  分析 {company.stock_id} {company.name}（{len(entries)} 篇）…")
         llm_result = llm.analyze_company(company, entries)
-        path = write_company_report(company, day, entries, llm_result, generated_at)
+
+        click.echo(f"    評分 {len(entries)} 篇文章…")
+        new_scores = llm.score_entries(company, entries)
+        update_scores(new_scores)
+        all_scores.update(new_scores)
+
+        # 統計高分文章數（score >= 4）
+        top_count = sum(1 for s in new_scores.values() if s.get("score", 0) >= 4)
+        click.echo(f"    高分文章（≥4）：{top_count} 篇")
+
+        path = write_company_report(company, day, entries, llm_result, generated_at, scores=all_scores)
         click.echo(f"    -> {path}")
 
-        # 擷取 LLM 結論首段作為彙整摘要
         summary_lines = [l for l in llm_result.splitlines() if l.strip()]
         summary = summary_lines[0] if summary_lines else ""
 
@@ -138,6 +149,7 @@ def analyze(day_str: str | None, stock_id: str | None):
             "name": company.name,
             "list_type": company.list_type,
             "entry_count": len(entries),
+            "top_count": top_count,
             "summary": summary,
         })
 
@@ -158,8 +170,14 @@ def update_readme():
 
     alerts_dir = Path(__file__).parent / "data" / "alerts"
     reports_dir = Path(__file__).parent / "data" / "reports"
+    scores_file = Path(__file__).parent / "data" / "scores.json"
 
-    # 收集各股票各日文章數
+    scores: dict[str, dict] = {}
+    if scores_file.exists():
+        with open(scores_file, encoding="utf-8") as f:
+            scores = json.load(f)
+
+    # 收集各股票各日文章數 + 高分文章
     stocks: dict[str, dict] = {}
     for day in days:
         day_dir = alerts_dir / day.isoformat()
@@ -171,8 +189,12 @@ def update_readme():
                 entries = json.load(f)
             name = entries[0].get("name", stock_id) if entries else stock_id
             if stock_id not in stocks:
-                stocks[stock_id] = {"name": name, "counts": {}, "latest_report": None}
+                stocks[stock_id] = {"name": name, "counts": {}, "top_counts": {}, "latest_report": None}
             stocks[stock_id]["counts"][day] = len(entries)
+            # 高分文章數（score >= 4）
+            top = sum(1 for e in entries if scores.get(e.get("id", ""), {}).get("score", -1) >= 4)
+            if top:
+                stocks[stock_id]["top_counts"][day] = top
 
     # 找最新報告連結
     for stock_id in stocks:
@@ -184,17 +206,19 @@ def update_readme():
     # 建立表格
     day_cols = " | ".join(d.strftime("%m/%d") for d in days)
     lines = [
-        f"| 代號 | 名稱 | {day_cols} | 最新報告 |",
-        "| --- | --- |" + " :---: |" * 7 + " --- |",
+        f"| 代號 | 名稱 | {day_cols} | ⭐≥4 | 最新報告 |",
+        "| --- | --- |" + " :---: |" * 7 + " :---: | --- |",
     ]
     for stock_id, info in sorted(stocks.items()):
         counts = " | ".join(str(info["counts"].get(d, "-")) for d in days)
+        total_top = sum(info["top_counts"].values())
+        top_str = str(total_top) if total_top else "-"
         if info["latest_report"]:
             d = info["latest_report"]
             link = f"[{d.isoformat()}](data/reports/{d.isoformat()}/{stock_id}.md)"
         else:
             link = "-"
-        lines.append(f"| {stock_id} | {info['name']} | {counts} | {link} |")
+        lines.append(f"| {stock_id} | {info['name']} | {counts} | {top_str} | {link} |")
 
     table = "\n".join(lines)
     marker_s = "<!-- REPORT_TABLE_START -->"

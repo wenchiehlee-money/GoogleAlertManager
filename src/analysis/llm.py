@@ -69,6 +69,72 @@ def analyze_company(company, entries: list[dict]) -> str:
     return response.text
 
 
+def score_entries(company, entries: list[dict]) -> dict[str, dict]:
+    """用 Gemini 對每篇文章評分 0-5。回傳 {entry_id: {score, reason}}。
+
+    評分標準：
+      5 = 關鍵決策性資訊（財報、重大合約、技術突破、經營層異動）
+      4 = 重要業務/產業資訊（市場份額、新產品、重要客戶）
+      3 = 有參考價值的市場新聞
+      2 = 一般性提及，資訊量少
+      1 = 幾乎無關或重複
+      0 = 完全無關/垃圾/廣告
+    """
+    import json as _json
+
+    if not entries:
+        return {}
+
+    client = _client()
+    items = []
+    for i, e in enumerate(entries):
+        items.append(
+            f"[{i}] id={e['id']}\n"
+            f"    標題: {e.get('title', '')}\n"
+            f"    摘要: {e.get('summary', '')[:200]}\n"
+            f"    發布: {e.get('published', '')}"
+        )
+    items_text = "\n\n".join(items)
+
+    prompt = f"""\
+針對 **{company.name}（{company.stock_id}）** 的投資決策，請對以下 {len(entries)} 篇文章逐一評分：
+
+評分標準（0-5）：
+- 5：關鍵決策性資訊（財報、重大合約、技術突破、經營層異動）
+- 4：重要業務/產業資訊（市場份額、新產品、重要客戶消息）
+- 3：有參考價值的市場新聞
+- 2：一般性提及，資訊量少
+- 1：幾乎無關或重複
+- 0：完全無關/垃圾/廣告
+
+文章列表：
+{items_text}
+
+請回傳 JSON 陣列，每篇文章一個物件：
+[{{"id": "<原始id>", "score": <0-5整數>, "reason": "<15字內理由>"}}]
+"""
+
+    response = client.models.generate_content(
+        model=MODEL,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            max_output_tokens=4096,
+        ),
+    )
+
+    try:
+        results = _json.loads(response.text)
+        return {
+            item["id"]: {"score": item["score"], "reason": item.get("reason", "")}
+            for item in results
+            if "id" in item and "score" in item
+        }
+    except Exception as e:
+        logger.warning("評分結果解析失敗：%s", e)
+        return {}
+
+
 def summarize(entries: list[dict]) -> str:
     """舊版 summarize 介面保留，用於 scheduler 向後兼容。"""
     if not entries:
