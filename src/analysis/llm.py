@@ -22,16 +22,31 @@ def _client():
 
 
 def _generate_with_retry(client, **kwargs):
-    """呼叫 generate_content，遇到 503 時以 exponential backoff 重試。"""
+    """呼叫 generate_content，遇到 503/429 時以 exponential backoff 重試。"""
+    import re
+
     last_exc = None
     for i, delay in enumerate([0] + _RETRY_DELAYS):
         if delay:
-            logger.warning("Gemini API 503，%d 秒後重試（第 %d 次）…", delay, i)
+            logger.warning("Gemini API 重試，%d 秒後重試（第 %d 次）…", delay, i)
             time.sleep(delay)
         try:
             return client.models.generate_content(**kwargs)
         except genai_errors.ServerError as e:
             if e.code == 503:
+                last_exc = e
+                continue
+            raise
+        except genai_errors.ClientError as e:
+            if e.code == 429:
+                # 嘗試從錯誤訊息取得建議等待秒數
+                suggested = 60
+                m = re.search(r"retry[^\d]+(\d+)", str(e), re.IGNORECASE)
+                if m:
+                    suggested = int(m.group(1)) + 5
+                wait = max(delay, suggested)
+                logger.warning("Gemini API 429 quota，%d 秒後重試（第 %d 次）…", wait, i + 1)
+                time.sleep(wait)
                 last_exc = e
                 continue
             raise
@@ -136,13 +151,15 @@ def score_entries(company, entries: list[dict]) -> dict[str, dict]:
 [{{"id": "<原始id>", "score": <0-5整數>, "reason": "<15字內理由>"}}]
 """
 
+    # 每篇約 80 token，保留 2 倍緩衝
+    score_tokens = max(4096, len(entries) * 160)
     response = _generate_with_retry(
         client,
         model=MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
-            max_output_tokens=4096,
+            max_output_tokens=score_tokens,
         ),
     )
 
