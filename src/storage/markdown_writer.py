@@ -7,6 +7,8 @@ from jinja2 import BaseLoader, Environment
 
 from src.config import REPORTS_DIR
 
+_STARS = ["○", "⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"]
+
 _COMPANY_TEMPLATE = """\
 # {{ name }}（{{ stock_id }}）分析報告 — {{ date }}
 
@@ -20,7 +22,8 @@ _COMPANY_TEMPLATE = """\
 <details>
 <summary>{{ domain }} ({{ count }})</summary>
 
-{% for title, url in domain_urls.get(domain, []) %}- [{{ title }}]({{ url }})
+{% for stars, title, url, reason in sorted_domain_urls[domain] %}- {{ stars }} [{{ title }}]({{ url }}){% if reason %} — *{{ reason }}*{% endif %}
+
 {% endfor %}
 </details>
 {% endfor %}
@@ -64,14 +67,30 @@ def write_company_report(
     entries: list[dict],
     llm_result: str,
     generated_at: str,
+    scores: dict | None = None,
 ) -> str:
     """輸出單一公司報告至 data/reports/YYYY-MM-DD/{stock_id}.md。
 
+    scores: {entry_id: {score, reason}} — Gemini 評分結果。
     回傳檔案路徑。
     """
     from src.analysis.stats import analyze
+    scores = scores or {}
     stat_result = analyze(entries, stock_id=company.stock_id)
     top_domains = stat_result.top_domains[:5]
+
+    # 預先排序：高分在前，並組合 (stars, title, url, reason)
+    sorted_domain_urls: dict[str, list] = {}
+    for domain, items in stat_result.domain_urls.items():
+        enriched = []
+        for title, url, entry_id in items:
+            s = scores.get(entry_id, {})
+            score_val = s.get("score", -1)
+            stars = _STARS[score_val] if 0 <= score_val <= 5 else ""
+            reason = s.get("reason", "")
+            enriched.append((score_val, stars, title, url, reason))
+        enriched.sort(key=lambda x: x[0], reverse=True)
+        sorted_domain_urls[domain] = [(stars, title, url, reason) for _, stars, title, url, reason in enriched]
 
     env = Environment(loader=BaseLoader())
     template = env.from_string(_COMPANY_TEMPLATE)
@@ -82,7 +101,7 @@ def write_company_report(
         date=day.isoformat(),
         entry_count=len(entries),
         top_domains=top_domains,
-        domain_urls=stat_result.domain_urls,
+        sorted_domain_urls=sorted_domain_urls,
         llm_result=llm_result,
         generated_at=generated_at,
     )
@@ -98,11 +117,7 @@ def write_daily_summary(
     company_reports: list[dict],
     generated_at: str,
 ) -> str:
-    """彙整所有公司報告至 data/reports/YYYY-MM-DD-summary.md。
-
-    company_reports 每項須含：stock_id, name, list_type, summary 欄位。
-    回傳檔案路徑。
-    """
+    """彙整所有公司報告至 data/reports/YYYY-MM-DD-summary.md。"""
     total_entries = sum(r.get("entry_count", 0) for r in company_reports)
 
     env = Environment(loader=BaseLoader())
