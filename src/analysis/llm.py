@@ -1,8 +1,10 @@
 """以 Gemini API 針對每家公司進行情緒分析與投資建議。"""
 
 import logging
+import time
 
 from google import genai
+from google.genai import errors as genai_errors
 from google.genai import types
 
 from src.config import get_env
@@ -12,9 +14,28 @@ logger = logging.getLogger(__name__)
 MODEL = "gemini-2.5-flash"
 MAX_TOKENS = 8192
 
+_RETRY_DELAYS = [5, 15, 30]  # 秒，最多重試 3 次
+
 
 def _client():
     return genai.Client(api_key=get_env("GEMINI_API_KEY"))
+
+
+def _generate_with_retry(client, **kwargs):
+    """呼叫 generate_content，遇到 503 時以 exponential backoff 重試。"""
+    last_exc = None
+    for i, delay in enumerate([0] + _RETRY_DELAYS):
+        if delay:
+            logger.warning("Gemini API 503，%d 秒後重試（第 %d 次）…", delay, i)
+            time.sleep(delay)
+        try:
+            return client.models.generate_content(**kwargs)
+        except genai_errors.ServerError as e:
+            if e.code == 503:
+                last_exc = e
+                continue
+            raise
+    raise last_exc
 
 
 def _build_company_prompt(company, entries: list[dict]) -> str:
@@ -61,7 +82,8 @@ def analyze_company(company, entries: list[dict]) -> str:
     prompt = _build_company_prompt(company, entries)
 
     logger.info("Analyzing %s (%s) with %d entries", company.name, company.stock_id, len(entries))
-    response = client.models.generate_content(
+    response = _generate_with_retry(
+        client,
         model=MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(max_output_tokens=MAX_TOKENS),
@@ -114,7 +136,8 @@ def score_entries(company, entries: list[dict]) -> dict[str, dict]:
 [{{"id": "<原始id>", "score": <0-5整數>, "reason": "<15字內理由>"}}]
 """
 
-    response = client.models.generate_content(
+    response = _generate_with_retry(
+        client,
         model=MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(
@@ -159,7 +182,8 @@ def summarize(entries: list[dict]) -> str:
 2. **值得關注的個股**（最多 3 則，說明原因）
 3. **整體市場觀察**（1-3 點建議）
 """
-    response = client.models.generate_content(
+    response = _generate_with_retry(
+        client,
         model=MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(max_output_tokens=MAX_TOKENS),
