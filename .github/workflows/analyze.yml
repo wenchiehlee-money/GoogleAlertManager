@@ -1,0 +1,59 @@
+name: Analyze Alerts
+
+on:
+  schedule:
+    # UTC 15:55 = Taiwan time 23:55
+    - cron: '55 15 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '分析日期 (YYYY-MM-DD)，空白表示今天'
+        required: false
+        default: ''
+
+concurrency:
+  group: data-write
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Download watchlist CSVs
+        run: uv run python cli.py update-list
+
+      - name: Analyze alerts
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            uv run python cli.py analyze --date "${{ github.event.inputs.date }}"
+          else
+            uv run python cli.py analyze
+          fi
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Update README table
+        run: uv run python cli.py update-readme
+
+      - name: Commit reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/reports/ README.md
+          git diff --cached --quiet || git commit -m "chore: analyze alerts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
