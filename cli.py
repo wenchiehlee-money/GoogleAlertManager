@@ -150,6 +150,16 @@ def analyze(day_str: str | None, stock_id: str | None):
         path = write_company_report(company, day, entries, llm_result, generated_at, scores=all_scores)
         click.echo(f"    -> {path}")
 
+        # 立即 commit，確保中途失敗也不遺失
+        subprocess.run(
+            ["git", "add", str(path)],
+            check=False, capture_output=True,
+        )
+        subprocess.run(
+            ["git", "commit", "-m", f"chore: report {company.stock_id} {day}"],
+            check=False, capture_output=True,
+        )
+
         summary_lines = [l for l in llm_result.splitlines() if l.strip()]
         summary = summary_lines[0] if summary_lines else ""
 
