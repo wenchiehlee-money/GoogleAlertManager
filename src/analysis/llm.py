@@ -35,7 +35,16 @@ def _load_api_keys() -> list[str]:
             break
     if not keys:
         raise RuntimeError("Missing environment variable: GEMINI_API_KEY")
-    return keys
+    # 去重，保持順序（相同 key 輪換無意義）
+    seen: set[str] = set()
+    unique = []
+    for k in keys:
+        if k not in seen:
+            seen.add(k)
+            unique.append(k)
+    if len(unique) < len(keys):
+        logger.debug("移除 %d 把重複的 API key", len(keys) - len(unique))
+    return unique
 
 
 _API_KEYS: list[str] = []
