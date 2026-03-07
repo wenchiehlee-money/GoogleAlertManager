@@ -11,7 +11,7 @@ from src.config import get_env
 
 logger = logging.getLogger(__name__)
 
-MODEL = "gemini-2.0-flash"
+MODEL = "gemini-2.5-flash"
 MAX_TOKENS = 8192
 
 _RETRY_DELAYS = [5, 15, 30]  # 秒，最多重試 3 次
