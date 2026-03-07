@@ -66,7 +66,7 @@ jobs:
         if: always()
         run: |
           uv run python cli.py update-readme
-          git add data/reports/ README.md
+          git add data/reports/ data/scores.json README.md
           git diff --cached --quiet || git commit -m "chore: analyze alerts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git pull --rebase
           git push
