@@ -48,6 +48,7 @@ def _load_api_keys() -> list[str]:
 
 
 _API_KEYS: list[str] = []
+_EXHAUSTED_KEYS: set[str] = set()  # 每日配額耗盡的 key，本次執行永久跳過
 
 
 def _get_keys() -> list[str]:
@@ -61,16 +62,23 @@ def _client(api_key: str):
     return genai.Client(api_key=api_key)
 
 
+def _is_daily_quota(err_str: str) -> bool:
+    """判斷是否為每日配額耗盡（而非每分鐘限速）。"""
+    return "PerDay" in err_str or "per_day" in err_str.lower() or "daily" in err_str.lower()
+
+
 def _generate_with_retry(**kwargs):
-    """呼叫 generate_content，遇到 429 時輪換 API key，遇到 503 時 backoff 重試。"""
+    """呼叫 generate_content，遇到每日 429 時永久跳過該 key，遇到 503 時 backoff 重試。"""
     import re
 
-    keys = _get_keys()
+    keys = [k for k in _get_keys() if k not in _EXHAUSTED_KEYS]
+    if not keys:
+        raise RuntimeError("所有 API key 的每日配額均已耗盡。")
     last_exc = None
 
     for key_idx, api_key in enumerate(keys):
         client = _client(api_key)
-        logger.debug("使用第 %d 把 API key", key_idx + 1)
+        logger.debug("使用第 %d 把 API key（共 %d 把可用）", key_idx + 1, len(keys))
 
         for i, delay in enumerate([0] + _RETRY_DELAYS):
             if delay:
@@ -86,15 +94,18 @@ def _generate_with_retry(**kwargs):
             except genai_errors.ClientError as e:
                 if e.code == 429:
                     last_exc = e
-                    m = re.search(r"retry[^\d]+(\d+)", str(e), re.IGNORECASE)
-                    suggested = int(m.group(1)) + 2 if m else 30
-                    if key_idx + 1 < len(keys):
+                    err_str = str(e)
+                    if _is_daily_quota(err_str):
+                        _EXHAUSTED_KEYS.add(api_key)
                         logger.warning(
-                            "API key %d 配額耗盡，切換到下一把 key（共 %d 把）…",
-                            key_idx + 1, len(keys),
+                            "API key %d 每日配額耗盡，永久跳過（剩餘 %d 把）…",
+                            key_idx + 1, len(keys) - len(_EXHAUSTED_KEYS),
                         )
-                        break  # 跳出 retry loop，切換 key
-                    logger.warning("Gemini API 429，%d 秒後重試（第 %d 次）…", suggested, i + 1)
+                        break  # 切換下一把 key
+                    # RPM 限速：等待後重試同一把 key
+                    m = re.search(r"retry[^\d]+(\d+)", err_str, re.IGNORECASE)
+                    suggested = int(m.group(1)) + 2 if m else 30
+                    logger.warning("Gemini API RPM 限速，%d 秒後重試（第 %d 次）…", suggested, i + 1)
                     time.sleep(suggested)
                     continue
                 raise
