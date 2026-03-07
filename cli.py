@@ -127,10 +127,18 @@ def analyze(day_str: str | None, stock_id: str | None):
             continue
 
         click.echo(f"  分析 {company.stock_id} {company.name}（{len(entries)} 篇）…")
-        llm_result = llm.analyze_company(company, entries)
+        try:
+            llm_result = llm.analyze_company(company, entries)
+        except Exception as e:
+            click.echo(f"    LLM 分析失敗，跳過：{e}", err=True)
+            continue
 
         click.echo(f"    評分 {len(entries)} 篇文章…")
-        new_scores = llm.score_entries(company, entries)
+        try:
+            new_scores = llm.score_entries(company, entries)
+        except Exception as e:
+            click.echo(f"    評分失敗，跳過：{e}", err=True)
+            new_scores = {}
         update_scores(new_scores)
         all_scores = load_scores()  # 重新載入，確保 manual 標記不被覆蓋
 
