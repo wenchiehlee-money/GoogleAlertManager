@@ -17,39 +17,79 @@ MAX_TOKENS = 8192
 _RETRY_DELAYS = [5, 15, 30]  # 秒，最多重試 3 次
 
 
-def _client():
-    return genai.Client(api_key=get_env("GEMINI_API_KEY"))
+def _load_api_keys() -> list[str]:
+    """讀取所有可用的 Gemini API keys（GEMINI_API_KEY, GEMINI_API_KEY_1 … GEMINI_API_KEY_N）。"""
+    import os
+
+    keys = []
+    # 主要 key
+    primary = os.getenv("GEMINI_API_KEY")
+    if primary:
+        keys.append(primary)
+    # 編號 key：GEMINI_API_KEY_1, GEMINI_API_KEY_2, …
+    for i in range(1, 20):
+        k = os.getenv(f"GEMINI_API_KEY_{i}")
+        if k:
+            keys.append(k)
+        else:
+            break
+    if not keys:
+        raise RuntimeError("Missing environment variable: GEMINI_API_KEY")
+    return keys
 
 
-def _generate_with_retry(client, **kwargs):
-    """呼叫 generate_content，遇到 503/429 時以 exponential backoff 重試。"""
+_API_KEYS: list[str] = []
+
+
+def _get_keys() -> list[str]:
+    global _API_KEYS
+    if not _API_KEYS:
+        _API_KEYS = _load_api_keys()
+    return _API_KEYS
+
+
+def _client(api_key: str):
+    return genai.Client(api_key=api_key)
+
+
+def _generate_with_retry(**kwargs):
+    """呼叫 generate_content，遇到 429 時輪換 API key，遇到 503 時 backoff 重試。"""
     import re
 
+    keys = _get_keys()
     last_exc = None
-    for i, delay in enumerate([0] + _RETRY_DELAYS):
-        if delay:
-            logger.warning("Gemini API 重試，%d 秒後重試（第 %d 次）…", delay, i)
-            time.sleep(delay)
-        try:
-            return client.models.generate_content(**kwargs)
-        except genai_errors.ServerError as e:
-            if e.code == 503:
-                last_exc = e
-                continue
-            raise
-        except genai_errors.ClientError as e:
-            if e.code == 429:
-                # 嘗試從錯誤訊息取得建議等待秒數
-                suggested = 60
-                m = re.search(r"retry[^\d]+(\d+)", str(e), re.IGNORECASE)
-                if m:
-                    suggested = int(m.group(1)) + 5
-                wait = max(delay, suggested)
-                logger.warning("Gemini API 429 quota，%d 秒後重試（第 %d 次）…", wait, i + 1)
-                time.sleep(wait)
-                last_exc = e
-                continue
-            raise
+
+    for key_idx, api_key in enumerate(keys):
+        client = _client(api_key)
+        logger.debug("使用第 %d 把 API key", key_idx + 1)
+
+        for i, delay in enumerate([0] + _RETRY_DELAYS):
+            if delay:
+                logger.warning("Gemini API 重試，%d 秒後重試（第 %d 次）…", delay, i)
+                time.sleep(delay)
+            try:
+                return client.models.generate_content(**kwargs)
+            except genai_errors.ServerError as e:
+                if e.code == 503:
+                    last_exc = e
+                    continue
+                raise
+            except genai_errors.ClientError as e:
+                if e.code == 429:
+                    last_exc = e
+                    m = re.search(r"retry[^\d]+(\d+)", str(e), re.IGNORECASE)
+                    suggested = int(m.group(1)) + 2 if m else 30
+                    if key_idx + 1 < len(keys):
+                        logger.warning(
+                            "API key %d 配額耗盡，切換到下一把 key（共 %d 把）…",
+                            key_idx + 1, len(keys),
+                        )
+                        break  # 跳出 retry loop，切換 key
+                    logger.warning("Gemini API 429，%d 秒後重試（第 %d 次）…", suggested, i + 1)
+                    time.sleep(suggested)
+                    continue
+                raise
+
     raise last_exc
 
 
@@ -93,12 +133,10 @@ def analyze_company(company, entries: list[dict]) -> str:
     if not entries:
         return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_"
 
-    client = _client()
     prompt = _build_company_prompt(company, entries)
 
     logger.info("Analyzing %s (%s) with %d entries", company.name, company.stock_id, len(entries))
     response = _generate_with_retry(
-        client,
         model=MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(max_output_tokens=MAX_TOKENS),
@@ -122,7 +160,6 @@ def score_entries(company, entries: list[dict]) -> dict[str, dict]:
     if not entries:
         return {}
 
-    client = _client()
     items = []
     for i, e in enumerate(entries):
         items.append(
@@ -154,7 +191,6 @@ def score_entries(company, entries: list[dict]) -> dict[str, dict]:
     # 每篇約 80 token，保留 2 倍緩衝
     score_tokens = max(4096, len(entries) * 160)
     response = _generate_with_retry(
-        client,
         model=MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(
@@ -180,7 +216,6 @@ def summarize(entries: list[dict]) -> str:
     if not entries:
         return "_今日無新 Alert 資料。_"
 
-    client = _client()
     items = []
     for e in entries:
         name = e.get("name", e.get("stock_id", ""))
@@ -200,7 +235,6 @@ def summarize(entries: list[dict]) -> str:
 3. **整體市場觀察**（1-3 點建議）
 """
     response = _generate_with_retry(
-        client,
         model=MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(max_output_tokens=MAX_TOKENS),
