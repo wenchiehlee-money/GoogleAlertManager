@@ -17,41 +17,41 @@ MAX_TOKENS = 8192
 _RETRY_DELAYS = [5, 15, 30]  # 秒，最多重試 3 次
 
 
-def _load_api_keys() -> list[str]:
-    """讀取所有可用的 Gemini API keys（GEMINI_API_KEY, GEMINI_API_KEY_1 … GEMINI_API_KEY_N）。"""
+def _load_api_keys() -> list[tuple[str, str]]:
+    """讀取所有可用的 Gemini API keys，回傳 [(env_name, key_value), ...]。"""
     import os
 
-    keys = []
-    # 主要 key
+    pairs = []
     primary = os.getenv("GEMINI_API_KEY")
     if primary:
-        keys.append(primary)
-    # 編號 key：GEMINI_API_KEY_1, GEMINI_API_KEY_2, …
+        pairs.append(("GEMINI_API_KEY", primary))
     for i in range(1, 20):
-        k = os.getenv(f"GEMINI_API_KEY_{i}")
+        name = f"GEMINI_API_KEY_{i}"
+        k = os.getenv(name)
         if k:
-            keys.append(k)
+            pairs.append((name, k))
         else:
             break
-    if not keys:
+    if not pairs:
         raise RuntimeError("Missing environment variable: GEMINI_API_KEY")
-    # 去重，保持順序（相同 key 輪換無意義）
+    # 去重（相同 key value 輪換無意義）
     seen: set[str] = set()
     unique = []
-    for k in keys:
+    for name, k in pairs:
         if k not in seen:
             seen.add(k)
-            unique.append(k)
-    if len(unique) < len(keys):
-        logger.debug("移除 %d 把重複的 API key", len(keys) - len(unique))
+            unique.append((name, k))
+    if len(unique) < len(pairs):
+        logger.debug("移除 %d 把重複的 API key", len(pairs) - len(unique))
+    logger.info("載入 %d 把 API key：%s", len(unique), ", ".join(n for n, _ in unique))
     return unique
 
 
-_API_KEYS: list[str] = []
-_EXHAUSTED_KEYS: set[str] = set()  # 每日配額耗盡的 key，本次執行永久跳過
+_API_KEYS: list[tuple[str, str]] = []
+_EXHAUSTED_KEYS: set[str] = set()  # 每日配額耗盡或無效的 key value，本次執行永久跳過
 
 
-def _get_keys() -> list[str]:
+def _get_keys() -> list[tuple[str, str]]:
     global _API_KEYS
     if not _API_KEYS:
         _API_KEYS = _load_api_keys()
@@ -71,14 +71,14 @@ def _generate_with_retry(**kwargs):
     """呼叫 generate_content，遇到每日 429 時永久跳過該 key，遇到 503 時 backoff 重試。"""
     import re
 
-    keys = [k for k in _get_keys() if k not in _EXHAUSTED_KEYS]
+    keys = [(n, k) for n, k in _get_keys() if k not in _EXHAUSTED_KEYS]
     if not keys:
         raise RuntimeError("所有 API key 的每日配額均已耗盡。")
     last_exc = None
 
-    for key_idx, api_key in enumerate(keys):
+    for key_idx, (key_name, api_key) in enumerate(keys):
         client = _client(api_key)
-        logger.debug("使用第 %d 把 API key（共 %d 把可用）", key_idx + 1, len(keys))
+        logger.debug("使用 %s（共 %d 把可用）", key_name, len(keys))
 
         for i, delay in enumerate([0] + _RETRY_DELAYS):
             if delay:
@@ -92,20 +92,28 @@ def _generate_with_retry(**kwargs):
                     continue
                 raise
             except genai_errors.ClientError as e:
+                if e.code == 403:
+                    _EXHAUSTED_KEYS.add(api_key)
+                    last_exc = e
+                    logger.warning(
+                        "%s 無效（403 PERMISSION_DENIED），永久跳過（剩餘 %d 把）…",
+                        key_name, len(keys) - len(_EXHAUSTED_KEYS),
+                    )
+                    break  # 切換下一把 key
                 if e.code == 429:
                     last_exc = e
                     err_str = str(e)
                     if _is_daily_quota(err_str):
                         _EXHAUSTED_KEYS.add(api_key)
                         logger.warning(
-                            "API key %d 每日配額耗盡，永久跳過（剩餘 %d 把）…",
-                            key_idx + 1, len(keys) - len(_EXHAUSTED_KEYS),
+                            "%s 每日配額耗盡，永久跳過（剩餘 %d 把）…",
+                            key_name, len(keys) - len(_EXHAUSTED_KEYS),
                         )
                         break  # 切換下一把 key
                     # RPM 限速：等待後重試同一把 key
                     m = re.search(r"retry[^\d]+(\d+)", err_str, re.IGNORECASE)
                     suggested = int(m.group(1)) + 2 if m else 30
-                    logger.warning("Gemini API RPM 限速，%d 秒後重試（第 %d 次）…", suggested, i + 1)
+                    logger.warning("%s RPM 限速，%d 秒後重試（第 %d 次）…", key_name, suggested, i + 1)
                     time.sleep(suggested)
                     continue
                 raise
