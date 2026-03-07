@@ -153,6 +153,79 @@ def analyze_company(company, entries: list[dict]) -> str:
     return response.text
 
 
+def analyze_and_score(company, entries: list[dict]) -> tuple[str, dict[str, dict]]:
+    """合併分析與評分為單次 API 呼叫，回傳 (analysis_text, scores)。"""
+    import json as _json
+
+    if not entries:
+        return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_", {}
+
+    # 文章列表（分析用）
+    analysis_items = []
+    for e in entries:
+        title = e.get("title", "")
+        summary = e.get("summary", "")[:300]
+        published = e.get("published", "")
+        analysis_items.append(f"- [{published}] {title}\n  {summary}")
+
+    # 文章列表（評分用，含 id）
+    score_items = []
+    for i, e in enumerate(entries):
+        score_items.append(
+            f"[{i}] id={e['id']}\n"
+            f"    標題: {e.get('title', '')}\n"
+            f"    摘要: {e.get('summary', '')[:200]}"
+        )
+
+    prompt = f"""\
+以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
+
+{chr(10).join(analysis_items)}
+
+請用繁體中文完成以下兩項任務，以 JSON 格式回傳：
+
+### 任務一：公司分析
+提供 Markdown 格式的分析（存入 "analysis" 欄位）：
+## 1. 近期動態摘要（條列式，3-5 點重點）
+## 2. 利多/利空判斷（利多因素、利空因素、整體傾向：利多/利空/中性）
+## 3. 投資建議方向（買進/持有/觀察/迴避，擇一並說明）
+> 注意：此分析僅供參考，不構成投資建議。
+
+### 任務二：文章評分
+對以下 {len(entries)} 篇文章逐一評分（存入 "scores" 欄位）：
+評分標準（0-5）：5=關鍵決策性資訊、4=重要業務資訊、3=有參考價值、2=一般性提及、1=幾乎無關、0=完全無關/垃圾
+
+{chr(10).join(score_items)}
+
+回傳格式：
+{{"analysis": "<Markdown 分析文字>", "scores": [{{"id": "<原始id>", "score": <0-5>, "reason": "<15字內>"}}]}}
+"""
+
+    score_tokens = max(MAX_TOKENS, len(entries) * 160 + MAX_TOKENS)
+    logger.info("Analyzing+scoring %s (%s) with %d entries in 1 call", company.name, company.stock_id, len(entries))
+    response = _generate_with_retry(
+        model=MODEL,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json",
+            max_output_tokens=score_tokens,
+        ),
+    )
+
+    try:
+        data = _json.loads(response.text)
+        analysis = data.get("analysis", "")
+        scores = {
+            item["id"]: {"score": item["score"], "reason": item.get("reason", "")}
+            for item in data.get("scores", [])
+            if "id" in item and "score" in item
+        }
+        return analysis, scores
+    except Exception as e:
+        logger.warning("合併分析解析失敗，回傳原始文字：%s", e)
+        return response.text, {}
+
+
 def score_entries(company, entries: list[dict]) -> dict[str, dict]:
     """用 Gemini 對每篇文章評分 0-5。回傳 {entry_id: {score, reason}}。
 

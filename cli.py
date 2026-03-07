@@ -120,25 +120,26 @@ def analyze(day_str: str | None, stock_id: str | None):
     all_scores = load_scores()
     company_reports = []
 
+    from src.config import REPORTS_DIR
+
     for company in companies:
         entries = entries_by_id.get(company.stock_id, [])
         if not entries:
             click.echo(f"  {company.stock_id} {company.name}: 無資料，跳過")
             continue
 
-        click.echo(f"  分析 {company.stock_id} {company.name}（{len(entries)} 篇）…")
-        try:
-            llm_result = llm.analyze_company(company, entries)
-        except Exception as e:
-            click.echo(f"    LLM 分析失敗，跳過：{e}", err=True)
+        # 已有報告就跳過（避免重複呼叫 LLM）
+        report_path = REPORTS_DIR / str(day) / f"{company.stock_id}.md"
+        if report_path.exists() and not stock_id:
+            click.echo(f"  {company.stock_id} {company.name}: 報告已存在，跳過")
             continue
 
-        click.echo(f"    評分 {len(entries)} 篇文章…")
+        click.echo(f"  分析+評分 {company.stock_id} {company.name}（{len(entries)} 篇）…")
         try:
-            new_scores = llm.score_entries(company, entries)
+            llm_result, new_scores = llm.analyze_and_score(company, entries)
         except Exception as e:
-            click.echo(f"    評分失敗，跳過：{e}", err=True)
-            new_scores = {}
+            click.echo(f"    LLM 失敗，跳過：{e}", err=True)
+            continue
         update_scores(new_scores)
         all_scores = load_scores()  # 重新載入，確保 manual 標記不被覆蓋
 
