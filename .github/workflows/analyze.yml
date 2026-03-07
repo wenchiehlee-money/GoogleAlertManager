@@ -37,6 +37,11 @@ jobs:
       - name: Download watchlist CSVs
         run: uv run python cli.py update-list
 
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Analyze alerts
         run: |
           if [ -n "${{ github.event.inputs.date }}" ]; then
@@ -57,13 +62,10 @@ jobs:
           GEMINI_API_KEY_9: ${{ secrets.GEMINI_API_KEY_9 }}
           GEMINI_API_KEY_10: ${{ secrets.GEMINI_API_KEY_10 }}
 
-      - name: Update README table
-        run: uv run python cli.py update-readme
-
-      - name: Commit reports
+      - name: Update README and push
+        if: always()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          uv run python cli.py update-readme
           git add data/reports/ README.md
           git diff --cached --quiet || git commit -m "chore: analyze alerts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
