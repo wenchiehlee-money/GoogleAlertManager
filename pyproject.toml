@@ -11,13 +11,16 @@ dependencies = [
     "google-alerts",
     "feedparser",
     "APScheduler>=3.10",
-    "google-genai",
     "click",
     "pyyaml",
     "python-dotenv",
     "jinja2",
     "nltk",
+    "llm",
 ]
+
+[tool.uv.sources]
+llm = { path = "../llm", editable = true }
 
 [project.scripts]
 gam = "cli:cli"
