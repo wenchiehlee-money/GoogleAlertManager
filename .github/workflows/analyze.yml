@@ -32,7 +32,10 @@ jobs:
           cache-dependency-glob: "pyproject.toml"
 
       - name: Install dependencies
-        run: uv sync
+        run: |
+          # 本地 path 在 CI 不存在，替換為 git URL
+          sed -i 's|path = "\.\./llm".*|git = "https://github.com/wenchiehlee/llm.git"|' pyproject.toml
+          uv sync
 
       - name: Download watchlist CSVs
         run: uv run python cli.py update-list
