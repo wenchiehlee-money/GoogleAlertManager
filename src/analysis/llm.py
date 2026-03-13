@@ -1,139 +1,62 @@
-"""以 Gemini API 針對每家公司進行情緒分析與投資建議。"""
+"""以 LLM 針對每家公司進行情緒分析與投資建議。
+
+底層使用 `llm` library（支援 Gemini key 輪轉 + Codex-API-Server fallback）。
+"""
 
 import logging
-import time
 
-from google import genai
-from google.genai import errors as genai_errors
-from google.genai import types
-
-from src.config import get_env
+from llm import LLMClient
 
 logger = logging.getLogger(__name__)
 
-MODEL = "gemini-2.5-flash"
 MAX_TOKENS = 8192
 
-_RETRY_DELAYS = [5, 15, 30]  # 秒，最多重試 3 次
+_client: LLMClient | None = None
 
 
-def _load_api_keys() -> list[tuple[str, str]]:
-    """讀取所有可用的 Gemini API keys，回傳 [(env_name, key_value), ...]。"""
-    import os
-
-    pairs = []
-    primary = os.getenv("GEMINI_API_KEY")
-    if primary:
-        pairs.append(("GEMINI_API_KEY", primary))
-    for i in range(1, 20):
-        name = f"GEMINI_API_KEY_{i}"
-        k = os.getenv(name)
-        if k:
-            pairs.append((name, k))
-        else:
-            break
-    if not pairs:
-        raise RuntimeError("Missing environment variable: GEMINI_API_KEY")
-    # 去重（相同 key value 輪換無意義）
-    seen: set[str] = set()
-    unique = []
-    for name, k in pairs:
-        if k not in seen:
-            seen.add(k)
-            unique.append((name, k))
-    if len(unique) < len(pairs):
-        logger.debug("移除 %d 把重複的 API key", len(pairs) - len(unique))
-    logger.info("載入 %d 把 API key：%s", len(unique), ", ".join(n for n, _ in unique))
-    return unique
+def _get_client() -> LLMClient:
+    global _client
+    if _client is None:
+        _client = LLMClient(app_name="GoogleAlertManager")
+    return _client
 
 
-_API_KEYS: list[tuple[str, str]] = []
-_EXHAUSTED_KEYS: set[str] = set()  # 每日配額耗盡或無效的 key value，本次執行永久跳過
+# ── prompt builders ───────────────────────────────────────────────────────────
 
 
-def _get_keys() -> list[tuple[str, str]]:
-    global _API_KEYS
-    if not _API_KEYS:
-        _API_KEYS = _load_api_keys()
-    return _API_KEYS
-
-
-def _client(api_key: str):
-    return genai.Client(api_key=api_key)
-
-
-def _is_daily_quota(err_str: str) -> bool:
-    """判斷是否為每日配額耗盡（而非每分鐘限速）。"""
-    return "PerDay" in err_str or "per_day" in err_str.lower() or "daily" in err_str.lower()
-
-
-def _generate_with_retry(**kwargs):
-    """呼叫 generate_content，遇到每日 429 時永久跳過該 key，遇到 503 時 backoff 重試。"""
-    import re
-
-    keys = [(n, k) for n, k in _get_keys() if k not in _EXHAUSTED_KEYS]
-    if not keys:
-        raise RuntimeError("所有 API key 的每日配額均已耗盡。")
-    last_exc = None
-
-    for key_idx, (key_name, api_key) in enumerate(keys):
-        client = _client(api_key)
-        logger.debug("使用 %s（共 %d 把可用）", key_name, len(keys))
-
-        for i, delay in enumerate([0] + _RETRY_DELAYS):
-            if delay:
-                logger.warning("Gemini API 重試，%d 秒後重試（第 %d 次）…", delay, i)
-                time.sleep(delay)
-            try:
-                return client.models.generate_content(**kwargs)
-            except genai_errors.ServerError as e:
-                if e.code == 503:
-                    last_exc = e
-                    continue
-                raise
-            except genai_errors.ClientError as e:
-                if e.code == 403:
-                    _EXHAUSTED_KEYS.add(api_key)
-                    last_exc = e
-                    logger.warning(
-                        "%s 無效（403 PERMISSION_DENIED），永久跳過（剩餘 %d 把）…",
-                        key_name, len(keys) - len(_EXHAUSTED_KEYS),
-                    )
-                    break  # 切換下一把 key
-                if e.code == 429:
-                    last_exc = e
-                    err_str = str(e)
-                    if _is_daily_quota(err_str):
-                        _EXHAUSTED_KEYS.add(api_key)
-                        logger.warning(
-                            "%s 每日配額耗盡，永久跳過（剩餘 %d 把）…",
-                            key_name, len(keys) - len(_EXHAUSTED_KEYS),
-                        )
-                        break  # 切換下一把 key
-                    # RPM 限速：等待後重試同一把 key
-                    m = re.search(r"retry[^\d]+(\d+)", err_str, re.IGNORECASE)
-                    suggested = int(m.group(1)) + 2 if m else 30
-                    logger.warning("%s RPM 限速，%d 秒後重試（第 %d 次）…", key_name, suggested, i + 1)
-                    time.sleep(suggested)
-                    continue
-                raise
-
-    raise last_exc
-
-
-def _build_company_prompt(company, entries: list[dict]) -> str:
-    items = []
+def _analysis_items(entries: list[dict]) -> str:
+    lines = []
     for e in entries:
         title = e.get("title", "")
         summary = e.get("summary", "")[:300]
         published = e.get("published", "")
-        items.append(f"- [{published}] {title}\n  {summary}")
-    items_text = "\n".join(items) if items else "（無文章）"
+        lines.append(f"- [{published}] {title}\n  {summary}")
+    return "\n".join(lines) if lines else "（無文章）"
 
-    return f"""\
+
+def _score_items(entries: list[dict]) -> str:
+    lines = []
+    for i, e in enumerate(entries):
+        lines.append(
+            f"[{i}] id={e.get('id', str(i))}\n"
+            f"    標題: {e.get('title', '')}\n"
+            f"    摘要: {e.get('summary', '')[:200]}"
+        )
+    return "\n".join(lines)
+
+
+# ── public API ────────────────────────────────────────────────────────────────
+
+
+def analyze_company(company, entries: list[dict]) -> str:
+    """對單一公司進行分析，回傳結構化 Markdown 結論。"""
+    if not entries:
+        return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_"
+
+    prompt = f"""\
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
-{items_text}
+{_analysis_items(entries)}
 
 請根據上述文章，用繁體中文提供以下分析：
 
@@ -154,52 +77,19 @@ def _build_company_prompt(company, entries: list[dict]) -> str:
 
 > 注意：此分析僅供參考，不構成投資建議。
 """
-
-
-def analyze_company(company, entries: list[dict]) -> str:
-    """對單一公司進行 Gemini 分析，回傳結構化 Markdown 結論。"""
-    if not entries:
-        return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_"
-
-    prompt = _build_company_prompt(company, entries)
-
     logger.info("Analyzing %s (%s) with %d entries", company.name, company.stock_id, len(entries))
-    response = _generate_with_retry(
-        model=MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(max_output_tokens=MAX_TOKENS),
-    )
-    return response.text
+    return _get_client().generate(prompt, max_tokens=MAX_TOKENS)
 
 
 def analyze_and_score(company, entries: list[dict]) -> tuple[str, dict[str, dict]]:
     """合併分析與評分為單次 API 呼叫，回傳 (analysis_text, scores)。"""
-    import json as _json
-
     if not entries:
         return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_", {}
-
-    # 文章列表（分析用）
-    analysis_items = []
-    for e in entries:
-        title = e.get("title", "")
-        summary = e.get("summary", "")[:300]
-        published = e.get("published", "")
-        analysis_items.append(f"- [{published}] {title}\n  {summary}")
-
-    # 文章列表（評分用，含 id）
-    score_items = []
-    for i, e in enumerate(entries):
-        score_items.append(
-            f"[{i}] id={e['id']}\n"
-            f"    標題: {e.get('title', '')}\n"
-            f"    摘要: {e.get('summary', '')[:200]}"
-        )
 
     prompt = f"""\
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
-{chr(10).join(analysis_items)}
+{_analysis_items(entries)}
 
 請用繁體中文完成以下兩項任務，以 JSON 格式回傳：
 
@@ -214,7 +104,7 @@ def analyze_and_score(company, entries: list[dict]) -> tuple[str, dict[str, dict
 對以下 {len(entries)} 篇文章逐一評分（存入 "scores" 欄位）：
 評分標準（0-5）：5=關鍵決策性資訊、4=重要業務資訊、3=有參考價值、2=一般性提及、1=幾乎無關、0=完全無關/垃圾
 
-{chr(10).join(score_items)}
+{_score_items(entries)}
 
 回傳格式：
 {{"analysis": "<Markdown 分析文字>", "scores": [{{"id": "<原始id>", "score": <0-5>, "reason": "<15字內>"}}]}}
@@ -222,54 +112,24 @@ def analyze_and_score(company, entries: list[dict]) -> tuple[str, dict[str, dict
 
     score_tokens = max(MAX_TOKENS, len(entries) * 160 + MAX_TOKENS)
     logger.info("Analyzing+scoring %s (%s) with %d entries in 1 call", company.name, company.stock_id, len(entries))
-    response = _generate_with_retry(
-        model=MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            max_output_tokens=score_tokens,
-        ),
-    )
+    data = _get_client().generate_json(prompt, max_tokens=score_tokens)
 
-    try:
-        data = _json.loads(response.text)
-        analysis = data.get("analysis", "")
-        scores = {
-            item["id"]: {"score": item["score"], "reason": item.get("reason", "")}
-            for item in data.get("scores", [])
-            if "id" in item and "score" in item
-        }
-        return analysis, scores
-    except Exception as e:
-        logger.warning("合併分析解析失敗，回傳原始文字：%s", e)
-        return response.text, {}
+    if not isinstance(data, dict):
+        return str(data), {}
+
+    analysis = data.get("analysis", "")
+    scores = {
+        item["id"]: {"score": item["score"], "reason": item.get("reason", "")}
+        for item in data.get("scores", [])
+        if "id" in item and "score" in item
+    }
+    return analysis, scores
 
 
 def score_entries(company, entries: list[dict]) -> dict[str, dict]:
-    """用 Gemini 對每篇文章評分 0-5。回傳 {entry_id: {score, reason}}。
-
-    評分標準：
-      5 = 關鍵決策性資訊（財報、重大合約、技術突破、經營層異動）
-      4 = 重要業務/產業資訊（市場份額、新產品、重要客戶）
-      3 = 有參考價值的市場新聞
-      2 = 一般性提及，資訊量少
-      1 = 幾乎無關或重複
-      0 = 完全無關/垃圾/廣告
-    """
-    import json as _json
-
+    """對每篇文章評分 0-5。"""
     if not entries:
         return {}
-
-    items = []
-    for i, e in enumerate(entries):
-        items.append(
-            f"[{i}] id={e['id']}\n"
-            f"    標題: {e.get('title', '')}\n"
-            f"    摘要: {e.get('summary', '')[:200]}\n"
-            f"    發布: {e.get('published', '')}"
-        )
-    items_text = "\n\n".join(items)
 
     prompt = f"""\
 針對 **{company.name}（{company.stock_id}）** 的投資決策，請對以下 {len(entries)} 篇文章逐一評分：
@@ -283,33 +143,21 @@ def score_entries(company, entries: list[dict]) -> dict[str, dict]:
 - 0：完全無關/垃圾/廣告
 
 文章列表：
-{items_text}
+{_score_items(entries)}
 
 請回傳 JSON 陣列，每篇文章一個物件：
 [{{"id": "<原始id>", "score": <0-5整數>, "reason": "<15字內理由>"}}]
 """
-
-    # 每篇約 80 token，保留 2 倍緩衝
     score_tokens = max(4096, len(entries) * 160)
-    response = _generate_with_retry(
-        model=MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            max_output_tokens=score_tokens,
-        ),
-    )
+    results = _get_client().generate_json(prompt, max_tokens=score_tokens)
 
-    try:
-        results = _json.loads(response.text)
-        return {
-            item["id"]: {"score": item["score"], "reason": item.get("reason", "")}
-            for item in results
-            if "id" in item and "score" in item
-        }
-    except Exception as e:
-        logger.warning("評分結果解析失敗：%s", e)
+    if not isinstance(results, list):
         return {}
+    return {
+        item["id"]: {"score": item["score"], "reason": item.get("reason", "")}
+        for item in results
+        if "id" in item and "score" in item
+    }
 
 
 def summarize(entries: list[dict]) -> str:
@@ -317,27 +165,21 @@ def summarize(entries: list[dict]) -> str:
     if not entries:
         return "_今日無新 Alert 資料。_"
 
-    items = []
+    lines = []
     for e in entries:
         name = e.get("name", e.get("stock_id", ""))
         title = e.get("title", "")
         summary = e.get("summary", "")[:200]
-        items.append(f"- [{name}] {title} — {summary}")
-    items_text = "\n".join(items)
+        lines.append(f"- [{name}] {title} — {summary}")
 
     prompt = f"""\
 以下是今日 Google Alert 收集到的股票相關文章清單：
 
-{items_text}
+{chr(10).join(lines)}
 
 請根據這些文章，用繁體中文提供：
 1. **主要趨勢**（3-5 點，條列式）
 2. **值得關注的個股**（最多 3 則，說明原因）
 3. **整體市場觀察**（1-3 點建議）
 """
-    response = _generate_with_retry(
-        model=MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(max_output_tokens=MAX_TOKENS),
-    )
-    return response.text
+    return _get_client().generate(prompt, max_tokens=MAX_TOKENS)
