@@ -37,6 +37,27 @@ jobs:
           sed -i 's|llm = { path = "\.\./llm", editable = true }|llm = { git = "https://github.com/wenchiehlee/llm.git" }|' pyproject.toml
           uv sync
 
+      - name: Verify Amplitude setup
+        env:
+          AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
+        run: |
+          uv run python - <<'EOF'
+          import os, sys
+          key = os.getenv("AMPLITUDE_API_KEY", "")
+          print(f"AMPLITUDE_API_KEY set: {bool(key)} (length={len(key)})")
+          try:
+              from amplitude import Amplitude, BaseEvent
+              print("amplitude-analytics: importable OK")
+              if key:
+                  c = Amplitude(key)
+                  c.track(BaseEvent(event_type="llm_verify", user_id="GoogleAlertManager",
+                                    event_properties={"step": "workflow_start"}))
+                  c.flush()
+                  print("Amplitude test event sent OK")
+          except Exception as e:
+              print(f"Amplitude error: {e}", file=sys.stderr)
+          EOF
+
       - name: Download watchlist CSVs
         run: uv run python cli.py update-list
 
