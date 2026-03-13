@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: |
           # 本地 path 在 CI 不存在，替換為 git URL
-          sed -i 's|path = "\.\./llm".*|git = "https://github.com/wenchiehlee/llm.git"|' pyproject.toml
+          sed -i 's|llm = { path = "\.\./llm", editable = true }|llm = { git = "https://github.com/wenchiehlee/llm.git" }|' pyproject.toml
           uv sync
 
       - name: Download watchlist CSVs
