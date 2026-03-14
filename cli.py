@@ -1,8 +1,15 @@
 """Command-line interface for GoogleAlertManager（股票觀察名單驅動版）。"""
 
+import io
 import logging
 import subprocess
 import sys
+
+# Windows 終端預設 cp1252，強制改為 UTF-8 以輸出中文
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+if sys.stderr.encoding and sys.stderr.encoding.lower() != "utf-8":
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 

@@ -23,9 +23,7 @@ dependencies = [
 dev = ["pytest"]
 
 [tool.uv.sources]
-# 本地開發用 path；CI/Actions 用 git URL（自動選擇）
-llm = { path = "../llm", editable = true }
-# llm = { git = "https://github.com/wenchiehlee/llm.git" }
+llm = { git = "https://github.com/wenchiehlee/llm.git" }
 
 [project.scripts]
 gam = "cli:cli"
