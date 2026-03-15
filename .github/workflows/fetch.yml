@@ -2,8 +2,8 @@ name: Fetch Alerts
 
 on:
   schedule:
-    # UTC 1,5,9,13,17,21 = Taiwan time 9,13,17,21,1,5（每 4 小時）
-    - cron: '0 1,5,9,13,17,21 * * *'
+    # UTC 23,3,7,11,15,19 = Taiwan time 7,11,15,19,23,3（每 4 小時）
+    - cron: '0 23,3,7,11,15,19 * * *'
   workflow_dispatch:
 
 concurrency:
