@@ -119,6 +119,19 @@ def analyze(day_str: str | None, stock_id: str | None):
             sys.exit(1)
 
     entries_by_id = load_entries_by_stock_id(day)
+    if not entries_by_id and not day_str:
+        # 今天沒資料，自動 fallback 到最近一天有資料的日期
+        from src.config import ALERTS_DATA_DIR
+        available = sorted(
+            [d for d in ALERTS_DATA_DIR.iterdir() if d.is_dir() and d.name != day.isoformat()],
+            key=lambda d: d.name,
+            reverse=True,
+        )
+        if available:
+            fallback = date.fromisoformat(available[0].name)
+            click.echo(f"找不到 {day} 的 entries，改用最近一天 {fallback}。")
+            day = fallback
+            entries_by_id = load_entries_by_stock_id(day)
     if not entries_by_id:
         click.echo(f"找不到 {day} 的 entries，請先執行 fetch。")
         sys.exit(1)
