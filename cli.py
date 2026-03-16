@@ -238,12 +238,15 @@ def update_readme():
             if top:
                 stocks[stock_id]["top_counts"][day] = top
 
-    # 找最新報告連結
+    # 找最近兩天報告連結
     for stock_id in stocks:
+        recent = []
         for day in reversed(days):
             if (reports_dir / day.isoformat() / f"{stock_id}.md").exists():
-                stocks[stock_id]["latest_report"] = day
+                recent.append(day)
+            if len(recent) == 2:
                 break
+        stocks[stock_id]["latest_reports"] = recent
 
     # 建立表格
     day_cols = " | ".join(d.strftime("%m/%d") for d in days)
@@ -255,9 +258,12 @@ def update_readme():
         counts = " | ".join(str(info["counts"].get(d, "-")) for d in days)
         total_top = sum(info["top_counts"].values())
         top_str = str(total_top) if total_top else "-"
-        if info["latest_report"]:
-            d = info["latest_report"]
-            link = f"[{d.isoformat()}](data/reports/{d.isoformat()}/{stock_id}.md)"
+        reports = info["latest_reports"]
+        if reports:
+            link = " ".join(
+                f"[{d.isoformat()}](data/reports/{d.isoformat()}/{stock_id}.md)"
+                for d in reports
+            )
         else:
             link = "-"
         lines.append(f"| {stock_id} | {info['name']} | {counts} | {top_str} | {link} |")
