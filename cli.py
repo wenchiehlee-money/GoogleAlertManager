@@ -11,6 +11,8 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
 if sys.stderr.encoding and sys.stderr.encoding.lower() != "utf-8":
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 from datetime import date, datetime, timedelta, timezone
+
+from src.config import today_taipei
 from pathlib import Path
 
 import click
@@ -105,7 +107,7 @@ def analyze(day_str: str | None, stock_id: str | None):
     from src.storage.markdown_writer import write_company_report, write_daily_summary
     from src.storage.scores_store import load_scores, update_scores
 
-    day = date.fromisoformat(day_str) if day_str else date.today()
+    day = date.fromisoformat(day_str) if day_str else today_taipei()
     companies = load_companies()
     if not companies:
         click.echo("找不到公司清單，請先執行 update-list。")
@@ -204,7 +206,7 @@ def update_readme():
     import re
     from datetime import timedelta
 
-    today = date.today()
+    today = today_taipei()
     days = [today - timedelta(days=i) for i in range(6, -1, -1)]
 
     alerts_dir = Path(__file__).parent / "data" / "alerts"

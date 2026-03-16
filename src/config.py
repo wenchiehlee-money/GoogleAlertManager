@@ -1,10 +1,18 @@
 """Load configuration from alerts.yaml and .env."""
 
 import os
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import yaml
 from dotenv import load_dotenv
+
+TZ_TAIPEI = timezone(timedelta(hours=8))
+
+
+def today_taipei() -> date:
+    """回傳台灣時間（UTC+8）的今日日期。"""
+    return datetime.now(TZ_TAIPEI).date()
 
 load_dotenv()
 

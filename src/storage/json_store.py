@@ -4,11 +4,11 @@ import json
 from datetime import date
 from pathlib import Path
 
-from src.config import ALERTS_DATA_DIR
+from src.config import ALERTS_DATA_DIR, today_taipei
 
 
 def _today_dir() -> Path:
-    today = date.today().isoformat()
+    today = today_taipei().isoformat()
     path = ALERTS_DATA_DIR / today
     path.mkdir(parents=True, exist_ok=True)
     return path
