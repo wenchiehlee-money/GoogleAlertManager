@@ -2,7 +2,9 @@ name: Analyze Alerts
 
 on:
   schedule:
-    # UTC 15:55 = Taiwan time 23:55 (after all daily fetches complete)
+    # UTC 00:00 = Taiwan time 08:00 (after 07:00 fetch, morning signal)
+    - cron: '0 0 * * *'
+    # UTC 15:55 = Taiwan time 23:55 (after all daily fetches, full day)
     - cron: '55 15 * * *'
   workflow_dispatch:
     inputs:
