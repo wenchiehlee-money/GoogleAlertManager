@@ -99,7 +99,8 @@ def fetch():
 @cli.command()
 @click.option("--date", "day_str", default=None, help="分析日期 (YYYY-MM-DD)，預設今天")
 @click.option("--stock-id", "stock_id", default=None, help="僅分析指定股票代碼")
-def analyze(day_str: str | None, stock_id: str | None):
+@click.option("--force", is_flag=True, default=False, help="強制重新分析，忽略已存在的報告")
+def analyze(day_str: str | None, stock_id: str | None, force: bool):
     """針對每家公司進行 LLM 情緒分析 + Gemini 文章評分，產出 Markdown 報告。"""
     from src.analysis import llm
     from src.companies.watchlist import load_companies
@@ -150,9 +151,9 @@ def analyze(day_str: str | None, stock_id: str | None):
             click.echo(f"  {company.stock_id} {company.name}: 無資料，跳過")
             continue
 
-        # 已有報告就跳過（避免重複呼叫 LLM）
+        # 已有報告就跳過（避免重複呼叫 LLM），--force 可強制覆蓋
         report_path = REPORTS_DIR / str(day) / f"{company.stock_id}.md"
-        if report_path.exists() and not stock_id:
+        if report_path.exists() and not stock_id and not force:
             click.echo(f"  {company.stock_id} {company.name}: 報告已存在，跳過")
             continue
 
