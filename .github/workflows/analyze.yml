@@ -67,11 +67,16 @@ jobs:
 
       - name: Analyze alerts
         run: |
+          DATE_ARG=""
+          FORCE_ARG=""
           if [ -n "${{ github.event.inputs.date }}" ]; then
-            uv run python cli.py analyze --date "${{ github.event.inputs.date }}"
-          else
-            uv run python cli.py analyze
+            DATE_ARG="--date ${{ github.event.inputs.date }}"
           fi
+          if [ "${{ github.event.schedule }}" = "55 15 * * *" ]; then
+            FORCE_ARG="--force"
+            echo "Night run: full re-analysis (--force)"
+          fi
+          uv run python cli.py analyze $DATE_ARG $FORCE_ARG
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
