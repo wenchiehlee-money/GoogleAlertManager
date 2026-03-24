@@ -28612,5 +28612,17 @@
   "tag:google.com,2013:googlealerts/feed:7222765815547631828": {
     "score": 2,
     "reason": "僅提供券商交易數據"
+  },
+  "tag:google.com,2013:googlealerts/feed:12712127431753974148": {
+    "score": 3,
+    "reason": "提及聯陽停資停券"
+  },
+  "tag:google.com,2013:googlealerts/feed:14386404218164331513": {
+    "score": 3,
+    "reason": "提及聯陽暫停當沖"
+  },
+  "tag:google.com,2013:googlealerts/feed:2687049889635166016": {
+    "score": 4,
+    "reason": "公告除權息資訊及殖利率"
   }
 }
