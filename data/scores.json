@@ -45144,5 +45144,17 @@
   "tag:google.com,2013:googlealerts/feed:2950519238758733567": {
     "score": 3,
     "reason": "提及近期停券資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:6906798820186259202": {
+    "score": 3,
+    "reason": "揭露法人單日交易"
+  },
+  "tag:google.com,2013:googlealerts/feed:17996149940250060209": {
+    "score": 3,
+    "reason": "揭露法人單週交易"
+  },
+  "tag:google.com,2013:googlealerts/feed:6745256607265275136": {
+    "score": 1,
+    "reason": "內容非公司新聞，僅股民提問與他股資訊。"
   }
 }
