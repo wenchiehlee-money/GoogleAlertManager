@@ -81744,5 +81744,17 @@
   "tag:google.com,2013:googlealerts/feed:17076831601058819624": {
     "score": 3,
     "reason": "預告財報公布時程"
+  },
+  "tag:google.com,2013:googlealerts/feed:9428404793030499093": {
+    "score": 3,
+    "reason": "提及股價與產業，但非深度"
+  },
+  "tag:google.com,2013:googlealerts/feed:485424287002594965": {
+    "score": 2,
+    "reason": "提供外資觀點，但摘要無關"
+  },
+  "tag:google.com,2013:googlealerts/feed:10739327218094300181": {
+    "score": 4,
+    "reason": "詳細技術分析，顯示賣壓"
   }
 }
