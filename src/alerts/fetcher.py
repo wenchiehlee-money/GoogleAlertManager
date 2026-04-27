@@ -51,9 +51,14 @@ def fetch_all(companies: list[Company] | None = None) -> dict[str, int]:
     except Exception as e:
         logger.warning("Google Alerts 無法連線（%s），改用 config/rss_urls.json", e)
         rss_map = _load_rss_urls_from_file()
-        if not rss_map:
-            logger.error("config/rss_urls.json 為空，請先執行 export-rss 或設定 Google Alerts 憑證")
-            return {}
+
+    if not rss_map:
+        logger.info("Google Alerts 為空，嘗試使用 config/rss_urls.json")
+        rss_map = _load_rss_urls_from_file()
+
+    if not rss_map:
+        logger.error("RSS 映射為空，請先執行 export-rss 或設定 Google Alerts 憑證")
+        return {}
     results: dict[str, int] = {}
 
     for company in companies:
