@@ -60,6 +60,13 @@ jobs:
       - name: Download watchlist CSVs
         run: uv run python cli.py update-list
 
+      - name: Process stale reports
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # ... (include other keys if needed for analyze --force inside sync-stale)
+        run: uv run python cli.py sync-stale
+
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"

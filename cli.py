@@ -249,16 +249,34 @@ def update_readme():
         stocks[stock_id]["latest_reports"] = recent
 
     # 建立表格
-    day_cols = " | ".join(d.strftime("%m/%d") for d in days)
+    day_headers = []
+    for d in days:
+        summary_file = f"{d.isoformat()}-summary.md"
+        if (reports_dir / summary_file).exists():
+            day_headers.append(f"[{d.strftime('%m/%d')}](data/reports/{summary_file})")
+        else:
+            day_headers.append(d.strftime("%m/%d"))
+    day_cols = " | ".join(day_headers)
+
     lines = [
         f"| 代號 | 名稱 | {day_cols} | ⭐≥4 | 最新報告 |",
         "| --- | --- |" + " :---: |" * 7 + " :---: | --- |",
     ]
     for stock_id, info in sorted(stocks.items()):
-        counts = " | ".join(str(info["counts"].get(d, "-")) for d in days)
+        count_list = []
+        for d in days:
+            c = info["counts"].get(d, "-")
+            if c != "-" and (reports_dir / d.isoformat() / f"{stock_id}.md").exists():
+                count_list.append(f"[{c}](data/reports/{d.isoformat()}/{stock_id}.md)")
+            else:
+                count_list.append(str(c))
+        counts = " | ".join(count_list)
         total_top = sum(info["top_counts"].values())
-        top_str = str(total_top) if total_top else "-"
         reports = info["latest_reports"]
+        if total_top and reports:
+            top_str = f"[{total_top}](data/reports/{reports[0].isoformat()}/{stock_id}.md)"
+        else:
+            top_str = str(total_top) if total_top else "-"
         if reports:
             link = " ".join(
                 f"[{d.isoformat()}](data/reports/{d.isoformat()}/{stock_id}.md)"
@@ -281,6 +299,36 @@ def update_readme():
         content = content.rstrip() + "\n\n" + new_block + "\n"
     readme.write_text(content, encoding="utf-8")
     click.echo(f"README.md 已更新，共 {len(stocks)} 支股票")
+
+
+@cli.command("sync-stale")
+def sync_stale():
+    """處理 GitHub Issues 中標記為 [STALE] 的報告更新預約。"""
+    try:
+        # 搜尋標題含有 [STALE] 的 open issues
+        cmd = ["gh", "issue", "list", "--search", "[STALE] in:title", "--json", "number,title", "--state", "open"]
+        res = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        import json
+        issues = json.loads(res.stdout)
+        if not issues:
+            click.echo("無待處理的過時標記。")
+            return
+
+        for issue in issues:
+            title = issue["title"]
+            # 格式：[STALE] stock_id YYYY-MM-DD
+            parts = title.replace("[STALE]", "").strip().split()
+            if len(parts) >= 2:
+                stock_id, day_str = parts[0], parts[1]
+                click.echo(f"處理預約更新：{stock_id} ({day_str})")
+                # 執行分析
+                subprocess.run(["python", "cli.py", "analyze", "--date", day_str, "--stock-id", stock_id, "--force"], check=False)
+                # 關閉 Issue
+                subprocess.run(["gh", "issue", "close", str(issue["number"]), "--comment", "✅ 報告已重新產生並更新。"], check=False)
+            else:
+                click.echo(f"跳過格式錯誤的 Issue: {title}")
+    except Exception as e:
+        click.echo(f"執行 sync-stale 失敗：{e}", err=True)
 
 
 @cli.command("export-rss")

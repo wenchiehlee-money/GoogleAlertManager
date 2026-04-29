@@ -32,6 +32,14 @@ _COMPANY_TEMPLATE = """\
 
 {{ llm_result }}
 
+## 🛠️ 管理與更新
+
+| 方式 | 動作 |
+| :--- | :--- |
+| **排程更新** | [🚩 標記為過時 (預約下次更新)](https://github.com/wenchiehlee-money/GoogleAlertManager/issues/new?title=[STALE]+{{ stock_id }}+{{ date }}&body=此報告內容已過時，請在下次排程任務中強制重新產生。%0A%0A---%0A*請勿修改標題，系統將自動處理此更新。*) |
+| **立即更新** | [![Update Report](https://img.shields.io/badge/GitHub_Actions-Run_Update-blue?style=for-the-badge&logo=github)](https://github.com/wenchiehlee-money/GoogleAlertManager/actions/workflows/analyze.yml) <br> *(點擊後按 `Run workflow`，輸入 `{{ date }}` 與 `{{ stock_id }}`)* |
+| **本地更新** | 執行指令：`python cli.py analyze --date {{ date }} --stock-id {{ stock_id }} --force` |
+
 ---
 *報告產生時間：{{ generated_at }}*
 """
