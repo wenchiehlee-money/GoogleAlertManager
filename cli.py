@@ -268,14 +268,17 @@ def update_readme():
             c = info["counts"].get(d, "-")
             t = info["top_counts"].get(d, 0)
             
-            label = str(c)
-            if t > 0:
-                label = f"{c}({t})"
-                
             if c != "-" and (reports_dir / d.isoformat() / f"{stock_id}.md").exists():
-                count_list.append(f"[{label}](data/reports/{d.isoformat()}/{stock_id}.md)")
+                link = f"data/reports/{d.isoformat()}/{stock_id}.md"
+                if t > 0:
+                    # 分開總數與高分數的連結
+                    label = f"[{c}]({link}) ([{t}]({link}))"
+                else:
+                    label = f"[{c}]({link})"
             else:
-                count_list.append(label)
+                label = f"{c}({t})" if t > 0 else str(c)
+            
+            count_list.append(label)
                 
         counts = " | ".join(count_list)
         
