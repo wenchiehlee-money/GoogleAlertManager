@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>GoogleAlertManager 股票分析儀表板</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="自動化股票分析與 Google Alerts 管理系統">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <!-- 使用現代化的主題 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    :root {
+      --theme-color: #2c3e50;
+    }
+    .markdown-section {
+      max-width: 95%;
+      margin: 0 auto;
+      padding: 30px;
+    }
+    /* 優化表格顯示 */
+    table {
+      display: table !important;
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    th {
+      background-color: #f8f9fa;
+    }
+    /* 連結顏色 */
+    section.markdown-section a {
+      color: #3498db;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    section.markdown-section a:hover {
+      text-decoration: underline;
+    }
+    /* 側邊欄樣式 */
+    .sidebar {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">🚀 正在載入分析數據...</div>
+  <script>
+    window.$docsify = {
+      name: 'GoogleAlertManager',
+      repo: 'wenchiehlee-money/GoogleAlertManager',
+      loadSidebar: false,
+      homepage: 'README.md',
+      auto2top: true,
+      formatUpdated: '{MM}/{DD} {HH}:{mm}',
+      executeScript: true
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+</body>
+</html>
