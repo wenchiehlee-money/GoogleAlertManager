@@ -266,17 +266,28 @@ def update_readme():
         count_list = []
         for d in days:
             c = info["counts"].get(d, "-")
+            t = info["top_counts"].get(d, 0)
+            
+            label = str(c)
+            if t > 0:
+                label = f"{c}({t})"
+                
             if c != "-" and (reports_dir / d.isoformat() / f"{stock_id}.md").exists():
-                count_list.append(f"[{c}](data/reports/{d.isoformat()}/{stock_id}.md)")
+                count_list.append(f"[{label}](data/reports/{d.isoformat()}/{stock_id}.md)")
             else:
-                count_list.append(str(c))
+                count_list.append(label)
+                
         counts = " | ".join(count_list)
-        total_top = sum(info["top_counts"].values())
+        
+        # 取得最新一天的資料
+        latest_day = days[-1]
+        latest_top = info["top_counts"].get(latest_day, 0)
         reports = info["latest_reports"]
-        if total_top and reports:
-            top_str = f"[{total_top}](data/reports/{reports[0].isoformat()}/{stock_id}.md)"
+        
+        if latest_top > 0 and reports:
+            top_str = f"[{latest_top}](data/reports/{reports[0].isoformat()}/{stock_id}.md)"
         else:
-            top_str = str(total_top) if total_top else "-"
+            top_str = str(latest_top) if latest_top > 0 else "-"
         
         lines.append(f"| {stock_id} | {info['name']} | {counts} | {top_str} |")
 
