@@ -259,8 +259,8 @@ def update_readme():
     day_cols = " | ".join(day_headers)
 
     lines = [
-        f"| 代號 | 名稱 | {day_cols} | ⭐≥4 |",
-        "| --- | --- |" + " :---: |" * 7 + " :---: |",
+        f"| 代號 | 名稱 | {day_cols} |",
+        "| --- | --- |" + " :---: |" * 7,
     ]
     for stock_id, info in sorted(stocks.items()):
         count_list = []
@@ -286,20 +286,7 @@ def update_readme():
                 
         counts = " | ".join(count_list)
         
-        # 取得最新一天的資料
-        latest_day = days[-1]
-        latest_top = info["top_counts"].get(latest_day, 0)
-        reports = info["latest_reports"]
-        
-        if latest_top > 0 and reports:
-            # 最新一欄也導向 -top.md
-            link_top = f"data/reports/{reports[0].isoformat()}/{stock_id}-top.md"
-            final_top_link = link_top if (reports_dir.parent.parent / link_top).exists() else f"data/reports/{reports[0].isoformat()}/{stock_id}.md"
-            top_str = f"[{latest_top}]({final_top_link})"
-        else:
-            top_str = str(latest_top) if latest_top > 0 else "-"
-        
-        lines.append(f"| {stock_id} | {info['name']} | {counts} | {top_str} |")
+        lines.append(f"| {stock_id} | {info['name']} | {counts} |")
 
     table = "\n".join(lines)
     marker_s = "<!-- REPORT_TABLE_START -->"
