@@ -269,12 +269,16 @@ def update_readme():
             t = info["top_counts"].get(d, 0)
             
             if c != "-" and (reports_dir / d.isoformat() / f"{stock_id}.md").exists():
-                link = f"data/reports/{d.isoformat()}/{stock_id}.md"
+                link_all = f"data/reports/{d.isoformat()}/{stock_id}.md"
+                link_top = f"data/reports/{d.isoformat()}/{stock_id}-top.md"
+                
                 if t > 0:
-                    # 分開總數與高分數的連結
-                    label = f"[{c}]({link}) ([{t}]({link}))"
+                    # 分開總數與高分數的連結，高分導向 -top.md
+                    # 如果 -top.md 不存在（例如舊資料），則 fallback 到 .md
+                    final_top_link = link_top if (reports_dir.parent.parent / link_top).exists() else link_all
+                    label = f"[{c}]({link_all}) ([{t}]({final_top_link}))"
                 else:
-                    label = f"[{c}]({link})"
+                    label = f"[{c}]({link_all})"
             else:
                 label = f"{c}({t})" if t > 0 else str(c)
             
@@ -288,7 +292,10 @@ def update_readme():
         reports = info["latest_reports"]
         
         if latest_top > 0 and reports:
-            top_str = f"[{latest_top}](data/reports/{reports[0].isoformat()}/{stock_id}.md)"
+            # 最新一欄也導向 -top.md
+            link_top = f"data/reports/{reports[0].isoformat()}/{stock_id}-top.md"
+            final_top_link = link_top if (reports_dir.parent.parent / link_top).exists() else f"data/reports/{reports[0].isoformat()}/{stock_id}.md"
+            top_str = f"[{latest_top}]({final_top_link})"
         else:
             top_str = str(latest_top) if latest_top > 0 else "-"
         

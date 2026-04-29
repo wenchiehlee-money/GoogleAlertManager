@@ -14,7 +14,15 @@ _COMPANY_TEMPLATE = """\
 
 **清單類型**：{{ list_type }}
 
-## 文章統計
+## ⭐ 高分精選文章 (Score ≥ 4)
+{% if top_entries %}
+{% for e in top_entries %}- {{ e.stars }} [{{ e.title }}]({{ e.url }}){% if e.reason %} — *{{ e.reason }}*{% endif %}
+{% endfor %}
+{% else %}
+*（今日無高分文章）*
+{% endif %}
+
+## 📊 文章統計與來源 (含一般文章)
 
 - 總文章數：{{ entry_count }}
 - 主要來源：
@@ -41,6 +49,27 @@ _COMPANY_TEMPLATE = """\
 | **本地更新** | 執行指令：`python cli.py analyze --date {{ date }} --stock-id {{ stock_id }} --force` |
 
 ---
+*報告產生時間：{{ generated_at }}*
+"""
+
+_TOP_COMPANY_TEMPLATE = """\
+# ⭐ {{ name }}（{{ stock_id }}）高品質報告 — {{ date }}
+
+此報告僅收錄評分 **4 分以上** 的關鍵資訊。
+
+## 🎯 關鍵文章列表
+{% for e in top_entries %}
+- {{ e.stars }} [{{ e.title }}]({{ e.url }})
+  > **核心價值**：{{ e.reason }}
+
+{% endfor %}
+
+## 💡 快速分析結論
+{{ llm_result }}
+
+---
+[查看完整報告 (含所有文章)]({{ stock_id }}.md)
+
 *報告產生時間：{{ generated_at }}*
 """
 
@@ -77,15 +106,26 @@ def write_company_report(
     generated_at: str,
     scores: dict | None = None,
 ) -> str:
-    """輸出單一公司報告至 data/reports/YYYY-MM-DD/{stock_id}.md。
-
-    scores: {entry_id: {score, reason}} — Gemini 評分結果。
-    回傳檔案路徑。
-    """
+    """輸出完整報告及高品質報告至 data/reports/YYYY-MM-DD/。"""
     from src.analysis.stats import analyze
     scores = scores or {}
     stat_result = analyze(entries, stock_id=company.stock_id)
     top_domains = stat_result.top_domains[:5]
+
+    # 準備高品質文章列表
+    top_entries = []
+    for e in entries:
+        s = scores.get(e.get("id", ""), {})
+        score_val = s.get("score", -1)
+        if score_val >= 4:
+            top_entries.append({
+                "stars": _STARS[score_val],
+                "title": e.get("title", ""),
+                "url": e.get("link", ""),
+                "reason": s.get("reason", ""),
+                "score": score_val
+            })
+    top_entries.sort(key=lambda x: x["score"], reverse=True)
 
     # 預先排序：高分在前，並組合 (stars, title, url, reason)
     sorted_domain_urls: dict[str, list] = {}
@@ -101,6 +141,9 @@ def write_company_report(
         sorted_domain_urls[domain] = [(stars, title, url, reason) for _, stars, title, url, reason in enriched]
 
     env = Environment(loader=BaseLoader())
+    company_dir = _get_company_dir(day)
+    
+    # 1. 寫入完整報告
     template = env.from_string(_COMPANY_TEMPLATE)
     content = template.render(
         name=company.name,
@@ -108,15 +151,29 @@ def write_company_report(
         list_type="專注清單" if company.list_type == "focus" else "觀察清單",
         date=day.isoformat(),
         entry_count=len(entries),
+        top_entries=top_entries,
         top_domains=top_domains,
         sorted_domain_urls=sorted_domain_urls,
         llm_result=llm_result,
         generated_at=generated_at,
     )
-
-    company_dir = _get_company_dir(day)
     report_path = company_dir / f"{company.stock_id}.md"
     report_path.write_text(content, encoding="utf-8")
+
+    # 2. 寫入高品質報告 (如果有高分文章)
+    if top_entries:
+        top_template = env.from_string(_TOP_COMPANY_TEMPLATE)
+        top_content = top_template.render(
+            name=company.name,
+            stock_id=company.stock_id,
+            date=day.isoformat(),
+            top_entries=top_entries,
+            llm_result=llm_result,
+            generated_at=generated_at,
+        )
+        top_path = company_dir / f"{company.stock_id}-top.md"
+        top_path.write_text(top_content, encoding="utf-8")
+
     return str(report_path)
 
 
