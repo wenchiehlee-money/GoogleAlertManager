@@ -14,7 +14,7 @@ _COMPANY_TEMPLATE = """\
 
 **清單類型**：{{ list_type }}
 
-## ⭐ 高分精選文章 (Score ≥ 4)
+## ⭐ 高分精選文章 (Score ≥ 4) ({{ top_entries|length }})
 {% if top_entries %}
 {% for e in top_entries %}- {{ e.stars }} [{{ e.title }}]({{ e.url }}){% if e.reason %} — *{{ e.reason }}*{% endif %}
 {% endfor %}
@@ -22,7 +22,7 @@ _COMPANY_TEMPLATE = """\
 *（今日無高分文章）*
 {% endif %}
 
-## 📊 文章統計與來源 (含一般文章)
+## 📊 文章統計與來源 (含一般文章) ({{ entry_count - top_entries|length }})
 
 - 總文章數：{{ entry_count }}
 - 主要來源：
@@ -109,25 +109,30 @@ def write_company_report(
     """輸出完整報告及高品質報告至 data/reports/YYYY-MM-DD/。"""
     from src.analysis.stats import analyze
     scores = scores or {}
-    stat_result = analyze(entries, stock_id=company.stock_id)
-    top_domains = stat_result.top_domains[:5]
 
-    # 準備高品質文章列表
+    # 1. 分離高分與一般文章
     top_entries = []
+    general_entries = []
     for e in entries:
         s = scores.get(e.get("id", ""), {})
         score_val = s.get("score", -1)
         if score_val >= 4:
             top_entries.append({
-                "stars": _STARS[score_val],
+                "stars": _STARS[score_val] if 0 <= score_val <= 5 else "",
                 "title": e.get("title", ""),
                 "url": e.get("link", ""),
                 "reason": s.get("reason", ""),
                 "score": score_val
             })
+        else:
+            general_entries.append(e)
     top_entries.sort(key=lambda x: x["score"], reverse=True)
 
-    # 預先排序：高分在前，並組合 (stars, title, url, reason)
+    # 2. 針對「一般文章」進行統計分析
+    stat_result = analyze(general_entries, stock_id=company.stock_id)
+    top_domains = stat_result.top_domains[:5]
+
+    # 預先排序：一般文章依評分排序，並組合 (stars, title, url, reason)
     sorted_domain_urls: dict[str, list] = {}
     for domain, items in stat_result.domain_urls.items():
         enriched = []
