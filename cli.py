@@ -340,12 +340,25 @@ def sync_stale():
                 parts = txt.replace("[RATING]", "").strip().split()
                 if len(parts) >= 4:
                     stock_id, day_str, entry_id, score = parts[0], parts[1], parts[2], parts[3]
-                    click.echo(f"處理重評請求：{stock_id} {entry_id} -> {score}")
-                    # 執行標註
-                    subprocess.run(["python", "cli.py", "label", stock_id, day_str, entry_id, score], check=False)
+                    
+                    # 從內文中擷取 Reason
+                    # 格式：... Reason: 理由內容
+                    reason = ""
+                    body = issue.get("body", "")
+                    if "Reason:" in body:
+                        reason = body.split("Reason:", 1)[1].strip()
+                    
+                    click.echo(f"處理重評請求：{stock_id} {entry_id} -> {score} (理由: {reason})")
+                    
+                    # 執行標註指令，帶上理由
+                    label_cmd = ["python", "cli.py", "label", stock_id, day_str, entry_id, score]
+                    if reason:
+                        label_cmd.extend(["--reason", reason])
+                    subprocess.run(label_cmd, check=False)
+                    
                     # 重新產生報告以反映變更
                     subprocess.run(["python", "cli.py", "analyze", "--date", day_str, "--stock-id", stock_id, "--force"], check=False)
-                    subprocess.run(["gh", "issue", "close", str(num), "--comment", f"✅ 文章已重新評分為 {score} 分並更新報表。AI 已學習此偏好。"], check=False)
+                    subprocess.run(["gh", "issue", "close", str(num), "--comment", f"✅ 文章已重新評分為 {score} 分並更新報表。AI 已學習理由：{reason}"], check=False)
             
             else:
                 click.echo(f"跳過格式錯誤的 Issue: {txt}")
