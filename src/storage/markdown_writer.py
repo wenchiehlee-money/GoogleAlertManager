@@ -26,15 +26,8 @@ _COMPANY_TEMPLATE = """\
 ## 📊 文章統計與來源 (含一般文章) ({{ general_count }})
 
 - 一般文章數：{{ general_count }}
-- 主要來源：
-{% for domain, count in top_domains %}
-<details>
-<summary>{{ domain }} ({{ count }})</summary>
-
-{% for stars, title, url, reason in sorted_domain_urls[domain] %}- {{ stars }} [{{ title }}]({{ url }}){% if reason %} — *{{ reason }}*{% endif %}
-
-{% endfor %}
-</details>
+{% for e in general_entries_enriched %}
+- {{ e.stars }} [{{ e.title }}]({{ e.url }}){% if e.reason %} — *{{ e.reason }}*{% endif %}
 {% endfor %}
 
 ## LLM 分析結論
@@ -129,22 +122,19 @@ def write_company_report(
             general_entries.append(e)
     top_entries.sort(key=lambda x: x["score"], reverse=True)
 
-    # 2. 針對「一般文章」進行統計分析
-    stat_result = analyze(general_entries, stock_id=company.stock_id)
-    top_domains = stat_result.top_domains[:5]
-
-    # 預先排序：一般文章依評分排序，並組合 (stars, title, url, reason)
-    sorted_domain_urls: dict[str, list] = {}
-    for domain, items in stat_result.domain_urls.items():
-        enriched = []
-        for title, url, entry_id in items:
-            s = scores.get(entry_id, {})
-            score_val = s.get("score", -1)
-            stars = _STARS[score_val] if 0 <= score_val <= 5 else ""
-            reason = s.get("reason", "")
-            enriched.append((score_val, stars, title, url, reason))
-        enriched.sort(key=lambda x: x[0], reverse=True)
-        sorted_domain_urls[domain] = [(stars, title, url, reason) for _, stars, title, url, reason in enriched]
+    # 2. 準備一般文章列表 (平鋪並排序)
+    general_entries_enriched = []
+    for e in general_entries:
+        s = scores.get(e.get("id", ""), {})
+        score_val = s.get("score", -1)
+        general_entries_enriched.append({
+            "stars": _STARS[score_val] if 0 <= score_val <= 5 else "",
+            "title": e.get("title", ""),
+            "url": e.get("link", ""),
+            "reason": s.get("reason", ""),
+            "score": score_val
+        })
+    general_entries_enriched.sort(key=lambda x: x["score"], reverse=True)
 
     env = Environment(loader=BaseLoader())
     company_dir = _get_company_dir(day)
@@ -159,8 +149,7 @@ def write_company_report(
         entry_count=len(entries),
         general_count=len(general_entries),
         top_entries=top_entries,
-        top_domains=top_domains,
-        sorted_domain_urls=sorted_domain_urls,
+        general_entries_enriched=general_entries_enriched,
         llm_result=llm_result,
         generated_at=generated_at,
     )
