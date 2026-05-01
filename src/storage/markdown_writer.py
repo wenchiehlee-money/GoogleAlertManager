@@ -51,8 +51,8 @@ _COMPANY_TEMPLATE = """\
 
 | 方式 | 動作 |
 | :--- | :--- |
-| **排程更新** | [[STALE] 標記為過時 (預約下次更新)](https://github.com/wenchiehlee-money/GoogleAlertManager/issues/new?title=[STALE]+{{ stock_id }}+{{ date }}&body=STALE+{{ stock_id }}+{{ date }}) |
-| **立即更新** | [![Update Report](https://img.shields.io/badge/GitHub_Actions-Run_Update-blue?style=for-the-badge&logo=github)](https://github.com/wenchiehlee-money/GoogleAlertManager/actions/workflows/analyze.yml) <br> *(點擊後按 `Run workflow`，輸入 `{{ date }}` 與 `{{ stock_id }}`)* |
+| **請求更新** | [一鍵建立更新請求 (GitHub Issue)](https://github.com/wenchiehlee-money/GoogleAlertManager/issues/new?title=[STALE]+{{ stock_id }}+{{ date }}&body=STALE+{{ stock_id }}+{{ date }}) |
+| **立即執行** | [前往 GitHub Actions 頁面](https://github.com/wenchiehlee-money/GoogleAlertManager/actions/workflows/analyze.yml) <br> *(點擊 `Run workflow` 後，請手動輸入日期 `{{ date }}` 與代號 `{{ stock_id }}`)* |
 | **本地更新** | 執行指令：`python cli.py analyze --date {{ date }} --stock-id {{ stock_id }} --force` |
 
 ---
