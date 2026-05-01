@@ -90931,83 +90931,83 @@
   },
   "tag:google.com,2013:googlealerts/feed:1009306282864795575": {
     "score": 2,
-    "reason": "僅報導收盤價與大盤動態"
+    "reason": "提及股價變動，一般性資訊。"
   },
   "tag:google.com,2013:googlealerts/feed:8137108179447469309": {
     "score": 1,
-    "reason": "投資人個人主觀判斷"
+    "reason": "股民個人操作建議，無實質資訊。"
   },
   "tag:google.com,2013:googlealerts/feed:2682757027928903994": {
     "score": 3,
-    "reason": "提及公司為重要ETF成分股"
+    "reason": "提及為00878成分股及其佔比。"
   },
   "tag:google.com,2013:googlealerts/feed:6683357286367687797": {
     "score": 4,
-    "reason": "公司治理評鑑重大進步"
+    "reason": "公司治理評鑑首次進入前5%。"
   },
   "tag:google.com,2013:googlealerts/feed:14557900711745032156": {
     "score": 4,
-    "reason": "公司治理評鑑重大進步"
+    "reason": "重申公司治理評鑑前5%資訊。"
   },
   "tag:google.com,2013:googlealerts/feed:7179577531548228903": {
     "score": 3,
-    "reason": "提及公司為重要ETF成分股"
+    "reason": "提及為00878成分股。"
   },
   "tag:google.com,2013:googlealerts/feed:10089962815910583901": {
     "score": 4,
-    "reason": "深度分析公司估值及AI潛力"
+    "reason": "分析本益比與AI伺服器潛力。"
   },
   "tag:google.com,2013:googlealerts/feed:2358562452422786749": {
     "score": 4,
-    "reason": "公司治理評鑑重大進步"
+    "reason": "再次確認公司治理評鑑前5%資訊。"
   },
   "tag:google.com,2013:googlealerts/feed:17040830647008677247": {
-    "score": 2,
-    "reason": "主要為個人觀點，次要資訊"
+    "score": 3,
+    "reason": "提及與童綜合醫院合作。"
   },
   "tag:google.com,2013:googlealerts/feed:12951379505197029768": {
     "score": 4,
-    "reason": "公司治理評鑑重大進步"
+    "reason": "再次確認公司治理評鑑前5%資訊。"
   },
   "tag:google.com,2013:googlealerts/feed:3731159434334882607": {
     "score": 3,
-    "reason": "提及公司為重要ETF成分股"
+    "reason": "提及為00878成分股及其佔比。"
   },
   "tag:google.com,2013:googlealerts/feed:12585807808997815811": {
-    "score": 2,
-    "reason": "個人觀點，間接提及負面因素"
+    "score": 3,
+    "reason": "提及CPU漲價影響PC市場。"
   },
   "tag:google.com,2013:googlealerts/feed:16102991497492374784": {
-    "score": 2,
-    "reason": "主要為個人觀點，次要資訊"
+    "score": 3,
+    "reason": "提及與童綜合醫院合作。"
   },
   "tag:google.com,2013:googlealerts/feed:6349061984268326349": {
     "score": 5,
-    "reason": "公司重大策略合作，拓展新業務"
+    "reason": "宣布新業務合作，強攻智慧醫療。"
   },
   "tag:google.com,2013:googlealerts/feed:5629129578706532670": {
     "score": 3,
-    "reason": "提及外資賣超動向"
+    "reason": "提及外資連續賣超，市場動向。"
   },
   "tag:google.com,2013:googlealerts/feed:17767071760303168712": {
     "score": 5,
-    "reason": "公司重大策略合作，拓展新業務"
+    "reason": "宣布新業務合作，插旗醫療照護。"
   },
   "tag:google.com,2013:googlealerts/feed:956843674321549224": {
-    "score": 1,
-    "reason": "討論硬體產品，非公司營運"
+    "score": 2,
+    "reason": "主要是電腦菜單，附帶舊新聞。"
   },
   "tag:google.com,2013:googlealerts/feed:12430339865383423": {
     "score": 1,
-    "reason": "討論硬體產品，非公司營運"
+    "reason": "主要是電腦菜單，僅提及品牌。"
   },
   "tag:google.com,2013:googlealerts/feed:17494351037462560653": {
     "score": 5,
-    "reason": "公司重大策略合作，拓展新業務"
+    "reason": "宣布新業務合作，插旗智慧照護。"
   },
   "tag:google.com,2013:googlealerts/feed:5434348473610430447": {
     "score": 5,
-    "reason": "公司重大策略合作，拓展新業務"
+    "reason": "宣布多角經營強攻智慧醫療。"
   },
   "tag:google.com,2013:googlealerts/feed:17458672335948885986": {
     "score": 2,
@@ -91843,22 +91843,38 @@
   },
   "tag:google.com,2013:googlealerts/feed:6657865121981816398": {
     "score": 4,
-    "reason": "公司治理評鑑重大進步"
+    "reason": "再次確認公司治理評鑑前5%資訊。"
   },
   "tag:google.com,2013:googlealerts/feed:567931584881154023": {
     "score": 3,
-    "reason": "提及外資賣超動向"
+    "reason": "提及外資連續賣超，市場動向。"
   },
   "tag:google.com,2013:googlealerts/feed:12523912217738662548": {
-    "score": 2,
-    "reason": "個人觀點，間接提及負面因素"
+    "score": 3,
+    "reason": "提及CPU漲價影響PC市場。"
   },
   "tag:google.com,2013:googlealerts/feed:17106154687184641905": {
-    "score": 2,
-    "reason": "主要為個人觀點，次要資訊"
+    "score": 3,
+    "reason": "提及與童綜合醫院合作。"
   },
   "tag:google.com,2013:googlealerts/feed:2964426581043637865": {
-    "score": 2,
-    "reason": "主要為個人觀點，次要資訊"
+    "score": 3,
+    "reason": "提及與童綜合醫院合作。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5968821904335687970": {
+    "score": 3,
+    "reason": "提及為00878核心成分股。"
+  },
+  "tag:google.com,2013:googlealerts/feed:18091398747306388640": {
+    "score": 5,
+    "reason": "討論華碩進軍智慧醫療的策略。"
+  },
+  "tag:google.com,2013:googlealerts/feed:9158174226859406520": {
+    "score": 1,
+    "reason": "舊執行長創業新聞，關聯低。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11711237463651179222": {
+    "score": 4,
+    "reason": "再次確認公司治理評鑑前5%資訊。"
   }
 }
