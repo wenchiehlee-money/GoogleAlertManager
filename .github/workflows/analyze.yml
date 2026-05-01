@@ -12,6 +12,10 @@ on:
         description: '分析日期 (YYYY-MM-DD)，空白表示今天'
         required: false
         default: ''
+      stock-id:
+        description: '指定股票代號 (空白則分析全部)'
+        required: false
+        default: ''
 
 concurrency:
   group: data-write
@@ -75,15 +79,24 @@ jobs:
       - name: Analyze alerts
         run: |
           DATE_ARG=""
+          STOCK_ARG=""
           FORCE_ARG=""
+          
           if [ -n "${{ github.event.inputs.date }}" ]; then
             DATE_ARG="--date ${{ github.event.inputs.date }}"
           fi
+          
+          if [ -n "${{ github.event.inputs.stock-id }}" ]; then
+            STOCK_ARG="--stock-id ${{ github.event.inputs.stock-id }}"
+            FORCE_ARG="--force"  # 手動指定個股時通常需要強制刷新
+          fi
+          
           if [ "${{ github.event.schedule }}" = "55 15 * * *" ]; then
             FORCE_ARG="--force"
             echo "Night run: full re-analysis (--force)"
           fi
-          uv run python cli.py analyze $DATE_ARG $FORCE_ARG
+          
+          uv run python cli.py analyze $DATE_ARG $STOCK_ARG $FORCE_ARG
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
