@@ -81,15 +81,45 @@ def analyze_company(company, entries: list[dict]) -> str:
     return _get_client().generate(prompt, max_tokens=MAX_TOKENS)
 
 
+def _get_user_preferences_prompt() -> str:
+    """載入使用者的人工標註範例，作為 Few-shot Learning 參考。"""
+    import json
+    from pathlib import Path
+    pref_path = Path("data") / "user_preferences.json"
+    if not pref_path.exists():
+        return ""
+    
+    try:
+        with open(pref_path, encoding="utf-8") as f:
+            prefs = json.load(f)
+        if not prefs:
+            return ""
+        
+        lines = ["### 使用者評分偏好範例 (請優先參考此標準)："]
+        # 只取最近 10 則作為範例，避免 Prompt 過長
+        for p in prefs[-10:]:
+            lines.append(f"- 標題: {p['title']}")
+            lines.append(f"  摘要: {p['summary'][:100]}...")
+            lines.append(f"  評分: {p['score']} 分 (理由: {p.get('reason') or '無'})")
+        return "\n".join(lines) + "\n"
+    except Exception as e:
+        logger.warning(f"無法載入使用者偏好：{e}")
+        return ""
+
+
 def analyze_and_score(company, entries: list[dict]) -> tuple[str, dict[str, dict]]:
     """合併分析與評分為單次 API 呼叫，回傳 (analysis_text, scores)。"""
     if not entries:
         return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_", {}
 
+    user_prefs = _get_user_preferences_prompt()
+
     prompt = f"""\
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
 {_analysis_items(entries)}
+
+{user_prefs}
 
 請用繁體中文完成以下兩項任務，以 JSON 格式回傳：
 

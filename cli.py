@@ -356,5 +356,83 @@ def run():
     start()
 
 
+@cli.command("label")
+@click.argument("stock_id")
+@click.argument("day_str")
+@click.argument("entry_id")
+@click.argument("score", type=int)
+@click.option("--reason", help="標註理由")
+def label(stock_id: str, day_str: str, entry_id: str, score: int, reason: str | None):
+    """人工標註文章分數，供 AI 學習偏好。"""
+    import json
+    from src.storage.scores_store import update_scores
+    
+    # 1. 尋找原始文章內容
+    alert_path = Path("data") / "alerts" / day_str / f"{stock_id}.json"
+    if not alert_path.exists():
+        click.echo(f"找不到文章：{alert_path}")
+        return
+        
+    with open(alert_path, encoding="utf-8") as f:
+        entries = json.load(f)
+        
+    target = next((e for e in entries if e.get("id") == entry_id), None)
+    if not target:
+        click.echo(f"在 {alert_path} 中找不到 ID 為 {entry_id} 的文章。")
+        return
+        
+    # 2. 儲存至 scores.json (source='manual')
+    update_scores({
+        entry_id: {
+            "score": score,
+            "reason": reason or target.get("title", ""),
+            "source": "manual",
+            "scored_at": datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S CST")
+        }
+    })
+    
+    # 3. 儲存至 user_preferences.json (Few-shot 範例，用於當前 Prompt)
+    pref_path = Path("data") / "user_preferences.json"
+    prefs = []
+    if pref_path.exists():
+        with open(pref_path, encoding="utf-8") as f:
+            prefs = json.load(f)
+            
+    prefs = [p for p in prefs if p["id"] != entry_id]
+    prefs.append({
+        "id": entry_id,
+        "title": target.get("title", ""),
+        "summary": target.get("summary", "")[:200],
+        "score": score,
+        "reason": reason
+    })
+    prefs = prefs[-50:]
+    with open(pref_path, "w", encoding="utf-8") as f:
+        json.dump(prefs, f, ensure_ascii=False, indent=2)
+        
+    # 4. 儲存至 training_data.jsonl (長期訓練數據，用於未來微調 Fine-tuning)
+    train_path = Path("data") / "training_data.jsonl"
+    train_entry = {
+        "timestamp": datetime.now(timezone(timedelta(hours=8))).isoformat(),
+        "context": {
+            "stock_id": stock_id,
+            "company_name": target.get("name", "")
+        },
+        "input": {
+            "title": target.get("title", ""),
+            "summary": target.get("summary", "")
+        },
+        "label": {
+            "score": score,
+            "reason": reason
+        }
+    }
+    with open(train_path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(train_entry, ensure_ascii=False) + "\n")
+        
+    click.echo(f"✅ 成功：文章已標註並存入訓練數據集 (data/training_data.jsonl)。")
+    click.echo(f"AI 將在下次分析時學習此偏好，且此數據可用於未來模型微調。")
+
+
 if __name__ == "__main__":
     cli()
