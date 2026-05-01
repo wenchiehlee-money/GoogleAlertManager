@@ -270,17 +270,23 @@ def update_readme():
             
             if c != "-" and (reports_dir / d.isoformat() / f"{stock_id}.md").exists():
                 link_all = f"data/reports/{d.isoformat()}/{stock_id}.md"
-                link_top = f"data/reports/{d.isoformat()}/{stock_id}-top.md"
+                g = c - t if isinstance(c, int) else 0
+                
+                import urllib.parse
+                # 建立跳轉至特定區塊的 ID (依據 markdown_writer.py 的標題格式)
+                # 格式: ⭐ 高分精選文章 (Score ≥ 4) (t) -> ⭐-高分精選文章-score-≥-4-t
+                # 格式: 📊 文章統計與來源 (含一般文章) (g) -> 📊-文章統計與來源-含一般文章-g
+                t_id = urllib.parse.quote(f"⭐-高分精選文章-score-≥-4-{t}")
+                g_id = urllib.parse.quote(f"📊-文章統計與來源-含一般文章-{g}")
                 
                 if t > 0:
-                    # 分開總數與高分數的連結，高分導向 -top.md
-                    # 如果 -top.md 不存在（例如舊資料），則 fallback 到 .md
-                    final_top_link = link_top if (reports_dir.parent.parent / link_top).exists() else link_all
-                    label = f"[{c}]({link_all}) ([{t}]({final_top_link}))"
+                    # 分開一般文章與高分數的連結，均指向 .md 並帶入區塊 ID
+                    label = f"[{g}]({link_all}?id={g_id}) ([{t}]({link_all}?id={t_id}))"
                 else:
-                    label = f"[{c}]({link_all})"
+                    label = f"[{g}]({link_all}?id={g_id})"
             else:
-                label = f"{c}({t})" if t > 0 else str(c)
+                g = c - t if isinstance(c, int) and isinstance(t, int) else c
+                label = f"{g}({t})" if t > 0 else str(g)
             
             count_list.append(label)
                 
