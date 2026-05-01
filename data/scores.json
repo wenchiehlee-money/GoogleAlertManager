@@ -90931,83 +90931,85 @@
   },
   "tag:google.com,2013:googlealerts/feed:1009306282864795575": {
     "score": 2,
-    "reason": "提及股價變動，一般性資訊。"
+    "reason": "盤後資訊僅提股價。"
   },
   "tag:google.com,2013:googlealerts/feed:8137108179447469309": {
-    "score": 1,
-    "reason": "股民個人操作建議，無實質資訊。"
+    "score": 2,
+    "reason": "股市討論區個人看空言論。"
   },
   "tag:google.com,2013:googlealerts/feed:2682757027928903994": {
     "score": 3,
-    "reason": "提及為00878成分股及其佔比。"
+    "reason": "提及為00878成分股佔比。"
   },
   "tag:google.com,2013:googlealerts/feed:6683357286367687797": {
-    "score": 4,
-    "reason": "公司治理評鑑首次進入前5%。"
+    "score": 3,
+    "reason": "華碩首次進入公司治理前5%。"
   },
   "tag:google.com,2013:googlealerts/feed:14557900711745032156": {
-    "score": 4,
-    "reason": "重申公司治理評鑑前5%資訊。"
+    "score": 3,
+    "reason": "華碩首次進入公司治理前5%。"
   },
   "tag:google.com,2013:googlealerts/feed:7179577531548228903": {
     "score": 3,
-    "reason": "提及為00878成分股。"
+    "reason": "提及為00878成分股之一。"
   },
   "tag:google.com,2013:googlealerts/feed:10089962815910583901": {
     "score": 4,
-    "reason": "分析本益比與AI伺服器潛力。"
+    "reason": "深度分析華碩本益比及AI潛力。"
   },
   "tag:google.com,2013:googlealerts/feed:2358562452422786749": {
-    "score": 4,
-    "reason": "再次確認公司治理評鑑前5%資訊。"
+    "score": 3,
+    "reason": "華碩首次進入公司治理前5%。"
   },
   "tag:google.com,2013:googlealerts/feed:17040830647008677247": {
-    "score": 3,
-    "reason": "提及與童綜合醫院合作。"
+    "score": 2,
+    "reason": "股市討論區提及新業務合作。"
   },
   "tag:google.com,2013:googlealerts/feed:12951379505197029768": {
-    "score": 4,
-    "reason": "再次確認公司治理評鑑前5%資訊。"
+    "score": 3,
+    "reason": "華碩首次進入公司治理前5%。"
   },
   "tag:google.com,2013:googlealerts/feed:3731159434334882607": {
     "score": 3,
-    "reason": "提及為00878成分股及其佔比。"
+    "reason": "提及為00878成分股佔比。"
   },
   "tag:google.com,2013:googlealerts/feed:12585807808997815811": {
-    "score": 3,
-    "reason": "提及CPU漲價影響PC市場。"
+    "score": 2,
+    "reason": "股市討論區提及CPU漲價影響。"
   },
   "tag:google.com,2013:googlealerts/feed:16102991497492374784": {
-    "score": 3,
-    "reason": "提及與童綜合醫院合作。"
+    "score": 2,
+    "reason": "股市討論區提及新業務合作。"
   },
   "tag:google.com,2013:googlealerts/feed:6349061984268326349": {
-    "score": 5,
-    "reason": "宣布新業務合作，強攻智慧醫療。"
+    "score": 3,
+    "reason": "華碩宣布與醫院合作智慧醫療。"
   },
   "tag:google.com,2013:googlealerts/feed:5629129578706532670": {
-    "score": 3,
-    "reason": "提及外資連續賣超，市場動向。"
+    "score": 2,
+    "reason": "外資連續賣超股票列表。"
   },
   "tag:google.com,2013:googlealerts/feed:17767071760303168712": {
-    "score": 5,
-    "reason": "宣布新業務合作，插旗醫療照護。"
+    "score": 3,
+    "reason": "華碩宣布與醫院合作智慧醫療。"
   },
   "tag:google.com,2013:googlealerts/feed:956843674321549224": {
     "score": 2,
-    "reason": "主要是電腦菜單，附帶舊新聞。"
+    "reason": "股市討論區提及CPU漲價影響。"
   },
   "tag:google.com,2013:googlealerts/feed:12430339865383423": {
     "score": 1,
-    "reason": "主要是電腦菜單，僅提及品牌。"
+    "reason": "僅列股票代碼，討論組裝機。"
   },
   "tag:google.com,2013:googlealerts/feed:17494351037462560653": {
-    "score": 5,
-    "reason": "宣布新業務合作，插旗智慧照護。"
+    "score": 3,
+    "reason": "華碩宣布與醫院合作智慧醫療。"
   },
   "tag:google.com,2013:googlealerts/feed:5434348473610430447": {
-    "score": 5,
-    "reason": "宣布多角經營強攻智慧醫療。"
+    "score": 2,
+    "reason": "<b>華碩</b>多角經營強攻智慧醫療| 集中市場| 證券 - 經濟日報",
+    "source": "manual",
+    "scored_at": "2026-05-01 15:05:39 CST"
   },
   "tag:google.com,2013:googlealerts/feed:17458672335948885986": {
     "score": 2,
@@ -91842,39 +91844,39 @@
     "reason": "法說會公告，重要業務資訊"
   },
   "tag:google.com,2013:googlealerts/feed:6657865121981816398": {
-    "score": 4,
-    "reason": "再次確認公司治理評鑑前5%資訊。"
+    "score": 3,
+    "reason": "華碩首次進入公司治理前5%。"
   },
   "tag:google.com,2013:googlealerts/feed:567931584881154023": {
-    "score": 3,
-    "reason": "提及外資連續賣超，市場動向。"
+    "score": 2,
+    "reason": "外資連續賣超股票列表。"
   },
   "tag:google.com,2013:googlealerts/feed:12523912217738662548": {
-    "score": 3,
-    "reason": "提及CPU漲價影響PC市場。"
+    "score": 2,
+    "reason": "股市討論區提及CPU漲價影響。"
   },
   "tag:google.com,2013:googlealerts/feed:17106154687184641905": {
-    "score": 3,
-    "reason": "提及與童綜合醫院合作。"
+    "score": 2,
+    "reason": "股市討論區提及新業務合作。"
   },
   "tag:google.com,2013:googlealerts/feed:2964426581043637865": {
-    "score": 3,
-    "reason": "提及與童綜合醫院合作。"
+    "score": 2,
+    "reason": "股市討論區提及新業務合作。"
   },
   "tag:google.com,2013:googlealerts/feed:5968821904335687970": {
     "score": 3,
     "reason": "提及為00878核心成分股。"
   },
   "tag:google.com,2013:googlealerts/feed:18091398747306388640": {
-    "score": 5,
-    "reason": "討論華碩進軍智慧醫療的策略。"
+    "score": 3,
+    "reason": "華碩宣布進軍智慧醫療領域。"
   },
   "tag:google.com,2013:googlealerts/feed:9158174226859406520": {
-    "score": 1,
-    "reason": "舊執行長創業新聞，關聯低。"
+    "score": 2,
+    "reason": "關於前執行長創業，華碩董事長站台。"
   },
   "tag:google.com,2013:googlealerts/feed:11711237463651179222": {
-    "score": 4,
-    "reason": "再次確認公司治理評鑑前5%資訊。"
+    "score": 3,
+    "reason": "華碩首次進入公司治理前5%。"
   }
 }
