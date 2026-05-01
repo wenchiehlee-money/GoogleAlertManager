@@ -305,30 +305,44 @@ def update_readme():
 
 @cli.command("sync-stale")
 def sync_stale():
-    """處理 GitHub Issues 中標記為 [STALE] 的報告更新預約。"""
+    """處理 GitHub Issues 中標記為 [STALE] 或 [RATING] 的報告請求。"""
     try:
-        # 搜尋標題含有 [STALE] 的 open issues
-        cmd = ["gh", "issue", "list", "--search", "[STALE] in:title", "--json", "number,title", "--state", "open"]
+        # 搜尋標題含有 [STALE] 或 [RATING] 的 open issues
+        cmd = ["gh", "issue", "list", "--search", "[STALE] OR [RATING] in:title", "--json", "number,title", "--state", "open"]
         res = subprocess.run(cmd, capture_output=True, text=True, check=True)
         import json
         issues = json.loads(res.stdout)
         if not issues:
-            click.echo("無待處理的過時標記。")
+            click.echo("無待處理的請求。")
             return
 
         for issue in issues:
-            title = issue["title"]
-            # 格式：[STALE] stock_id YYYY-MM-DD
-            parts = title.replace("[STALE]", "").strip().split()
-            if len(parts) >= 2:
-                stock_id, day_str = parts[0], parts[1]
-                click.echo(f"處理預約更新：{stock_id} ({day_str})")
-                # 執行分析
-                subprocess.run(["python", "cli.py", "analyze", "--date", day_str, "--stock-id", stock_id, "--force"], check=False)
-                # 關閉 Issue
-                subprocess.run(["gh", "issue", "close", str(issue["number"]), "--comment", "✅ 報告已重新產生並更新。"], check=False)
+            title = issue["number"], issue["title"]
+            num, txt = issue["number"], issue["title"]
+            
+            if "[STALE]" in txt:
+                # 格式：[STALE] stock_id YYYY-MM-DD
+                parts = txt.replace("[STALE]", "").strip().split()
+                if len(parts) >= 2:
+                    stock_id, day_str = parts[0], parts[1]
+                    click.echo(f"處理過時標記：{stock_id} ({day_str})")
+                    subprocess.run(["python", "cli.py", "analyze", "--date", day_str, "--stock-id", stock_id, "--force"], check=False)
+                    subprocess.run(["gh", "issue", "close", str(num), "--comment", "✅ 報告已重新產生。"], check=False)
+            
+            elif "[RATING]" in txt:
+                # 格式：[RATING] stock_id YYYY-MM-DD entry_id score
+                parts = txt.replace("[RATING]", "").strip().split()
+                if len(parts) >= 4:
+                    stock_id, day_str, entry_id, score = parts[0], parts[1], parts[2], parts[3]
+                    click.echo(f"處理重評請求：{stock_id} {entry_id} -> {score}")
+                    # 執行標註
+                    subprocess.run(["python", "cli.py", "label", stock_id, day_str, entry_id, score], check=False)
+                    # 重新產生報告以反映變更
+                    subprocess.run(["python", "cli.py", "analyze", "--date", day_str, "--stock-id", stock_id, "--force"], check=False)
+                    subprocess.run(["gh", "issue", "close", str(num), "--comment", f"✅ 文章已重新評分為 {score} 分並更新報表。AI 已學習此偏好。"], check=False)
+            
             else:
-                click.echo(f"跳過格式錯誤的 Issue: {title}")
+                click.echo(f"跳過格式錯誤的 Issue: {txt}")
     except Exception as e:
         click.echo(f"執行 sync-stale 失敗：{e}", err=True)
 

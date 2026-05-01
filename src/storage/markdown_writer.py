@@ -9,6 +9,19 @@ from src.config import REPORTS_DIR
 
 _STARS = ["○", "⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"]
 
+def _get_rating_links(stock_id: str, day_str: str, entry_id: str) -> str:
+    """產生 1-5 分的重評連結。"""
+    base_url = "https://github.com/wenchiehlee-money/GoogleAlertManager/issues/new"
+    links = []
+    for s in range(1, 6):
+        title = f"[RATING] {stock_id} {day_str} {entry_id} {s}"
+        body = f"Change rating to {s} for AI learning."
+        import urllib.parse
+        params = urllib.parse.urlencode({"title": title, "body": body})
+        links.append(f"[{s}]({base_url}?{params})")
+    return " / ".join(links)
+
+
 _COMPANY_TEMPLATE = """\
 # {{ name }}（{{ stock_id }}）分析報告 — {{ date }}
 
@@ -17,7 +30,7 @@ _COMPANY_TEMPLATE = """\
 
 ## ⭐ 高分精選文章 (Score ≥ 4) ({{ top_entries|length }})
 {% if top_entries %}
-{% for e in top_entries %}- {{ e.stars }} [{{ e.title }}]({{ e.url }}){% if e.reason %} — *{{ e.reason }}*{% endif %}
+{% for e in top_entries %}- {{ e.stars }} [{{ e.title }}]({{ e.url }}){% if e.reason %} — *{{ e.reason }}*{% endif %} <sup>修正：{{ e.rating_links }}</sup>
 {% endfor %}
 {% else %}
 *（今日無高分文章）*
@@ -27,7 +40,7 @@ _COMPANY_TEMPLATE = """\
 
 - 一般文章數：{{ general_count }}
 {% for e in general_entries_enriched %}
-- {{ e.stars }} [{{ e.title }}]({{ e.url }}){% if e.reason %} — *{{ e.reason }}*{% endif %}
+- {{ e.stars }} [{{ e.title }}]({{ e.url }}){% if e.reason %} — *{{ e.reason }}*{% endif %} <sup>修正：{{ e.rating_links }}</sup>
 {% endfor %}
 
 ## LLM 分析結論
@@ -38,7 +51,7 @@ _COMPANY_TEMPLATE = """\
 
 | 方式 | 動作 |
 | :--- | :--- |
-| **排程更新** | [🚩 標記為過時 (預約下次更新)](https://github.com/wenchiehlee-money/GoogleAlertManager/issues/new?title=[STALE]+{{ stock_id }}+{{ date }}&body=此報告內容已過時，請在下次排程任務中強制重新產生。%0A%0A---%0A*請勿修改標題，系統將自動處理此更新。*) |
+| **排程更新** | [[STALE] 標記為過時 (預約下次更新)](https://github.com/wenchiehlee-money/GoogleAlertManager/issues/new?title=[STALE]+{{ stock_id }}+{{ date }}&body=STALE+{{ stock_id }}+{{ date }}) |
 | **立即更新** | [![Update Report](https://img.shields.io/badge/GitHub_Actions-Run_Update-blue?style=for-the-badge&logo=github)](https://github.com/wenchiehlee-money/GoogleAlertManager/actions/workflows/analyze.yml) <br> *(點擊後按 `Run workflow`，輸入 `{{ date }}` 與 `{{ stock_id }}`)* |
 | **本地更新** | 執行指令：`python cli.py analyze --date {{ date }} --stock-id {{ stock_id }} --force` |
 
@@ -107,32 +120,38 @@ def write_company_report(
     # 1. 分離高分與一般文章
     top_entries = []
     general_entries = []
+    day_str = day.isoformat()
     for e in entries:
-        s = scores.get(e.get("id", ""), {})
+        eid = e.get("id", "")
+        s = scores.get(eid, {})
         score_val = s.get("score", -1)
+        entry_data = {
+            "stars": _STARS[score_val] if 0 <= score_val <= 5 else "",
+            "title": e.get("title", ""),
+            "url": e.get("link", ""),
+            "reason": s.get("reason", ""),
+            "score": score_val,
+            "rating_links": _get_rating_links(company.stock_id, day_str, eid)
+        }
         if score_val >= 4:
-            top_entries.append({
-                "stars": _STARS[score_val] if 0 <= score_val <= 5 else "",
-                "title": e.get("title", ""),
-                "url": e.get("link", ""),
-                "reason": s.get("reason", ""),
-                "score": score_val
-            })
+            top_entries.append(entry_data)
         else:
-            general_entries.append(e)
+            general_entries.append(e) # 原始 entry 留給統計用
     top_entries.sort(key=lambda x: x["score"], reverse=True)
 
     # 2. 準備一般文章列表 (平鋪並排序)
     general_entries_enriched = []
     for e in general_entries:
-        s = scores.get(e.get("id", ""), {})
+        eid = e.get("id", "")
+        s = scores.get(eid, {})
         score_val = s.get("score", -1)
         general_entries_enriched.append({
             "stars": _STARS[score_val] if 0 <= score_val <= 5 else "",
             "title": e.get("title", ""),
             "url": e.get("link", ""),
             "reason": s.get("reason", ""),
-            "score": score_val
+            "score": score_val,
+            "rating_links": _get_rating_links(company.stock_id, day_str, eid)
         })
     general_entries_enriched.sort(key=lambda x: x["score"], reverse=True)
 
