@@ -13,6 +13,7 @@ _COMPANY_TEMPLATE = """\
 # {{ name }}（{{ stock_id }}）分析報告 — {{ date }}
 
 **清單類型**：{{ list_type }}
+**當日總文章數**：{{ entry_count }}
 
 ## ⭐ 高分精選文章 (Score ≥ 4) ({{ top_entries|length }})
 {% if top_entries %}
@@ -22,9 +23,9 @@ _COMPANY_TEMPLATE = """\
 *（今日無高分文章）*
 {% endif %}
 
-## 📊 文章統計與來源 (含一般文章) ({{ entry_count - top_entries|length }})
+## 📊 文章統計與來源 (含一般文章) ({{ general_count }})
 
-- 總文章數：{{ entry_count }}
+- 一般文章數：{{ general_count }}
 - 主要來源：
 {% for domain, count in top_domains %}
 <details>
@@ -156,6 +157,7 @@ def write_company_report(
         list_type="專注清單" if company.list_type == "focus" else "觀察清單",
         date=day.isoformat(),
         entry_count=len(entries),
+        general_count=len(general_entries),
         top_entries=top_entries,
         top_domains=top_domains,
         sorted_domain_urls=sorted_domain_urls,
