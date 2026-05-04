@@ -257,9 +257,9 @@ def update_readme():
         else:
             day_headers.append(d.strftime("%m/%d"))
 
-    # 重新排列欄位順序：前兩天日期, 名稱, 代號, 其他日期
-    # 這樣在 iPhone 上首屏會看到：[最新日] [次新日] [名稱] [代號]
-    header_cols = [day_headers[0], day_headers[1], "名稱", "代號"] + day_headers[2:]
+    # 重新排列欄位順序：名稱, 代號, 前兩天日期, 其他日期
+    # 這樣在 iPhone 上首屏會看到：[名稱] [代號] [最新日] [次新日]
+    header_cols = ["名稱", "代號", day_headers[0], day_headers[1]] + day_headers[2:]
     header_line = "| " + " | ".join(header_cols) + " |"
     sep_line = "| " + " :---: |" * len(header_cols)
 
@@ -290,7 +290,7 @@ def update_readme():
             count_map[i] = label
                 
         # 按照 header_cols 的順序組合資料列
-        row_data = [count_map[0], count_map[1], info['name'], stock_id]
+        row_data = [info['name'], stock_id, count_map[0], count_map[1]]
         for i in range(2, len(days)):
             row_data.append(count_map[i])
             
