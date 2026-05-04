@@ -208,7 +208,7 @@ def update_readme():
     from datetime import timedelta
 
     today = today_taipei()
-    days = [today - timedelta(days=i) for i in range(6, -1, -1)]
+    days = [today - timedelta(days=i) for i in range(7)]
 
     alerts_dir = Path(__file__).parent / "data" / "alerts"
     reports_dir = Path(__file__).parent / "data" / "reports"
@@ -221,7 +221,7 @@ def update_readme():
 
     # 收集各股票各日文章數 + 高分文章
     stocks: dict[str, dict] = {}
-    for day in days:
+    for day in reversed(days): # 收集時仍依舊日期排序可能有助於某些邏輯，但其實不影響 dict 儲存
         day_dir = alerts_dir / day.isoformat()
         if not day_dir.exists():
             continue
@@ -241,7 +241,7 @@ def update_readme():
     # 找最近兩天報告連結
     for stock_id in stocks:
         recent = []
-        for day in reversed(days):
+        for day in days: # days 已經是從新到舊
             if (reports_dir / day.isoformat() / f"{stock_id}.md").exists():
                 recent.append(day)
             if len(recent) == 2:
@@ -256,15 +256,18 @@ def update_readme():
             day_headers.append(f"[{d.strftime('%m/%d')}](data/reports/{summary_file})")
         else:
             day_headers.append(d.strftime("%m/%d"))
-    day_cols = " | ".join(day_headers)
 
-    lines = [
-        f"| 代號 | 名稱 | {day_cols} |",
-        "| --- | --- |" + " :---: |" * 7,
-    ]
+    # 重新排列欄位順序：前兩天日期, 名稱, 代號, 其他日期
+    # 這樣在 iPhone 上首屏會看到：[最新日] [次新日] [名稱] [代號]
+    header_cols = [day_headers[0], day_headers[1], "名稱", "代號"] + day_headers[2:]
+    header_line = "| " + " | ".join(header_cols) + " |"
+    sep_line = "| " + " :---: |" * len(header_cols)
+
+    lines = [header_line, sep_line]
+    
     for stock_id, info in sorted(stocks.items()):
-        count_list = []
-        for d in days:
+        count_map = {}
+        for i, d in enumerate(days):
             c = info["counts"].get(d, "-")
             t = info["top_counts"].get(d, 0)
             
@@ -273,14 +276,10 @@ def update_readme():
                 g = c - t if isinstance(c, int) else 0
                 
                 import urllib.parse
-                # 建立跳轉至特定區塊的 ID (依據 markdown_writer.py 的標題格式)
-                # 格式: ⭐ 高分精選文章 (Score ≥ 4) (t) -> ⭐-高分精選文章-score-≥-4-t
-                # 格式: 📊 文章統計與來源 (含一般文章) (g) -> 📊-文章統計與來源-含一般文章-g
                 t_id = urllib.parse.quote(f"⭐-高分精選文章-score-≥-4-{t}")
                 g_id = urllib.parse.quote(f"📊-文章統計與來源-含一般文章-{g}")
                 
                 if t > 0:
-                    # 分開一般文章與高分數的連結，均指向 .md 並帶入區塊 ID
                     label = f"[{g}]({link_all}?id={g_id}) ([{t}]({link_all}?id={t_id}))"
                 else:
                     label = f"[{g}]({link_all}?id={g_id})"
@@ -288,11 +287,14 @@ def update_readme():
                 g = c - t if isinstance(c, int) and isinstance(t, int) else c
                 label = f"{g}({t})" if t > 0 else str(g)
             
-            count_list.append(label)
+            count_map[i] = label
                 
-        counts = " | ".join(count_list)
-        
-        lines.append(f"| {stock_id} | {info['name']} | {counts} |")
+        # 按照 header_cols 的順序組合資料列
+        row_data = [count_map[0], count_map[1], info['name'], stock_id]
+        for i in range(2, len(days)):
+            row_data.append(count_map[i])
+            
+        lines.append(f"| {' | '.join(row_data)} |")
 
     table = "\n".join(lines)
     marker_s = "<!-- REPORT_TABLE_START -->"
