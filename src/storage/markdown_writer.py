@@ -15,7 +15,7 @@ def _get_rating_links(stock_id: str, day_str: str, entry_id: str) -> str:
     links = []
     for s in range(1, 6):
         title = f"[RATING] {stock_id} {day_str} {entry_id} {s}"
-        body = f"Change rating to {s} for AI learning."
+        body = f"Change rating to {s} for AI learning.\nReason: "
         import urllib.parse
         params = urllib.parse.urlencode({"title": title, "body": body})
         links.append(f"[{s}]({base_url}?{params})")

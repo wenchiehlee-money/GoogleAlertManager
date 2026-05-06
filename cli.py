@@ -314,53 +314,196 @@ def update_readme():
 @cli.command("sync-stale")
 def sync_stale():
     """處理 GitHub Issues 中標記為 [STALE] 或 [RATING] 的報告請求。"""
+    import json
+    import os
+    import re
+
+    def run_gh(args: list[str], check: bool = False) -> subprocess.CompletedProcess:
+        return subprocess.run(["gh", *args], capture_output=True, text=True, check=check)
+
+    def ensure_label(name: str, color: str, description: str) -> None:
+        subprocess.run(
+            ["gh", "label", "create", name, "--color", color, "--description", description],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+    def add_label(issue_number: int, label: str) -> None:
+        run_gh(["issue", "edit", str(issue_number), "--add-label", label])
+
+    def comment(issue_number: int, body: str) -> None:
+        run_gh(["issue", "comment", str(issue_number), "--body", body])
+
+    def close_issue(issue_number: int, message: str) -> None:
+        run_gh(["issue", "close", str(issue_number), "--comment", message])
+
+    def mark_invalid(issue_number: int, message: str) -> None:
+        add_label(issue_number, "invalid-input")
+        comment(issue_number, message)
+
+    def is_allowed_author(issue: dict) -> bool:
+        allowed_authors = os.getenv("ISSUE_FEEDBACK_ALLOWED_AUTHORS", "wenchiehlee-money")
+        allowed = {
+            author.strip()
+            for author in allowed_authors.split(",")
+            if author.strip()
+        }
+        author = issue.get("author", {}).get("login", "")
+        return not allowed or author in allowed
+
+    def valid_day(day_str: str) -> bool:
+        return bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", day_str))
+
+    ensure_label("processed", "0E8A16", "Processed by issue feedback automation")
+    ensure_label("rating-feedback", "1D76DB", "Manual rating feedback for AI learning")
+    ensure_label("stale-refresh", "5319E7", "Request to refresh stale report output")
+    ensure_label("invalid-input", "D93F0B", "Issue input did not match the automation format")
+    ensure_label("processing-failed", "B60205", "Automation attempted the request but failed")
+
     try:
         # 搜尋標題含有 [STALE] 或 [RATING] 的 open issues
-        cmd = ["gh", "issue", "list", "--search", "[STALE] OR [RATING] in:title", "--json", "number,title", "--state", "open"]
+        cmd = [
+            "gh", "issue", "list",
+            "--search", "[STALE] OR [RATING] in:title",
+            "--json", "number,title,body,author",
+            "--state", "open",
+        ]
         res = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        import json
         issues = json.loads(res.stdout)
         if not issues:
             click.echo("無待處理的請求。")
             return
 
         for issue in issues:
-            title = issue["number"], issue["title"]
             num, txt = issue["number"], issue["title"]
+
+            if not is_allowed_author(issue):
+                mark_invalid(
+                    num,
+                    "此 issue 的作者不在允許清單中，因此未自動處理。",
+                )
+                click.echo(f"跳過未授權作者的 Issue: {txt}")
+                continue
             
             if "[STALE]" in txt:
                 # 格式：[STALE] stock_id YYYY-MM-DD
                 parts = txt.replace("[STALE]", "").strip().split()
-                if len(parts) >= 2:
-                    stock_id, day_str = parts[0], parts[1]
-                    click.echo(f"處理過時標記：{stock_id} ({day_str})")
-                    subprocess.run(["python", "cli.py", "analyze", "--date", day_str, "--stock-id", stock_id, "--force"], check=False)
-                    subprocess.run(["gh", "issue", "close", str(num), "--comment", "✅ 報告已重新產生。"], check=False)
+                if len(parts) < 2 or not valid_day(parts[1]):
+                    mark_invalid(num, "格式錯誤。請使用：`[STALE] stock_id YYYY-MM-DD`")
+                    click.echo(f"跳過格式錯誤的 STALE Issue: {txt}")
+                    continue
+
+                stock_id, day_str = parts[0], parts[1]
+                click.echo(f"處理過時標記：{stock_id} ({day_str})")
+                result = subprocess.run(
+                    [
+                        sys.executable,
+                        "cli.py",
+                        "analyze",
+                        "--date",
+                        day_str,
+                        "--stock-id",
+                        stock_id,
+                        "--force",
+                    ],
+                    check=False,
+                )
+                if result.returncode == 0:
+                    add_label(num, "stale-refresh")
+                    add_label(num, "processed")
+                    close_issue(num, "✅ 報告已重新產生。")
+                else:
+                    add_label(num, "processing-failed")
+                    comment(
+                        num,
+                        "自動重新產生報告失敗，請查看 GitHub Actions logs。",
+                    )
             
             elif "[RATING]" in txt:
                 # 格式：[RATING] stock_id YYYY-MM-DD entry_id score
                 parts = txt.replace("[RATING]", "").strip().split()
-                if len(parts) >= 4:
-                    stock_id, day_str, entry_id, score = parts[0], parts[1], parts[2], parts[3]
-                    
-                    # 從內文中擷取 Reason
-                    # 格式：... Reason: 理由內容
-                    reason = ""
-                    body = issue.get("body", "")
-                    if "Reason:" in body:
-                        reason = body.split("Reason:", 1)[1].strip()
-                    
-                    click.echo(f"處理重評請求：{stock_id} {entry_id} -> {score} (理由: {reason})")
-                    
-                    # 執行標註指令，帶上理由
-                    label_cmd = ["python", "cli.py", "label", stock_id, day_str, entry_id, score]
-                    if reason:
-                        label_cmd.extend(["--reason", reason])
-                    subprocess.run(label_cmd, check=False)
-                    
-                    # 重新產生報告以反映變更
-                    subprocess.run(["python", "cli.py", "analyze", "--date", day_str, "--stock-id", stock_id, "--force"], check=False)
-                    subprocess.run(["gh", "issue", "close", str(num), "--comment", f"✅ 文章已重新評分為 {score} 分並更新報表。AI 已學習理由：{reason}"], check=False)
+                if len(parts) < 4 or not valid_day(parts[1]):
+                    mark_invalid(
+                        num,
+                        "格式錯誤。請使用：`[RATING] stock_id YYYY-MM-DD entry_id score`",
+                    )
+                    click.echo(f"跳過格式錯誤的 RATING Issue: {txt}")
+                    continue
+
+                stock_id, day_str, entry_id, score_text = parts[0], parts[1], parts[2], parts[3]
+                try:
+                    score = int(score_text)
+                except ValueError:
+                    mark_invalid(num, "分數格式錯誤。`score` 必須是 1 到 5 的整數。")
+                    click.echo(f"跳過分數格式錯誤的 RATING Issue: {txt}")
+                    continue
+                if score < 1 or score > 5:
+                    mark_invalid(num, "分數範圍錯誤。`score` 必須是 1 到 5 的整數。")
+                    click.echo(f"跳過分數範圍錯誤的 RATING Issue: {txt}")
+                    continue
+
+                # 從內文中擷取 Reason。格式：... Reason: 理由內容
+                reason = ""
+                body = issue.get("body", "") or ""
+                if "Reason:" in body:
+                    reason = body.split("Reason:", 1)[1].strip()
+                
+                click.echo(
+                    f"處理重評請求：{stock_id} {entry_id} -> {score} (理由: {reason})"
+                )
+                
+                # 執行標註指令，帶上理由
+                label_cmd = [
+                    sys.executable,
+                    "cli.py",
+                    "label",
+                    stock_id,
+                    day_str,
+                    entry_id,
+                    str(score),
+                ]
+                if reason:
+                    label_cmd.extend(["--reason", reason])
+                label_result = subprocess.run(label_cmd, check=False)
+                if label_result.returncode != 0:
+                    add_label(num, "processing-failed")
+                    comment(
+                        num,
+                        "自動標註文章分數失敗，請查看 GitHub Actions logs。",
+                    )
+                    continue
+                
+                # 重新產生報告以反映變更
+                analyze_result = subprocess.run(
+                    [
+                        sys.executable,
+                        "cli.py",
+                        "analyze",
+                        "--date",
+                        day_str,
+                        "--stock-id",
+                        stock_id,
+                        "--force",
+                    ],
+                    check=False,
+                )
+                if analyze_result.returncode == 0:
+                    add_label(num, "rating-feedback")
+                    add_label(num, "processed")
+                    reason_suffix = f"理由：{reason}" if reason else "未提供理由。"
+                    close_issue(
+                        num,
+                        f"✅ 文章已重新評分為 {score} 分並更新報表。"
+                        f"AI 已學習此偏好。{reason_suffix}",
+                    )
+                else:
+                    add_label(num, "processing-failed")
+                    comment(
+                        num,
+                        "文章分數已標註，但重新產生報告失敗，"
+                        "請查看 GitHub Actions logs。",
+                    )
             
             else:
                 click.echo(f"跳過格式錯誤的 Issue: {txt}")

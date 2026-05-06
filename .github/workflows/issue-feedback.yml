@@ -1,0 +1,70 @@
+name: Issue Feedback
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+  workflow_dispatch:
+
+concurrency:
+  group: data-write
+  cancel-in-progress: false
+
+jobs:
+  sync-feedback:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.title, '[RATING]') ||
+      contains(github.event.issue.title, '[STALE]')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Process issue feedback
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_FEEDBACK_ALLOWED_AUTHORS: wenchiehlee-money
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
+          GEMINI_API_KEY_5: ${{ secrets.GEMINI_API_KEY_5 }}
+          GEMINI_API_KEY_6: ${{ secrets.GEMINI_API_KEY_6 }}
+          GEMINI_API_KEY_7: ${{ secrets.GEMINI_API_KEY_7 }}
+          GEMINI_API_KEY_8: ${{ secrets.GEMINI_API_KEY_8 }}
+          GEMINI_API_KEY_9: ${{ secrets.GEMINI_API_KEY_9 }}
+          GEMINI_API_KEY_10: ${{ secrets.GEMINI_API_KEY_10 }}
+          AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
+          LLM_APP_NAME: GoogleAlertManager
+        run: uv run python cli.py sync-stale
+
+      - name: Update README
+        run: uv run python cli.py update-readme
+
+      - name: Commit feedback updates
+        run: |
+          git add data/scores.json
+          git add data/user_preferences.json data/training_data.jsonl
+          git add data/reports/ README.md
+          git diff --cached --quiet || git commit -m "chore: sync issue feedback"
+          git pull --rebase -X ours --autostash
+          git push
