@@ -28,7 +28,8 @@ def _analysis_items(entries: list[dict]) -> str:
     lines = []
     for e in entries:
         title = e.get("title", "")
-        summary = e.get("summary", "")[:300]
+        # 縮減摘要長度以節省 Prompt 空間
+        summary = e.get("summary", "")[:200]
         published = e.get("published", "")
         lines.append(f"- [{published}] {title}\n  {summary}")
     return "\n".join(lines) if lines else "（無文章）"
@@ -40,7 +41,7 @@ def _score_items(entries: list[dict]) -> str:
         lines.append(
             f"[{i}] id={e.get('id', str(i))}\n"
             f"    標題: {e.get('title', '')}\n"
-            f"    摘要: {e.get('summary', '')[:200]}"
+            f"    摘要: {e.get('summary', '')[:100]}"
         )
     return "\n".join(lines)
 

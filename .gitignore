@@ -212,3 +212,6 @@ StockID_TWSE_TPEX_focus.csv
 
 # 資料目錄（追蹤以供 GitHub Actions 跨 workflow 共享）
 # data/ — 不忽略，允許 fetch/analyze 結果提交至版控
+
+.env*
+.claude/

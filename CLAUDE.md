@@ -75,7 +75,7 @@ scheduler.py ──── fetcher.py ────→ json_store.py
 | `src/storage/json_store.py` | 以 `stock_id` 為 key 讀寫 JSON |
 | `src/storage/markdown_writer.py` | 每家公司報告 + 每日彙整 |
 | `src/analysis/stats.py` | 文章數/域名統計 |
-| `src/analysis/llm.py` | Claude 情緒分析（利多/利空/建議）|
+| `src/analysis/llm.py` | Gemini 情緒分析（利多/利空/建議），支援多 Key 輪轉 |
 | `src/scheduler.py` | APScheduler 排程 |
 | `config/alerts.yaml` | 排程設定 + Alert 建立選項 |
 
