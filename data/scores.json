@@ -121511,202 +121511,202 @@
   },
   "tag:google.com,2013:googlealerts/feed:8906011160605586409": {
     "score": 1,
-    "reason": "個人理財分享"
+    "reason": "個人生活分享，無關營運"
   },
   "tag:google.com,2013:googlealerts/feed:8405357309591116500": {
     "score": 2,
-    "reason": "ETF持股異動"
+    "reason": "提及ETF持股，非公司主體"
   },
   "tag:google.com,2013:googlealerts/feed:8761767149625561750": {
     "score": 2,
-    "reason": "鉅額交易資訊"
+    "reason": "市場交易數據，非業務資訊"
   },
   "tag:google.com,2013:googlealerts/feed:17834916909513500138": {
     "score": 4,
-    "reason": "出售子公司策略"
+    "reason": "重要業務策略，影響子司"
   },
   "tag:google.com,2013:googlealerts/feed:8811944558906593413": {
     "score": 0,
-    "reason": "房地產廣告"
+    "reason": "房地產廣告，完全無關"
   },
   "tag:google.com,2013:googlealerts/feed:16537536362644314406": {
     "score": 1,
-    "reason": "股市討論閒聊"
+    "reason": "股市討論，無實質資訊"
   },
   "tag:google.com,2013:googlealerts/feed:11213403875463604185": {
     "score": 5,
-    "reason": "完整財報分析"
+    "reason": "關鍵財報數據，影響決策"
   },
   "tag:google.com,2013:googlealerts/feed:15363100990792992513": {
     "score": 2,
-    "reason": "股市大盤評論"
+    "reason": "股市討論，非公司主體"
   },
   "tag:google.com,2013:googlealerts/feed:7763439476706965902": {
     "score": 1,
-    "reason": "股市討論情緒"
+    "reason": "股市討論，無實質資訊"
   },
   "tag:google.com,2013:googlealerts/feed:9608380850409143815": {
-    "score": 2,
-    "reason": "台股盤勢速報"
+    "score": 3,
+    "reason": "提及股價和大盤表現"
   },
   "tag:google.com,2013:googlealerts/feed:18210174102554569164": {
     "score": 1,
-    "reason": "個人理財分享"
+    "reason": "個人投資行為，無關營運"
   },
   "tag:google.com,2013:googlealerts/feed:15227128243380978068": {
     "score": 4,
-    "reason": "出售子公司策略"
+    "reason": "重要業務策略，市場反應"
   },
   "tag:google.com,2013:googlealerts/feed:2682157505382212428": {
-    "score": 3,
-    "reason": "投信買賣資訊"
+    "score": 2,
+    "reason": "提及投信買超，資金動向"
   },
   "tag:google.com,2013:googlealerts/feed:15099356398350326702": {
     "score": 3,
-    "reason": "AI產業關聯性"
+    "reason": "探討AI趨勢與公司關係"
   },
   "tag:google.com,2013:googlealerts/feed:8032475689086495568": {
-    "score": 2,
-    "reason": "美股半導體影響"
+    "score": 3,
+    "reason": "提及ADR受美股影響"
   },
   "tag:google.com,2013:googlealerts/feed:2460833968344844604": {
     "score": 3,
-    "reason": "台股盤前分析"
+    "reason": "盤勢預測，公司為指標"
   },
   "tag:google.com,2013:googlealerts/feed:10160909378661727589": {
     "score": 2,
-    "reason": "鉅額交易資訊"
+    "reason": "市場交易數據，非業務資訊"
   },
   "tag:google.com,2013:googlealerts/feed:11010964940041037715": {
     "score": 3,
-    "reason": "美股對台股影響"
+    "reason": "提及ADR下跌影響台股"
   },
   "tag:google.com,2013:googlealerts/feed:13823150881145713196": {
     "score": 3,
-    "reason": "台股挑戰分析"
+    "reason": "提及ADR壓回影響大盤"
   },
   "tag:google.com,2013:googlealerts/feed:2147577282930797540": {
     "score": 4,
-    "reason": "AI受惠者地位"
+    "reason": "第三方評估公司產業地位"
   },
   "tag:google.com,2013:googlealerts/feed:2789756986652487371": {
     "score": 5,
-    "reason": "正式公告出售"
+    "reason": "關鍵決策資訊，處分金額"
   },
   "tag:google.com,2013:googlealerts/feed:12892233491353479636": {
     "score": 5,
-    "reason": "快速完成出售"
+    "reason": "關鍵決策資訊，處分結果"
   },
   "tag:google.com,2013:googlealerts/feed:13005623773096451728": {
     "score": 5,
-    "reason": "出售進度金額"
+    "reason": "關鍵決策資訊，處分結果"
   },
   "tag:google.com,2013:googlealerts/feed:14044731959707651270": {
     "score": 4,
-    "reason": "市場反應分析"
+    "reason": "重要業務策略，市場反應"
   },
   "tag:google.com,2013:googlealerts/feed:8841594494797307771": {
     "score": 3,
-    "reason": "股價技術分析"
+    "reason": "技術分析與市場觀察"
   },
   "tag:google.com,2013:googlealerts/feed:15378626092546854200": {
-    "score": 3,
-    "reason": "員工離職率"
+    "score": 4,
+    "reason": "公司重要營運數據"
   },
   "tag:google.com,2013:googlealerts/feed:16944362219108078878": {
     "score": 3,
-    "reason": "台股盤勢影響"
+    "reason": "公司股價及成交額表現"
   },
   "tag:google.com,2013:googlealerts/feed:16571822538903199402": {
     "score": 1,
-    "reason": "股市討論閒聊"
+    "reason": "個人觀點，無實質資訊"
   },
   "tag:google.com,2013:googlealerts/feed:2987721134372410717": {
     "score": 3,
-    "reason": "台積電領跌大盤"
+    "reason": "公司股價及對大盤影響"
   },
   "tag:google.com,2013:googlealerts/feed:9629166338806644388": {
     "score": 4,
-    "reason": "出售子公司策略"
+    "reason": "重要業務策略，市場關注"
   },
   "tag:google.com,2013:googlealerts/feed:4179493804863375580": {
     "score": 5,
-    "reason": "正式公告出售"
+    "reason": "關鍵決策資訊，處分結果"
   },
   "tag:google.com,2013:googlealerts/feed:11553726354086287013": {
     "score": 4,
-    "reason": "AI策略分析"
+    "reason": "第三方評價，影響產業前景"
   },
   "tag:google.com,2013:googlealerts/feed:4322356639548171738": {
     "score": 4,
-    "reason": "市場反應分析"
+    "reason": "重要業務策略，市場反應"
   },
   "tag:google.com,2013:googlealerts/feed:13751095690275117886": {
     "score": 4,
-    "reason": "市場反應分析"
+    "reason": "重要業務策略，市場反應"
   },
   "tag:google.com,2013:googlealerts/feed:15784541368825871739": {
     "score": 3,
-    "reason": "外資投信買賣"
+    "reason": "外資買賣超數據，提及公司"
   },
   "tag:google.com,2013:googlealerts/feed:13809007060835826452": {
     "score": 4,
-    "reason": "潛在子公司調整"
+    "reason": "重要業務策略，延伸影響"
   },
   "tag:google.com,2013:googlealerts/feed:16620616006524737694": {
     "score": 2,
-    "reason": "鉅額交易資訊"
+    "reason": "市場交易數據，非業務資訊"
   },
   "tag:google.com,2013:googlealerts/feed:16273467402637537364": {
     "score": 1,
-    "reason": "股市討論閒聊"
+    "reason": "股市討論，無實質資訊"
   },
   "tag:google.com,2013:googlealerts/feed:4851535922126714304": {
-    "score": 3,
-    "reason": "投信買賣資訊"
+    "score": 2,
+    "reason": "提及投信買超，資金動向"
   },
   "tag:google.com,2013:googlealerts/feed:1228576764799931018": {
-    "score": 3,
-    "reason": "投信買超資訊"
+    "score": 2,
+    "reason": "提及投信買超，資金動向"
   },
   "tag:google.com,2013:googlealerts/feed:13372405837141351023": {
     "score": 4,
-    "reason": "橋水基金持股"
+    "reason": "重要機構投資人策略"
   },
   "tag:google.com,2013:googlealerts/feed:7294099754936216098": {
     "score": 2,
-    "reason": "股市討論盤勢"
+    "reason": "股市討論，非公司主體"
   },
   "tag:google.com,2013:googlealerts/feed:12361563467726506843": {
     "score": 1,
-    "reason": "股市討論閒聊"
+    "reason": "股市討論，無實質資訊"
   },
   "tag:google.com,2013:googlealerts/feed:11007721652973403269": {
     "score": 5,
-    "reason": "正式公告出售"
+    "reason": "關鍵決策資訊，處分金額"
   },
   "tag:google.com,2013:googlealerts/feed:5411691680721235186": {
     "score": 3,
-    "reason": "專家觀點分析"
+    "reason": "專家分析，提及公司影響"
   },
   "tag:google.com,2013:googlealerts/feed:12561561165801841005": {
     "score": 5,
-    "reason": "正式公告出售"
+    "reason": "關鍵決策資訊，處分結果"
   },
   "tag:google.com,2013:googlealerts/feed:9767738762649455759": {
-    "score": 4,
-    "reason": "ETF權重條款"
+    "score": 3,
+    "reason": "政策討論，影響公司權重"
   },
   "tag:google.com,2013:googlealerts/feed:12742132272846419275": {
     "score": 1,
-    "reason": "比喻性提及"
+    "reason": "與其他公司比較，非主體"
   },
   "tag:google.com,2013:googlealerts/feed:1219675566751239816": {
     "score": 5,
-    "reason": "正式公告出售"
+    "reason": "關鍵決策資訊，處分金額"
   },
   "tag:google.com,2013:googlealerts/feed:6045458369154914092": {
     "score": 4,
-    "reason": "出售子公司策略"
+    "reason": "重要業務策略，市場情緒"
   }
 }
