@@ -145484,5 +145484,17 @@
   "tag:google.com,2013:googlealerts/feed:10193798538109570306": {
     "score": 2,
     "reason": "僅為盤中股價速報"
+  },
+  "tag:google.com,2013:googlealerts/feed:10459649485831601290": {
+    "score": 2,
+    "reason": "僅提供單日法人買賣超數據，資訊有限。"
+  },
+  "tag:google.com,2013:googlealerts/feed:4159223236754485909": {
+    "score": 2,
+    "reason": "市場評論，資訊有限。"
+  },
+  "tag:google.com,2013:googlealerts/feed:17457068477191651708": {
+    "score": 3,
+    "reason": "官方財報公告，但資訊已舊。"
   }
 }
