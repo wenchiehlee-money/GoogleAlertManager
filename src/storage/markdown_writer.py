@@ -90,7 +90,7 @@ _SUMMARY_TEMPLATE = """\
 
 {{ report.summary }}
 
-[詳細報告]({{ report.stock_id }}.md)
+[詳細報告]({{ date }}/{{ report.stock_id }}.md)
 
 ---
 {% endfor %}
@@ -103,6 +103,23 @@ def _get_company_dir(day: date) -> Path:
     company_dir = REPORTS_DIR / day.isoformat()
     company_dir.mkdir(parents=True, exist_ok=True)
     return company_dir
+
+
+def summarize_llm_result(llm_result: str) -> str:
+    """取得每日 summary 中使用的單行摘要。"""
+    summary_lines = [line for line in llm_result.splitlines() if line.strip()]
+    return summary_lines[0] if summary_lines else ""
+
+
+def read_report_summary(report_path: Path) -> str:
+    """從既有公司報告取回每日 summary 使用的摘要。"""
+    if not report_path.exists():
+        return ""
+
+    content = report_path.read_text(encoding="utf-8")
+    marker = "## LLM 分析結論"
+    llm_result = content.split(marker, 1)[1] if marker in content else content
+    return summarize_llm_result(llm_result)
 
 
 def write_company_report(

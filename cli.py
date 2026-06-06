@@ -105,7 +105,12 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
     from src.analysis import llm
     from src.companies.watchlist import load_companies
     from src.storage.json_store import load_entries_by_stock_id
-    from src.storage.markdown_writer import write_company_report, write_daily_summary
+    from src.storage.markdown_writer import (
+        read_report_summary,
+        summarize_llm_result,
+        write_company_report,
+        write_daily_summary,
+    )
     from src.storage.scores_store import load_scores, update_scores
 
     day = date.fromisoformat(day_str) if day_str else today_taipei()
@@ -151,10 +156,23 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
             click.echo(f"  {company.stock_id} {company.name}: 無資料，跳過")
             continue
 
-        # 已有報告就跳過（避免重複呼叫 LLM），--force 可強制覆蓋
+        # 已有報告就跳過 LLM，但仍納入每日 summary，避免 partial run 覆蓋整天彙整。
         report_path = REPORTS_DIR / str(day) / f"{company.stock_id}.md"
         if report_path.exists() and not stock_id and not force:
-            click.echo(f"  {company.stock_id} {company.name}: 報告已存在，跳過")
+            click.echo(f"  {company.stock_id} {company.name}: 報告已存在，納入彙整")
+            top_count = sum(
+                1
+                for e in entries
+                if all_scores.get(e.get("id", ""), {}).get("score", -1) >= 4
+            )
+            company_reports.append({
+                "stock_id": company.stock_id,
+                "name": company.name,
+                "list_type": company.list_type,
+                "entry_count": len(entries),
+                "top_count": top_count,
+                "summary": read_report_summary(report_path),
+            })
             continue
 
         click.echo(f"  分析+評分 {company.stock_id} {company.name}（{len(entries)} 篇）…")
@@ -183,8 +201,7 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
             check=False, capture_output=True,
         )
 
-        summary_lines = [l for l in llm_result.splitlines() if l.strip()]
-        summary = summary_lines[0] if summary_lines else ""
+        summary = summarize_llm_result(llm_result)
 
         company_reports.append({
             "stock_id": company.stock_id,

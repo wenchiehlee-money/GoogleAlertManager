@@ -11,7 +11,7 @@ from src.analysis import llm
 from src.companies.watchlist import load_companies
 from src.config import load_config
 from src.storage.json_store import load_entries_by_stock_id
-from src.storage.markdown_writer import write_company_report, write_daily_summary
+from src.storage.markdown_writer import summarize_llm_result, write_company_report, write_daily_summary
 
 logger = logging.getLogger(__name__)
 
@@ -43,13 +43,12 @@ def run_analyze() -> None:
         llm_result = llm.analyze_company(company, entries)
         write_company_report(company, today, entries, llm_result, generated_at)
 
-        summary_lines = [l for l in llm_result.splitlines() if l.strip()]
         company_reports.append({
             "stock_id": company.stock_id,
             "name": company.name,
             "list_type": company.list_type,
             "entry_count": len(entries),
-            "summary": summary_lines[0] if summary_lines else "",
+            "summary": summarize_llm_result(llm_result),
         })
 
     if company_reports:
