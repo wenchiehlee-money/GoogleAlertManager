@@ -55,10 +55,20 @@
       homepage: 'README.md',
       auto2top: true,
       formatUpdated: '{MM}/{DD} {HH}:{mm}',
-      executeScript: true
+      executeScript: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜尋文章或報告...',
+        noData: '找不到符合的文章',
+        depth: 6,
+        hideOtherSidebarContent: false
+      }
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- 全域搜尋外掛 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>
