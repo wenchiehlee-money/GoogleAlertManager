@@ -7,13 +7,13 @@ from jinja2 import BaseLoader, Environment
 
 from src.config import REPORTS_DIR
 
-_STARS = ["○", "⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"]
+_STARS = ["○", "⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐", "🔖 6分書籤"]
 
 def _get_rating_links(stock_id: str, day_str: str, entry_id: str) -> str:
-    """產生 1-5 分的重評連結。"""
+    """產生 1-6 分的重評連結。"""
     base_url = "https://github.com/wenchiehlee-money/GoogleAlertManager/issues/new"
     links = []
-    for s in range(1, 6):
+    for s in range(1, 7):
         title = f"[RATING] {stock_id} {day_str} {entry_id} {s}"
         body = f"Change rating to {s} for AI learning.\nReason: "
         import urllib.parse
@@ -143,7 +143,7 @@ def write_company_report(
         s = scores.get(eid, {})
         score_val = s.get("score", -1)
         entry_data = {
-            "stars": _STARS[score_val] if 0 <= score_val <= 5 else "",
+            "stars": _STARS[score_val] if 0 <= score_val <= 6 else "",
             "title": e.get("title", ""),
             "url": e.get("link", ""),
             "reason": s.get("reason", ""),
@@ -163,7 +163,7 @@ def write_company_report(
         s = scores.get(eid, {})
         score_val = s.get("score", -1)
         general_entries_enriched.append({
-            "stars": _STARS[score_val] if 0 <= score_val <= 5 else "",
+            "stars": _STARS[score_val] if 0 <= score_val <= 6 else "",
             "title": e.get("title", ""),
             "url": e.get("link", ""),
             "reason": s.get("reason", ""),
@@ -231,3 +231,32 @@ def write_daily_summary(
     summary_path = REPORTS_DIR / f"{day.isoformat()}-summary.md"
     summary_path.write_text(content, encoding="utf-8")
     return str(summary_path)
+
+
+_BOOKMARKS_TEMPLATE = """# 🔖 精選書籤清單 (6分)
+
+> 這裡收集了所有由使用者手樣標記為 6 分的最有價值資訊。
+
+{% if bookmarks %}
+| 日期 | 公司 | 標題與連結 | 標籤/理由 | 標記時間 |
+| :---: | :--- | :--- | :--- | :---: |
+{% for b in bookmarks %}| {{ b.published[:10] }} | {{ b.name }} ({{ b.stock_id }}) | [{{ b.title }}]({{ b.link }}) | {{ b.reason or "-" }} | {{ b.marked_at }} |
+{% endfor %}
+{% else %}
+*（目前尚無已標記的書籤文章）*
+{% endif %}
+"""
+
+
+def write_bookmarks_page(bookmarks: list[dict]) -> str:
+    """將所有書籤清單內容寫入至 data/reports/bookmarks.md。"""
+    # 依發布日期由新到舊排序
+    sorted_bookmarks = sorted(bookmarks, key=lambda x: x.get("published", ""), reverse=True)
+    env = Environment(loader=BaseLoader())
+    template = env.from_string(_BOOKMARKS_TEMPLATE)
+    content = template.render(bookmarks=sorted_bookmarks)
+
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    bookmarks_path = REPORTS_DIR / "bookmarks.md"
+    bookmarks_path.write_text(content, encoding="utf-8")
+    return str(bookmarks_path)

@@ -452,11 +452,11 @@ def sync_stale():
                 try:
                     score = int(score_text)
                 except ValueError:
-                    mark_invalid(num, "分數格式錯誤。`score` 必須是 1 到 5 的整數。")
+                    mark_invalid(num, "分數格式錯誤。`score` 必須是 1 到 6 的整數。")
                     click.echo(f"跳過分數格式錯誤的 RATING Issue: {txt}")
                     continue
-                if score < 1 or score > 5:
-                    mark_invalid(num, "分數範圍錯誤。`score` 必須是 1 到 5 的整數。")
+                if score < 1 or score > 6:
+                    mark_invalid(num, "分數範圍錯誤。`score` 必須是 1 到 6 的整數。")
                     click.echo(f"跳過分數範圍錯誤的 RATING Issue: {txt}")
                     continue
 
@@ -563,7 +563,8 @@ def label(stock_id: str, day_str: str, entry_id: str, score: int, reason: str | 
     from src.storage.scores_store import update_scores
     
     # 1. 尋找原始文章內容
-    alert_path = Path("data") / "alerts" / day_str / f"{stock_id}.json"
+    DATA_DIR = Path(__file__).parent / "data"
+    alert_path = DATA_DIR / "alerts" / day_str / f"{stock_id}.json"
     if not alert_path.exists():
         click.echo(f"找不到文章：{alert_path}")
         return
@@ -587,7 +588,7 @@ def label(stock_id: str, day_str: str, entry_id: str, score: int, reason: str | 
     })
     
     # 3. 儲存至 user_preferences.json (Few-shot 範例，用於當前 Prompt)
-    pref_path = Path("data") / "user_preferences.json"
+    pref_path = DATA_DIR / "user_preferences.json"
     prefs = []
     if pref_path.exists():
         with open(pref_path, encoding="utf-8") as f:
@@ -606,7 +607,7 @@ def label(stock_id: str, day_str: str, entry_id: str, score: int, reason: str | 
         json.dump(prefs, f, ensure_ascii=False, indent=2)
         
     # 4. 儲存至 training_data.jsonl (長期訓練數據，用於未來微調 Fine-tuning)
-    train_path = Path("data") / "training_data.jsonl"
+    train_path = DATA_DIR / "training_data.jsonl"
     train_entry = {
         "timestamp": datetime.now(timezone(timedelta(hours=8))).isoformat(),
         "context": {
@@ -625,6 +626,50 @@ def label(stock_id: str, day_str: str, entry_id: str, score: int, reason: str | 
     with open(train_path, "a", encoding="utf-8") as f:
         f.write(json.dumps(train_entry, ensure_ascii=False) + "\n")
         
+    # 5. 處理書籤清單 (6 分文章)
+    from src.storage.markdown_writer import write_bookmarks_page
+    bookmark_path = DATA_DIR / "bookmarks.json"
+    bookmarks = []
+    if bookmark_path.exists():
+        with open(bookmark_path, encoding="utf-8") as f:
+            try:
+                bookmarks = json.load(f)
+            except json.JSONDecodeError:
+                bookmarks = []
+
+    # 移除舊的相同 entry
+    bookmarks = [b for b in bookmarks if b["id"] != entry_id]
+
+    if score == 6:
+        bookmarks.append({
+            "id": entry_id,
+            "stock_id": stock_id,
+            "name": target.get("name", ""),
+            "title": target.get("title", ""),
+            "link": target.get("link", ""),
+            "published": target.get("published", ""),
+            "summary": target.get("summary", "")[:200],
+            "reason": reason or target.get("title", ""),
+            "marked_at": datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S CST")
+        })
+
+    with open(bookmark_path, "w", encoding="utf-8") as f:
+        json.dump(bookmarks, f, ensure_ascii=False, indent=2)
+
+    # 重新渲染 bookmarks.md
+    bm_page_path = write_bookmarks_page(bookmarks)
+    click.echo(f"已更新書籤清單網頁：{bm_page_path}")
+
+    # 自動 Git 提交書籤檔案
+    subprocess.run(
+        ["git", "add", str(bookmark_path), str(bm_page_path)],
+        check=False, capture_output=True,
+    )
+    subprocess.run(
+        ["git", "commit", "-m", f"chore: update bookmarks for {stock_id}"],
+        check=False, capture_output=True,
+    )
+
     click.echo(f"✅ 成功：文章已標註並存入訓練數據集 (data/training_data.jsonl)。")
     click.echo(f"AI 將在下次分析時學習此偏好，且此數據可用於未來模型微調。")
 
