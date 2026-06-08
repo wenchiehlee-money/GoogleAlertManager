@@ -1,0 +1,8 @@
+group:
+  - files:
+      - source: data/reports/google_alert_health_summary.csv
+        dest: data/GoogleAlertManager/google_alert_health_summary.csv
+      - source: raw_column_definition_GAM.md
+        dest: definitions/raw_column_definition_GAM.md
+    repos: |
+      wenchiehlee-money/biztrends.TW

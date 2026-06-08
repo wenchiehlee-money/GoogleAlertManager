@@ -112,11 +112,21 @@ jobs:
           AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
           LLM_APP_NAME: GoogleAlertManager
 
-      - name: Update README and push
+      - name: Update README, generate health summary and push
         if: always()
         run: |
           uv run python cli.py update-readme
-          git add data/reports/ data/scores.json README.md
-          git diff --cached --quiet || git commit -m "chore: analyze alerts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          uv run python scripts/generate_gam_health.py
+          git add data/reports/ data/scores.json README.md raw_column_definition_GAM.md
+          git diff --cached --quiet || git commit -m "chore: analyze alerts and update health $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git pull --rebase -X ours --autostash
           git push
+
+      - name: Sync to Money biztrends.TW
+        uses: BetaHuhn/repo-file-sync-action@latest
+        with:
+          GH_PAT: ${{ secrets.REPO_FILE_SYNC_WENCHIEHLEE_MONEY }}
+          CONFIG_PATH: .github/sync-biztrends.yml
+          COMMIT_EACH_FILE: false
+          PR_LABELS: "automated-sync"
+          SKIP_PR: true
