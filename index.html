@@ -40,6 +40,36 @@
     .sidebar {
       background-color: #fff;
     }
+    /* 搜尋框優化，使其更加顯眼 */
+    .search {
+      margin-bottom: 15px;
+      padding: 15px 15px 0 15px;
+    }
+    .search input {
+      padding: 10px 15px 10px 30px !important;
+      font-size: 14px !important;
+      border: 2px solid #3498db !important; /* 醒目的藍色外框 */
+      border-radius: 20px !important;       /* 圓角樣式 */
+      background-color: #f8f9fa !important;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05) !important;
+      transition: all 0.3s ease-in-out !important;
+      color: #2c3e50 !important;
+      font-weight: 500 !important;
+    }
+    .search input:focus {
+      border-color: #2c3e50 !important;     /* focus 時轉換為深灰色 */
+      box-shadow: 0 0 8px rgba(52,152,219,0.3) !important;
+      background-color: #fff !important;
+      outline: none;
+    }
+    .search::after {
+      top: 27px !important;
+      left: 25px !important;
+    }
+    .search input::placeholder {
+      color: #95a5a6 !important;
+      font-weight: 400;
+    }
   </style>
 </head>
 <body>
