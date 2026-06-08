@@ -74,6 +74,7 @@
 </head>
 <body>
   <div id="app">🚀 正在載入分析數據...</div>
+  <script src="paths.js"></script>
   <script>
     window.$docsify = {
       name: 'GoogleAlertManager',
@@ -88,7 +89,7 @@
       executeScript: true,
       search: {
         maxAge: 86400000,
-        paths: 'auto',
+        paths: window.DOCS_PATHS || 'auto',
         placeholder: '搜尋文章或報告...',
         noData: '找不到符合的文章',
         depth: 6,

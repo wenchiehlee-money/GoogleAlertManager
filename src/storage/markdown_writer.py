@@ -206,6 +206,7 @@ def write_company_report(
         top_path = company_dir / f"{company.stock_id}-top.md"
         top_path.write_text(top_content, encoding="utf-8")
 
+    update_search_paths()
     return str(report_path)
 
 
@@ -230,6 +231,7 @@ def write_daily_summary(
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     summary_path = REPORTS_DIR / f"{day.isoformat()}-summary.md"
     summary_path.write_text(content, encoding="utf-8")
+    update_search_paths()
     return str(summary_path)
 
 
@@ -259,4 +261,32 @@ def write_bookmarks_page(bookmarks: list[dict]) -> str:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     bookmarks_path = REPORTS_DIR / "bookmarks.md"
     bookmarks_path.write_text(content, encoding="utf-8")
+    update_search_paths()
     return str(bookmarks_path)
+
+
+def update_search_paths() -> str:
+    """搜尋 data/reports 底下所有的 md 檔案並生成 paths.js 給 Docsify 搜尋引擎使用。"""
+    from src.config import ROOT
+    import json
+    
+    reports_dir = ROOT / "data" / "reports"
+    paths = ["/"] # 首頁
+    
+    if reports_dir.exists():
+        # 尋找所有 .md 檔案
+        for md_file in reports_dir.rglob("*.md"):
+            # 轉換為相對於專案根目錄的相對路徑，並去除 .md 後綴
+            rel_path = md_file.relative_to(ROOT).as_posix()
+            if rel_path.endswith(".md"):
+                rel_path = rel_path[:-3]
+            
+            paths.append("/" + rel_path)
+            
+    # 去除重複，並排序
+    paths = sorted(list(set(paths)))
+    
+    paths_file = ROOT / "paths.js"
+    content = f"window.DOCS_PATHS = {json.dumps(paths, ensure_ascii=False, indent=2)};\n"
+    paths_file.write_text(content, encoding="utf-8")
+    return str(paths_file)
