@@ -76,6 +76,27 @@
   <div id="app">🚀 正在載入分析數據...</div>
   <script src="paths.js"></script>
   <script>
+    // 檢查 paths.js 是否有更新，若有更新則清除 Docsify 搜尋快取以重新建立索引
+    try {
+      const localKey = 'docsify.search.timestamp';
+      const currentTimestamp = window.DOCS_PATHS_TIMESTAMP;
+      if (currentTimestamp) {
+        const cachedTimestamp = localStorage.getItem(localKey);
+        if (cachedTimestamp !== String(currentTimestamp)) {
+          for (let i = localStorage.length - 1; i >= 0; i--) {
+            const key = localStorage.key(i);
+            if (key && (key.startsWith('docsify.search') || key.includes('docsify.search'))) {
+              localStorage.removeItem(key);
+            }
+          }
+          localStorage.setItem(localKey, currentTimestamp);
+        }
+      }
+    } catch (e) {
+      console.error('Failed to clear docsify search cache:', e);
+    }
+  </script>
+  <script>
     window.$docsify = {
       name: 'GoogleAlertManager',
       repo: 'wenchiehlee-money/GoogleAlertManager',

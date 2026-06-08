@@ -1,3 +1,4 @@
+window.DOCS_PATHS_TIMESTAMP = 1780911040;
 window.DOCS_PATHS = [
   "/",
   "/data/reports/2026-01-29/2357",

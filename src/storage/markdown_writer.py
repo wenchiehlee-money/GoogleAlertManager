@@ -269,6 +269,7 @@ def update_search_paths() -> str:
     """搜尋 data/reports 底下所有的 md 檔案並生成 paths.js 給 Docsify 搜尋引擎使用。"""
     from src.config import ROOT
     import json
+    import time
     
     reports_dir = ROOT / "data" / "reports"
     paths = ["/"] # 首頁
@@ -287,6 +288,10 @@ def update_search_paths() -> str:
     paths = sorted(list(set(paths)))
     
     paths_file = ROOT / "paths.js"
-    content = f"window.DOCS_PATHS = {json.dumps(paths, ensure_ascii=False, indent=2)};\n"
+    timestamp = int(time.time())
+    content = (
+        f"window.DOCS_PATHS_TIMESTAMP = {timestamp};\n"
+        f"window.DOCS_PATHS = {json.dumps(paths, ensure_ascii=False, indent=2)};\n"
+    )
     paths_file.write_text(content, encoding="utf-8")
     return str(paths_file)
