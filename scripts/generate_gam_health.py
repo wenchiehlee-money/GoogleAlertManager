@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 import csv
+import json
 import os
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from urllib.parse import urlparse
 
 # Paths
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ALERTS_DIR = REPO_ROOT / "data" / "alerts"
 REPORTS_DIR = REPO_ROOT / "data" / "reports"
+SCORES_JSON = REPO_ROOT / "data" / "scores.json"
 HEALTH_SUMMARY_CSV = REPORTS_DIR / "google_alert_health_summary.csv"
 
 TAIPEI_TZ = timezone(timedelta(hours=8))
+
+# Authority Domains
+AUTHORITY_DOMAINS = {
+    "cnyes.com", "chinatimes.com", "udn.com", "moneydj.com", 
+    "yahoo.com", "reuters.com", "technews.tw", "wealth.com.tw", 
+    "businesstoday.com.tw", "commercialtimes.com"
+}
 
 def get_latest_date():
     if not ALERTS_DIR.exists():
@@ -28,6 +38,16 @@ def get_latest_date():
         return None
     valid_dates.sort()
     return valid_dates[-1]
+
+def is_authoritative(link):
+    if not link:
+        return False
+    try:
+        parsed = urlparse(link)
+        domain = parsed.netloc.lower()
+        return any(domain == auth or domain.endswith("." + auth) for auth in AUTHORITY_DOMAINS)
+    except Exception:
+        return False
 
 def main():
     print("=== Generating GoogleAlertManager Data Health Summary ===")
@@ -71,24 +91,30 @@ def main():
             print(f"Warning: Invalid date argument format '{custom_date}'. Expected YYYY-MM-DD.")
 
     if not latest_date:
-        # Fallback to current Taipei date
         latest_date = datetime.now(TAIPEI_TZ).strftime("%Y-%m-%d")
         print(f"No alert directories found. Fallback to today: {latest_date}")
     else:
         print(f"Target date identified: {latest_date}")
 
-    # 3. Count alert JSONs and success reports MDs
+    # 3. Load scores.json
+    scores_db = {}
+    if SCORES_JSON.exists():
+        try:
+            with open(SCORES_JSON, "r", encoding="utf-8") as f:
+                scores_db = json.load(f)
+        except Exception as e:
+            print(f"Warning: Failed to load {SCORES_JSON.name}: {e}")
+
+    # 4. Scan alert JSONs for metrics
     day_alerts_dir = ALERTS_DIR / latest_date
     day_reports_dir = REPORTS_DIR / latest_date
 
     active_alerts = 0
     if day_alerts_dir.exists():
-        # Match *.json files
         active_alerts = len(list(day_alerts_dir.glob("*.json")))
 
     success_reports = 0
     if day_reports_dir.exists():
-        # Match [0-9]*.md but not [0-9]*-top.md
         report_files = [f for f in day_reports_dir.glob("*.md") if not f.name.endswith("-top.md")]
         success_reports = len(report_files)
 
@@ -104,6 +130,48 @@ def main():
     print(f"Success Reports (MD count): {success_reports}")
     print(f"Success Rate: {success_rate_pct}%")
 
+    # 5. Extract SNR and Source Authority from crawled articles
+    total_articles_fetched = 0
+    high_value_articles = 0
+    authoritative_articles = 0
+
+    if day_alerts_dir.exists():
+        for json_file in day_alerts_dir.glob("*.json"):
+            try:
+                with open(json_file, "r", encoding="utf-8") as f:
+                    articles = json.load(f)
+                    if isinstance(articles, list):
+                        for art in articles:
+                            total_articles_fetched += 1
+                            
+                            # Check authority
+                            link = art.get("link")
+                            if is_authoritative(link):
+                                authoritative_articles += 1
+                            
+                            # Check score in scores.json
+                            art_id = art.get("id")
+                            if art_id in scores_db:
+                                score_val = scores_db[art_id].get("score", -1)
+                                if score_val >= 3:
+                                    high_value_articles += 1
+            except Exception as e:
+                print(f"Warning: Failed to read articles from {json_file.name}: {e}")
+
+    signal_to_noise_ratio_pct = 0.0
+    if total_articles_fetched > 0:
+        signal_to_noise_ratio_pct = round((high_value_articles / total_articles_fetched * 100), 2)
+
+    authority_score = 0.0
+    if total_articles_fetched > 0:
+        authority_score = round((authoritative_articles / total_articles_fetched * 100), 2)
+
+    print(f"Total Articles Fetched: {total_articles_fetched}")
+    print(f"High-Value Articles (score >= 3): {high_value_articles}")
+    print(f"Authoritative Articles: {authoritative_articles}")
+    print(f"Signal-to-Noise Ratio: {signal_to_noise_ratio_pct}%")
+    print(f"Authority Score: {authority_score}%")
+
     now = datetime.now(TAIPEI_TZ)
     checked_at = now.isoformat()
     process_timestamp = checked_at
@@ -116,6 +184,10 @@ def main():
         "active_alerts": active_alerts,
         "success_reports": success_reports,
         "success_rate_pct": success_rate_pct,
+        "total_articles_fetched": total_articles_fetched,
+        "high_value_articles": high_value_articles,
+        "signal_to_noise_ratio_pct": signal_to_noise_ratio_pct,
+        "authority_score": authority_score,
         "checked_at": checked_at
     }
 
@@ -127,6 +199,10 @@ def main():
         "active_alerts",
         "success_reports",
         "success_rate_pct",
+        "total_articles_fetched",
+        "high_value_articles",
+        "signal_to_noise_ratio_pct",
+        "authority_score",
         "checked_at"
     ]
 

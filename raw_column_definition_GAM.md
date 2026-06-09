@@ -23,6 +23,10 @@ destination: https://raw.githubusercontent.com/wenchiehlee-money/biztrends.TW/re
 | `active_alerts` | int | Number of focus companies that had google alert JSON files downloaded for the target date. |
 | `success_reports` | int | Number of focus companies that successfully completed LLM analysis (MD files generated) for the target date. |
 | `success_rate_pct` | float | Percentage of alerts successfully analyzed (`success_reports / active_alerts * 100`). |
+| `total_articles_fetched` | int | Total number of raw articles fetched for all focus companies for the target date. |
+| `high_value_articles` | int | Total number of articles rated 3-5 (useful signal) in scores.json for the target date. |
+| `signal_to_noise_ratio_pct` | float | Percentage of articles rated 3-5 out of all fetched articles (`high_value_articles / total_articles_fetched * 100`). |
+| `authority_score` | float | Percentage of articles fetched from Tier-1 authoritative domains (e.g., cnyes.com, commercialtimes.com). |
 | `checked_at` | timestamp | Execution time of the health checker (same as `process_timestamp`). |
 
 ---
