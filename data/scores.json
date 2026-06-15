@@ -172784,5 +172784,17 @@
   "tag:google.com,2013:googlealerts/feed:4033993375890247734": {
     "score": 2,
     "reason": "提及股價跌停的即時資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:8867658526355544367": {
+    "score": 3,
+    "reason": "提供股利資訊，有參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5417251828923036866": {
+    "score": 4,
+    "reason": "提供營收公告，重要業務資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10846870518953457715": {
+    "score": 4,
+    "reason": "重要營收資訊，呈現衰退"
   }
 }
