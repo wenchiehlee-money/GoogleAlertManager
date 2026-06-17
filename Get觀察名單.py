@@ -3,7 +3,7 @@
 import urllib.request
 from pathlib import Path
 
-BASE_URL = "https://raw.githubusercontent.com/wenchiehlee/GoPublic/refs/heads/main/"
+BASE_URL = "https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/refs/heads/main/"
 # GitHub 上的檔名（中文）→ 本地儲存名稱
 FILES = [
     ("%E8%A7%80%E5%AF%9F%E5%90%8D%E5%96%AE.csv", "StockID_TWSE_TPEX.csv"),
