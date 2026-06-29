@@ -201999,43 +201999,45 @@
   },
   "tag:google.com,2013:googlealerts/feed:17083604023503883796": {
     "score": 1,
-    "reason": "主要討論其他公司，中華電僅提及股價"
+    "reason": "僅提及股票代碼與股價"
   },
   "tag:google.com,2013:googlealerts/feed:1589560341047030569": {
-    "score": 2,
-    "reason": "提及中華電被自營商買超"
+    "score": 3,
+    "reason": "自營商買超動向"
   },
   "tag:google.com,2013:googlealerts/feed:17682217324961693686": {
     "score": 4,
-    "reason": "外資目標價、防禦性及AI業務"
+    "reason": "外資目標價及股價表現"
   },
   "tag:google.com,2013:googlealerts/feed:17958846051773152600": {
     "score": 3,
-    "reason": "討論中華電配息及存股價值"
+    "reason": "存股價值分析"
   },
   "tag:google.com,2013:googlealerts/feed:10159270370958396586": {
     "score": 3,
-    "reason": "討論中華電長期存股績效"
+    "reason": "存股績效比較"
   },
   "tag:google.com,2013:googlealerts/feed:5633679822682519596": {
-    "score": 4,
-    "reason": "外資目標價、股價表現及抗跌性"
+    "score": 6,
+    "reason": "<b>中華電</b>外資升目標價- 日報- 工商時報",
+    "source": "manual",
+    "scored_at": "2026-06-29 23:51:09 CST"
   },
   "tag:google.com,2013:googlealerts/feed:6614301198778536027": {
-    "score": 2,
-    "reason": "提及中華電被ETF經理人加碼"
+    "score": 3,
+    "reason": "ETF加碼動向"
   },
   "tag:google.com,2013:googlealerts/feed:3520337144112141911": {
-    "score": 2,
-    "reason": "提及中華電在ETF換股名單中"
+    "score": 4,
+    "reason": "ETF成分股變動"
   },
   "tag:google.com,2013:googlealerts/feed:7751329597024532779": {
-    "score": 0,
-    "reason": "與中華電投資分析無關"
+    "score": 1,
+    "reason": "服務問題討論"
   },
   "tag:google.com,2013:googlealerts/feed:94311723148128905": {
     "score": 4,
-    "reason": "深入分析中華電投資價值與風險"
+    "reason": "專業投資分析"
   },
   "tag:google.com,2013:googlealerts/feed:6859836809488499117": {
     "score": 4,
@@ -203108,5 +203110,189 @@
   "tag:google.com,2013:googlealerts/feed:2480521818780992122": {
     "score": 4,
     "reason": "詳述公司在AI時代的戰略定位與價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:14362827413755440180": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:9156920712735620287": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:2142866737820022701": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:9896130026179108382": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:2334615289540348490": {
+    "score": 3,
+    "reason": "ETF加碼動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:15697974638629603341": {
+    "score": 1,
+    "reason": "服務問題討論"
+  },
+  "tag:google.com,2013:googlealerts/feed:15306629786043104366": {
+    "score": 1,
+    "reason": "內容無關"
+  },
+  "tag:google.com,2013:googlealerts/feed:13836523712313371013": {
+    "score": 3,
+    "reason": "ETF加碼動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:5933053181383751219": {
+    "score": 3,
+    "reason": "ETF加碼動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:9322644768523156264": {
+    "score": 4,
+    "reason": "外資目標價及股價表現"
+  },
+  "tag:google.com,2013:googlealerts/feed:4032346808797925541": {
+    "score": 4,
+    "reason": "專業投資分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:18187293516874303802": {
+    "score": 1,
+    "reason": "內容無關"
+  },
+  "tag:google.com,2013:googlealerts/feed:17379136257873778547": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:16691674653112567797": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:15025224341840785966": {
+    "score": 4,
+    "reason": "外資目標價及股價表現"
+  },
+  "tag:google.com,2013:googlealerts/feed:16218581819430593145": {
+    "score": 4,
+    "reason": "專業投資分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:8636080416181329762": {
+    "score": 3,
+    "reason": "ETF成分股動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:8801478437234459604": {
+    "score": 4,
+    "reason": "新產品/服務發布"
+  },
+  "tag:google.com,2013:googlealerts/feed:12709773968415860855": {
+    "score": 4,
+    "reason": "新產品/服務發布"
+  },
+  "tag:google.com,2013:googlealerts/feed:2798891339125519722": {
+    "score": 4,
+    "reason": "新產品/服務發布"
+  },
+  "tag:google.com,2013:googlealerts/feed:4185589295264985579": {
+    "score": 4,
+    "reason": "新產品/服務發布"
+  },
+  "tag:google.com,2013:googlealerts/feed:6629219400537439047": {
+    "score": 4,
+    "reason": "新產品/服務發布"
+  },
+  "tag:google.com,2013:googlealerts/feed:1165170178290829601": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:1379314249849677360": {
+    "score": 2,
+    "reason": "股價交易數據"
+  },
+  "tag:google.com,2013:googlealerts/feed:16552457735078047460": {
+    "score": 4,
+    "reason": "ETF新增成分股"
+  },
+  "tag:google.com,2013:googlealerts/feed:4388192937182328252": {
+    "score": 4,
+    "reason": "ETF新增成分股"
+  },
+  "tag:google.com,2013:googlealerts/feed:14553941944694867065": {
+    "score": 4,
+    "reason": "ETF新增成分股"
+  },
+  "tag:google.com,2013:googlealerts/feed:2194977487405833822": {
+    "score": 4,
+    "reason": "ETF新增成分股"
+  },
+  "tag:google.com,2013:googlealerts/feed:7740021806043932774": {
+    "score": 3,
+    "reason": "ETF加碼及市場定位"
+  },
+  "tag:google.com,2013:googlealerts/feed:2009766563272888773": {
+    "score": 3,
+    "reason": "ETF加碼及市場定位"
+  },
+  "tag:google.com,2013:googlealerts/feed:7753220119175849934": {
+    "score": 3,
+    "reason": "投信買超動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:12169173840049776814": {
+    "score": 4,
+    "reason": "資產活化進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:4333422322489574442": {
+    "score": 4,
+    "reason": "市場資金偏好分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:12417922909306080355": {
+    "score": 3,
+    "reason": "外資賣超動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:16010515654787200041": {
+    "score": 3,
+    "reason": "外資賣超動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:11663363815129300677": {
+    "score": 3,
+    "reason": "ETF加碼動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:2264834516605907045": {
+    "score": 3,
+    "reason": "外資賣超動向"
+  },
+  "tag:google.com,2013:googlealerts/feed:1982314938579397893": {
+    "score": 2,
+    "reason": "股價交易數據"
+  },
+  "tag:google.com,2013:googlealerts/feed:6390396590269403736": {
+    "score": 3,
+    "reason": "外資賣超排行"
+  },
+  "tag:google.com,2013:googlealerts/feed:4424665228437757078": {
+    "score": 4,
+    "reason": "新產品/服務發布"
+  },
+  "tag:google.com,2013:googlealerts/feed:18354633858052347595": {
+    "score": 3,
+    "reason": "外資賣超排行"
+  },
+  "tag:google.com,2013:googlealerts/feed:10983812636099906330": {
+    "score": 3,
+    "reason": "外資賣超排行"
+  },
+  "tag:google.com,2013:googlealerts/feed:2529103717940550318": {
+    "score": 3,
+    "reason": "投信買超排行"
+  },
+  "tag:google.com,2013:googlealerts/feed:14679609314639403416": {
+    "score": 3,
+    "reason": "主力買超排行"
+  },
+  "tag:google.com,2013:googlealerts/feed:9136819893245155677": {
+    "score": 3,
+    "reason": "投信買超排行"
+  },
+  "tag:google.com,2013:googlealerts/feed:1889198223760246507": {
+    "score": 2,
+    "reason": "服務調整資訊"
   }
 }
