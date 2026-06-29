@@ -5,6 +5,7 @@
 
 | 日期 | 公司 | 標題與連結 | 標籤/理由 | 標記時間 |
 | :---: | :--- | :--- | :--- | :---: |
+| 2026-06-27 | 中華電 (2412) | [<b>中華電</b>外資升目標價- 日報- 工商時報](https://www.google.com/url?rct=j&sa=t&url=https://www.ctee.com.tw/news/20260628700155-439903&ct=ga&cd=CAIyHWVhMjk0Y2MzNjllNDk5OGE6Y29tOnpoLVRXOlRX&usg=AOvVaw3TNWXTFEOgeZLelEU3W3B3) | <b>中華電</b>外資升目標價- 日報- 工商時報 | 2026-06-29 23:51:10 CST |
 | 2026-03-06 | 華碩 (2357) | [華碩 AI 伺服器戰略不攻大廠 北美四大 CSP 之外生意空間有多大？](https://money.udn.com/money/story/11162/9362745?from=edn_subcatelist_cate) | 華碩 AI 伺服器北美關鍵戰略 | 2026-06-08 15:10:58 CST |
 | 2026-01-29 | 華碩 (2357) | [華碩全力衝 AI 伺服器 2026年獨立事業群「福將」朱培蘭掌旗](https://money.udn.com/money/story/5612/9296068) | 華碩伺服器部門2026獨立為事業群(BG) | 2026-06-08 15:18:02 CST |
 
