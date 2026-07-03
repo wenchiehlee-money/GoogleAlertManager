@@ -115,7 +115,7 @@ class Company:
 ```
 GOOGLE_ALERT_EMAIL=your@gmail.com
 GOOGLE_ALERT_PASSWORD=yourpassword
-ANTHROPIC_API_KEY=sk-ant-...
+ANTHROPIC_API_KEY=your_anthropic_api_key
 ```
 
 `config/alerts.yaml`（僅保留排程與 Alert 建立選項）：
