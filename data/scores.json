@@ -245572,8 +245572,8 @@
     "reason": "提及營收數據"
   },
   "tag:google.com,2013:googlealerts/feed:14712414587624498657": {
-    "score": 3,
-    "reason": "提供目標價與中立評等"
+    "score": 4,
+    "reason": "提及估值、目標價與投資策略。"
   },
   "tag:google.com,2013:googlealerts/feed:4178937471659143063": {
     "score": 3,
@@ -247546,5 +247546,37 @@
   "tag:google.com,2013:googlealerts/feed:17381677043001312437": {
     "score": 4,
     "reason": "提供營收與EPS及業務擴展"
+  },
+  "tag:google.com,2013:googlealerts/feed:7147376136097318040": {
+    "score": 4,
+    "reason": "提供近期營收數據及營運狀態。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11564092871925438": {
+    "score": 2,
+    "reason": "提及「妖股」與股價。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7957269724986865081": {
+    "score": 2,
+    "reason": "僅提供股價資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10554752256605777319": {
+    "score": 3,
+    "reason": "證交所公告停券名單。"
+  },
+  "tag:google.com,2013:googlealerts/feed:16076645767516718962": {
+    "score": 5,
+    "reason": "提供具體營收數據。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3610490291120578947": {
+    "score": 2,
+    "reason": "重複提及「妖股」與股價。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10781043158424156089": {
+    "score": 3,
+    "reason": "重複證交所停券名單。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3879841276328469835": {
+    "score": 2,
+    "reason": "僅為三大法人買賣日報表列，資訊量極少。"
   }
 }
