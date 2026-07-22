@@ -117,7 +117,7 @@ jobs:
         run: |
           uv run python cli.py update-readme
           uv run python scripts/generate_gam_health.py
-          git add data/reports/ data/scores.json README.md raw_column_definition_GAM.md
+          git add data/reports/ data/scores.json README.md raw_column_definition_GAM.md StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
           git diff --cached --quiet || git commit -m "chore: analyze alerts and update health $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git pull --rebase -X ours --autostash
           git push

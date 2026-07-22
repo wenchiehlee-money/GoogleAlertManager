@@ -1,0 +1,9 @@
+{
+  "name": "skill-google-alert-fetch",
+  "description": "維運 GoogleAlertManager 的 Google Alerts 抓取管線，並提供內建 scripts/google_alert_fetch.py 以更新 Selenium-Actions.Auction 股票觀察/專注清單 CSV、檢查 README/focus CSV 一致性、依 focus CSV 重建 README、同步/匯出 RSS 與排查 fetch/analyze workflows。",
+  "category": "financial-data",
+  "version": "1.1.0",
+  "maintainer": "wenchiehlee-money",
+  "source": "https://github.com/wenchiehlee-money/GoogleAlertManager",
+  "updated_at": "2026-07-22"
+}

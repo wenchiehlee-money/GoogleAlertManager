@@ -67,7 +67,7 @@ jobs:
         run: |
           git add data/scores.json
           git add data/user_preferences.json data/training_data.jsonl
-          git add data/reports/ README.md
+          git add data/reports/ README.md StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
           git diff --cached --quiet || git commit -m "chore: sync issue feedback"
           git pull --rebase -X ours --autostash
           git push

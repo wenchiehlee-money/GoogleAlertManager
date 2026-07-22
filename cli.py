@@ -29,14 +29,32 @@ def cli():
     """GoogleAlertManager — 股票觀察名單 × Google Alerts × Claude 分析。"""
 
 
+def _google_alert_skill_script() -> Path:
+    return (
+        Path(__file__).parent
+        / "skills"
+        / "common"
+        / "skill-google-alert-fetch"
+        / "scripts"
+        / "google_alert_fetch.py"
+    )
+
+
+def _run_google_alert_skill(*args: str) -> None:
+    script = _google_alert_skill_script()
+    if not script.exists():
+        click.echo(f"找不到 Google Alert fetch skill script: {script}", err=True)
+        sys.exit(1)
+    subprocess.run(
+        [sys.executable, str(script), "--repo-root", str(Path(__file__).parent), *args],
+        check=True,
+    )
+
+
 @cli.command("update-list")
 def update_list():
-    """執行 Get觀察名單.py 下載最新 CSV 觀察名單。"""
-    script = Path(__file__).parent / "Get觀察名單.py"
-    if not script.exists():
-        click.echo("找不到 Get觀察名單.py", err=True)
-        sys.exit(1)
-    subprocess.run([sys.executable, str(script)], check=True)
+    """下載最新 CSV 觀察名單。"""
+    _run_google_alert_skill("update-list")
 
 
 @cli.command("list-companies")
@@ -220,112 +238,7 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
 @cli.command("update-readme")
 def update_readme():
     """更新 README.md 的報告彙整表格（近 7 天）。"""
-    import json
-    import re
-    from datetime import timedelta
-
-    today = today_taipei()
-    days = [today - timedelta(days=i) for i in range(7)]
-
-    alerts_dir = Path(__file__).parent / "data" / "alerts"
-    reports_dir = Path(__file__).parent / "data" / "reports"
-    scores_file = Path(__file__).parent / "data" / "scores.json"
-
-    scores: dict[str, dict] = {}
-    if scores_file.exists():
-        with open(scores_file, encoding="utf-8") as f:
-            scores = json.load(f)
-
-    # 收集各股票各日文章數 + 高分文章
-    stocks: dict[str, dict] = {}
-    for day in reversed(days): # 收集時仍依舊日期排序可能有助於某些邏輯，但其實不影響 dict 儲存
-        day_dir = alerts_dir / day.isoformat()
-        if not day_dir.exists():
-            continue
-        for json_file in sorted(day_dir.glob("*.json")):
-            stock_id = json_file.stem
-            with open(json_file, encoding="utf-8") as f:
-                entries = json.load(f)
-            name = entries[0].get("name", stock_id) if entries else stock_id
-            if stock_id not in stocks:
-                stocks[stock_id] = {"name": name, "counts": {}, "top_counts": {}, "latest_report": None}
-            stocks[stock_id]["counts"][day] = len(entries)
-            # 高分文章數（score >= 4）
-            top = sum(1 for e in entries if scores.get(e.get("id", ""), {}).get("score", -1) >= 4)
-            if top:
-                stocks[stock_id]["top_counts"][day] = top
-
-    # 找最近兩天報告連結
-    for stock_id in stocks:
-        recent = []
-        for day in days: # days 已經是從新到舊
-            if (reports_dir / day.isoformat() / f"{stock_id}.md").exists():
-                recent.append(day)
-            if len(recent) == 2:
-                break
-        stocks[stock_id]["latest_reports"] = recent
-
-    # 建立表格
-    day_headers = []
-    for d in days:
-        summary_file = f"{d.isoformat()}-summary.md"
-        if (reports_dir / summary_file).exists():
-            day_headers.append(f"[{d.strftime('%m/%d')}](data/reports/{summary_file})")
-        else:
-            day_headers.append(d.strftime("%m/%d"))
-
-    # 重新排列欄位順序：名稱, 代號, 前兩天日期, 其他日期
-    # 這樣在 iPhone 上首屏會看到：[名稱] [代號] [最新日] [次新日]
-    header_cols = ["名稱", "代號", day_headers[0], day_headers[1]] + day_headers[2:]
-    header_line = "| " + " | ".join(header_cols) + " |"
-    sep_line = "| " + " :---: |" * len(header_cols)
-
-    lines = [header_line, sep_line]
-    
-    for stock_id, info in sorted(stocks.items()):
-        count_map = {}
-        for i, d in enumerate(days):
-            c = info["counts"].get(d, "-")
-            t = info["top_counts"].get(d, 0)
-            
-            if c != "-" and (reports_dir / d.isoformat() / f"{stock_id}.md").exists():
-                link_all = f"data/reports/{d.isoformat()}/{stock_id}.md"
-                g = c - t if isinstance(c, int) else 0
-                
-                import urllib.parse
-                t_id = urllib.parse.quote(f"⭐-高分精選文章-score-≥-4-{t}")
-                g_id = urllib.parse.quote(f"📊-文章統計與來源-含一般文章-{g}")
-                
-                if t > 0:
-                    label = f"[{g}]({link_all}?id={g_id}) ([{t}]({link_all}?id={t_id}))"
-                else:
-                    label = f"[{g}]({link_all}?id={g_id})"
-            else:
-                g = c - t if isinstance(c, int) and isinstance(t, int) else c
-                label = f"{g}({t})" if t > 0 else str(g)
-            
-            count_map[i] = label
-                
-        # 按照 header_cols 的順序組合資料列
-        row_data = [info['name'], stock_id, count_map[0], count_map[1]]
-        for i in range(2, len(days)):
-            row_data.append(count_map[i])
-            
-        lines.append(f"| {' | '.join(row_data)} |")
-
-    table = "\n".join(lines)
-    marker_s = "<!-- REPORT_TABLE_START -->"
-    marker_e = "<!-- REPORT_TABLE_END -->"
-    new_block = f"{marker_s}\n\n## 報告彙整（近 7 天）\n\n{table}\n\n{marker_e}"
-
-    readme = Path(__file__).parent / "README.md"
-    content = readme.read_text(encoding="utf-8")
-    if marker_s in content:
-        content = re.sub(f"{re.escape(marker_s)}.*?{re.escape(marker_e)}", new_block, content, flags=re.DOTALL)
-    else:
-        content = content.rstrip() + "\n\n" + new_block + "\n"
-    readme.write_text(content, encoding="utf-8")
-    click.echo(f"README.md 已更新，共 {len(stocks)} 支股票")
+    _run_google_alert_skill("update-readme")
 
 
 @cli.command("sync-stale")
