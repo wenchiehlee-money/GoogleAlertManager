@@ -223,6 +223,7 @@ def update_readme():
     import json
     import re
     from datetime import timedelta
+    from src.companies.watchlist import load_companies
 
     today = today_taipei()
     days = [today - timedelta(days=i) for i in range(7)]
@@ -236,19 +237,29 @@ def update_readme():
         with open(scores_file, encoding="utf-8") as f:
             scores = json.load(f)
 
-    # 收集各股票各日文章數 + 高分文章
-    stocks: dict[str, dict] = {}
+    # 以專注清單 CSV 作為 README 股票列的唯一來源。
+    companies = load_companies()
+    stocks: dict[str, dict] = {
+        company.stock_id: {
+            "name": company.name,
+            "counts": {},
+            "top_counts": {},
+            "latest_report": None,
+        }
+        for company in companies
+    }
+
+    # 收集專注清單中各股票各日文章數 + 高分文章
     for day in reversed(days): # 收集時仍依舊日期排序可能有助於某些邏輯，但其實不影響 dict 儲存
         day_dir = alerts_dir / day.isoformat()
         if not day_dir.exists():
             continue
         for json_file in sorted(day_dir.glob("*.json")):
             stock_id = json_file.stem
+            if stock_id not in stocks:
+                continue
             with open(json_file, encoding="utf-8") as f:
                 entries = json.load(f)
-            name = entries[0].get("name", stock_id) if entries else stock_id
-            if stock_id not in stocks:
-                stocks[stock_id] = {"name": name, "counts": {}, "top_counts": {}, "latest_report": None}
             stocks[stock_id]["counts"][day] = len(entries)
             # 高分文章數（score >= 4）
             top = sum(1 for e in entries if scores.get(e.get("id", ""), {}).get("score", -1) >= 4)
@@ -282,7 +293,7 @@ def update_readme():
 
     lines = [header_line, sep_line]
     
-    for stock_id, info in sorted(stocks.items()):
+    for stock_id, info in stocks.items():
         count_map = {}
         for i, d in enumerate(days):
             c = info["counts"].get(d, "-")
