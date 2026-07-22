@@ -1,0 +1,9 @@
+{
+  "name": "skill-google-alert-fetch",
+  "description": "維運 GoogleAlertManager 的 Google Alerts 抓取管線：更新 GoPublic 股票觀察/專注清單 CSV、同步 Google Alert RSS、匯出 fallback RSS、抓取文章、依 focus CSV 更新 README，並排查 fetch/analyze workflows。",
+  "category": "financial-data",
+  "version": "1.0.0",
+  "maintainer": "wenchiehlee-money",
+  "source": "https://github.com/wenchiehlee-money/GoogleAlertManager",
+  "updated_at": "2026-07-22"
+}
