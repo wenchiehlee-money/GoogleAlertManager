@@ -2,7 +2,7 @@
 name: skill-google-alert-fetch
 description: >-
   Operate and maintain the GoogleAlertManager Google Alerts fetch pipeline: refresh
-  GoPublic watchlist CSVs, sync Google Alert RSS subscriptions, export fallback RSS
+  Selenium-Actions.Auction watchlist CSVs, sync Google Alert RSS subscriptions, export fallback RSS
   URLs, fetch RSS entries, update README report tables from the focus CSV, inspect
   GitHub Actions runs, and commit/push refreshed alert data and watchlist files.
   Use when the user asks to update GoogleAlertManager alerts, fetch Google Alerts,
@@ -18,8 +18,9 @@ This skill covers the `GoogleAlertManager` repo and its Google Alerts data pipel
 
 - Focus list: `StockID_TWSE_TPEX_focus.csv`
 - Observation list: `StockID_TWSE_TPEX.csv`
-- Watchlist refresh script: `Get觀察名單.py`
+- Watchlist refresh wrapper: `Get觀察名單.py`
 - CLI entrypoint: `cli.py`
+- Skill implementation script: `skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py`
 - RSS fallback map: `config/rss_urls.json`
 - Alert output: `data/alerts/<YYYY-MM-DD>/<stock_id>.json`
 - Report output: `data/reports/<YYYY-MM-DD>/`
@@ -42,37 +43,19 @@ git status --short
 uv run python cli.py update-list
 ```
 
-This runs `Get觀察名單.py`, downloading both CSVs from GoPublic.
+This delegates to the bundled skill script, which downloads both CSVs from Selenium-Actions.Auction. Direct script form:
+
+```bash
+python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py update-list
+```
 
 3. Verify README/list consistency when the user asks about the watchlist:
 
 ```bash
-python3 - <<'PY'
-import csv, re
-from pathlib import Path
-focus=[]
-with open('StockID_TWSE_TPEX_focus.csv', encoding='utf-8-sig') as f:
-    for row in csv.reader(f):
-        if len(row) >= 2 and row[0].strip() and row[0].strip()[0].isdigit():
-            focus.append((row[0].strip(), row[1].strip()))
-readme = Path('README.md').read_text(encoding='utf-8')
-block = re.search(r'<!-- REPORT_TABLE_START -->(.*?)<!-- REPORT_TABLE_END -->', readme, re.S)
-rows=[]
-if block:
-    for line in block.group(1).splitlines():
-        if line.startswith('| ') and not line.startswith('| 名稱') and ':---:' not in line:
-            parts=[p.strip() for p in line.strip('|').split('|')]
-            if len(parts) >= 2:
-                rows.append((parts[1], parts[0]))
-focus_ids=[sid for sid,_ in focus]
-row_ids=[sid for sid,_ in rows]
-print('focus_count', len(focus_ids))
-print('readme_count', len(row_ids))
-print('missing_from_readme', [(sid,n) for sid,n in focus if sid not in row_ids])
-print('extra_in_readme', [(sid,n) for sid,n in rows if sid not in focus_ids])
-print('order_same', focus_ids == row_ids)
-PY
+python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py check-readme
 ```
+
+Use `--json` when structured output is useful.
 
 4. Fetch alert entries:
 
@@ -88,7 +71,13 @@ uv run python cli.py fetch
 uv run python cli.py update-readme
 ```
 
-The current implementation should initialize rows from `load_companies()` / the focus CSV and only fill counts for those IDs.
+This delegates to the bundled skill script. Direct script form:
+
+```bash
+python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py update-readme
+```
+
+The implementation initializes rows from `StockID_TWSE_TPEX_focus.csv` and only fills counts for those IDs.
 
 6. Stage the full data surface that may have changed:
 
@@ -142,7 +131,7 @@ Use `gh` only when authenticated for `wenchiehlee-money/GoogleAlertManager`.
 ## Failure Modes
 
 - Empty fetch result plus auth warning: verify secrets or run `export-rss` locally and commit `config/rss_urls.json`.
-- README contains extra or missing rows: patch `update-readme` to use `load_companies()` as the row source, then regenerate README.
+- README contains extra or missing rows: run `python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py check-readme`, then update README through the same script/CLI.
 - New focus stock has `-` counts: expected until RSS exists and entries are fetched for that ID.
 - Workflow updates README but not CSV: add both `StockID_TWSE_TPEX.csv` and `StockID_TWSE_TPEX_focus.csv` to the workflow commit step.
 - `sync` deletes alerts outside focus list by design; inspect the focus CSV before running it.
