@@ -5,6 +5,11 @@ on:
     # UTC 23,3,7,11,15,19 = Taiwan time 7,11,15,19,23,3（每 4 小時）
     - cron: '0 23,3,7,11,15,19 * * *'
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/run-fetch-now"
 
 concurrency:
   group: data-write
