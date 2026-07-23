@@ -16,6 +16,11 @@ on:
         description: '指定股票代號 (空白則分析全部)'
         required: false
         default: ''
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/run-analyze-2395"
 
 concurrency:
   group: data-write
@@ -95,6 +100,13 @@ jobs:
             FORCE_ARG="--force"
             echo "Night run: full re-analysis (--force)"
           fi
+
+          if [ "${{ github.event_name }}" = "push" ]; then
+            DATE_ARG="--date 2026-07-23"
+            STOCK_ARG="--stock-id 2395"
+            FORCE_ARG="--force"
+            echo "Marker run: analyzing 2395 for 2026-07-23"
+          fi
           
           uv run python cli.py analyze $DATE_ARG $STOCK_ARG $FORCE_ARG
         env:
@@ -117,7 +129,8 @@ jobs:
         run: |
           uv run python cli.py update-readme
           uv run python scripts/generate_gam_health.py
-          git add data/reports/ data/scores.json README.md raw_column_definition_GAM.md StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
+          git add data/reports/ data/scores.json README.md raw_column_definition_GAM.md
+          git add -f StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
           git diff --cached --quiet || git commit -m "chore: analyze alerts and update health $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git pull --rebase -X ours --autostash
           git push
