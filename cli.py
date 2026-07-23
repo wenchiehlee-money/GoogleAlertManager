@@ -23,6 +23,8 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
+MAX_LLM_ENTRY_INPUT = 40
+
 
 @click.group()
 def cli():
@@ -194,8 +196,14 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
             continue
 
         click.echo(f"  分析+評分 {company.stock_id} {company.name}（{len(entries)} 篇）…")
+        llm_entries = entries
+        if len(entries) > MAX_LLM_ENTRY_INPUT:
+            llm_entries = entries[:MAX_LLM_ENTRY_INPUT]
+            click.echo(
+                f"    LLM 輸入限制為最新 {MAX_LLM_ENTRY_INPUT} / {len(entries)} 篇，避免 prompt 過長"
+            )
         try:
-            llm_result, new_scores = llm.analyze_and_score(company, entries)
+            llm_result, new_scores = llm.analyze_and_score(company, llm_entries)
         except Exception as e:
             click.echo(f"    LLM 失敗，跳過：{e}", err=True)
             continue
