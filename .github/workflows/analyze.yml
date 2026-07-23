@@ -16,11 +16,6 @@ on:
         description: '指定股票代號 (空白則分析全部)'
         required: false
         default: ''
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/run-analyze-2395"
 
 concurrency:
   group: data-write
@@ -99,13 +94,6 @@ jobs:
           if [ "${{ github.event.schedule }}" = "55 15 * * *" ]; then
             FORCE_ARG="--force"
             echo "Night run: full re-analysis (--force)"
-          fi
-
-          if [ "${{ github.event_name }}" = "push" ]; then
-            DATE_ARG="--date 2026-07-23"
-            STOCK_ARG="--stock-id 2395"
-            FORCE_ARG="--force"
-            echo "Marker run: analyzing 2395 for 2026-07-23"
           fi
           
           uv run python cli.py analyze $DATE_ARG $STOCK_ARG $FORCE_ARG
