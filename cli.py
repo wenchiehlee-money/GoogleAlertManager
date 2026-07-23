@@ -205,8 +205,13 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
         try:
             llm_result, new_scores = llm.analyze_and_score(company, llm_entries)
         except Exception as e:
-            click.echo(f"    LLM 失敗，跳過：{e}", err=True)
-            continue
+            click.echo(f"    合併分析+評分失敗，改用純分析：{e}", err=True)
+            try:
+                llm_result = llm.analyze_company(company, llm_entries)
+                new_scores = {}
+            except Exception as fallback_error:
+                click.echo(f"    LLM 失敗，跳過：{fallback_error}", err=True)
+                continue
         update_scores(new_scores)
         all_scores = load_scores()  # 重新載入，確保 manual 標記不被覆蓋
 
