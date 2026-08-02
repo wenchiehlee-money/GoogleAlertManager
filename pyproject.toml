@@ -17,12 +17,14 @@ dependencies = [
     "jinja2",
     "nltk>=3.10.0",
     "llm",
-    "cryptography>=49.0.0",
-    "requests>=2.34.0",
+    "cryptography>=50.0.0",
+    "requests>=2.34.2",
     "urllib3>=2.7.0",
     "idna>=3.18",
     "pyasn1>=0.6.4",
     "pygments>=2.20.0",
+    "soupsieve>=2.9.1",
+    "certifi>=2026.7.22",
 ]
 
 [dependency-groups]

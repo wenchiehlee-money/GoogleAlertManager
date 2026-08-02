@@ -356,6 +356,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "apscheduler" },
+    { name = "certifi" },
     { name = "click" },
     { name = "cryptography" },
     { name = "feedparser" },
@@ -369,6 +370,7 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "pyyaml" },
     { name = "requests" },
+    { name = "soupsieve" },
     { name = "urllib3" },
 ]
 
@@ -380,8 +382,9 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "apscheduler", specifier = ">=3.10" },
+    { name = "certifi", specifier = ">=2026.7.22" },
     { name = "click" },
-    { name = "cryptography", specifier = ">=49.0.0" },
+    { name = "cryptography", specifier = ">=50.0.0" },
     { name = "feedparser" },
     { name = "google-alerts" },
     { name = "idna", specifier = ">=3.18" },
@@ -392,7 +395,8 @@ requires-dist = [
     { name = "pygments", specifier = ">=2.20.0" },
     { name = "python-dotenv" },
     { name = "pyyaml" },
-    { name = "requests", specifier = ">=2.34.0" },
+    { name = "requests", specifier = ">=2.34.2" },
+    { name = "soupsieve", specifier = ">=2.9.1" },
     { name = "urllib3", specifier = ">=2.7.0" },
 ]
 
