@@ -86,14 +86,14 @@
           for (let i = localStorage.length - 1; i >= 0; i--) {
             const key = localStorage.key(i);
             if (key && (key.startsWith('docsify.search') || key.includes('docsify.search'))) {
-              localStorage.removeItem(key);
+              try { localStorage.removeItem(key); } catch (e) {}
             }
           }
-          localStorage.setItem(localKey, currentTimestamp);
+          try { localStorage.setItem(localKey, currentTimestamp); } catch (e) {}
         }
       }
     } catch (e) {
-      console.error('Failed to clear docsify search cache:', e);
+      console.warn('Failed to clear docsify search cache:', e);
     }
   </script>
   <script>
@@ -110,7 +110,7 @@
       executeScript: true,
       search: {
         maxAge: 86400000,
-        paths: window.DOCS_PATHS || 'auto',
+        paths: (window.DOCS_PATHS && window.DOCS_PATHS.length > 0) ? window.DOCS_PATHS : 'auto',
         placeholder: '搜尋文章或報告...',
         noData: '找不到符合的文章',
         depth: 6,

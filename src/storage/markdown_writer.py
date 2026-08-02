@@ -293,23 +293,23 @@ def write_bookmarks_page(bookmarks: list[dict]) -> str:
 
 
 def update_search_paths() -> str:
-    """搜尋 data/reports 底下所有的 md 檔案並生成 paths.js 給 Docsify 搜尋引擎使用。"""
+    """搜尋 data/reports 底下精選 md 檔案並生成 paths.js 給 Docsify 搜尋引擎使用（防止請求過多及 LocalStorage 爆掉）。"""
     from src.config import ROOT
     import json
     import time
     
     reports_dir = ROOT / "data" / "reports"
-    paths = ["/"] # 首頁
+    paths = ["/", "/_sidebar", "/data/reports/bookmarks"]
     
     if reports_dir.exists():
-        # 尋找所有 .md 檔案
         for md_file in reports_dir.rglob("*.md"):
-            # 轉換為相對於專案根目錄的相對路徑，並去除 .md 後綴
             rel_path = md_file.relative_to(ROOT).as_posix()
             if rel_path.endswith(".md"):
                 rel_path = rel_path[:-3]
             
-            paths.append("/" + rel_path)
+            # 收錄首頁、側邊欄、精選書籤、每日 summary 以及高品質(top)報告
+            if "summary" in rel_path or "top" in rel_path or "bookmarks" in rel_path:
+                paths.append("/" + rel_path)
             
     # 去除重複，並排序
     paths = sorted(list(set(paths)))
