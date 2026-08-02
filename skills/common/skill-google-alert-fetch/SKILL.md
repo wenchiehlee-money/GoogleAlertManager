@@ -128,6 +128,26 @@ gh run watch <run-id> --exit-status
 
 Use `gh` only when authenticated for `wenchiehlee-money/GoogleAlertManager`.
 
+## Star Rating & Article Scoring Criteria
+
+Article ratings (0-6 stars) drive high-score selection (score ≥ 4 ⭐) and bookmark archiving:
+
+- **6 Stars (🔖 6分書籤/極高價值)**: Articles from **工商時報** (Commercial Times, `ctee.com.tw`) or **經濟日報** (Economic Daily News, `money.udn.com`), exceptional long-term reference articles, and user manual bookmarks (automatically archived to `data/reports/bookmarks.md`).
+- **5 Stars (⭐5 關鍵決策/重大事件)**: Official earnings announcements, M&A, major contracts, leadership changes, major regulatory shifts.
+- **4 Stars (⭐4 重要業務/實質消息)**: Factory expansions, key product line releases, confirmed top-tier client orders, institutional target price upgrades.
+- **3 Stars (⭐3 參考價值/產業趨勢)**: Broader industry trend reports, pre-earnings previews, general technical/chip flow updates.
+- **2 Stars (⭐2 一般性提及/周邊報導)**: Mere mention of stock code/name in list or footer without in-depth analysis.
+- **1 Star (⭐1 幾乎無關/重複資訊)**: Duplicate press releases, outdated news reposts, auto-generated daily stock table snippets.
+- **0 Stars (○ 完全無關/垃圾/廣告)**: Spam/LINE stock group promotions, content farm templates, misidentified stock names.
+
+Special Scoring & Priority Rules:
+1. **Tier-1 Financial Media Boost (6 Stars)**: Articles originating from **工商時報** or **經濟日報** (identified via title, summary, or domain `ctee.com.tw` / `money.udn.com`) are automatically rated **6 stars**.
+2. **Content Farm / Syndicated News**: Reposted press releases without original analysis are capped at 2-3 points.
+3. **Spam & Stock Group Filtering**: Articles containing clickbait/spam phrases ("飆股", "LINE群", "親愛的朋友") are capped at 0-1 points.
+4. **List-Only Mention**: Articles merely listing stock IDs without fundamental analysis receive a maximum of 2 points.
+
+
+
 ## Failure Modes
 
 - Empty fetch result plus auth warning: verify secrets or run `export-rss` locally and commit `config/rss_urls.json`.
@@ -135,3 +155,4 @@ Use `gh` only when authenticated for `wenchiehlee-money/GoogleAlertManager`.
 - New focus stock has `-` counts: expected until RSS exists and entries are fetched for that ID.
 - Workflow updates README but not CSV: add both `StockID_TWSE_TPEX.csv` and `StockID_TWSE_TPEX_focus.csv` to the workflow commit step.
 - `sync` deletes alerts outside focus list by design; inspect the focus CSV before running it.
+
