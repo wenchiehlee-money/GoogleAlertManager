@@ -15,8 +15,14 @@ dependencies = [
     "pyyaml",
     "python-dotenv",
     "jinja2",
-    "nltk",
+    "nltk>=3.10.0",
     "llm",
+    "cryptography>=49.0.0",
+    "requests>=2.34.0",
+    "urllib3>=2.7.0",
+    "idna>=3.18",
+    "pyasn1>=0.6.4",
+    "pygments>=2.20.0",
 ]
 
 [dependency-groups]
