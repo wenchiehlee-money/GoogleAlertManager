@@ -237,12 +237,12 @@ def write_daily_summary(
 
 _BOOKMARKS_TEMPLATE = """# 🔖 精選書籤清單 (6分)
 
-> 這裡收集了所有由使用者手樣標記為 6 分的最有價值資訊。
+> 這裡收集了所有標記為 6 分的最有價值資訊。
 
 {% if bookmarks %}
 | 日期 | 公司 | 標題與連結 | 標籤/理由 | 標記時間 |
 | :---: | :--- | :--- | :--- | :---: |
-{% for b in bookmarks %}| {{ b.published[:10] }} | {{ b.name }} ({{ b.stock_id }}) | [{{ b.title }}]({{ b.link }}) | {{ b.reason or "-" }} | {{ b.marked_at }} |
+{% for b in bookmarks %}| {{ b.formatted_date }} | {{ b.name }} ({{ b.stock_id }}) | [{{ b.title }}]({{ b.link }}) | {{ b.reason or "-" }} | {{ b.marked_at }} |
 {% endfor %}
 {% else %}
 *（目前尚無已標記的書籤文章）*
@@ -250,10 +250,37 @@ _BOOKMARKS_TEMPLATE = """# 🔖 精選書籤清單 (6分)
 """
 
 
+def _parse_pub_date(pub: str) -> str:
+    if not pub:
+        return "0000-00-00"
+    pub_str = str(pub).strip()
+    import re
+    match = re.search(r"\b(\d{4}-\d{2}-\d{2})\b", pub_str)
+    if match:
+        return match.group(1)
+    try:
+        from email.utils import parsedate_to_datetime
+        dt = parsedate_to_datetime(pub_str)
+        return dt.strftime("%Y-%m-%d")
+    except Exception:
+        pass
+    return pub_str[:10]
+
+
 def write_bookmarks_page(bookmarks: list[dict]) -> str:
-    """將所有書籤清單內容寫入至 data/reports/bookmarks.md。"""
+    """將所有書籤清單內容寫入至 data/reports/bookmarks.md（依發布日期由新到舊排序）。"""
+    processed = []
+    for b in bookmarks:
+        item = dict(b)
+        item["formatted_date"] = _parse_pub_date(b.get("published", ""))
+        processed.append(item)
+
     # 依發布日期由新到舊排序
-    sorted_bookmarks = sorted(bookmarks, key=lambda x: x.get("published", ""), reverse=True)
+    sorted_bookmarks = sorted(
+        processed,
+        key=lambda x: (x.get("formatted_date", ""), x.get("marked_at", "")),
+        reverse=True,
+    )
     env = Environment(loader=BaseLoader())
     template = env.from_string(_BOOKMARKS_TEMPLATE)
     content = template.render(bookmarks=sorted_bookmarks)
