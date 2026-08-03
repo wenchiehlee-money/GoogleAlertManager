@@ -1,0 +1,49 @@
+{
+  "ticker": "3376",
+  "company_name": "新日興",
+  "as_of": "2026-08-01 17:32 CST",
+  "rows": [
+    {
+      "stock": "3376",
+      "company": "新日興",
+      "relationship_type": "target",
+      "period": "",
+      "market": "Taiwan",
+      "unit": "百萬台幣",
+      "revenue": "",
+      "revenue_yoy_pct": "",
+      "profit": "",
+      "profit_yoy_pct": "",
+      "gross_margin_pct": "",
+      "pe_range": "",
+      "fx_currency": "",
+      "is_monthly_revenue_only": false,
+      "valuation_price": "160.0",
+      "valuation_currency": "TWD",
+      "valuation_as_of": "2026-07-30",
+      "valuation_ttm_period_end": "2026-03-31",
+      "valuation_forward_period_end": "2026-12-31",
+      "pe_ttm": "250",
+      "forward_pe": "12.25",
+      "ps_ttm": "3.05",
+      "pb": "1.8",
+      "ev_ebitda_ttm": "55.82"
+    },
+    {
+      "stock": "Amphenol",
+      "company": "Amphenol",
+      "relationship_type": "product_peer",
+      "period": "",
+      "market": "Other",
+      "unit": "百萬台幣",
+      "revenue": "",
+      "revenue_yoy_pct": "",
+      "profit": "",
+      "profit_yoy_pct": "",
+      "gross_margin_pct": "",
+      "pe_range": "",
+      "fx_currency": "",
+      "is_monthly_revenue_only": false
+    }
+  ]
+}
