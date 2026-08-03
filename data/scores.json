@@ -280585,7 +280585,7 @@
   },
   "tag:google.com,2013:googlealerts/feed:9255427950073818681": {
     "score": 6,
-    "reason": "來自工商時報，具權威性且內容重要"
+    "reason": "來自工商時報的報導"
   },
   "tag:google.com,2013:googlealerts/feed:4323248673083144793": {
     "score": 6,
@@ -281681,79 +281681,79 @@
   },
   "tag:google.com,2013:googlealerts/feed:2228240284822208541": {
     "score": 3,
-    "reason": "討論記憶體跌價對毛利影響"
+    "reason": "討論股價與毛利彈性，有分析"
   },
   "tag:google.com,2013:googlealerts/feed:16280726825194038119": {
     "score": 1,
-    "reason": "提問形式，無實質資訊"
+    "reason": "個人提問，無實質分析"
   },
   "tag:google.com,2013:googlealerts/feed:8920224648029751980": {
-    "score": 3,
-    "reason": "討論合作關係及潛在風險"
+    "score": 4,
+    "reason": "討論華碩與供應鏈合作及風險"
   },
   "tag:google.com,2013:googlealerts/feed:7681183235728697706": {
     "score": 4,
-    "reason": "營收創新高，法人加碼，重要消息"
+    "reason": "提及華碩營收、伺服器、PC業務"
   },
   "tag:google.com,2013:googlealerts/feed:17697897584253938210": {
-    "score": 2,
-    "reason": "僅列表提及公司名稱"
+    "score": 3,
+    "reason": "提及伺服器代工與平台相關"
   },
   "tag:google.com,2013:googlealerts/feed:5546223973354607974": {
-    "score": 1,
-    "reason": "僅列表中提及公司名稱"
+    "score": 2,
+    "reason": "僅列華碩代號，無深入分析"
   },
   "tag:google.com,2013:googlealerts/feed:111527846399743355": {
-    "score": 3,
-    "reason": "討論產業趨勢與華碩關聯"
+    "score": 4,
+    "reason": "分析華碩與AMD伺服器CPU業務"
   },
   "tag:google.com,2013:googlealerts/feed:2925169793042475172": {
-    "score": 3,
-    "reason": "討論顯卡市占與獲利結構變化"
+    "score": 4,
+    "reason": "分析顯卡市場變化對華碩影響"
   },
   "tag:google.com,2013:googlealerts/feed:3858359197181133497": {
-    "score": 2,
-    "reason": "泛談投資理由，無具體消息"
+    "score": 3,
+    "reason": "討論股價震盪與投資理由"
   },
   "tag:google.com,2013:googlealerts/feed:13914115185315992275": {
     "score": 4,
-    "reason": "討論華碩在AI PC和AI伺服器布局"
+    "reason": "PC產業趨勢與華碩產品布局"
   },
   "tag:google.com,2013:googlealerts/feed:16283849686980117169": {
-    "score": 3,
-    "reason": "討論AI筆電策略及供應鏈"
+    "score": 4,
+    "reason": "討論華碩AI筆電策略與供應鏈"
   },
   "tag:google.com,2013:googlealerts/feed:17040179496047044230": {
     "score": 2,
-    "reason": "ETF成分股提及"
+    "reason": "華碩為成分股，無深入分析"
   },
   "tag:google.com,2013:googlealerts/feed:4846024619565461122": {
     "score": 6,
-    "reason": "來自經濟日報，具權威性"
+    "reason": "來自Economic Daily News的報導"
   },
   "tag:google.com,2013:googlealerts/feed:11146991505405169787": {
     "score": 4,
-    "reason": "討論華碩AI伺服器與AI PC業務"
+    "reason": "分析AI PC及AI伺服器對華碩影響"
   },
   "tag:google.com,2013:googlealerts/feed:10576606869397815821": {
-    "score": 4,
-    "reason": "討論華碩AI PC業務布局"
+    "score": 3,
+    "reason": "PC產業趨勢與華碩產品布局（重複）"
   },
   "tag:google.com,2013:googlealerts/feed:16946424946594088129": {
     "score": 2,
-    "reason": "僅在列表中提及公司名稱"
+    "reason": "僅列代號，無實質分析"
   },
   "tag:google.com,2013:googlealerts/feed:14448875864555157800": {
     "score": 3,
-    "reason": "提及為強勢股，有籌碼面分析"
+    "reason": "提及華碩為強勢股，屬籌碼面"
   },
   "tag:google.com,2013:googlealerts/feed:11339362178330435582": {
-    "score": 1,
-    "reason": "僅列表中提及公司名稱"
+    "score": 2,
+    "reason": "僅列代號，無實質分析"
   },
   "tag:google.com,2013:googlealerts/feed:16284170655269648703": {
-    "score": 1,
-    "reason": "僅列表中提及公司名稱"
+    "score": 2,
+    "reason": "僅列代號，無實質分析"
   },
   "tag:google.com,2013:googlealerts/feed:18377382221524872416": {
     "score": 2,
@@ -282662,5 +282662,29 @@
   "tag:google.com,2013:googlealerts/feed:17774161836435318611": {
     "score": 4,
     "reason": "探討廣達籌資後獲利與產能"
+  },
+  "tag:google.com,2013:googlealerts/feed:6487831894790427641": {
+    "score": 3,
+    "reason": "討論華碩在Mini LED市場策略"
+  },
+  "tag:google.com,2013:googlealerts/feed:983742086736052806": {
+    "score": 3,
+    "reason": "討論華碩顯卡市占變化"
+  },
+  "tag:google.com,2013:googlealerts/feed:4827327508197420577": {
+    "score": 2,
+    "reason": "僅列代號，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:5228904885692774100": {
+    "score": 4,
+    "reason": "華碩AI伺服器與Q2營收創高"
+  },
+  "tag:google.com,2013:googlealerts/feed:489164524825431417": {
+    "score": 1,
+    "reason": "個人提問，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:2657980550143436893": {
+    "score": 3,
+    "reason": "提及華碩配息與觀察方向"
   }
 }
