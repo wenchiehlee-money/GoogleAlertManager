@@ -88,8 +88,10 @@ git add data/alerts/ README.md StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
 For analyze/report workflows also include:
 
 ```bash
-git add data/reports/ data/scores.json README.md StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
+git add data/reports/ data/scores.json paths.js README.md StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
 ```
+
+`data/competitors/{stock_id}_competitors.json` is a separate data surface: it is synced in daily from `My-TW-Coverage` (via that repo's `sync_to_googlealertmanager.yml`, pushed directly to `main`), not written by `cli.py analyze`. `analyze` only reads it if present (`src/analysis/competitors.py`) to add a "競爭同業比較" section and feed peer context into the LLM prompt; a missing file for a given stock is a normal no-op, not an error. Don't stage it manually — it arrives via its own push.
 
 ## Google Alert Subscription Maintenance
 
