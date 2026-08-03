@@ -123,6 +123,7 @@ def fetch():
 def analyze(day_str: str | None, stock_id: str | None, force: bool):
     """針對每家公司進行 LLM 情緒分析 + Gemini 文章評分，產出 Markdown 報告。"""
     from src.analysis import llm
+    from src.analysis.competitors import build_llm_context, build_markdown_table, load_competitor_data
     from src.companies.watchlist import load_companies
     from src.storage.json_store import load_entries_by_stock_id
     from src.storage.markdown_writer import (
@@ -202,12 +203,17 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
             click.echo(
                 f"    LLM 輸入限制為最新 {MAX_LLM_ENTRY_INPUT} / {len(entries)} 篇，避免 prompt 過長"
             )
+
+        competitor_data = load_competitor_data(company.stock_id)
+        competitor_context = build_llm_context(competitor_data)
+        competitor_table = build_markdown_table(competitor_data)
+
         try:
-            llm_result, new_scores = llm.analyze_and_score(company, llm_entries)
+            llm_result, new_scores = llm.analyze_and_score(company, llm_entries, competitor_context)
         except Exception as e:
             click.echo(f"    合併分析+評分失敗，改用純分析：{e}", err=True)
             try:
-                llm_result = llm.analyze_company(company, llm_entries)
+                llm_result = llm.analyze_company(company, llm_entries, competitor_context)
                 new_scores = {}
             except Exception as fallback_error:
                 click.echo(f"    LLM 失敗，跳過：{fallback_error}", err=True)
@@ -219,7 +225,10 @@ def analyze(day_str: str | None, stock_id: str | None, force: bool):
         top_count = sum(1 for s in new_scores.values() if s.get("score", 0) >= 4)
         click.echo(f"    高分文章（≥4）：{top_count} 篇")
 
-        path = write_company_report(company, day, entries, llm_result, generated_at, scores=all_scores)
+        path = write_company_report(
+            company, day, entries, llm_result, generated_at,
+            scores=all_scores, competitor_table=competitor_table,
+        )
         click.echo(f"    -> {path}")
 
         # 立即 commit，確保中途失敗也不遺失

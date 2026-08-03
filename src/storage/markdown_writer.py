@@ -46,7 +46,11 @@ _COMPANY_TEMPLATE = """\
 ## LLM 分析結論
 
 {{ llm_result }}
+{% if competitor_table %}
+## 🏭 競爭同業比較
 
+{{ competitor_table }}
+{% endif %}
 ## 🛠️ 管理與更新
 
 | 方式 | 動作 |
@@ -129,6 +133,7 @@ def write_company_report(
     llm_result: str,
     generated_at: str,
     scores: dict | None = None,
+    competitor_table: str = "",
 ) -> str:
     """輸出完整報告及高品質報告至 data/reports/YYYY-MM-DD/。"""
     from src.analysis.stats import analyze
@@ -188,6 +193,7 @@ def write_company_report(
         general_entries_enriched=general_entries_enriched,
         llm_result=llm_result,
         generated_at=generated_at,
+        competitor_table=competitor_table,
     )
     report_path = company_dir / f"{company.stock_id}.md"
     report_path.write_text(content, encoding="utf-8")

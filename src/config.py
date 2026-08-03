@@ -20,6 +20,7 @@ ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
 ALERTS_DATA_DIR = DATA_DIR / "alerts"
 REPORTS_DIR = DATA_DIR / "reports"
+COMPETITORS_DIR = DATA_DIR / "competitors"
 CONFIG_FILE = ROOT / "config" / "alerts.yaml"
 
 

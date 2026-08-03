@@ -48,17 +48,19 @@ def _score_items(entries: list[dict]) -> str:
 # ── public API ────────────────────────────────────────────────────────────────
 
 
-def analyze_company(company, entries: list[dict]) -> str:
+def analyze_company(company, entries: list[dict], competitor_context: str = "") -> str:
     """對單一公司進行分析，回傳結構化 Markdown 結論。"""
     if not entries:
         return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_"
+
+    competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
 
     prompt = f"""\
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
 {_analysis_items(entries)}
-
-請根據上述文章，用繁體中文提供以下分析：
+{competitor_block}
+請根據上述文章{"與競爭同業財務比較" if competitor_context else ""}，用繁體中文提供以下分析：
 
 ## 1. 近期動態摘要
 （條列式，3-5 點重點）
@@ -144,24 +146,25 @@ def _apply_source_scoring_rules(entries: list[dict], scores: dict[str, dict]) ->
     return scores
 
 
-def analyze_and_score(company, entries: list[dict]) -> tuple[str, dict[str, dict]]:
+def analyze_and_score(company, entries: list[dict], competitor_context: str = "") -> tuple[str, dict[str, dict]]:
     """合併分析與評分為單次 API 呼叫，回傳 (analysis_text, scores)。"""
     if not entries:
         return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_", {}
 
     user_prefs = _get_user_preferences_prompt()
+    competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
 
     prompt = f"""\
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
 {_analysis_items(entries)}
-
+{competitor_block}
 {user_prefs}
 
 請用繁體中文完成以下兩項任務，以 JSON 格式回傳：
 
 ### 任務一：公司分析
-提供 Markdown 格式的分析（存入 "analysis" 欄位）：
+提供 Markdown 格式的分析（存入 "analysis" 欄位），若上方提供了競爭同業財務比較，請在判斷利多/利空與投資建議時納入考量：
 ## 1. 近期動態摘要（條列式，3-5 點重點）
 ## 2. 利多/利空判斷（利多因素、利空因素、整體傾向：利多/利空/中性）
 ## 3. 投資建議方向（買進/持有/觀察/迴避，擇一並說明）
