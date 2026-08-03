@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 
 from src.config import COMPETITORS_DIR
 
@@ -11,6 +12,15 @@ _RELATIONSHIP_LABEL = {
     "target": "本公司",
     "odm_peer": "ODM同業",
 }
+
+# (raw 欄位, 顯示名稱, 是否用 +/- 號)
+_RANKING_METRICS = [
+    ("revenue_yoy_pct_raw", "營收YoY", True),
+    ("profit_yoy_pct_raw", "淨利YoY", True),
+    ("gross_margin_pct_raw", "毛利率", False),
+]
+
+_WIKILINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
 
 
 def load_competitor_data(stock_id: str) -> dict | None:
@@ -47,8 +57,48 @@ def _latest_period_rows(rows: list[dict]) -> list[dict]:
     )
 
 
+def _strip_wikilinks(text: str) -> str:
+    return _WIKILINK_RE.sub(r"\1", text or "")
+
+
+def _rank_by(rows: list[dict], key: str) -> list[dict]:
+    ranked = [r for r in rows if isinstance(r.get(key), (int, float))]
+    return sorted(ranked, key=lambda r: r[key], reverse=True)
+
+
+def build_ranking_highlights(data: dict | None) -> str:
+    """固定式排名重點（不經 LLM，直接用 *_raw 數值計算），指出本公司在每項指標的同業排名。"""
+    if not data or not data.get("rows"):
+        return ""
+    latest_rows = _latest_period_rows(data["rows"])
+    target = next((r for r in latest_rows if r.get("relationship_type") == "target"), None)
+    if target is None or len(latest_rows) < 2:
+        return ""
+
+    lines = []
+    for key, label, signed in _RANKING_METRICS:
+        ranked = _rank_by(latest_rows, key)
+        if len(ranked) < 2:
+            continue
+        rank = next((i for i, r in enumerate(ranked, 1) if r.get("stock") == target.get("stock")), None)
+        if rank is None:
+            continue
+        leader = ranked[0]
+        fmt = (lambda v: f"{v:+.1f}%") if signed else (lambda v: f"{v:.1f}%")
+        if leader.get("stock") == target.get("stock"):
+            lines.append(f"- {label}最高：**本公司**（{fmt(leader[key])}），領先其餘 {len(ranked) - 1} 家同業")
+        else:
+            lines.append(
+                f"- {label}最高：{leader.get('company')}（{fmt(leader[key])}）；"
+                f"本公司排名第 {rank}/{len(ranked)}（{fmt(target[key])}）"
+            )
+    if not lines:
+        return ""
+    return "**同業排名重點**（依最新一期財報數字自動計算，非 LLM 生成）：\n" + "\n".join(lines)
+
+
 def build_llm_context(data: dict | None) -> str:
-    """給 LLM prompt 使用的精簡文字摘要（僅取最新一期）。"""
+    """給 LLM prompt 使用的精簡文字摘要（僅取最新一期），含公司定位描述與排名重點。"""
     if not data or not data.get("rows"):
         return ""
     latest_rows = _latest_period_rows(data["rows"])
@@ -56,6 +106,11 @@ def build_llm_context(data: dict | None) -> str:
         return ""
 
     lines = ["### 競爭同業財務比較（最新一季，資料來源：My-TW-Coverage）："]
+
+    business_summary = _strip_wikilinks(data.get("business_summary", ""))
+    if business_summary:
+        lines.append(f"公司定位與差異化：{business_summary}\n")
+
     for row in latest_rows:
         label = _RELATIONSHIP_LABEL.get(row.get("relationship_type"), row.get("relationship_type", "同業"))
         lines.append(
@@ -64,6 +119,15 @@ def build_llm_context(data: dict | None) -> str:
             f"淨利 {row.get('profit')}（YoY {row.get('profit_yoy_pct')}），"
             f"毛利率 {row.get('gross_margin_pct')}，P/E {row.get('pe_range')}"
         )
+
+    ranking = build_ranking_highlights(data)
+    if ranking:
+        lines.append(f"\n{ranking}")
+
+    lines.append(
+        "\n請針對上述**每一家**同業逐一比較本公司的相對表現（不要只挑1-2家舉例），"
+        "並在分析中明確指出本公司在成長性、獲利能力、估值上相對同業的排名與差異化優劣勢。"
+    )
     lines.append(f"\n（同業資料時間：{data.get('as_of', '')}）")
     return "\n".join(lines)
 
@@ -89,4 +153,9 @@ def build_markdown_table(data: dict | None) -> str:
             f"{row.get('profit_yoy_pct')} | {row.get('gross_margin_pct')} | {row.get('pe_range')} |"
         )
     footer = f"\n*資料來源：My-TW-Coverage，更新時間：{data.get('as_of', '')}*"
-    return "\n".join([header, *body_lines]) + footer
+    table = "\n".join([header, *body_lines]) + footer
+
+    ranking = build_ranking_highlights(data)
+    if ranking:
+        table += f"\n\n{ranking}"
+    return table
