@@ -1,7 +1,14 @@
 {
   "ticker": "6679",
   "company_name": "鈺太",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "10,418 百萬台幣",
+    "enterprise_value": "7,964 百萬台幣"
+  },
+  "business_summary": "鈺太科技 (6679) 為全球 [[MEMS]] 麥克風 IC 設計龍頭廠商，在筆電 MEMS 麥克風市場市占率高達 55-60%。產品涵蓋類比及數位 MEMS 麥克風、數位氣壓計及溫度感測器、音訊放大器、[[DC/DC]] 轉換器及 [[LDO]] 穩壓器。近期收購 [[Nisshinbo Micro Devices]] (NISD) 資產，強化專利佈局並拓展車用、醫療及穿戴裝置市場。",
   "rows": [
     {
       "stock": "6679",

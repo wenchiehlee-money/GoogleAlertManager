@@ -1,7 +1,14 @@
 {
   "ticker": "2313",
   "company_name": "華通",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "204,982 百萬台幣",
+    "enterprise_value": "193,294 百萬台幣"
+  },
+  "business_summary": "華通電腦 (2313) 是台灣領先的高階 [[HDI]] ([[高密度互連]]) 印刷電路板製造商，提供硬板、[[軟板]]及[[軟硬結合板]]一站式服務。主力產品應用於智慧型手機主板、[[低軌衛星]]通訊及[[伺服器]]市場。公司參與客戶早期設計開發，從製造到組裝出貨提供完整服務。",
   "rows": [
     {
       "stock": "2313",

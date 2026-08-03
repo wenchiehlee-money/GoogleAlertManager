@@ -1,7 +1,14 @@
 {
   "ticker": "2392",
   "company_name": "正崴",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "15,551 百萬台幣",
+    "enterprise_value": "67,563 百萬台幣"
+  },
+  "business_summary": "正崴精密 (2392) 是台灣領先的[[連接器]]及電源線組製造商，提供從零組件到複雜組裝的 OEM/ODM 整合解決方案。公司與[[鴻海]]為國內最知名的連接器廠商，產品涵蓋電子連接器、電源線、線束及相關組裝。24 小時研發製造服務，服務全球[[消費電子]]、[[車用電子]]及[[工業]]客戶。",
   "rows": [
     {
       "stock": "2392",

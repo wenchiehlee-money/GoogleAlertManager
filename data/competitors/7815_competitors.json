@@ -1,7 +1,14 @@
 {
   "ticker": "7815",
   "company_name": "新特",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "7,238 百萬台幣",
+    "enterprise_value": "8,530 百萬台幣"
+  },
+  "business_summary": "新特科技 (7815) 為專業[[探針卡]] (Probe Card) 設計、製造及維修廠商，涵蓋 [[PCB]] 佈局及測試系統設計 (含高速電路及精密[[電壓]]量測)。公司為台灣面板及車用液晶顯示器驅動 IC 探針卡領導廠商，產品應用於[[穿戴裝置]]、手機、[[車用面板]]、[[AR]]/[[VR]] 及電視等顯示驅動 IC 測試。",
   "rows": [
     {
       "stock": "7815",

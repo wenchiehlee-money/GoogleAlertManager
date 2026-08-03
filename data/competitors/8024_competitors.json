@@ -1,7 +1,14 @@
 {
   "ticker": "8024",
   "company_name": "佑華",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "623 百萬台幣",
+    "enterprise_value": "450 百萬台幣"
+  },
+  "business_summary": "佑華微電子 (8024，Alpha Microelectronics) 為 [[IC 設計]]公司，主要從事微電子積體電路之研究、設計、製造、測試及銷售。產品涵蓋 [[MCU]] 微控制器、[[USB]] 控制器及相關應用 IC，應用於[[消費電子]]、[[車用電子]]及[[工業控制]]領域。",
   "rows": [
     {
       "stock": "8024",

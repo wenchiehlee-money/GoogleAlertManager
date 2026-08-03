@@ -1,7 +1,14 @@
 {
   "ticker": "3264",
   "company_name": "欣銓",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "79,145 百萬台幣",
+    "enterprise_value": "91,424 百萬台幣"
+  },
+  "business_summary": "欣銓科技 (3264) 是台灣前三大[[晶圓測試]]廠，專業提供晶圓測試 (CP，占營收 73%) 及成品測試 (FT，27%)。公司在車用 [[MCU]] 測試市占率超過八成，為國際車用 IC 大廠指定測試合作夥伴。",
   "rows": [
     {
       "stock": "3264",

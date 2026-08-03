@@ -1,7 +1,14 @@
 {
   "ticker": "4961",
   "company_name": "天鈺",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "17,843 百萬台幣",
+    "enterprise_value": "13,978 百萬台幣"
+  },
+  "business_summary": "天鈺科技 (4961，Fitipower) 為顯示驅動及[[電源管理 IC]]設計公司，產品涵蓋 TFT-LCD/[[AMOLED]] 顯示驅動 IC、[[TDDI]] 觸控顯示整合晶片及面板電源管理 IC。應用於手機、平板、筆電及車用顯示面板。",
   "rows": [
     {
       "stock": "4961",

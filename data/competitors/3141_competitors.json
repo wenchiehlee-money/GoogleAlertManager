@@ -1,7 +1,14 @@
 {
   "ticker": "3141",
   "company_name": "晶宏",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "4,463 百萬台幣",
+    "enterprise_value": "4,407 百萬台幣"
+  },
+  "business_summary": "晶宏半導體 (3141) 是全球[[電子貨架標籤]] (ESL) 驅動晶片龍頭，市占率達 55%，為[[元太科技]]轉投資公司。公司核心產品包括 [[STN 驅動 IC]]、[[電子紙驅動 IC]] (EPD)、[[觸控 IC]] (車用五線電阻式) 及[[馬達驅動 IC]]。產品主要應用於電子書閱讀器、電子貨架標籤、車用儀表、工業控制及醫療設備，外銷占比達 87%。",
   "rows": [
     {
       "stock": "3141",

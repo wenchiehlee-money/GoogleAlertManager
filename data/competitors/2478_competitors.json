@@ -1,7 +1,14 @@
 {
   "ticker": "2478",
   "company_name": "大毅",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "14,915 百萬台幣",
+    "enterprise_value": "14,341 百萬台幣"
+  },
+  "business_summary": "大毅科技 (2478) 是台灣專業的[[厚膜晶片電阻]]製造商，主要產品為[[厚膜晶片電阻器]]、[[厚膜電阻網路]]及[[厚膜積體電路]]。產品應用於[[消費電子]]、[[工業控制]]、[[通訊]]及[[車用電子]]。公司兼營電子零組件進出口貿易及代理業務。",
   "rows": [
     {
       "stock": "2478",

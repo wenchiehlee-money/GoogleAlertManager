@@ -1,7 +1,14 @@
 {
   "ticker": "3437",
   "company_name": "榮創",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,298 百萬台幣",
+    "enterprise_value": "1,418 百萬台幣"
+  },
+  "business_summary": "榮創能源 (3437) 是 [[LED]] 封裝廠，主要產品為 SMD LED、背光模組、感測元件及車用照明，背光產品占營收近九成。日本[[日亞化學]] (Nichia) 持股 11.45% 為策略股東。產品拓展至 [[Mini LED]] 模組、[[VCSEL]] 及紅外線感測 LED。",
   "rows": [
     {
       "stock": "3437",

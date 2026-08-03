@@ -1,7 +1,14 @@
 {
   "ticker": "2379",
   "company_name": "瑞昱",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "378,493 百萬台幣",
+    "enterprise_value": "327,017 百萬台幣"
+  },
+  "business_summary": "[[瑞昱]][[半導體]] ([[瑞昱]] Semiconductor) 成立於 1987 年，總部位於台灣[[新竹]]。公司為全球知名 **IC 設計 (Fabless)** 公司，以「螃蟹」商標聞名 (Crab)。[[瑞昱]]在 **網通 (Network)** 與 **音效 (Audio)** 晶片領域具有全球領導地位。主要產品包括乙太網路控制晶片、Wi-Fi 晶片、藍牙晶片、Switch 控制器、Audio Codec (PC 音效晶片市佔極高)、電視/顯示器控制晶片及其它電腦周邊 IC。近年積極佈局車用乙太網路及 [[AI]] 運算相關晶片。",
   "rows": [
     {
       "stock": "2379",

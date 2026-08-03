@@ -1,7 +1,14 @@
 {
   "ticker": "3545",
   "company_name": "敦泰",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "9,890 百萬台幣",
+    "enterprise_value": "5,167 百萬台幣"
+  },
+  "business_summary": "敦泰電子 (3545) 是全球最大電容式觸控 IC 出貨商之一，產品涵蓋觸控 IC、顯示驅動 IC、[[TDDI]] (觸控顯示整合單晶片) 及指紋辨識 IC。TDDI/IDC 占營收約 70%，中國前四大手機品牌占營收七至八成。產品應用於手機、平板、[[AMOLED]] 面板及車用顯示。",
   "rows": [
     {
       "stock": "3545",

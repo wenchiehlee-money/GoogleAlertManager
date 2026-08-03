@@ -1,7 +1,14 @@
 {
   "ticker": "6819",
   "company_name": "眾智",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,243 百萬台幣",
+    "enterprise_value": "1,123 百萬台幣"
+  },
+  "business_summary": "眾智光電 (6819，Oriental System Technology) 專精於[[熱電堆]] (Thermopile) 感測器及模組、[[NDIR]] 非分散紅外線氣體感測器及光電元件之設計與製造。產品應用於[[溫度量測]]、氣體監控、[[醫療]]及[[工業安全]]。",
   "rows": [
     {
       "stock": "6819",

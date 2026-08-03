@@ -1,7 +1,14 @@
 {
   "ticker": "6921",
   "company_name": "嘉雨思-創",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,901 百萬台幣",
+    "enterprise_value": "1,830 百萬台幣"
+  },
+  "business_summary": "嘉雨思科技 (6921，LeRain Technology) 為 [[LOTES]] 集團關係企業，專注於高速訊號傳輸介面數位類比晶片設計。核心產品為支援 [[USB4.0]]/[[DP2.1]] 主動式連接器之 Re-Driver IC 及 [[PCIe]] Gen 5.0 專用 Re-Driver IC，已獲主要主機板平台採用。亦發展[[資料中心]]光纖光學 IC。",
   "rows": [
     {
       "stock": "6921",

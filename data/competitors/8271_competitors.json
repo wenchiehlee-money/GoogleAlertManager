@@ -1,7 +1,14 @@
 {
   "ticker": "8271",
   "company_name": "宇瞻",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "28,509 百萬台幣",
+    "enterprise_value": "29,358 百萬台幣"
+  },
+  "business_summary": "宇瞻科技 (8271，[[Apacer]]) 為全球記憶體模組及儲存裝置品牌廠商，產品涵蓋工業級及消費級 [[DRAM]] 模組 (DDR4/[[DDR5]]、嵌入式記憶體、伺服器用) 及 [[SSD]] 固態硬碟 ([[PCIe]]/SATA/工業用 USB)。應用於工廠自動化、博弈設備、醫療、交通監控及軍工航太。設有台灣總部及美國、荷蘭、中國、印度、日本辦公室。",
   "rows": [
     {
       "stock": "8271",

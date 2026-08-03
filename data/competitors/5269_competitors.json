@@ -1,7 +1,14 @@
 {
   "ticker": "5269",
   "company_name": "祥碩",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "107,527 百萬台幣",
+    "enterprise_value": "100,153 百萬台幣"
+  },
+  "business_summary": "祥碩科技 (5269，[[ASMedia]]) 為[[華碩]]集團旗下高速 IC 設計公司，專注於 [[USB]] 控制器、[[PCIe]] 橋接晶片、SATA 橋接器及高速 Switch 控制晶片。產品涵蓋 USB 3.2 至 [[USB4]] 40Gbps 主機及裝置端控制器，以及業界領先的 PCIe 橋接方案。客戶涵蓋全球主機板廠及品牌 OEM。",
   "rows": [
     {
       "stock": "5269",

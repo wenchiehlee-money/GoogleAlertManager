@@ -1,7 +1,14 @@
 {
   "ticker": "2383",
   "company_name": "台光電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "1,469,116 百萬台幣",
+    "enterprise_value": "1,472,142 百萬台幣"
+  },
+  "business_summary": "台光電 (2383) 是全球高速/高頻[[銅箔基板]] (CCL) 市占冠軍，為 [[AI 伺服器]]主板材料升級的最大受惠者。公司產品應用於 [[AI 伺服器]]、1.6 Tbps 交換器、[[低軌衛星]]及[[車用雷達]]。為 [[NVIDIA]] H100/GB200/GB300 系列 [[AI 伺服器]] OAM 及 UBB 的主要高階 CCL 供應商 (供應比重超過 80%)，亦為 [[AWS]] 自研 AI 晶片 Trainium 2/3 的 M8 等級高階材料獨家供應商。",
   "rows": [
     {
       "stock": "2383",

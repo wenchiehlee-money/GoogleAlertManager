@@ -1,7 +1,14 @@
 {
   "ticker": "6799",
   "company_name": "來頡",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "3,132 百萬台幣",
+    "enterprise_value": "1,780 百萬台幣"
+  },
+  "business_summary": "來頡科技 (6799，M3 Technology) 為類比 [[IC 設計]]公司，主要產品為應用於 [[Wi-Fi]] 網通設備、[[SSD]] 固態硬碟及 [[USB Type-C]] 之高階[[電源管理 IC]]。產品已通過國際網通大廠驗證，與客戶維持長期穩定合作。",
   "rows": [
     {
       "stock": "6799",

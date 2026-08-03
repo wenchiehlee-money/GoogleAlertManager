@@ -1,7 +1,14 @@
 {
   "ticker": "2317",
   "company_name": "鴻海",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "3,318,455 百萬台幣",
+    "enterprise_value": "3,279,797 百萬台幣"
+  },
+  "business_summary": "[[鴻海]]精密 (2317) 是全球最大的電子代工服務 ([[EMS]]) 廠商，2023 年營收 6.16 兆新台幣。公司已從傳統 EMS 轉型為 [[CDMS]] (Contract Design Manufacturing Service)，結合自有設計能力。最大客戶為 [[Apple]] (iPhone/iPad/Mac 代工)，近年 [[AI 伺服器]]業務快速成長，雲端及網路營收占比首度突破 41%，超越消費電子。主要 AI 客戶包括 [[NVIDIA]] (GB200 伺服器)。",
   "rows": [
     {
       "stock": "2317",

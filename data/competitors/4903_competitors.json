@@ -1,7 +1,14 @@
 {
   "ticker": "4903",
   "company_name": "聯光通",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "3,719 百萬台幣",
+    "enterprise_value": "3,682 百萬台幣"
+  },
+  "business_summary": "聯光通科技 (4903，United Fiber Optic Communication) 為台灣專業光纖光纜製造與系統工程廠商。核心業務涵蓋：光纖光纜製造 (屋外充膠光纜、屋內光纜、微簇型光纜，獲日本 [[Fujikura]] 藤倉技術授權，具備 600 芯以上高密度光纜生產能力)、光通訊工程 (承攬電信基建及軌道通訊系統) 及軌道系統整合 (捷運/台鐵通訊系統、月台門系統、行車監控)。\n\n近年大舉跨足綠能領域，透過子公司台鋼工程進軍大型高壓級[[儲能]]系統專案建置，已承攬台鋼集團旗下多座鋼鐵廠區儲能案場及澎湖尖山發電廠儲能標案，儲能與工程業務佔營收比重快速攀升。",
   "rows": [
     {
       "stock": "4903",

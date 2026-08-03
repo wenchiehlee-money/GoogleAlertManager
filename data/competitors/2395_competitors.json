@@ -1,7 +1,14 @@
 {
   "ticker": "2395",
   "company_name": "研華",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "477,540 百萬台幣",
+    "enterprise_value": "459,332 百萬台幣"
+  },
+  "business_summary": "研華科技 (2395，[[Advantech]]) 成立於 1981 年，總部位於台北，為全球最大[[工業電腦]] ([[IPC]]) 品牌廠暨工業物聯網 ([[IIoT]]) 解決方案領導者。公司產品及服務涵蓋嵌入式電腦、工業自動化、智慧系統、[[Edge AI]] 邊緣運算及雲端服務。\n\n六大事業群：(1) 工業物聯網自動化 (iAutomation)；(2) 嵌入式物聯網 (Embedded-IoT)；(3) 應用運算 (Applied Computing)；(4) 邊緣伺服器 (Edge Server)；(5) 服務物聯網 (iService)；(6) 研華服務+。2025 Q1 營收 173.5 億元，年增 25%，北美及歐洲需求強勁，能源、醫療及半導體為主要成長動能。全球產能布局涵蓋台灣、中國崑山、美國及歐洲。",
   "rows": [
     {
       "stock": "2395",

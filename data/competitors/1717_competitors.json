@@ -1,7 +1,14 @@
 {
   "ticker": "1717",
   "company_name": "長興",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Basic Materials",
+    "industry": "Specialty Chemicals",
+    "market_cap": "64,897 百萬台幣",
+    "enterprise_value": "77,245 百萬台幣"
+  },
+  "business_summary": "長興材料 (1717，Eternal Materials) 為全球[[乾膜光阻]]龍頭 (佔電子材料營收約 64%)，亦為全球前三大[[UV光固化]]材料供應商 (與[[Allnex]]、Sartomer 並列)。電子材料為核心事業，[[乾膜光阻]]供應全球 PCB 及載板廠，客戶涵蓋[[台積電]] (先進封裝)、[[欣興]]、[[臻鼎]]、[[華通]]、[[景碩]]等。近期確認切入[[台積電]] [[CoWoS]]先進封裝用底部填充膠 (underfill)，預計 2026 年量產，有望成為[[Apple]]次世代 iPhone/Mac 處理器封裝主力材料供應商。主要競爭對手為[[杜邦]] ([[DuPont]]) 及[[旭化成]] (Asahi Kasei)。馬來西亞新乾膜光阻產線建設中。上游化工原料部分來自[[台塑集團]]及[[中石化]]。",
   "rows": [
     {
       "stock": "1717",

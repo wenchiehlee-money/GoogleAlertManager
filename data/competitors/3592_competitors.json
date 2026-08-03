@@ -1,7 +1,14 @@
 {
   "ticker": "3592",
   "company_name": "瑞鼎",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "17,105 百萬台幣",
+    "enterprise_value": "9,377 百萬台幣"
+  },
+  "business_summary": "瑞鼎科技 (3592) 是[[友達光電]]投資成立之顯示驅動 IC 設計公司，台灣前十大 IC 設計公司之一，兩岸 [[AMOLED]] 顯示驅動 IC 標竿廠商。2024 年營收 243.8 億元。產品涵蓋 TFT-LCD/[[AMOLED]] 顯示驅動 IC、[[TDDI]]、Timing Controller (TCON)、電源管理 IC 及觸控 IC。",
   "rows": [
     {
       "stock": "3592",

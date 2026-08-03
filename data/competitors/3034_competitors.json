@@ -1,7 +1,14 @@
 {
   "ticker": "3034",
   "company_name": "聯詠",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "307,298 百萬台幣",
+    "enterprise_value": "258,948 百萬台幣"
+  },
+  "business_summary": "[[聯詠]]科技 (3034) 是全球領先的[[驅動 IC]]設計公司，為[[聯華電子]]集團成員。公司主力產品為 [[LCD 驅動 IC]] (占 2024 年營收 60%) 及顯示器 [[SoC]] 晶片 (占 38%)，涵蓋 [[AMOLED]] 驅動 IC、電視 SoC、安防監控及電源管理晶片。公司在大尺寸面板驅動 IC 市佔率全球領先，客戶涵蓋全球主要面板及消費電子品牌。亞太市場占營收 76%。",
   "rows": [
     {
       "stock": "3034",

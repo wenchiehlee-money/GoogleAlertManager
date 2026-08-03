@@ -1,7 +1,14 @@
 {
   "ticker": "6669",
   "company_name": "緯穎",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "2,862,877 百萬台幣",
+    "enterprise_value": "990,294 百萬台幣"
+  },
+  "business_summary": "[[緯穎科技]] (6669) 隸屬於[[緯創]] (3231) 集團，是全球超大型資料中心 (Hyperscale Data Center) 及雲端基礎架構解決方案的領導廠商。緯穎專注於雲端伺服器與儲存設備的設計與製造，並採用原廠直銷 (ODM-Direct) 的創新商業模式，跳過傳統品牌商，直接為雲端運算巨頭客製化設計機架式 (Rack-level) 巨型伺服器系統。身為開放運算計畫 ([[OCP]]) 的白金會員，緯穎致力於打造高運算效能、低總體擁有成本且高能源效率的綠色資料中心。隨著生成式 AI 爆發，緯穎積極搶攻 [[AI 伺服器]]商機，涵蓋 [[GPU]]、[[ASIC]] 等多元架構，穩居全球雲端伺服器市場的核心地位。",
   "rows": [
     {
       "stock": "6669",

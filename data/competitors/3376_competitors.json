@@ -1,7 +1,14 @@
 {
   "ticker": "3376",
   "company_name": "新日興",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "33,087 百萬台幣",
+    "enterprise_value": "29,968 百萬台幣"
+  },
+  "business_summary": "新日興 (3376，Shin Zu Shing / SZS) 為全球精密鉸鏈龍頭，核心客戶[[Apple]] (MacBook鉸鏈/iPad鍵盤/AirPods充電盒)。與[[鴻海]]合資取得[[Apple]]摺疊iPhone (iPhone Fold) 鉸鏈約65%訂單 (另35%由[[Amphenol]]供應)，採液態金屬技術，預計2026下半年推出。另供[[Dell]]、[[Lenovo]]、[[Samsung]]、[[HP]]、[[Microsoft]]。組裝廠含[[廣達]]、[[鴻海]]、[[仁寶]]。另供中國手機品牌水滴型摺疊鉸鏈。核心技術含[[MIM]]金屬射出。",
   "rows": [
     {
       "stock": "3376",

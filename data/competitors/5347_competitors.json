@@ -1,7 +1,14 @@
 {
   "ticker": "5347",
   "company_name": "世界",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "249,819 百萬台幣",
+    "enterprise_value": "274,627 百萬台幣"
+  },
+  "business_summary": "世界先進 (5347，[[Vanguard International Semiconductor]]) 為台灣特殊製程[[晶圓代工]]領導廠商，[[台積電]]持股約 28%。公司擁有五座 8 吋晶圓廠 (台灣及新加坡)，專精高壓、超高壓、[[BCD]]、[[SOI]]、分離式元件、類比、混合訊號及 [[MEMS]] 等特殊製程。近期與 [[NXP]] 合資 VSMC 於新加坡建設 12 吋晶圓廠，預計 2027 年投產。",
   "rows": [
     {
       "stock": "5347",

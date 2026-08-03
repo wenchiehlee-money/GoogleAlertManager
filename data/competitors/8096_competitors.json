@@ -1,7 +1,14 @@
 {
   "ticker": "8096",
   "company_name": "擎亞",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "16,950 百萬台幣",
+    "enterprise_value": "25,617 百萬台幣"
+  },
+  "business_summary": "擎亞電子 (8096，CoAsia Electronics) 為 [[Samsung]] 三星電子在台灣及中國市場之獨家 IC 設計服務夥伴，產品涵蓋 [[HBM]] 高頻寬記憶體、[[CMOS 影像感測器]] (CIS) 及 [[AMOLED]] 面板之代理銷售。公司兼具 IC 設計服務及零組件通路商角色，近期獲晶圓代工廠上百億元記憶體大單。",
   "rows": [
     {
       "stock": "8096",

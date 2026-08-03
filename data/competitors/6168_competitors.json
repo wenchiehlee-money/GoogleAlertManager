@@ -1,7 +1,14 @@
 {
   "ticker": "6168",
   "company_name": "宏齊",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "4,126 百萬台幣",
+    "enterprise_value": "3,188 百萬台幣"
+  },
+  "business_summary": "宏齊科技 (6168，Harvatek) 為專業 [[LED]] 封裝廠，產品涵蓋 SMD LED、[[紅外線]] IR LED、感測元件及車用 LED。公司採用[[氮化鎵]][[磊晶]]技術，擁有 [[SMD]] 封裝產線，產品應用於背光、照明、感測及車用照明。",
   "rows": [
     {
       "stock": "6168",

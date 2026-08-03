@@ -1,7 +1,14 @@
 {
   "ticker": "8102",
   "company_name": "傑霖科技",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,651 百萬台幣",
+    "enterprise_value": "1,396 百萬台幣"
+  },
+  "business_summary": "傑霖科技 (8102) 為專業 [[IC 設計]]公司，專注於影像處理[[SoC]]之研發與銷售。產品包括 FHD/UHD 行車記錄器控制晶片、運動攝影控制晶片及通訊模組 (含 [[VPX]] 全數位射頻收發模組)。應用涵蓋運動攝影記錄、[[生態觀察]]、暗光[[夜視]]及 [[AI]] 智能偵測識別。",
   "rows": [
     {
       "stock": "8102",

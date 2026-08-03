@@ -1,7 +1,14 @@
 {
   "ticker": "8435",
   "company_name": "鉅邁",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Basic Materials",
+    "industry": "Chemicals",
+    "market_cap": "1,834 百萬台幣",
+    "enterprise_value": "1,450 百萬台幣"
+  },
+  "business_summary": "鉅邁企業 (8435，Zimmite Taiwan) 為台灣前三大工業水處理化學品製造商 (市佔約 20%)，提供冷卻水處理、鍋爐水處理、廢水處理、RO 化學品及現場技術監測服務。主要客戶涵蓋半導體/面板廠 ([[台積電]]、[[群創]])、石化業 ([[台灣中油]]、[[台塑]]集團含[[台塑]]、[[南亞塑膠]]、[[台化]])、鋼鐵業 ([[中鋼]])、電力業 ([[台電]])。主要國際競爭對手為[[Ecolab]] (原 Nalco)、[[Veolia]]、[[栗田工業]] (Kurita)。拓展越南及中國市場。",
   "rows": [
     {
       "stock": "8435",

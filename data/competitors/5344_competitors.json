@@ -1,7 +1,14 @@
 {
   "ticker": "5344",
   "company_name": "立衛",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,080 百萬台幣",
+    "enterprise_value": "950 百萬台幣"
+  },
+  "business_summary": "立衛科技 (5344) 為電子零組件通路商，主要從事半導體及電子零件之代理銷售。產品涵蓋 [[IC]]、[[被動元件]]及[[連接器]]等電子零組件，服務台灣及亞太地區[[電子製造]]客戶。產品涵蓋[[功率元件]]及[[感測器]]等。",
   "rows": [
     {
       "stock": "5344",

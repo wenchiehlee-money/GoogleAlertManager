@@ -1,7 +1,14 @@
 {
   "ticker": "3259",
   "company_name": "鑫創",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,087 百萬台幣",
+    "enterprise_value": "991 百萬台幣"
+  },
+  "business_summary": "鑫創電子 (3259) 是 [[IC 設計]]公司，專注於[[快閃記憶體]]控制器 IC 及 [[CMOS]] [[MEMS 麥克風]]。公司為台灣首家推出 CMOS MEMS 麥克風的廠商，並與 [[Toshiba]] (Kioxia) 簽訂交互授權合約。產品涵蓋 USB 3.1 快閃控制器及 eMMC 控制器。",
   "rows": [
     {
       "stock": "3259",

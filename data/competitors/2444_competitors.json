@@ -1,7 +1,14 @@
 {
   "ticker": "2444",
   "company_name": "兆勁",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "1,077 百萬台幣",
+    "enterprise_value": "1,434 百萬台幣"
+  },
+  "business_summary": "兆勁科技 (2444，AboCom) 原名友旺科技，成立於 1995 年，總部位於苗栗竹南科學園區。公司從傳統網通設備代工跨足半導體與光通訊領域，形成三大業務板塊：(1) 網通設備：工業級 [[Wi-Fi 6]] 路由器、[[Powerline]] 電力線通訊及 [[物聯網]] 藍牙感測方案；(2) 記憶體事業：[[DRAM]]、[[SSD]]、MicroSD 記憶體模組製造及 Flash/DRAM 測試代工；(3) 先進半導體：[[VCSEL]] 雷射晶片研發及晶圓再生/減薄服務。\n\n公司半導體營收占比持續提升，記憶體測試代工深度協助國際模組大廠，[[VCSEL]] 晶片鎖定 [[光通訊]]、[[3D 感測]] 及 [[資料中心]] 應用。網通產品成功打入歐洲電信及 [[Amazon]] AI 供應鏈體系。",
   "rows": [
     {
       "stock": "2444",

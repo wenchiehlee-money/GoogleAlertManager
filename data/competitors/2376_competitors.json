@@ -1,7 +1,14 @@
 {
   "ticker": "2376",
   "company_name": "技嘉",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "215,369 百萬台幣",
+    "enterprise_value": "241,304 百萬台幣"
+  },
+  "business_summary": "技嘉科技 (2376，[[Gigabyte Technology]]) 成立於 1986 年，總部位於新北市，為全球知名主機板、顯示卡及 [[AI 伺服器]]品牌廠。2024 年合併營收達 2,651 億元，年增 93.78%，EPS 達 15.03 元。\n\n三大事業核心：(1) 零組件板卡事業：主機板 ([[Intel]]/[[AMD]] 平台)、顯示卡 ([[NVIDIA]]/[[AMD]] GPU)、電競周邊 (AORUS 品牌)，顯卡市場持續供不應求，2025 年市場年增 15-20%；(2) AI 伺服器事業：[[NVIDIA]] 認證伺服器製造商，AI 伺服器已佔伺服器營收八成，積極推動 GB10/B300/GB300 新一代平台，提供 GPU 伺服器、高密度伺服器、單相/雙相浸沒式[[液冷]]及資料中心完整方案；(3) 解決方案：嵌入式運算、e-Mobility [[電動自行車]]及 [[AIoT]] 方案。",
   "rows": [
     {
       "stock": "2376",

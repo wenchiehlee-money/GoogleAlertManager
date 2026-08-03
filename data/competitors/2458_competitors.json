@@ -1,7 +1,14 @@
 {
   "ticker": "2458",
   "company_name": "義隆",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "42,805 百萬台幣",
+    "enterprise_value": "40,322 百萬台幣"
+  },
+  "business_summary": "義隆電子股份有限公司 (Elan Microelectronics Corp.) 成立於 1994 年，總部位於台灣[[新竹]]。公司為全球著名[[人機介面]] (HMI) 晶片設計商，主要產品包括[[觸控板]] (Touchpad) 模組、觸控螢幕 IC 及[[指紋辨識]] IC。義隆在全球筆電觸控板市場市佔率第一，並積極佈局 AI PC 及車用觸控市場。",
   "rows": [
     {
       "stock": "2458",

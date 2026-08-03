@@ -1,7 +1,14 @@
 {
   "ticker": "3260",
   "company_name": "威剛",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "124,419 百萬台幣",
+    "enterprise_value": "160,913 百萬台幣"
+  },
+  "business_summary": "威剛科技 (3260) 是全球第二大 [[DRAM]] 模組廠，旗下擁有 ADATA 消費品牌及 XPG 電競品牌。產品涵蓋 DDR4/[[DDR5]] DRAM 模組、[[SSD]] 固態硬碟、記憶卡及 USB 隨身碟，並拓展至工控及 [[AI 伺服器]]市場。",
   "rows": [
     {
       "stock": "3260",

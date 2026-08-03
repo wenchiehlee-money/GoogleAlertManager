@@ -1,7 +1,14 @@
 {
   "ticker": "7558",
   "company_name": "群利",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Scientific & Technical Instruments",
+    "market_cap": "365 百萬台幣",
+    "enterprise_value": "220 百萬台幣"
+  },
+  "business_summary": "群利科技股份有限公司 (7558) 以自有品牌「[[Bryton]]」揚名國際，為台灣 GPS 智慧自行車碼表領導廠商。公司將高階 GPS 定位、生理數據偵測 (心跳/踏頻) 及智慧聯網技術整合於精巧抗震防雨機台中。Bryton 憑藉極高性價比、直覺軟體生態系與出色續航力，成功挑戰[[Garmin]]等歐美大廠長期壟斷地位，成為多支[[環法自行車賽]]車隊之御用裝備。產品涵蓋 GPS 碼表、雷達尾燈、踏頻/心率感測器。",
   "rows": [
     {
       "stock": "7558",

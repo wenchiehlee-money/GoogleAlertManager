@@ -1,7 +1,14 @@
 {
   "ticker": "2409",
   "company_name": "友達",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "178,489 百萬台幣",
+    "enterprise_value": "248,739 百萬台幣"
+  },
+  "business_summary": "[[友達]]光電 (2409) 是全球主要的[[TFT-LCD]]面板製造商，擁有完整 3.5 代至 8.5 代生產線。2024 年營收組成為 Display 部門 54%、Mobility Solution (車用顯示) 29%、Vertical Solution (智慧顯示/智慧製造/能源) 12%。Display 部門主要生產液晶面板應用於電視、筆電及手機。主要客戶包括 [[Samsung]]、[[海信]]。",
   "rows": [
     {
       "stock": "2409",

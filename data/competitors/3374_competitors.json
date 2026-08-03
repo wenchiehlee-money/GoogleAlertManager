@@ -1,7 +1,14 @@
 {
   "ticker": "3374",
   "company_name": "精材",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "75,846 百萬台幣",
+    "enterprise_value": "73,774 百萬台幣"
+  },
+  "business_summary": "精材科技 (3374) 是[[台積電]]集團旗下[[晶圓級封裝]] ([[WLCSP]]) 子公司，台積電持股逾 30%。公司專注於 [[CMOS 影像感測器]] (CIS) 封裝，並擴展至各式感測元件、[[MEMS]] 封裝及晶圓測試服務。毛利率達 33.74% 為純封測同業之冠。",
   "rows": [
     {
       "stock": "3374",

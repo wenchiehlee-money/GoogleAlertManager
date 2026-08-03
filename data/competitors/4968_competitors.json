@@ -1,7 +1,14 @@
 {
   "ticker": "4968",
   "company_name": "立積",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "8,078 百萬台幣",
+    "enterprise_value": "6,936 百萬台幣"
+  },
+  "business_summary": "立積電子 (4968，[[RichWave]]) 為專業 RF 前端 IC 設計公司，產品涵蓋 [[Wi-Fi]] FEM (前端模組)、[[PA]] 功率放大器、LNA 低雜訊放大器及 RF Switch。產品應用於 Wi-Fi [[路由器]]、[[5G]] 小基站及智慧型手機 RF 元件。為國內少數同時跨足 Wi-Fi 及行動通訊 RF 前端的 IC 設計公司。",
   "rows": [
     {
       "stock": "4968",

@@ -1,7 +1,14 @@
 {
   "ticker": "3317",
   "company_name": "尼克森",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "5,634 百萬台幣",
+    "enterprise_value": "3,772 百萬台幣"
+  },
+  "business_summary": "尼克森微電子 (3317) 是專業電源管理功率元件及類比 IC 設計公司，產品涵蓋 Power [[MOSFET]]、[[碳化矽]] (SiC) [[MOSFET]]、[[氮化鎵]] (GaN) HEMT、SiC 功率模組及電源管理 IC。產品應用於主機板/VGA 卡、電源供應器、車用電子及充電樁。",
   "rows": [
     {
       "stock": "3317",

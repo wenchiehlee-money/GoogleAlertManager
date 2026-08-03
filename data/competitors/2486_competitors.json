@@ -1,7 +1,14 @@
 {
   "ticker": "2486",
   "company_name": "一詮",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "42,929 百萬台幣",
+    "enterprise_value": "48,343 百萬台幣"
+  },
+  "business_summary": "一詮精密 (2486) 是全球最大的 [[LED 導線架]]製造商，產品涵蓋 LED [[導線架]]、IC [[導線架]]、[[陶瓷基板]]及[[散熱]]元件 (均熱片)。LED [[導線架]]客戶包括韓國 [[Samsung]] 及國內 [[億光電子]]。IC [[導線架]]鎖定中國前三大封裝廠認證，均熱片前五大客戶均為全球半導體封裝大廠如 [[日月光投控]]、[[矽品]]、[[Amkor]]。",
   "rows": [
     {
       "stock": "2486",

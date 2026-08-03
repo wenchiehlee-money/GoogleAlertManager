@@ -1,7 +1,14 @@
 {
   "ticker": "6683",
   "company_name": "雍智科技",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "25,794 百萬台幣",
+    "enterprise_value": "24,111 百萬台幣"
+  },
+  "business_summary": "雍智科技 (6683) 是一家專業的 [[IC 測試載板]] (Test Socket/Load Board) 設計及製造商，產品應用於半導體晶片測試製程。公司成立於 2006 年，總部位於新竹竹北，並於上海設有服務據點。產品涵蓋各式 IC 測試座、測試載板及相關治具，服務全球半導體測試客戶。產品涵蓋 [[BGA]]、[[QFN]]、[[CSP]] 等多種封裝型態之測試載板。",
   "rows": [
     {
       "stock": "6683",

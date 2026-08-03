@@ -1,7 +1,14 @@
 {
   "ticker": "8016",
   "company_name": "矽創",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "31,122 百萬台幣",
+    "enterprise_value": "25,758 百萬台幣"
+  },
+  "business_summary": "矽創電子 (8016，Sitronix) 為台灣無晶圓廠 [[IC 設計]]公司，主力產品為[[顯示驅動 IC]] (DDI)，涵蓋 TN、STN 及 TFT 面板技術，應用於工業顯示器、手機及 [[AIoT]] 裝置。子公司發展電源 IC、光學及 [[MEMS]] 感測器、觸控控制 IC 及 MCU 等非 DDI 產品線。",
   "rows": [
     {
       "stock": "8016",

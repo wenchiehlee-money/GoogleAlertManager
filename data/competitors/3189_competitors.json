@@ -1,7 +1,14 @@
 {
   "ticker": "3189",
   "company_name": "景碩",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "303,503 百萬台幣",
+    "enterprise_value": "303,552 百萬台幣"
+  },
+  "business_summary": "景碩科技 (3189) 是全球 [[Flip Chip]] ([[覆晶封裝]]) IC 載板前三大供應商，為[[和碩]]轉投資公司。公司主力產品為 [[BGA]] 基板、[[ABF 載板]]及 [[BT 載板]]，服務全球頂級 IC 設計及 IDM 客戶。子公司[[晶碩]] (6491) 專攻高階 [[ABF 載板]]。生產據點涵蓋台灣新屋、新豐及蘇州。",
   "rows": [
     {
       "stock": "3189",

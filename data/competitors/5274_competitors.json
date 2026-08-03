@@ -1,7 +1,14 @@
 {
   "ticker": "5274",
   "company_name": "信驊",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "536,836 百萬台幣",
+    "enterprise_value": "529,421 百萬台幣"
+  },
+  "business_summary": "信驊科技 (ASPEED) 成立於 2004 年，總部位於台灣[[新竹]]。公司為全球 **BMC (伺服器遠端管理晶片)** 市場龍頭，市佔率高達 70% 以上。核心產品為 **BMC (Baseboard Management Controller)**，是[[資料中心]]及[[伺服器]]不可或缺的關鍵元件。近年亦發展 **Cupola360** (360度全景影像處理晶片) 及 **AV over IP**延伸晶片，拓展 non-BMC 業務。信驊為台灣高價股 (股王等級) 代表，具備極高護城河。",
   "rows": [
     {
       "stock": "5274",

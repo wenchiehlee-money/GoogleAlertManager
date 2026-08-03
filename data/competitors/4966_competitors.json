@@ -1,7 +1,14 @@
 {
   "ticker": "4966",
   "company_name": "譜瑞-KY",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "42,841 百萬台幣",
+    "enterprise_value": "32,538 百萬台幣"
+  },
+  "business_summary": "譜瑞-KY (Parade Technologies) 成立於 2005 年，總部位於美國加州 (註冊於開曼群島)。公司為全球領先的 **高速傳輸介面 IC** (High-speed Interface) 及 **顯示驅動 IC** (Display & Touch) 供應商。譜瑞是 **DisplayPort (DP)** 標準的重要制定者與領導者，專注於 **eDP T-CON (嵌入式時序控制器)**、**High-speed Redriver/Retimer** (USB4, [[PCIe]] Gen4/5, HDMI)。譜瑞在 [[Apple]] 供應鏈中地位穩固，為 iPad/MacBook T-CON 獨家/主要供應商。",
   "rows": [
     {
       "stock": "4966",

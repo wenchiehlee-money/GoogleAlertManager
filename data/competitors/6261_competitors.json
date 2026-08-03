@@ -1,7 +1,14 @@
 {
   "ticker": "6261",
   "company_name": "久元",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "9,393 百萬台幣",
+    "enterprise_value": "8,357 百萬台幣"
+  },
+  "business_summary": "久元電子 (6261) 是一家半導體測試代工及設備製造商，業務涵蓋[[晶圓測試]] (CP)、[[成品測試]] (FT)、[[系統級測試]] (SLT) 及測試程式開發。設備產品包括 IC 測試機、[[分選機]]、[[固晶機]]及 AI 相關檢測設備。2025 上半年測試代工占營收 49%、設備銷售占 39%。主要客戶[[晶元光電]]占營收 23.5%。",
   "rows": [
     {
       "stock": "6261",

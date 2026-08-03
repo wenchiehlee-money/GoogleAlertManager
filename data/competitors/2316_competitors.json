@@ -1,7 +1,14 @@
 {
   "ticker": "2316",
   "company_name": "楠梓電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "24,766 百萬台幣",
+    "enterprise_value": "22,861 百萬台幣"
+  },
+  "business_summary": "楠梓電子 (2316) 是台灣老牌[[PCB]] (PCB) 製造商，主要產品為硬質印刷電路板及 PCB 組裝 (PCBA)。2024 年營收組成為 PCB 占 66.5%、PCBA 占 33.2%。產品應用於[[通訊設備]]、[[工業控制]]、[[車用電子]]及[[消費電子]]。",
   "rows": [
     {
       "stock": "2316",

@@ -1,7 +1,14 @@
 {
   "ticker": "3339",
   "company_name": "泰谷",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,171 百萬台幣",
+    "enterprise_value": "2,055 百萬台幣"
+  },
+  "business_summary": "泰谷光電 (3339) 是專業 III-V 族化合物半導體[[磊晶]]片與 [[LED]] 晶粒製造商，產品涵蓋高亮度 LED 晶片 (藍/綠/紅/黃/紫外光)、功率型晶片及覆晶晶片。近年轉型切入高功率[[雷射二極體]]、[[光通訊]]及[[矽光子]]領域。",
   "rows": [
     {
       "stock": "3339",

@@ -1,7 +1,14 @@
 {
   "ticker": "3234",
   "company_name": "光環",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "10,033 百萬台幣",
+    "enterprise_value": "10,068 百萬台幣"
+  },
+  "business_summary": "光環科技 (3234) 是光學半導體元件製造商，專注於 [[VCSEL]] (垂直共振腔面射型雷射)、FP/DFB 雷射及 PIN/PINTIA [[光偵測器]]之研發與製造。產品應用於[[光纖通訊]]、[[5G]] 基地台、雲端[[資料中心]]及 [[3D 感測]]。近年開發 100G [[VCSEL]] array 瞄準高速光互連需求。",
   "rows": [
     {
       "stock": "3234",

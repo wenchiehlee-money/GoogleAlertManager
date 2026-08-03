@@ -1,7 +1,14 @@
 {
   "ticker": "3596",
   "company_name": "智易",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "37,350 百萬台幣",
+    "enterprise_value": "19,068 百萬台幣"
+  },
+  "business_summary": "智易科技 (3596，[[Arcadyan]]) 隸屬 [[仁寶]] 集團，為全球最大整合式接取設備 (IAD) 製造商暨寬頻網通設備領導廠商。產品涵蓋光纖寬頻 ([[PON]])、[[5G]] 固定無線接入 ([[FWA]])、[[Wi-Fi 7]]/Mesh 路由器及[[車聯網]]雷達等，採用 [[聯發科]] T750 等高階行動通訊晶片平台。\n\n公司成功轉型為直接向全球電信營運商出貨之供應商模式，跳脫傳統純代工框架。5G FWA 設備已成功打入 [[T-Mobile]] (美國) 成為核心供應商，歐洲則供貨予 [[Vodafone]]、[[Deutsche Telekom]] 等一線電信商。生產基地包括中國昆山廠及越南廠，越南廠已佔北美出貨過半比例。",
   "rows": [
     {
       "stock": "3596",

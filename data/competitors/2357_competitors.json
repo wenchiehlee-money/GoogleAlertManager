@@ -1,7 +1,14 @@
 {
   "ticker": "2357",
   "company_name": "華碩",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "565,241 百萬台幣",
+    "enterprise_value": "573,166 百萬台幣"
+  },
+  "business_summary": "華碩電腦 (2357，[[ASUSTeK Computer]]) 成立於 1989 年，總部位於台北，為全球頂級 PC 品牌暨 [[AI 伺服器]]解決方案供應商。公司擁有逾 5,000 名研發人員及遍布全球 98 國超過 1,000 個服務中心，產品線橫跨消費及企業市場。\n\n消費事業涵蓋：筆記型電腦、桌上型電腦、主機板、顯示卡 (ROG/TUF Gaming/ASUS 品牌)、顯示器、路由器及周邊。電競品牌 ROG (Republic of Gamers) 為全球電競市場領導品牌。企業事業方面，華碩積極布局 [[AI 伺服器]]，推出搭載 [[NVIDIA]] GB300 NVL72 之 AI POD 平台，並拓展 [[AIoT]] 工業解決方案、車用電子及醫療機器人等新領域。旗下重要子公司包括[[和碩]] (4938，[[和碩]]，EMS 代工) 及亞旭電腦 (Askey，網通)。",
   "rows": [
     {
       "stock": "2357",

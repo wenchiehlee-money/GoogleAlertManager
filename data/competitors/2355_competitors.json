@@ -1,7 +1,14 @@
 {
   "ticker": "2355",
   "company_name": "敬鵬",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "14,304 百萬台幣",
+    "enterprise_value": "9,710 百萬台幣"
+  },
+  "business_summary": "敬鵬工業 (2355) 是全球第四大[[車用 PCB]] 製造商，全球市占率約 10%。車用板占 2024 年營收約 78%，網通板占 10%，工業應用占 8%。主要客戶為全球前 20 大汽車電子系統大廠，包括 [[Bosch]]、[[Denso]]、[[Continental]]、[[Magna]]、[[Delphi]]、[[Visteon]]。歐洲合作品牌包括 [[VW]]、[[Stellantis]]、[[Toyota]]，美國合作包括 [[Tesla]]、[[Lucid Motors]]、[[Rivian]]、[[GM]]。產能分布台灣 55%、中國 37%、泰國 8%。已取得 AS 9100 航太認證，切入[[低軌衛星]]板。",
   "rows": [
     {
       "stock": "2355",

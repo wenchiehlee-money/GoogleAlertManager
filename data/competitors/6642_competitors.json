@@ -1,7 +1,14 @@
 {
   "ticker": "6642",
   "company_name": "富致",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,618 百萬台幣",
+    "enterprise_value": "2,790 百萬台幣"
+  },
+  "business_summary": "富致科技 (6642) 為全球領先之 [[PPTC]] (高分子正溫度係數) 自復式保險絲設計與製造廠商，專注於過電流與過電壓保護元件開發。產品廣泛應用於[[車用電子]]、[[物聯網]] 智能裝置、工業 4.0 自動化及能源產業，已取得 [[IATF 16949]] 及 [[AEC-Q200]] 車規認證。近年積極拓展複合式保護元件與新一代[[功率半導體]]產品線。",
   "rows": [
     {
       "stock": "6642",

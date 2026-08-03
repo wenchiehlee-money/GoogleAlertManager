@@ -1,7 +1,14 @@
 {
   "ticker": "4951",
   "company_name": "精拓科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,568 百萬台幣",
+    "enterprise_value": "2,038 百萬台幣"
+  },
+  "business_summary": "精拓科技 (4951) 為專業半導體 IC 測試服務廠商，提供晶圓測試 (CP) 及成品測試 (FT) 服務。產品應用於類比 IC、[[電源管理 IC]]、[[驅動 IC]]及混合訊號 IC 測試。服務台灣 IC 設計公司及 IDM 客戶。",
   "rows": [
     {
       "stock": "4951",

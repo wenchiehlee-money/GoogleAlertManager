@@ -1,7 +1,14 @@
 {
   "ticker": "2375",
   "company_name": "凱美",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "11,683 百萬台幣",
+    "enterprise_value": "10,348 百萬台幣"
+  },
+  "business_summary": "凱美電機 (2375) 是台灣專業的[[被動元件]]製造商，自有品牌 JAMICON。2024 年營收組成為[[電阻]]占 47%、[[鋁質電解電容]]占 43%、[[風扇馬達]]占 10%。主要原料為鋁箔、電解紙、導針、鋁殼及導電高分子材料。原料來源涵蓋日本、台灣、中國及馬來西亞。",
   "rows": [
     {
       "stock": "2375",

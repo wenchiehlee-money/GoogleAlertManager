@@ -1,7 +1,14 @@
 {
   "ticker": "6937",
   "company_name": "天虹",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "16,093 百萬台幣",
+    "enterprise_value": "15,893 百萬台幣"
+  },
+  "business_summary": "天虹科技 (6937，Skytech) 為台灣本土半導體設備製造商，核心產品為 Nexda 系列 [[PVD]] (物理氣相沉積) 濺鍍設備，另提供 [[ALD]] (原子層沉積) 設備、Bonder/De-bonder 接合設備、Descum/Plasma Polish 設備及客製化零組件。公司從半導體零組件加工轉型為設備製造，並已進入 [[Apple]] 供應鏈。",
   "rows": [
     {
       "stock": "6937",

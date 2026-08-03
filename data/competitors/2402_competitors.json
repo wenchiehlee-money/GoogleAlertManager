@@ -1,7 +1,14 @@
 {
   "ticker": "2402",
   "company_name": "毅嘉",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "15,315 百萬台幣",
+    "enterprise_value": "17,404 百萬台幣"
+  },
+  "business_summary": "毅嘉科技 (2402) 是台灣專業的[[軟性印刷電路板]] ([[FPC]]) 製造商，提供單面、雙面及多層 FPC。產品應用從手機鏡頭模組、折疊手機延伸至筆電、[[穿戴裝置]]、[[車用電子]]及[[機器人]]。近年客戶包括 [[Google]] 穿戴裝置、[[任天堂]] Switch 2 面板軟板。全球 FPC 市占約 1-2%。",
   "rows": [
     {
       "stock": "2402",

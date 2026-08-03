@@ -1,7 +1,14 @@
 {
   "ticker": "8091",
   "company_name": "翔名",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "10,917 百萬台幣",
+    "enterprise_value": "9,814 百萬台幣"
+  },
+  "business_summary": "翔名科技 (8091) 為半導體設備零組件加工及代理銷售廠商，主要經營半導體及光電設備零組件之製造、代理銷售，並提供裝機、技術諮詢及售後維修。材料類產品營收占比約 81%，擁有 39 項專利，受惠於半導體零組件本土化趨勢。產品涵蓋[[蝕刻]]、[[CVD]] 及[[PVD]]設備零組件。",
   "rows": [
     {
       "stock": "8091",

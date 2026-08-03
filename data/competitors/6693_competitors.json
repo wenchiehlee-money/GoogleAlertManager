@@ -1,7 +1,14 @@
 {
   "ticker": "6693",
   "company_name": "廣閎科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "6,397 百萬台幣",
+    "enterprise_value": "6,172 百萬台幣"
+  },
+  "business_summary": "廣閎科技 (6693，inergy) 為專注節能應用之無晶圓廠 [[IC 設計]]公司，三大核心產品為 Power [[MOSFET]]、[[BLDC]] 無刷直流馬達驅動控制模組及數位類比可程式化 [[SoC]] 散熱風扇驅動 IC。產品應用於顯示卡、PC、伺服器、電信基地台及泵浦，涵蓋[[電池管理系統]] (BMS) 及[[電源管理]]方案。產品亦應用於 [[AI 伺服器]]散熱。",
   "rows": [
     {
       "stock": "6693",

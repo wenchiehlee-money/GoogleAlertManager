@@ -1,7 +1,14 @@
 {
   "ticker": "6695",
   "company_name": "芯鼎",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "4,510 百萬台幣",
+    "enterprise_value": "3,755 百萬台幣"
+  },
+  "business_summary": "芯鼎科技 (6695，iCatch) 為專業數位影像處理晶片 [[IC 設計]]公司，核心產品為影像訊號處理器 ([[ISP]]) 及[[SoC]]，應用於行車記錄器、安防監控、[[ADAS]] 車用鏡頭、駕駛監控系統 (DMS) 及智慧門鎖。已量產基於 ThetaEye [[AI]] 解決方案之 [[4K]] 智慧監控 SoC，並切入[[車用電子]]市場。",
   "rows": [
     {
       "stock": "6695",

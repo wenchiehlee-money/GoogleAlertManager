@@ -1,7 +1,14 @@
 {
   "ticker": "6770",
   "company_name": "力積電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "215,075 百萬台幣",
+    "enterprise_value": "216,572 百萬台幣"
+  },
+  "business_summary": "力積電 (6770，[[PSMC]]) 為全球第八大[[晶圓代工]]廠，擁有四座 12 吋及兩座 8 吋晶圓廠，提供 [[DRAM]] 記憶體製造及邏輯 IC 代工。邏輯 IC 中 [[LCD]] 驅動 IC 占比約 40%，積極發展 [[AI]]、車用及工業產品。近期以 18 億美元將銅鑼廠售予 [[Micron]]，雙方展開 [[HBM]] 代工合作，並與印度 [[Tata Electronics]] 合作建設 12 吋晶圓廠。",
   "rows": [
     {
       "stock": "6770",

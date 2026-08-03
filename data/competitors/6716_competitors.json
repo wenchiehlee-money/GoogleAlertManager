@@ -1,7 +1,14 @@
 {
   "ticker": "6716",
   "company_name": "應廣",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,147 百萬台幣",
+    "enterprise_value": "1,684 百萬台幣"
+  },
+  "business_summary": "應廣科技 (6716) 以自有品牌 [[PADAUK]] 行銷全球之 [[MCU]] 微控制器設計公司，產品應用於互動智慧玩具、遙控器、智慧家電、工業級控制晶片及高效率 [[BLDC]] 無刷直流馬達驅動。公司定位為高性價比 8 位元 MCU 供應商，在消費電子及[[工業控制]]市場具競爭優勢。產品採用 [[CMOS]] 製程設計。",
   "rows": [
     {
       "stock": "6716",

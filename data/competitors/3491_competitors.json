@@ -1,7 +1,14 @@
 {
   "ticker": "3491",
   "company_name": "昇達科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "70,525 百萬台幣",
+    "enterprise_value": "69,891 百萬台幣"
+  },
+  "business_summary": "昇達科技 (3491，[[UMT]]) 為台灣唯一專注微波/毫米波通訊元件之領導廠商，成立於 1999 年。主要產品包括微波濾波器 (Filter)、雙工器 (Diplexer)、多工器及追星天線，技術涵蓋微波至毫米波全頻段。公司為全球[[低軌衛星]]產業鏈關鍵供應商，低軌衛星營收佔比已突破 80%。\n\n主要客戶涵蓋全球三大低軌衛星營運商：[[SpaceX]] 星鏈計畫 ([[Starlink]]) 為最大客戶，供應地面站與衛星本體微波元件；與 [[Amazon]] 柯伊伯計畫 ([[Kuiper]]) 簽訂四年合約，多數產品具獨家供應資格；亦供貨予 [[Eutelsat OneWeb]]。此外，產品應用於 [[5G]]/4G 微波回傳網路 (Backhaul)，供貨予 [[Ericsson]]、[[Nokia]] 及 [[Ceragon]] 等電信設備商。",
   "rows": [
     {
       "stock": "3491",

@@ -1,7 +1,14 @@
 {
   "ticker": "3552",
   "company_name": "同致",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Consumer Cyclical",
+    "industry": "Auto Parts",
+    "market_cap": "4,328 百萬台幣",
+    "enterprise_value": "3,317 百萬台幣"
+  },
+  "business_summary": "同致電子 (3552，TungThih Electronic) 為亞洲最大、全球第三大 (僅次於[[Bosch]]及[[Valeo]]) 停車感測器供應商，以 Tier 1 身分直供全球 48 家以上 OEM、行銷逾 50 國。核心產品涵蓋[[超音波感測器]]、車用攝影機、環景影像系統 ([[AVM]])、[[自動停車]] ([[APA]]) 及 77GHz 雷達。中國市場佔營收逾 70%，主要客戶為[[長安汽車]]、[[上汽通用]]、[[東南汽車]]、[[東風日產]]。國際客戶涵蓋[[Tesla]]、[[Ford]]、[[General Motors]]、[[Stellantis]]。積極拓展印度及美國市場。",
   "rows": [
     {
       "stock": "3552",

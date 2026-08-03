@@ -1,7 +1,14 @@
 {
   "ticker": "2428",
   "company_name": "興勤",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "26,776 百萬台幣",
+    "enterprise_value": "22,279 百萬台幣"
+  },
+  "business_summary": "興勤電子 (2428) 是台灣專業的電子保護元件製造商，產品涵蓋 [[NTC 熱敏電阻]]、[[PTC 熱敏電阻]]、[[壓敏電阻]]、[[氣體放電管]]及[[溫度感測器]]。公司為少數擁有正/負溫度係數熱敏電阻完整產品線的廠商，深耕[[車用電子]]市場多年，車用營收占比持續攀升。產品應用於電池模組、驅動系統、三電系統及座椅/車窗。",
   "rows": [
     {
       "stock": "2428",

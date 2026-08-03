@@ -1,7 +1,14 @@
 {
   "ticker": "2368",
   "company_name": "金像電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "368,421 百萬台幣",
+    "enterprise_value": "362,120 百萬台幣"
+  },
+  "business_summary": "金像電子 (2368) 是台灣專業的多層[[PCB]] (PCB) 製造商，主力產品為高層數[[伺服器]]主板、[[UBB]] (統一基板)、背板及多層板。公司聚焦伺服器與網通 PCB，受惠於 [[AI 伺服器]]對高層數複雜 PCB 的強勁需求。",
   "rows": [
     {
       "stock": "2368",

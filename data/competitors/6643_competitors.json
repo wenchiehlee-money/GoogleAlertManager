@@ -1,7 +1,14 @@
 {
   "ticker": "6643",
   "company_name": "M31",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "15,907 百萬台幣",
+    "enterprise_value": "15,370 百萬台幣"
+  },
+  "business_summary": "M31 (6643，円星科技) 為全球領先之半導體[[矽智財]] ([[Silicon IP]]) 設計與授權公司，主要產品涵蓋高速介面 IP ([[USB]]、[[PCIe]]、[[MIPI]]、[[SerDes]]、[[DDR]])、基礎元件 IP (標準元件庫、[[SRAM]] Compiler、GPIO) 及類比 IP。已為全球超過 150 家 IC 設計公司提供設計方案，榮獲[[台積電]]年度最佳特殊製程 IP 夥伴獎。",
   "rows": [
     {
       "stock": "6643",

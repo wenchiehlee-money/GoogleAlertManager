@@ -1,7 +1,14 @@
 {
   "ticker": "1590",
   "company_name": "亞德客-KY",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Industrials",
+    "industry": "Specialty Industrial Machinery",
+    "market_cap": "265,000 百萬台幣",
+    "enterprise_value": "258,149 百萬台幣"
+  },
+  "business_summary": "亞德客國際 (1590，AirTAC，亞德客-KY) 為全球知名[[氣動元件]]製造商，中國市佔約 30%。競爭對手為[[SMC]] (日本) 與[[Festo]] (德國)。客戶含[[鴻海]]、[[Luxshare]] ([[Apple]]供應鏈)、[[CATL]]、[[BYD]]。另拓展[[線性滑軌]]。密封件來自[[NOK]]。",
   "rows": [
     {
       "stock": "1590",

@@ -1,7 +1,14 @@
 {
   "ticker": "4971",
   "company_name": "IET-KY",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "14,035 百萬台幣",
+    "enterprise_value": "13,972 百萬台幣"
+  },
+  "business_summary": "英特磊 (IET-KY, [[Intel]]liEPI) 成立於 1999 年，總部位於美國德州 (註冊於開曼群島)。公司專注於 **分子束[[磊晶]] (MBE)** 技術，生產 **III-V 族化合物半導體[[磊晶]]片** (Epi Wafer)。與常見的 MO[[CVD]] 不同，MBE 技術具備原子級精確度，特別適合高頻、高效能元件。產品應用涵蓋 **[[磷化銦]] (InP)** ([[光通訊]]、HBT 射頻)、**砷化鎵 (GaAs)** (RF、pHEMT) 及 **銻化鎵 (GaSb)** (紅外線偵測、國防)。近期受惠於 **AI [[資料中心]]** 對 800G 光收發模組需求，InP 相關[[磊晶]]片成長強勁。",
   "rows": [
     {
       "stock": "4971",

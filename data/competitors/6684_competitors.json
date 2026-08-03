@@ -1,7 +1,14 @@
 {
   "ticker": "6684",
   "company_name": "安格",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "2,005 百萬台幣",
+    "enterprise_value": "1,580 百萬台幣"
+  },
+  "business_summary": "安格科技 (6684) 是一家專業的 [[IC 設計]]公司，由矽谷及台灣半導體研發菁英於 2010 年創立。公司核心技術為超高速[[實體層介面]] (PHY) IP 設計及相關應用 IC。產品包括高速傳輸介面 IC、[[USB]] 控制器及相關 IP 授權，應用於消費電子、[[工業控制]]及通訊設備。產品支援 [[USB4]]、[[PCIe]] 等高速傳輸介面規格。",
   "rows": [
     {
       "stock": "6684",

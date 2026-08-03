@@ -1,7 +1,14 @@
 {
   "ticker": "6789",
   "company_name": "采鈺",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "127,479 百萬台幣",
+    "enterprise_value": "117,015 百萬台幣"
+  },
+  "business_summary": "采鈺科技 (6789，[[VisEra]]) 為[[台積電]]旗下子公司，全球彩色濾光片製造市占率約 45-50%，居世界第一。主要從事 [[CMOS 影像感測器]] (CIS) 之彩色濾光片及微透鏡陣列之設計、製造與封測，技術支援像素尺寸從 0.61μm 至 30μm。應用涵蓋手機 (占營收 74%)、車用 (16%) 及安防監控 (10%)。",
   "rows": [
     {
       "stock": "6789",

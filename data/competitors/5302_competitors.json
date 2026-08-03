@@ -1,7 +1,14 @@
 {
   "ticker": "5302",
   "company_name": "太欣",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,581 百萬台幣",
+    "enterprise_value": "2,018 百萬台幣"
+  },
+  "business_summary": "太欣半導體 (5302，Syntek) 為消費性 [[IC 設計]]公司，專精於影像處理與數位影像擷取錄影之[[SoC]]，結合無線通訊技術。產品應用於[[行車記錄器]]、數位攝影機及網路[[安防監控]]。公司亦發展[[微控制器]] IC 及數位電腦耳機 IC。競爭同業包括 [[聯詠]]、[[凌通]]。",
   "rows": [
     {
       "stock": "5302",

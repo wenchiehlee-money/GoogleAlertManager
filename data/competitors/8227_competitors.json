@@ -1,7 +1,14 @@
 {
   "ticker": "8227",
   "company_name": "巨有科技",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "5,299 百萬台幣",
+    "enterprise_value": "4,317 百萬台幣"
+  },
+  "business_summary": "巨有科技 (8227，PGC) 為[[台積電]]設計中心聯盟 (DCA) 認證成員，專注於 [[ASIC]] 客製化晶片設計服務及 [[SoC]] 整合服務。提供 IP 授權、APR 設計、SoC 整合、ASIC Turnkey 及 CyberShuttle 服務，支援台積電 6nm 至 3nm 先進製程及 [[CoWoS]] 先進封裝。與[[台積電]]、[[日月光投控]]及 [[Synopsys]] 合作逾 30 年，每年完成超過 100 個專案。",
   "rows": [
     {
       "stock": "8227",

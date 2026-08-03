@@ -1,7 +1,14 @@
 {
   "ticker": "6174",
   "company_name": "安��",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "1,895 百萬台幣",
+    "enterprise_value": "2,032 百萬台幣"
+  },
+  "business_summary": "安碁科技 (6174，[[AKER Technology]]) 成立於 1990 年，為專業頻率控制元件製造商，產品廣泛應用於[[電動車]]、[[5G]] 及[[工業電腦]]等領域。\n\n主要產品：(1) 石英晶體 (Crystal) — 各頻率石英諧振器；(2) 石英振盪器 (Oscillator) — 溫度補償振盪器 (TCXO)、壓控振盪器 (VCXO)、音叉型振盪器；(3) 石英濾波器。公司採「少量多樣」客製化策略，專注技術門檻較高的利基市場。產品應用以車用電子為最大宗 (占比逾五成)，其餘涵蓋工業控制、電腦消費性產品及[[網通]]設備，銷售遍及兩岸、歐美。同業競爭對手包括[[TXC]] (晶技) 及[[Siward]] (希華)。",
   "rows": [
     {
       "stock": "6174",

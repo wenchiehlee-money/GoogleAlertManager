@@ -1,7 +1,14 @@
 {
   "ticker": "6451",
   "company_name": "訊芯-KY",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "36,365 百萬台幣",
+    "enterprise_value": "39,322 百萬台幣"
+  },
+  "business_summary": "訊芯科技 (6451，ShunSin Technology，KY) 為半導體組裝及測試服務商，專注於光通訊及射頻元件之後段封裝與測試。產品涵蓋光收發模組封裝、[[VCSEL]] 封裝及 RF 模組組裝，應用於[[光通訊]]、[[5G]] 基地台及[[資料中心]]。技術涵蓋[[COB]] (Chip on Board) 及 [[SMT]] 封裝。",
   "rows": [
     {
       "stock": "6451",

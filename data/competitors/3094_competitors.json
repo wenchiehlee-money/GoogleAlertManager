@@ -1,7 +1,14 @@
 {
   "ticker": "3094",
   "company_name": "聯傑",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,556 百萬台幣",
+    "enterprise_value": "1,913 百萬台幣"
+  },
+  "business_summary": "聯傑國際 (3094) 是[[聯華電子]]集團轉投資的專業 [[IC 設計]]公司，以 [[Ethernet]] 乙太網路控制晶片起家 (原名 DAVICOM)。公司核心產品為嵌入式乙太網路控制器 IC，廣泛應用於[[網路設備]]、[[工業控制]]、[[物聯網]]裝置及[[嵌入式系統]]。產品涵蓋 Fast Ethernet MAC/PHY 整合晶片、網路介面控制器及相關周邊 IC。國際競爭同業包括 [[Microchip]]、[[瑞昱]]。",
   "rows": [
     {
       "stock": "3094",

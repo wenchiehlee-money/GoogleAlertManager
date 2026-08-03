@@ -1,7 +1,14 @@
 {
   "ticker": "3122",
   "company_name": "笙泉",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "938 百萬台幣",
+    "enterprise_value": "902 百萬台幣"
+  },
+  "business_summary": "笙泉科技 (3122) 是一家專業的 [[MCU]] (微控制器) [[IC 設計]]公司，專注於 8 位元及 32 位元 [[USB MCU]] 產品研發。公司產品廣泛應用於[[工業控制]]、家電、機電控制、電源管理、電腦周邊及健康護理等領域。近年積極拓展高附加價值產品，包括[[車用通訊]] IC、[[BLDC 馬達控制]]、高精度 [[ADC]] 感測及超低功耗 MCU。國內 MCU 競爭同業包括 [[盛群]]、[[松翰]]、[[義隆]]。",
   "rows": [
     {
       "stock": "3122",

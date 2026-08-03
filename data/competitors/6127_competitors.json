@@ -1,7 +1,14 @@
 {
   "ticker": "6127",
   "company_name": "九豪",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "4,918 百萬台幣",
+    "enterprise_value": "6,702 百萬台幣"
+  },
+  "business_summary": "九豪精密陶瓷 (6127) 為半導體及電子產業用高精度[[陶瓷基板]]及陶瓷零組件製造商。主要產品涵蓋[[氧化鋁]]陶瓷基板、[[氮化鋁]]基板及各式精密[[陶瓷]]零件，應用於 [[IC 封裝]]、[[LED]] 散熱基板、半導體設備零組件及電子[[感測器]]。",
   "rows": [
     {
       "stock": "6127",

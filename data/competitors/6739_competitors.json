@@ -1,7 +1,14 @@
 {
   "ticker": "6739",
   "company_name": "竹陞科技",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "19,717 百萬台幣",
+    "enterprise_value": "18,953 百萬台幣"
+  },
+  "business_summary": "竹陞科技 (6739) 定位為 [[AIoT]] 智慧製造解決方案領導者，提供高科技產業製程設備之智能自動操作系統、遠程操控系統、製程數據採集系統及邊緣運算智能伺服器等軟硬體整合方案。半導體客戶營收占比逾九成，其中晶圓廠與記憶體廠各佔約一半。",
   "rows": [
     {
       "stock": "6739",

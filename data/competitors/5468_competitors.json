@@ -1,7 +1,14 @@
 {
   "ticker": "5468",
   "company_name": "凱鈺",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,343 百萬台幣",
+    "enterprise_value": "1,374 百萬台幣"
+  },
+  "business_summary": "凱鈺科技 (5468，[[京元電子]]) 為專業半導體 IC 測試服務公司，提供晶圓測試 (CP)、成品測試 (FT) 及系統級測試 (SLT)。公司為台灣主要的獨立 IC 測試廠之一，測試技術涵蓋邏輯 IC、混合訊號 IC 及 [[RF IC]]。服務全球 IC 設計公司及 IDM 客戶。",
   "rows": [
     {
       "stock": "5468",

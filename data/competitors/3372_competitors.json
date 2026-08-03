@@ -1,7 +1,14 @@
 {
   "ticker": "3372",
   "company_name": "典範",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,721 百萬台幣",
+    "enterprise_value": "2,606 百萬台幣"
+  },
+  "business_summary": "典範半導體 (3372) 是半導體 IC 封裝與測試公司，1998 年成立於高雄。產品包括 TSOP、SOP、SSOP/TSSOP、[[QFN]]/DFN、TQFP 等[[導線架]]封裝，以及 LGA、VLGA、microSD/SD 卡等基板型封裝。",
   "rows": [
     {
       "stock": "3372",

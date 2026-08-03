@@ -1,7 +1,14 @@
 {
   "ticker": "3221",
   "company_name": "台嘉碩",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "4,470 百萬台幣",
+    "enterprise_value": "4,287 百萬台幣"
+  },
+  "business_summary": "台嘉碩科技 (3221，[[Tai-Saw]]) 為台灣唯一具備表面聲波 ([[SAW]]) 元件全製程能力之頻率元件製造商，核心技術團隊源自 [[Motorola]] 電子通訊零件事業部。主要產品涵蓋射頻 SAW 濾波器、中頻 SAW 濾波器、SAW 共振器、SAW 雙工器及體聲波 ([[BAW]]) 石英元件 (石英振盪器、TCXO 溫補振盪器等)。\n\n公司為全球非手機用 SAW 濾波器市佔率領先廠商，產品廣泛應用於 [[Wi-Fi]] 網通設備、車用電子 (TPMS 胎壓偵測、Keyless 無鑰匙系統、[[GNSS]] 衛星定位)、[[低軌衛星]]地面接收站及 [[AI 伺服器]]光通訊模組。車用電子營收佔比已達三成以上。子公司嘉碩生醫跨足生醫檢測晶片，轉投資韓國 Sawnics 強化高階 BAW 濾波器技術。",
   "rows": [
     {
       "stock": "3221",

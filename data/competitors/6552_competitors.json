@@ -1,7 +1,14 @@
 {
   "ticker": "6552",
   "company_name": "易華電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,984 百萬台幣",
+    "enterprise_value": "2,707 百萬台幣"
+  },
+  "business_summary": "易華電子 (6552，ECHEM) 為半導體封裝用[[軟性基板]]製造商，主要產品為封裝用[[聚醯亞胺]] (PI) 軟性基板 (Flex Substrate)，應用於 IC 封裝製程中之 [[COF]] (Chip on Film) 及 [[TAB]] (Tape Automated Bonding)。產品為顯示驅動 IC 封裝關鍵材料。",
   "rows": [
     {
       "stock": "6552",

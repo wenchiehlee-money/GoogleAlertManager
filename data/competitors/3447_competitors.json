@@ -1,7 +1,14 @@
 {
   "ticker": "3447",
   "company_name": "展達",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "2,068 百萬台幣",
+    "enterprise_value": "1,407 百萬台幣"
+  },
+  "business_summary": "展達通訊 (3447，[[XAVi Technologies]]) 隸屬 [[群光]] (Chicony) 集團，為專業寬頻網路終端設備製造商。主要產品涵蓋光纖 [[PON]] 寬頻閘道器、[[G.fast]] 用戶端設備 (CPE)、[[Wi-Fi]] 無線路由器及 [[AIoT]] 智慧家庭裝置 (如網路攝影機、物聯網感測器)。\n\n公司具備完整軟硬體自主研發能力，產品銷售模式包括 OEM/ODM 代工及自有品牌，主攻歐美電信營運商及中小企業網路市場。近年積極開發 AI 網通產品及資安等級網路設備，拓展軍工級高規格通訊市場。生產基地設於中國蘇州及泰國，有效分散地緣政治風險。",
   "rows": [
     {
       "stock": "3447",

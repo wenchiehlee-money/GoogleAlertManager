@@ -1,7 +1,14 @@
 {
   "ticker": "3150",
   "company_name": "鈺寶-創",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "661 百萬台幣",
+    "enterprise_value": "333 百萬台幣"
+  },
+  "business_summary": "鈺寶科技 (3150) 是一家專業的 [[IC 設計]]公司，專注於高效能低功耗[[無線音訊傳輸]]晶片及模組設計。公司核心技術為無線數位音視訊傳輸，採用 [[CMOS]] 製程。競爭同業包括 [[Qualcomm]] (aptX) 及 [[Airoha]]，產品廣泛應用於[[無線耳機]]、[[無線音響]]、[[無線麥克風]]及家電音響設備。公司為全球無線音訊傳輸技術的領導廠商之一。",
   "rows": [
     {
       "stock": "3150",

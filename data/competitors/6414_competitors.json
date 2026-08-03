@@ -1,7 +1,14 @@
 {
   "ticker": "6414",
   "company_name": "樺漢",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "63,679 百萬台幣",
+    "enterprise_value": "110,505 百萬台幣"
+  },
+  "business_summary": "樺漢科技股份有限公司 (6414，Ennoconn) 是[[鴻海]]集團旗下的[[工業電腦]]([[IPC]])與系統整合大廠。樺漢有別於傳統[[IPC]]硬體製造，近年成功轉型為提供「智慧解決方案即服務」(ESaaS)的雲地整合服務商。公司業務涵蓋工業[[物聯網]](IIoT)、智慧城市、智慧零售及智慧工廠之軟硬體整合與雲端運算服務。憑藉[[鴻海]]集團的龐大製造資源與國際併購策略(如德國Kontron)，並結盟大股東[[Google]]的雲端技術(GCP)，樺漢目前已是全球智慧零售與邊緣運算系統整合的領導者。",
   "rows": [
     {
       "stock": "6414",

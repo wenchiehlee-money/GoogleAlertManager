@@ -1,7 +1,14 @@
 {
   "ticker": "5388",
   "company_name": "中磊",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "24,547 百萬台幣",
+    "enterprise_value": "27,652 百萬台幣"
+  },
+  "business_summary": "中磊電子 (5388，[[Sercomm]]) 為全球領導級寬頻通訊設備製造商，成立於 1991 年，總部位於台北。公司以「直供模式」(Direct Sales) 直接服務全球電信營運商，跳過品牌中間商以提升毛利率，目前幾乎全數產品均採直供模式出貨。\n\n主力產品涵蓋光纖接取設備 ([[PON]])、有線電視寬頻設備 ([[DOCSIS]] 3.1/4.0)、[[5G]] FWA 固定無線接入 CPE、小型基地台 (Small Cell) 及 [[物聯網]] 智慧家庭方案。產能布局高達七成已移轉至菲律賓廠區，並於印度及墨西哥新設工廠，以因應去中化地緣政治需求。2025 年寬頻 CPE 佔營收約 59%、企業級產品約 23%、基礎設施與 IoT 約 17%。",
   "rows": [
     {
       "stock": "5388",

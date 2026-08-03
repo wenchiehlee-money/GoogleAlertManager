@@ -1,7 +1,14 @@
 {
   "ticker": "3131",
   "company_name": "弘塑",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "63,402 百萬台幣",
+    "enterprise_value": "60,067 百萬台幣"
+  },
+  "business_summary": "弘塑科技 (3131) 是台灣半導體[[濕式製程]]設備領導廠商，產品涵蓋單晶圓旋轉設備、批次式槽酸設備及複合式製程設備，應用於清潔、[[蝕刻]]、顯影及光阻剝離。公司在 [[CoWoS]] 等 2.5D/3D 先進封裝製程中扮演關鍵角色，受惠於 [[AI]] 晶片帶動的先進封裝擴產，2025 年設備出貨量較前一年成長 70-100%。主要客戶包括 [[台積電]]、[[聯發科]]、[[日月光投控]]。",
   "rows": [
     {
       "stock": "3131",

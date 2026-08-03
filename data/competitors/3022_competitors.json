@@ -1,7 +1,14 @@
 {
   "ticker": "3022",
   "company_name": "威強電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "15,541 百萬台幣",
+    "enterprise_value": "9,908 百萬台幣"
+  },
+  "business_summary": "威強電 (3022，[[IEI Integration]]) 為台灣領導級工業電腦 (IPC) 廠商，母公司為 [[威聯通]] (QNAP)。產品涵蓋工業自動化、網通設備及智慧醫療三大領域。\n\n醫療領域深耕多年，營收佔比接近四成，提供醫療級 Panel PC、護理推車電腦、內視鏡影像系統及生理訊號匣道等產品，取得 ISO 13485 及各國醫療器材認證。近年積極布局 Edge AI 邊緣運算，與 [[Intel]] 合作緊密，推出 AI 推論系統。網通產品 (Puzzle Series) 亦為重要營收來源，應用於 SD-WAN、防火牆與 uCPE，目前與大型 ODM 客戶合作開發 [[Wi-Fi 7]] 高階防火牆。",
   "rows": [
     {
       "stock": "3022",

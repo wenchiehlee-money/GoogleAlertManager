@@ -1,7 +1,14 @@
 {
   "ticker": "3289",
   "company_name": "宜特",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "11,544 百萬台幣",
+    "enterprise_value": "12,992 百萬台幣"
+  },
+  "business_summary": "宜特科技 (3289) 是第三方半導體驗證與分析實驗室，提供故障分析 (FA)、可靠度測試 (RT)、材料分析 (MA)、訊號完整性測試及 sub-2nm [[ALD]] 材料驗證服務。公司服務涵蓋 [[CoWoS]]、[[HBM]] 等先進封裝製程驗證。",
   "rows": [
     {
       "stock": "3289",

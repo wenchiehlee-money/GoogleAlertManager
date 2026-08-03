@@ -1,7 +1,14 @@
 {
   "ticker": "2367",
   "company_name": "燿華",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "25,319 百萬台幣",
+    "enterprise_value": "32,979 百萬台幣"
+  },
+  "business_summary": "燿華電子 (2367) 是台灣前三大 [[HDI]] 板供應商，產品涵蓋 2-28 層[[PCB]]、HDI 板及[[軟硬結合板]]。公司為 [[Apple]] 行動裝置電池板供應商之一，應用涵蓋車用 (占營收 42%)、通訊 (9%)、工業 (8%) 及 HPC/[[5G]]/[[低軌衛星]]。生產基地位於台灣宜蘭、新北及中國上海。",
   "rows": [
     {
       "stock": "2367",

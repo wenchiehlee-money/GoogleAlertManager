@@ -1,7 +1,14 @@
 {
   "ticker": "6720",
   "company_name": "久昌",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "4,066 百萬台幣",
+    "enterprise_value": "3,532 百萬台幣"
+  },
+  "business_summary": "久昌科技 (6720) 為類比 IC 設計公司，核心產品為 [[Hall IC]] (霍爾感測器) 類比電子感測晶片，營收占比逾 95%，其餘為[[電源管理 IC]]及 [[MOSFET]]。產品應用於消費電子、家電、工業設備及車用，近期成功切入電競鍵盤磁軸感應市場。",
   "rows": [
     {
       "stock": "6720",

@@ -1,7 +1,14 @@
 {
   "ticker": "6266",
   "company_name": "泰詠",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "3,662 百萬台幣",
+    "enterprise_value": "2,238 百萬台幣"
+  },
+  "business_summary": "泰詠電子 (6266) 是一家專業的 [[IC 設計]]公司，專注於 [[LCD]] 驅動 IC 及電源管理 IC 設計。公司產品應用於中小尺寸面板驅動，主要服務[[面板廠]]及消費電子品牌。公司為台灣中小型 IC 設計業者，產品涵蓋 TFT-LCD 源極驅動 IC、閘極驅動 IC 及 [[LED 驅動]] IC。",
   "rows": [
     {
       "stock": "6266",

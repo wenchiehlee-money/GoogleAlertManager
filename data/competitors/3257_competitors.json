@@ -1,7 +1,14 @@
 {
   "ticker": "3257",
   "company_name": "虹冠電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "3,899 百萬台幣",
+    "enterprise_value": "2,925 百萬台幣"
+  },
+  "business_summary": "虹冠電子 (3257) 是專業的 AC-DC [[電源管理 IC]] 設計公司，產品涵蓋電源控制 IC、[[PWM]] 控制器、[[MOSFET]] 及線性穩壓器。產品應用於主機板、筆電、電源適配器、LCD 電視及網通設備。總部位於新竹科學園區。",
   "rows": [
     {
       "stock": "3257",

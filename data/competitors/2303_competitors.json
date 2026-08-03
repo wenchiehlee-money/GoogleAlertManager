@@ -1,7 +1,14 @@
 {
   "ticker": "2303",
   "company_name": "聯電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,286,010 百萬台幣",
+    "enterprise_value": "1,231,155 百萬台幣"
+  },
+  "business_summary": "[[聯電]] (United Microelectronics Corporation, UMC) 成立於 1980 年，總部位於台灣[[新竹]]。公司為全球第三大**晶圓代工 (Foundry)** 廠商，僅次於[[台積電]]與三星。[[聯電]]專注於**成熟製程** (22nm - 0.6um) 及特殊製程 (Specialty Technologies)，如高壓 (HV)、嵌入式非揮發性[[記憶體]] (eNVM)、RFSOI 及 BCD 製程。公司在台灣、新加坡、中國(廈門)及日本擁有 12 吋及 8 吋晶圓廠。[[聯電]]近年策略不再追求先進製程競賽，轉而深耕特殊製程，追求穩健獲利與現金流。",
   "rows": [
     {
       "stock": "2303",

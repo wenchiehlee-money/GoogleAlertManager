@@ -1,7 +1,14 @@
 {
   "ticker": "2413",
   "company_name": "環科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "4,668 百萬台幣",
+    "enterprise_value": "4,659 百萬台幣"
+  },
+  "business_summary": "環科 (2413，環隆科技) 是一家電子零組件及電源產品製造商，業務涵蓋磁性元件與電源產品、資訊通訊產品及[[光通訊]]產品。產品包括 DC/DC 及 AC/DC 電源供應器 (醫療、鐵路、工業等級)、[[變壓器]]及[[電感]]磁性元件，以及車用[[毫米波雷達]]模組。已獲韓國 [[現代起亞]] (HKMC) 採用毫米波雷達應用於汽車哨兵系統。",
   "rows": [
     {
       "stock": "2413",

@@ -1,7 +1,14 @@
 {
   "ticker": "8086",
   "company_name": "宏捷科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "20,929 百萬台幣",
+    "enterprise_value": "17,981 百萬台幣"
+  },
+  "business_summary": "宏捷科技 (8086，AWSC) 為全球第二大[[砷化鎵]] (GaAs) [[晶圓代工]]廠，市占率約 24%。專注於 6 吋 GaAs [[HBT]]、pHEMT 及 BiHEMT 製程代工，產品應用於 [[Wi-Fi]] 及智慧型手機射頻元件 ([[PA]] 功率放大器、Switch 及 LNA) 及 [[3D 感測]] [[VCSEL]]。最大客戶 [[Skyworks]] 貢獻約 56% 營收。",
   "rows": [
     {
       "stock": "8086",

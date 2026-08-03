@@ -1,7 +1,14 @@
 {
   "ticker": "5425",
   "company_name": "台半",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "17,141 百萬台幣",
+    "enterprise_value": "22,279 百萬台幣"
+  },
+  "business_summary": "台半 (TSC, Taiwan Semiconductor) 成立於 1979 年，總部位於台灣[[新北]]。公司為全球 **功率半導體** (Discrete Power) 元件領導廠商，產品涵蓋 **整流器 (Rectifier)**、**[[MOSFET]]**、**TVS 保護元件** 及 **電源管理 IC**。台半另有子公司 **鼎翰 (3611)** 專注於條碼印表機業務，獲利貢獻穩定。台半近年積極深耕 **車用 (Automotive)** 與 **工控** 市場，車用營收佔比持續提升，已切入 Tier 1 供應鏈。",
   "rows": [
     {
       "stock": "5425",

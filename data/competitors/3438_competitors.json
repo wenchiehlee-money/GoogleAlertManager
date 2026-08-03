@@ -1,7 +1,14 @@
 {
   "ticker": "3438",
   "company_name": "類比科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,280 百萬台幣",
+    "enterprise_value": "1,510 百萬台幣"
+  },
+  "business_summary": "類比科技 (3438) 是面板[[電源管理 IC]] 設計公司，專注於 TFT-LCD 面板及筆記型電腦電源管理 IC 設計。產品涵蓋面板電源管理 IC、Gate Driver IC 及 Source Driver 電源 IC。",
   "rows": [
     {
       "stock": "3438",

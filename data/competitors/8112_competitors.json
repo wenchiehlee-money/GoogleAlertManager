@@ -1,7 +1,14 @@
 {
   "ticker": "8112",
   "company_name": "至上",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "40,060 百萬台幣",
+    "enterprise_value": "94,716 百萬台幣"
+  },
+  "business_summary": "至上電子 (8112，Supreme Electronics) 為台灣第三大半導體通路商，核心業務為 [[Samsung]] 三星記憶體產品之台灣主力代理，記憶體相關產品銷售長期占總營收八成以上。代理產品涵蓋行動式 [[DRAM]] ([[LPDDR]])、[[伺服器]]及 PC 用 DRAM 模組、[[NAND Flash]] 晶片 ([[SSD]]/[[eMMC]]) 等。",
   "rows": [
     {
       "stock": "8112",

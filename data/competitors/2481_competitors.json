@@ -1,7 +1,14 @@
 {
   "ticker": "2481",
   "company_name": "強茂",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "42,988 百萬台幣",
+    "enterprise_value": "45,240 百萬台幣"
+  },
+  "business_summary": "強茂 (2481) 是台灣領先的[[功率半導體]]垂直整合製造商 (IDM)，全球第六大[[整流器]]元件廠。公司產品涵蓋 [[MOSFET]]、[[蕭特基二極體]]、[[碳化矽]] (SiC) 元件、[[IGBT]]、[[TVS]] 保護元件及馬達控制 IC。公司積極從消費電子轉型聚焦[[車用電子]] (營收占比已近 30%，目標 40%)、工業控制、[[綠能]]及 [[AI 伺服器]]市場。外銷占 89%，亞洲市場占 76%。",
   "rows": [
     {
       "stock": "2481",

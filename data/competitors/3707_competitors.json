@@ -1,7 +1,14 @@
 {
   "ticker": "3707",
   "company_name": "漢磊",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "20,934 百萬台幣",
+    "enterprise_value": "20,934 百萬台幣"
+  },
+  "business_summary": "漢磊科技 (Episil) 成立於 1985 年，總部位於台灣[[新竹]]，為 **漢民集團 (Hermes-Epitek)** 成員。公司為全球第一家 **Sub-micron Bipolar/BiCMOS** 專業代工廠，近年轉型為 **化合物半導體 (Compound Semiconductor)** 專業代工廠，專注於 **SiC ([[碳化矽]])** 及 **GaN ([[氮化鎵]])** 功率[[半導體]]代工。漢磊擁有 6 吋晶圓廠，提供從[[磊晶]] (Epi) 到晶圓製造 (Foundry) 的一站式服務 (與子公司嘉晶合作)。",
   "rows": [
     {
       "stock": "3707",

@@ -1,7 +1,14 @@
 {
   "ticker": "8162",
   "company_name": "微矽電子-創",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "3,366 百萬台幣",
+    "enterprise_value": "3,842 百萬台幣"
+  },
+  "business_summary": "微矽電子 (8162) 深耕半導體後段服務逾 38 年，為國內[[電源管理 IC]]、[[MOSFET]] 及 [[氮化鎵]] 晶圓測試最大供應商，以「晶圓廠內部實驗室」創新模式與知名晶圓代工廠合作。提供功率半導體晶圓測試、晶圓薄化及封裝一站式整合服務，自行研發高壓高電流[[探針卡]]及測試治具，已通過國際車用大廠認證。",
   "rows": [
     {
       "stock": "8162",

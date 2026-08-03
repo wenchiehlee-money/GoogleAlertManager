@@ -1,7 +1,14 @@
 {
   "ticker": "2308",
   "company_name": "台達電",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "3,883,327 百萬台幣",
+    "enterprise_value": "3,846,211 百萬台幣"
+  },
+  "business_summary": "台達電 (2308) 是全球最大的[[交換式電源供應器]]製造商，以自有品牌 DELTA 行銷全球。產品涵蓋[[伺服器電源]]、[[工業自動化]]、[[電動車]]充電、[[資料中心]]電源及[[綠能]]解決方案。公司為美系 Tier 1 CSP [[AI 伺服器]]電源最大供應商，預計成為 [[NVIDIA]] DGX GB200 中 DC/DC 及 AC/DC 電源主要供應商。產能分布中國 60%、泰國、台灣及印度。",
   "rows": [
     {
       "stock": "2308",

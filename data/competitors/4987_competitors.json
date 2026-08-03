@@ -1,7 +1,14 @@
 {
   "ticker": "4987",
   "company_name": "科誠",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "2,588 百萬台幣",
+    "enterprise_value": "2,199 百萬台幣"
+  },
+  "business_summary": "科誠 (4987，[[GoDEX]]) 為台灣條碼標籤印表機領導廠商，成立於 1993 年，總部位於新北市中和區。公司擁有自有品牌 **GoDEX** (桌上型/工業型條碼印表機) 與 **Argox** (早期併購品牌)，同時為國際自動辨識 (AIDC) 大廠提供 [[ODM]]/OEM 代工服務。\n\n產品涵蓋熱感式及熱轉印式條碼標籤印表機，應用領域廣泛：零售業 (價格標籤、庫存管理)、物流業 (運單列印、倉儲條碼)、醫療業 (病人手環、藥品標籤)、製造業 (產品序號、資產管理)。公司以自有品牌為主要成長動能，全球銷售網絡遍及歐洲、亞洲、美洲等逾 80 國，透過各地 AIDC 經銷商及系統整合商 (SI) 銷售。競爭對手包括 [[Zebra Technologies]]、[[TSC Auto ID]] (鼎翰科技)、[[Honeywell]]。",
   "rows": [
     {
       "stock": "4987",

@@ -1,7 +1,14 @@
 {
   "ticker": "4925",
   "company_name": "智微",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "6,315 百萬台幣",
+    "enterprise_value": "8,137 百萬台幣"
+  },
+  "business_summary": "智微科技 (4925，[[JMicron]]) 為無晶圓廠 [[IC 設計]]公司，專精高速資料及訊號介面橋接控制器。產品涵蓋 [[USB]] 3.2 20Gbps 至 [[PCIe]] Gen4 橋接控制器、SATA 橋接器、儲存裝置控制器及毫米波雷達 [[物聯網]] 裝置。SSD 控制器廣獲 [[華碩]]、[[Corsair]]、[[OCZ]]、[[Transcend]] 等品牌採用。",
   "rows": [
     {
       "stock": "4925",

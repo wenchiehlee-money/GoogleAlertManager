@@ -1,7 +1,14 @@
 {
   "ticker": "3583",
   "company_name": "辛耘",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "50,145 百萬台幣",
+    "enterprise_value": "44,595 百萬台幣"
+  },
+  "business_summary": "辛耘企業 (3583) 是台灣半導體製程設備廠，三大業務：(1) 自製[[濕式製程]]設備 (Wet Bench/Single Wafer)，(2) 12 吋[[矽晶圓再生]]服務 (國內最大，月產能 16 萬片，製程至 16nm)，(3) 設備代理。自製設備涵蓋 [[CoWoS]]/UBM 用濕式製程工具，受惠於先進封裝擴產。",
   "rows": [
     {
       "stock": "3583",

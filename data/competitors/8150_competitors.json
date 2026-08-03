@@ -1,7 +1,14 @@
 {
   "ticker": "8150",
   "company_name": "南茂",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "50,696 百萬台幣",
+    "enterprise_value": "54,363 百萬台幣"
+  },
+  "business_summary": "南茂科技 (8150，[[南茂]]) 為全球前十大獨立半導體封測廠，提供記憶體、[[LCD]] 驅動 IC 及混合訊號 IC 之完整後段[[封裝測試]]服務。記憶體業務占營收約 49%，驅動 IC 封測為另一核心。公司於台灣 (8150) 及 [[NASDAQ]] (IMOS) 雙重掛牌。",
   "rows": [
     {
       "stock": "8150",

@@ -1,7 +1,14 @@
 {
   "ticker": "2528",
   "company_name": "皇普",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Real Estate",
+    "industry": "Real Estate Services",
+    "market_cap": "9,652 百萬台幣",
+    "enterprise_value": "20,169 百萬台幣"
+  },
+  "business_summary": "皇普建設 (2528，Huang Pu Construction) 為台灣中型建設公司，主要從事[[住宅大樓]]之投資興建與銷售。建案分佈於全台各大都會區及重劃區，包括大台北地區、新竹[[竹北]]、桃園[[青埔]]重劃區、台中及高雄。公司秉持「以人為本」理念，產品以中價位住宅為主，服務[[首購族]]與換屋族群。土地取得方式涵蓋自行規劃用地、地主合建、政府標售及市場資訊蒐集等多元管道。",
   "rows": [
     {
       "stock": "2528",

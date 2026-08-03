@@ -1,7 +1,14 @@
 {
   "ticker": "7750",
   "company_name": "新代",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Industrials",
+    "industry": "Electrical Equipment & Parts",
+    "market_cap": "135,604 百萬台幣",
+    "enterprise_value": "128,078 百萬台幣"
+  },
+  "business_summary": "新代科技 (7750，Syntec) 為亞洲領先[[CNC]]控制器廠，中國市佔逾20% (第三，僅次[[FANUC]]、[[Siemens]])。產品含CNC控制器、伺服馬達及[[機器人]]。營收九成中國。市值逾880億。",
   "rows": [
     {
       "stock": "7750",

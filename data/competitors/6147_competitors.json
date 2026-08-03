@@ -1,7 +1,14 @@
 {
   "ticker": "6147",
   "company_name": "頎邦",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "93,819 百萬台幣",
+    "enterprise_value": "89,242 百萬台幣"
+  },
+  "business_summary": "頎邦科技 (6147) 是全球最大的[[驅動 IC]] 封裝廠，全球市占率約 50%，專精於[[覆晶薄膜]] (COF)、[[玻璃覆晶]] (COG) 封裝及凸塊 (Bumping) 製造。公司為利基型半導體[[封裝測試]]服務商，產品主要應用於 [[LCD]] 及 [[OLED]] 面板驅動 IC。",
   "rows": [
     {
       "stock": "6147",

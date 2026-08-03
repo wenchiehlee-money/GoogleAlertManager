@@ -1,7 +1,14 @@
 {
   "ticker": "8084",
   "company_name": "巨虹",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,881 百萬台幣",
+    "enterprise_value": "3,272 百萬台幣"
+  },
+  "business_summary": "巨虹電子 (8084，Chip Hope) 主要從事記憶體產品及 IC 應用產品之銷售與服務，為 IC 通路及記憶體模組相關業務。公司針對市場及客戶需求規劃產品組合並提供技術支援服務，涵蓋 [[DRAM]]、[[NAND Flash]] 及相關 IC 產品通路。",
   "rows": [
     {
       "stock": "8084",

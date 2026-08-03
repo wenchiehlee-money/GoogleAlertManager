@@ -1,7 +1,14 @@
 {
   "ticker": "2484",
   "company_name": "希華",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "9,454 百萬台幣",
+    "enterprise_value": "9,128 百萬台幣"
+  },
+  "business_summary": "希華晶體 (2484，Siward) 是全球[[石英]]頻率控制元件領導廠商，產品涵蓋[[石英晶體]]、[[石英振盪器]]、[[TCXO]] (溫度補償振盪器)、[[VCXO]] 及 VCTCXO。公司從合成石英棒到晶體元件自主設計製造一貫化生產。近年推出超高頻 312.5 MHz 差分輸出振盪器，瞄準[[資料中心]]高速通訊、[[光通訊]]及伺服器時脈應用。",
   "rows": [
     {
       "stock": "2484",

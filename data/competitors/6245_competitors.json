@@ -1,7 +1,14 @@
 {
   "ticker": "6245",
   "company_name": "立端",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "11,347 百萬台幣",
+    "enterprise_value": "7,504 百萬台幣"
+  },
+  "business_summary": "立端科技 (6245，[[Lanner Electronics]]) 為全球最大網路安全硬體平台製造商，全球市佔率逾四成，北美市場市佔更達約五成。公司專注於「網路安全硬體平台」及「電信邊緣運算 (Edge Computing)」兩大領域，總部位於台灣汐止。\n\n公司為全球各大資安軟體巨頭量身打造客製化硬體底座平台，產品採用 [[Intel]]、[[AMD]]、[[NVIDIA]] 等高階 CPU/GPU 晶片。2020 年[[台達電]] (Delta Electronics) 入股成為最大股東，提供電源管理及散熱技術支援。近年更與 [[NVIDIA]] 策略聯手發布 AstraEdge 邊緣 AI 伺服器平台，積極進軍 [[AI 伺服器]]邊緣運算及 [[5G]] SD-WAN 領域。所有高機敏性產線保留於台灣總部。",
   "rows": [
     {
       "stock": "6245",

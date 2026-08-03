@@ -1,7 +1,14 @@
 {
   "ticker": "8028",
   "company_name": "昇陽半導體",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "45,816 百萬台幣",
+    "enterprise_value": "49,944 百萬台幣"
+  },
+  "business_summary": "昇陽半導體 (8028) 是台灣專業的[[矽晶圓再生]] (Silicon Wafer Reclaim) 服務廠商，將半導體製程中使用過的測試晶圓 (Monitor Wafer/Dummy Wafer) 經研磨及清洗後再生為可重複使用的晶圓。再生晶圓為晶圓廠製程監控之重要耗材，可大幅降低新晶圓採購成本。公司為台灣最大的[[矽晶圓]]再生廠之一，主要客戶為 [[台積電]]等晶圓代工廠。",
   "rows": [
     {
       "stock": "8028",

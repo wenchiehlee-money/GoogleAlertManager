@@ -1,7 +1,14 @@
 {
   "ticker": "3163",
   "company_name": "波若威",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "49,684 百萬台幣",
+    "enterprise_value": "47,468 百萬台幣"
+  },
+  "business_summary": "波若威科技 (3163，[[Browave]]) 為台灣最大光纖被動元件與模組製造商，專精於 [[WDM]] (波分複用器)、[[PLC]] 分光器及光纖連接器等高精度光學元件之 OEM/ODM 代工。核心技術涵蓋熔錐雙錐 (FBT)、微光學 (Micro Optics) 及平面光波迴路 (PLC) 三大光纖被動元件平台。\n\n近年積極佈局 [[CPO]] (共同封裝光學) 技術，已獲 [[NVIDIA]] 選定為 [[矽光子]] 生態系合作夥伴，開發光纖套件 (Fiber Harness) 及光纖配線盒產品。CPO 產品預計 2025 年下半年完成驗證，2026 年進入量產，配合 [[800G]]/[[1.6T]] 高階光纖連接需求，將成為公司主要成長動能。此外受惠美國 BEAD 寬頻法案帶動北美光纖基建需求，公司亦積極擴充菲律賓廠產能。",
   "rows": [
     {
       "stock": "3163",

@@ -1,7 +1,14 @@
 {
   "ticker": "8110",
   "company_name": "華東",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "17,578 百萬台幣",
+    "enterprise_value": "16,104 百萬台幣"
+  },
+  "business_summary": "華東科技 (8110) 是台灣專業的半導體用[[石英]]元件及材料製造商，產品涵蓋石英晶圓載具、石英管、石英舟及各式半導體製程用石英治具。石英為晶圓廠擴散、氧化、沉積等高溫製程之關鍵耗材。公司為台灣主要的半導體[[石英]]材料供應商之一，服務國內主要晶圓代工及記憶體製造客戶。",
   "rows": [
     {
       "stock": "8110",

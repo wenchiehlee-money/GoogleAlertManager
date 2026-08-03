@@ -1,7 +1,14 @@
 {
   "ticker": "3413",
   "company_name": "京鼎",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment",
+    "market_cap": "31,955 百萬台幣",
+    "enterprise_value": "30,093 百萬台幣"
+  },
+  "business_summary": "京鼎精密 (3413) 是[[鴻海]]集團旗下的半導體設備製造商，為 [[Applied Materials]] (AMAT) 的核心代工夥伴 (AMAT 亦為股東)。公司主力產品為半導體前段製程設備關鍵模組及零組件，涵蓋 [[CMP]]、[[PVD]]、[[CVD]]、[[蝕刻]]設備及[[雷射]]與[[檢測]]設備。近年積極發展自有品牌半導體及工業自動化高端設備。",
   "rows": [
     {
       "stock": "3413",

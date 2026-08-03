@@ -1,7 +1,14 @@
 {
   "ticker": "2431",
   "company_name": "聯昌",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "1,109 百萬台幣",
+    "enterprise_value": "282 百萬台幣"
+  },
+  "business_summary": "聯昌電子 (2431) 是台灣的電子零組件製造商，主要產品涵蓋[[連接器]]、[[端子]]及相關電子零件。公司提供各式電子連接解決方案，應用於[[消費電子]]、[[資訊設備]]及[[工業]]領域。總部位於台北內湖。",
   "rows": [
     {
       "stock": "2431",

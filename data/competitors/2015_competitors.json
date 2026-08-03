@@ -1,7 +1,14 @@
 {
   "ticker": "2015",
   "company_name": "豐興",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Basic Materials",
+    "industry": "Steel",
+    "market_cap": "38,153 百萬台幣",
+    "enterprise_value": "33,840 百萬台幣"
+  },
+  "business_summary": "豐興鋼鐵 (2015) 為台灣主要[[電爐]]鋼廠，生產[[鋼筋]]及線材，為中部地區[[鋼筋]]價格指標。採廢鋼電爐煉鋼。下游供應營建業。同業競爭者含[[東和鋼鐵]] (2006)。鋼構客戶含[[中鋼構]]、[[長榮鋼]]。",
   "rows": [
     {
       "stock": "2015",

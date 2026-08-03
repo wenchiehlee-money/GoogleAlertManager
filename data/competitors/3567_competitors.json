@@ -1,7 +1,14 @@
 {
   "ticker": "3567",
   "company_name": "逸昌",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "852 百萬台幣",
+    "enterprise_value": "694 百萬台幣"
+  },
+  "business_summary": "逸昌科技 (3567) 是台灣第一家 100% 專注類比及混合訊號 IC 測試的專業測試廠，提供晶圓測試 (CP)、晶圓雷射修整、成品測試 (FT)、外觀檢查及捲帶包裝。前三大客戶占營收 95%。",
   "rows": [
     {
       "stock": "3567",

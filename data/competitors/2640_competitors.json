@@ -1,7 +1,14 @@
 {
   "ticker": "2640",
   "company_name": "大車隊",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Industrials",
+    "industry": "Ground Transportation",
+    "market_cap": "8,475 百萬台幣",
+    "enterprise_value": "7,961 百萬台幣"
+  },
+  "business_summary": "台灣大車隊 (2640，品牌 [[55688]]) 為台灣市占率第一的計程車隊，車隊規模約 24,000 名司機會員、約 29,000 輛營運車輛。公司以 [[55688]] APP 為核心，近年轉型為「生活服務媒合平台」。除叫車派遣外，集團旗下關係企業涵蓋居家清潔、送洗衣物、都會機車快遞、汽車保修、代駕、租車及旅遊等服務。運用大數據與 AI 派遣技術，超過 720 萬名 APP 會員。支付方式支援逾 30 種，包含 [[LINE Pay]]、[[Apple Pay]]、[[Samsung Pay]]、[[Google Pay]]、[[街口支付]]、[[悠遊付]]等。",
   "rows": [
     {
       "stock": "2640",

@@ -1,7 +1,14 @@
 {
   "ticker": "7769",
   "company_name": "鴻勁",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "931,138 百萬台幣",
+    "enterprise_value": "874,306 百萬台幣"
+  },
+  "business_summary": "鴻勁精密 (7769) 是全球 [[SoC]] 測試[[分選機]] (Handler) 龍頭廠商，專注於半導體後段測試自動化設備。產品涵蓋[[成品測試]] (FT)、[[系統級測試]] (SLT) 及[[老化測試]] (Burn-in) 分選機，並配備主動式溫控 (ATC) 及水冷板技術，對準 [[AI]]/[[HPC]] 及[[先進封裝]]需求。主要客戶以美系企業為主，應用涵蓋 AI、高效運算、車用電子及高階手機晶片。美國市場占營收約 55%、中國 22%、台灣 14%。",
   "rows": [
     {
       "stock": "7769",

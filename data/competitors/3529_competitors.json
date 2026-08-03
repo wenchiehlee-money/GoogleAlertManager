@@ -1,7 +1,14 @@
 {
   "ticker": "3529",
   "company_name": "力旺",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "155,722 百萬台幣",
+    "enterprise_value": "151,659 百萬台幣"
+  },
+  "business_summary": "力旺電子 (3529) 是全球嵌入式[[非揮發性記憶體]] (NVM) [[矽智財]] (IP) 領導廠商，提供 OTP、MTP 及 [[eFlash]] 等 IP 授權予全球超過 2,400 家晶圓廠、IDM 及 IC 設計公司。核心產品包括 NeoBit (OTP)、NeoFuse (Anti-fuse)、NeoFlash (eFlash) 及 [[RRAM]]/[[MRAM]] IP。已與[[台積電]]合作至 2 奈米製程 IP 驗證，自 2010 年起每年獲頒台積電最佳 IP 夥伴獎。",
   "rows": [
     {
       "stock": "3529",

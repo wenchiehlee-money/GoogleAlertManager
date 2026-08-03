@@ -1,7 +1,14 @@
 {
   "ticker": "1815",
   "company_name": "富喬",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Electronic Components",
+    "market_cap": "36,672 百萬台幣",
+    "enterprise_value": "39,259 百萬台幣"
+  },
+  "business_summary": "富喬工業 (1815) 是台灣 [[PCB]] 上游[[玻纖]]一貫廠，主要生產電子級[[玻纖布]]及工業級[[玻纖紗]]。電子級[[玻纖布]]為[[銅箔基板]] (CCL) 的核心原料，公司近年在 Low Dk 高階材料占比持續提升，受惠於 [[AI 伺服器]]對高頻低損耗 CCL 材料的需求增長。",
   "rows": [
     {
       "stock": "1815",

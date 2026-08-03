@@ -1,7 +1,14 @@
 {
   "ticker": "7728",
   "company_name": "光焱科技",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "7,357 百萬台幣",
+    "enterprise_value": "6,704 百萬台幣"
+  },
+  "business_summary": "光焱科技 (7728，Enlitech) 為精密光電量測設備公司，聚焦光電轉換測試、模擬光源及晶圓級光電檢測。產品包括太陽能電池量子效率檢測系統、[[CMOS 影像感測器]]測試設備及[[矽光子]] (Silicon Photonics) 晶圓級光損耗測試系統 (Night Jar)。已加入 [[SEMI]] 矽光子產業聯盟。產品涵蓋[[太陽能電池]]量子效率檢測。全球學術論文引用光焱產品達 4,460 篇。",
   "rows": [
     {
       "stock": "7728",

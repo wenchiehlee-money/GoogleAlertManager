@@ -1,7 +1,14 @@
 {
   "ticker": "4906",
   "company_name": "正文",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "12,935 百萬台幣",
+    "enterprise_value": "10,047 百萬台幣"
+  },
+  "business_summary": "正文科技 (4906，[[Gemtek]]) 為全球前列無線網通設備 ODM 代工廠。主要產品涵蓋 [[5G]] FWA (固定無線接入)、[[PON]] 光纖設備、xDSL、Cable Modem、[[Wi-Fi 7]] 路由器、IP Cam 及智慧家庭裝置。公司為 [[SpaceX]] 星鏈計畫 ([[Starlink]]) 路由器之主力代工合作夥伴。\n\n近年致力推動「直供模式」(Direct Account)，跳過品牌商直接服務電信營運商以提升毛利率。生產基地已有八成產能轉移至越南三大廠區，台灣新竹總廠專注高毛利研發，涵蓋 50G 規格設備、毫米波 FWA 及 [[800G]] 雲端光收發模組。2025 年於 ECOC 展推出 800Gbps DR 光收發模組。",
   "rows": [
     {
       "stock": "4906",

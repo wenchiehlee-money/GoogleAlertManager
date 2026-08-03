@@ -1,7 +1,14 @@
 {
   "ticker": "8299",
   "company_name": "群聯",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "334,945 百萬台幣",
+    "enterprise_value": "334,586 百萬台幣"
+  },
+  "business_summary": "群[[聯電]]子 (8299，[[Phison]]) 為全球 [[NAND Flash]] 儲存控制晶片及解決方案領導廠商，每年全球銷售超過 6 億顆控制晶片。產品涵蓋 [[SSD]] 控制晶片 ([[PCIe]]/SATA)、[[eMMC]]、[[UFS]]、SD 及 USB 介面控制器，從 IP 授權到晶片設計至系統整合之完整方案，服務消費、工業及企業級市場。",
   "rows": [
     {
       "stock": "8299",

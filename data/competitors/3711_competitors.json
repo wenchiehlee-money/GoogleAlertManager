@@ -1,7 +1,14 @@
 {
   "ticker": "3711",
   "company_name": "日月光投控",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "2,189,558 百萬台幣",
+    "enterprise_value": "2,364,243 百萬台幣"
+  },
+  "business_summary": "[[日月光投控]]投控 (ASE Technology Holding) 成立於 2018 年 ([[日月光投控]]與[[矽品]]合併)，總部位於台灣[[高雄]]。公司為全球 **封測 (OSAT)** 龍頭，市佔率世界第一。主要業務分為 **半導體封測 (ATM)** (含[[日月光投控]]、[[矽品]]) 及 **電子代工服務 (EMS)** (環旭電子 USI)。[[日月光投控]]在 **先進封裝** (SiP, Fan-out, 2.5D/3D IC, [[CoWoS]]-S/L/R) 及 **異質整合** 技術領先，為 [[AI]]、[[5G]]、HPC 晶片之關鍵後段合作夥伴。",
   "rows": [
     {
       "stock": "3711",

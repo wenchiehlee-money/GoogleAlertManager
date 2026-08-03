@@ -1,7 +1,14 @@
 {
   "ticker": "8081",
   "company_name": "致新",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "20,693 百萬台幣",
+    "enterprise_value": "17,028 百萬台幣"
+  },
+  "business_summary": "致新科技 (8081，[[Global Mixed-Mode Technology]]，GMT) 為台灣前三大類比 IC 設計公司，專注於電源管理之類比及混合訊號 IC 設計。主要產品應用於筆記型電腦、伺服器、工作站、手機、寬頻網路、LCD 螢幕及消費性電子之[[電源管理 IC]]。",
   "rows": [
     {
       "stock": "8081",

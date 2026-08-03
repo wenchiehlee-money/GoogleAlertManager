@@ -1,7 +1,14 @@
 {
   "ticker": "6526",
   "company_name": "達發",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "84,925 百萬台幣",
+    "enterprise_value": "75,030 百萬台幣"
+  },
+  "business_summary": "達發科技 (6526，[[Airoha]]) 為[[聯發科]]子公司，專注於無線音訊 [[SoC]]、[[Bluetooth]] 晶片及 [[Wi-Fi]] 連接方案。產品應用於真無線耳機 ([[TWS]])、智慧音箱、穿戴裝置及 [[物聯網]] 連接。公司為全球 TWS 藍牙音訊晶片主要供應商之一。",
   "rows": [
     {
       "stock": "6526",

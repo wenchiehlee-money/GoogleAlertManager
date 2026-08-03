@@ -1,7 +1,14 @@
 {
   "ticker": "5236",
   "company_name": "凌陽創新",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "8,251 百萬台幣",
+    "enterprise_value": "5,652 百萬台幣"
+  },
+  "business_summary": "凌陽創新 (Sunplus Innovation) 成立於 2006 年 (自凌陽科技分割)，總部位於台灣[[新竹]]。公司專注於 **人機介面 (HMI)** 及 **影像處理 (ISP)** 晶片設計。主力產品為 **Webcam Controller (網路攝影機控制晶片)** (全球市佔率領先) 及 **Mouse/Keyboard Controller (滑鼠/鍵盤控制晶片)**。產品廣泛應用於筆記型電腦 (NB)、外接式 Webcam 及電腦週邊。近期受惠於 **AI PC** 搭載高階鏡頭趨勢，高階 ISP 出貨佔比提升。",
   "rows": [
     {
       "stock": "5236",

@@ -1,7 +1,14 @@
 {
   "ticker": "3006",
   "company_name": "晶豪科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "48,803 百萬台幣",
+    "enterprise_value": "43,767 百萬台幣"
+  },
+  "business_summary": "晶豪科技 (3006) 是一家專業的 [[IC 設計]]公司，主力產品涵蓋特定型 [[DRAM]] ([[SDRAM]]、[[DDR]]、[[PSRAM]]、Mobile DRAM)、[[NOR Flash]] 及 [[NAND Flash]] 記憶體，以及類比與混合訊號 IC。公司產品廣泛應用於消費電子、通訊設備、[[物聯網]] (IoT) 及智慧電表等領域。內銷占 38%、亞洲市場占 61%。",
   "rows": [
     {
       "stock": "3006",

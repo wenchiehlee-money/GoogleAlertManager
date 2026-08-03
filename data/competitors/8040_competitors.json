@@ -1,7 +1,14 @@
 {
   "ticker": "8040",
   "company_name": "九暘",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "6,219 百萬台幣",
+    "enterprise_value": "4,124 百萬台幣"
+  },
+  "business_summary": "九暘電子 (8040，IC Plus) 為[[聯發科]]轉投資之[[乙太網路]] IC 設計公司，專注於 10/100 Mbps 及 Gigabit [[Ethernet]] PHY 收發器及交換器晶片之研發、設計及行銷。產品應用於網路通訊設備及嵌入式系統。",
   "rows": [
     {
       "stock": "8040",

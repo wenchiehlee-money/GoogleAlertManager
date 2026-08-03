@@ -1,7 +1,14 @@
 {
   "ticker": "8261",
   "company_name": "富鼎",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "20,863 百萬台幣",
+    "enterprise_value": "16,728 百萬台幣"
+  },
+  "business_summary": "富鼎先進電子 (8261，APEC) 為台灣 Power [[MOSFET]] 設計公司，台灣第一家成功整合 6 吋 DMOS 製程之 IC 設計公司。產品涵蓋全系列高/低/中壓 Power [[MOSFET]] 及 [[IGBT]]，應用於交換式電源供應器、PC、散熱風扇及馬達驅動。近期完成 600V-1200V [[碳化矽]] (SiC) [[MOSFET]] 開發。主要股東包括國創半導體及與[[鴻海]]、[[國巨]]集團之資源合作。",
   "rows": [
     {
       "stock": "8261",

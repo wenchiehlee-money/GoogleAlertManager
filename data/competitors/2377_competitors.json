@@ -1,7 +1,14 @@
 {
   "ticker": "2377",
   "company_name": "微星",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Computer Hardware",
+    "market_cap": "116,168 百萬台幣",
+    "enterprise_value": "93,403 百萬台幣"
+  },
+  "business_summary": "微星科技 (2377，[[Micro-Star International]]，MSI) 成立於 1986 年，總部位於新北市，為全球電競硬體領導品牌，產品涵蓋電競筆電、顯示卡、主機板、顯示器、桌上型電腦及電競周邊。\n\n三大事業方向：(1) 電競品牌：筆電 (Titan/Raider/Stealth/Cyborg 系列)、顯示卡 ([[NVIDIA]] RTX 50 系列)、主機板及電競周邊，為全球電競市場核心品牌之一；(2) [[AI 伺服器]]：搭載 [[NVIDIA]] Grace Blackwell DGX Station，提供 EIA/OCP ORv3/[[NVIDIA]] MGX 全方位機櫃方案，目前佔營收約 3-5%，目標未來每年成長 50-100%；(3) 商用/工業：AIoT 方案、自主行動機器人 (AMR) 及工業平板。公司亦布局車用充電及 e-Mobility 解決方案。",
   "rows": [
     {
       "stock": "2377",

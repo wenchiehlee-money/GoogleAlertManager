@@ -1,7 +1,14 @@
 {
   "ticker": "6138",
   "company_name": "茂達",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "20,305 百萬台幣",
+    "enterprise_value": "18,197 百萬台幣"
+  },
+  "business_summary": "茂達電子 (6138，[[Anpec]]) 為專業[[電源管理 IC]]設計公司，專注於 DC/DC 轉換器、[[LDO]] 穩壓器、[[MOSFET]] 驅動器及 LED 驅動 IC。產品應用於筆電、伺服器、通訊設備、消費電子及車用電子。為台灣主要的類比電源 IC 設計公司之一。產品涵蓋[[車用電子]]等級。",
   "rows": [
     {
       "stock": "6138",

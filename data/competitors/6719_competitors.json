@@ -1,7 +1,14 @@
 {
   "ticker": "6719",
   "company_name": "力智",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "20,991 百萬台幣",
+    "enterprise_value": "9,273 百萬台幣"
+  },
+  "business_summary": "力智電子 (6719，[[uPI Semiconductor]]) 擁有逾 20 年類比電源與分離式元件設計經驗，為高效能[[電源管理 IC]]設計公司。核心產品涵蓋 [[PMIC]]、電源級元件、電池保護 IC、Power [[MOSFET]] 及 [[氮化鎵]] 驅動解決方案，應用於高效能運算、顯示卡、電競筆電、車用及工業領域。",
   "rows": [
     {
       "stock": "6719",

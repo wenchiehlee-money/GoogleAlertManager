@@ -1,7 +1,14 @@
 {
   "ticker": "3288",
   "company_name": "點晶",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "401 百萬台幣",
+    "enterprise_value": "471 百萬台幣"
+  },
+  "business_summary": "點晶科技 (3288) 是混合式訊號暨類比 [[IC 設計]]公司，主要產品為無刷式風扇馬達驅動晶片 ([[BLDC]] Motor Driver IC) 及混合數位/類比 IC。產品應用於 PC/伺服器[[散熱]]模組及家電風扇。",
   "rows": [
     {
       "stock": "3288",

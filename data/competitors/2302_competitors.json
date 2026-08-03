@@ -1,7 +1,14 @@
 {
   "ticker": "2302",
   "company_name": "麗正",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductor Equipment & Materials",
+    "market_cap": "5,679 百萬台幣",
+    "enterprise_value": "4,918 百萬台幣"
+  },
+  "business_summary": "麗正國際 (2302) 是台灣首家以國人資金及技術製造[[半導體]]矽[[整流器]]的企業，成立於 1976 年。公司為垂直整合的[[功率半導體]]製造商，主力產品為[[整流二極體]]，廣泛應用於[[車用電子]]、家電、通訊設備、電腦及 [[LED 照明]]。集團生產據點遍及台灣土城及中國浙江嘉善，銷售通路佈及全球，在美國洛杉磯及香港設有銷售據點。",
   "rows": [
     {
       "stock": "2302",

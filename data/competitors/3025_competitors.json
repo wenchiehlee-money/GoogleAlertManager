@@ -1,7 +1,14 @@
 {
   "ticker": "3025",
   "company_name": "星通",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "market_cap": "2,916 百萬台幣",
+    "enterprise_value": "2,632 百萬台幣"
+  },
+  "business_summary": "星通資訊 (3025，[[Loop Telecom]]) 為全球前三大關鍵任務通訊 (MCC，Mission Critical Communication) 特殊利基設備商，創立逾三十年，總部位於新竹科學園區。公司以自有品牌 LOOP 行銷全球超過 70 國，專注於電力、鐵道、油氣管線等基礎建設所需之極高可靠度專網通訊設備。\n\n核心產品涵蓋 PTN (分組傳送網路)、SDH/SONET、PDH 等工業級光纖骨幹傳輸設備，強調抗惡劣環境、不容斷線之最高防護等級。2025 年旗艦新品 G7800 集成式一站傳輸存取平台開始出貨，結合 [[AI]] 技術滿足不同 MCC 骨幹網路使用情境調整需求，同時新研發之資安解決方案亦同步上市。公司受惠美國基礎建設法案推動，近期營收與獲利屢創同期新高。",
   "rows": [
     {
       "stock": "3025",

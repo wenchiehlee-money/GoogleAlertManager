@@ -1,7 +1,14 @@
 {
   "ticker": "8131",
   "company_name": "福懋科",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "23,703 百萬台幣",
+    "enterprise_value": "18,890 百萬台幣"
+  },
+  "business_summary": "福懋科技 (8131，FATC) 為[[台塑集團]]旗下半導體封測廠，主要提供記憶體 IC 封裝、測試及 [[DRAM]] 模組代工服務，另提供 LED 後段代工。[[南亞科技]]持股 32% 為第一大股東，[[福懋興業]]持股約 30% 為第二大股東，形成集團內垂直整合。南亞科貢獻營收約五成。",
   "rows": [
     {
       "stock": "8131",

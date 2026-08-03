@@ -1,7 +1,14 @@
 {
   "ticker": "6786",
   "company_name": "芯測",
-  "as_of": "2026-08-03 13:19 CST",
+  "as_of": "2026-08-03 13:47 CST",
+  "profile": {
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": "1,449 百萬台幣",
+    "enterprise_value": "1,385 百萬台幣"
+  },
+  "business_summary": "芯測科技 (6786，iSTART-TEK) 為專業記憶體測試與修復解決方案供應商，產品包括 EZ-BIST 學術工具、START v2 記憶體測試修復 [[EDA]] 工具及 NVM 可配置測試修復平台。產品已取得 [[ISO 26262]] TCL1 車規認證，支援 [[SRAM]]、OTP 及 [[eFlash]] 等記憶體技術之測試與修復 IP 授權。",
   "rows": [
     {
       "stock": "6786",
