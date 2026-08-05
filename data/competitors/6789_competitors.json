@@ -1,7 +1,7 @@
 {
   "ticker": "6789",
   "company_name": "采鈺",
-  "as_of": "2026-08-05 21:14 CST",
+  "as_of": "2026-08-06 04:27 CST",
   "profile": {
     "sector": "Technology",
     "industry": "Semiconductors",
@@ -42,11 +42,11 @@
       "ev_ebitda_ttm": "29.62"
     },
     {
-      "stock": "Samsung",
+      "stock": "005930.KS",
       "company": "Samsung",
       "relationship_type": "product_peer",
       "period": "",
-      "market": "Other",
+      "market": "Korea",
       "unit": "百萬台幣",
       "revenue": "",
       "revenue_raw": null,
@@ -60,7 +60,17 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "凸版印刷",

@@ -1,7 +1,7 @@
 {
   "ticker": "6908",
   "company_name": "宏�砦C戲",
-  "as_of": "2026-08-05 21:14 CST",
+  "as_of": "2026-08-06 04:27 CST",
   "profile": {
     "sector": "Communication Services",
     "industry": "Electronic Gaming & Multimedia",
@@ -168,11 +168,11 @@
       "is_monthly_revenue_only": false
     },
     {
-      "stock": "Sony",
+      "stock": "SONY",
       "company": "Sony",
       "relationship_type": "product_peer",
       "period": "",
-      "market": "Other",
+      "market": "US",
       "unit": "百萬台幣",
       "revenue": "",
       "revenue_raw": null,
@@ -186,7 +186,17 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "Square Enix",
