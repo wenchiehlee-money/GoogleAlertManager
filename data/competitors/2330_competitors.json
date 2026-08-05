@@ -1,7 +1,7 @@
 {
   "ticker": "2330",
   "company_name": "台積電",
-  "as_of": "2026-08-05 04:26 CST",
+  "as_of": "2026-08-05 21:20 CST",
   "profile": {
     "sector": "Technology",
     "industry": "Semiconductors",
@@ -389,55 +389,21 @@
       "company": "台積電",
       "relationship_type": "target",
       "period": "2026Q2",
-      "financial_report_event_date": "",
-      "ir_event_date": "",
-      "event_date": "",
-      "market": "Taiwan",
-      "unit": "百萬台幣",
-      "revenue": "1,270,400.0",
-      "revenue_raw": 1270400.0,
-      "revenue_yoy_pct": "+36.0%",
-      "revenue_yoy_pct_raw": 36.04626258299422,
-      "profit": "",
-      "profit_raw": null,
-      "profit_yoy_pct": "",
-      "profit_yoy_pct_raw": null,
-      "gross_margin_pct": "",
-      "gross_margin_pct_raw": null,
-      "pe_range": "20.98-25.82-29.09",
-      "fx_currency": "",
-      "is_monthly_revenue_only": true,
-      "valuation_price": "2,395.0",
-      "valuation_currency": "TWD",
-      "valuation_as_of": "2026-07-31",
-      "valuation_ttm_period_end": "2026-06-30",
-      "valuation_forward_period_end": "2026-12-31",
-      "pe_ttm": "32.52",
-      "forward_pe": "17.43",
-      "ps_ttm": "13.99",
-      "pb": "9.66",
-      "ev_ebitda_ttm": "17.22"
-    },
-    {
-      "stock": "2330",
-      "company": "台積電",
-      "relationship_type": "target",
-      "period": "2026Q2",
       "financial_report_event_date": "2026-07-16",
       "ir_event_date": "2026-07-16",
       "event_date": "財報: 2026-07-16 (Ready)<br>法說: 2026-07-16 (Ready)",
       "market": "Taiwan",
       "unit": "百萬台幣",
-      "revenue": "",
-      "revenue_raw": null,
-      "revenue_yoy_pct": "",
-      "revenue_yoy_pct_raw": null,
+      "revenue": "1,270,380.0",
+      "revenue_raw": 1270380.0,
+      "revenue_yoy_pct": "+36.0%",
+      "revenue_yoy_pct_raw": 36.04412079674451,
       "profit": "",
       "profit_raw": null,
       "profit_yoy_pct": "",
       "profit_yoy_pct_raw": null,
-      "gross_margin_pct": "",
-      "gross_margin_pct_raw": null,
+      "gross_margin_pct": "67.7%",
+      "gross_margin_pct_raw": 67.7,
       "pe_range": "20.98-25.82-29.09",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
@@ -474,7 +440,17 @@
       "gross_margin_pct_raw": 35.54510134968437,
       "pe_range": "",
       "fx_currency": "KRW",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "005930.KS",
@@ -498,7 +474,17 @@
       "gross_margin_pct_raw": 34.19338922157038,
       "pe_range": "",
       "fx_currency": "KRW",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "005930.KS",
@@ -522,7 +508,17 @@
       "gross_margin_pct_raw": 38.91639220384406,
       "pe_range": "",
       "fx_currency": "KRW",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "005930.KS",
@@ -546,7 +542,17 @@
       "gross_margin_pct_raw": 47.15709160266223,
       "pe_range": "",
       "fx_currency": "KRW",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "005930.KS",
@@ -570,7 +576,17 @@
       "gross_margin_pct_raw": 61.18702152758541,
       "pe_range": "",
       "fx_currency": "KRW",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "0981.HK",
@@ -594,7 +610,17 @@
       "gross_margin_pct_raw": 22.60749764076255,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "0981.HK",
@@ -618,7 +644,17 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "2303",
@@ -1146,7 +1182,17 @@
       "gross_margin_pct_raw": 28.563714902807774,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1170,7 +1216,17 @@
       "gross_margin_pct_raw": 28.317152103559874,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1194,7 +1250,17 @@
       "gross_margin_pct_raw": 25.37120723047127,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1218,7 +1284,17 @@
       "gross_margin_pct_raw": 24.20343137254902,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1242,7 +1318,17 @@
       "gross_margin_pct_raw": 23.80678550891317,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1266,7 +1352,17 @@
       "gross_margin_pct_raw": 24.535519125683063,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1290,7 +1386,17 @@
       "gross_margin_pct_raw": 22.397476340694006,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1314,7 +1420,17 @@
       "gross_margin_pct_raw": 24.170616113744074,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1338,7 +1454,17 @@
       "gross_margin_pct_raw": 24.822274881516588,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1362,7 +1488,17 @@
       "gross_margin_pct_raw": 27.759562841530055,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1386,7 +1522,17 @@
       "gross_margin_pct_raw": 27.600979192166463,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "GFS",
@@ -1410,7 +1556,17 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1434,7 +1590,17 @@
       "gross_margin_pct_raw": 35.8174376399722,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1458,7 +1624,17 @@
       "gross_margin_pct_raw": 41.0012574662056,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1482,7 +1658,17 @@
       "gross_margin_pct_raw": 35.432089145172604,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1506,7 +1692,17 @@
       "gross_margin_pct_raw": 15.033122553447756,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1530,7 +1726,17 @@
       "gross_margin_pct_raw": 36.883239914739086,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1554,7 +1760,17 @@
       "gross_margin_pct_raw": 27.54491017964072,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1578,7 +1794,17 @@
       "gross_margin_pct_raw": 38.21870651138944,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1602,7 +1828,17 @@
       "gross_margin_pct_raw": 39.38277970096487,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -1626,7 +1862,17 @@
       "gross_margin_pct_raw": 40.35838293650794,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "ticker": "6416",
   "company_name": "瑞祺電通",
-  "as_of": "2026-08-05 04:26 CST",
+  "as_of": "2026-08-05 21:14 CST",
   "profile": {
     "sector": "Technology",
     "industry": "Communication Equipment",
@@ -454,9 +454,9 @@
       "company": "鴻海",
       "relationship_type": "product_peer",
       "period": "2026Q2",
-      "financial_report_event_date": "2026-08-12",
+      "financial_report_event_date": "2026-08-13",
       "ir_event_date": "2026-08-12",
-      "event_date": "財報: 2026-08-12<br>法說: 2026-08-12",
+      "event_date": "財報: 2026-08-13<br>法說: 2026-08-12",
       "market": "Taiwan",
       "unit": "百萬台幣",
       "revenue": "",
@@ -505,7 +505,17 @@
       "gross_margin_pct_raw": 36.46628810129887,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -529,7 +539,17 @@
       "gross_margin_pct_raw": 42.6065979919155,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -553,7 +573,17 @@
       "gross_margin_pct_raw": 34.212548015364916,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -577,7 +607,17 @@
       "gross_margin_pct_raw": 35.8174376399722,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -601,7 +641,17 @@
       "gross_margin_pct_raw": 41.0012574662056,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -625,7 +675,17 @@
       "gross_margin_pct_raw": 35.432089145172604,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -649,7 +709,17 @@
       "gross_margin_pct_raw": 15.033122553447756,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -673,7 +743,17 @@
       "gross_margin_pct_raw": 36.883239914739086,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -697,7 +777,17 @@
       "gross_margin_pct_raw": 27.54491017964072,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -721,7 +811,17 @@
       "gross_margin_pct_raw": 38.21870651138944,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -745,7 +845,17 @@
       "gross_margin_pct_raw": 39.38277970096487,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     },
     {
       "stock": "INTC",
@@ -769,7 +879,17 @@
       "gross_margin_pct_raw": 40.35838293650794,
       "pe_range": "",
       "fx_currency": "USD",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "valuation_price": "",
+      "valuation_currency": "",
+      "valuation_as_of": "",
+      "valuation_ttm_period_end": "",
+      "valuation_forward_period_end": "",
+      "pe_ttm": "",
+      "forward_pe": "",
+      "ps_ttm": "",
+      "pb": "",
+      "ev_ebitda_ttm": ""
     }
   ]
 }
