@@ -1,7 +1,7 @@
 {
   "ticker": "5269",
   "company_name": "祥碩",
-  "as_of": "2026-08-11 03:55 CST",
+  "as_of": "2026-08-12 04:00 CST",
   "profile": {
     "sector": "Technology",
     "industry": "Semiconductors",
@@ -268,7 +268,7 @@
       "profit_yoy_pct_raw": 69.83894582723278,
       "gross_margin_pct": "51.0%",
       "gross_margin_pct_raw": 51.0,
-      "pe_range": "21.96-25.15-29.36",
+      "pe_range": "21.96-25.03-28.22",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
       "valuation_price": "1,305.0",
@@ -425,7 +425,7 @@
       "period": "2026Q2",
       "financial_report_event_date": "2026-08-10",
       "ir_event_date": "",
-      "event_date": "財報: 2026-08-10",
+      "event_date": "財報: 2026-08-10 (Ready)",
       "market": "Taiwan",
       "unit": "百萬台幣",
       "revenue": "",
