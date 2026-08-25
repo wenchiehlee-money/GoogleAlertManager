@@ -330589,23 +330589,25 @@
   },
   "tag:google.com,2013:googlealerts/feed:12041154315469527925": {
     "score": 3,
-    "reason": "關於AI人才永續策略"
+    "reason": "AI人才策略消息"
   },
   "tag:google.com,2013:googlealerts/feed:16567297276341136667": {
     "score": 6,
-    "reason": "來自經濟日報報導"
+    "reason": "money.udn來源 (工商時報/經濟日報 6分書籤)"
   },
   "tag:google.com,2013:googlealerts/feed:13940563346784675449": {
-    "score": 4,
-    "reason": "法人調降目標價"
+    "score": 1,
+    "reason": "舊聞被重新索引，實際發布於2023-08-11，非當日真實資訊",
+    "source": "manual",
+    "scored_at": "2026-08-25 12:39:26 CST"
   },
   "tag:google.com,2013:googlealerts/feed:9945072251865136967": {
     "score": 6,
-    "reason": "來自經濟日報報導"
+    "reason": "經濟日報來源"
   },
   "tag:google.com,2013:googlealerts/feed:5599866006307754927": {
     "score": 1,
-    "reason": "個人心得無實質分析"
+    "reason": "投資閒聊弱相關"
   },
   "tag:google.com,2013:googlealerts/feed:17523938407139032470": {
     "score": 3,
@@ -331605,31 +331607,31 @@
   },
   "tag:google.com,2013:googlealerts/feed:11263081944063329494": {
     "score": 6,
-    "reason": "來自經濟日報報導"
+    "reason": "經濟日報來源"
   },
   "tag:google.com,2013:googlealerts/feed:6109925089954059358": {
     "score": 3,
-    "reason": "關於AI人才永續策略"
+    "reason": "人才永續轉載文"
   },
   "tag:google.com,2013:googlealerts/feed:9586348705832038723": {
     "score": 1,
-    "reason": "個人閒聊無實質資訊"
+    "reason": "閒聊文資訊低"
   },
   "tag:google.com,2013:googlealerts/feed:13079978579720534763": {
-    "score": 2,
-    "reason": "主要談中光電，僅列表"
+    "score": 1,
+    "reason": "主題為中光電"
   },
   "tag:google.com,2013:googlealerts/feed:9159934846105611826": {
     "score": 3,
-    "reason": "討論資訊韌性策略"
+    "reason": "資通韌性具參考"
   },
   "tag:google.com,2013:googlealerts/feed:5799904496694232984": {
-    "score": 3,
-    "reason": "銷售新手機業務動態"
+    "score": 2,
+    "reason": "新機開賣周邊消息"
   },
   "tag:google.com,2013:googlealerts/feed:17854788730675997061": {
-    "score": 3,
-    "reason": "聚焦AI人才與智慧城市"
+    "score": 2,
+    "reason": "疑彙整舊聞摘要"
   },
   "tag:google.com,2013:googlealerts/feed:10526786522776263950": {
     "score": 1,
@@ -332776,12 +332778,12 @@
     "reason": "來自工商時報報導。"
   },
   "tag:google.com,2013:googlealerts/feed:13329642493849060651": {
-    "score": 2,
-    "reason": "僅列表提及，內容無關"
+    "score": 1,
+    "reason": "eSIM詐騙僅旁及"
   },
   "tag:google.com,2013:googlealerts/feed:11256073281373382478": {
-    "score": 1,
-    "reason": "自動生成行情資訊"
+    "score": 2,
+    "reason": "ADR行情簡訊"
   },
   "tag:google.com,2013:googlealerts/feed:7726803410064484458": {
     "score": 3,
@@ -333934,5 +333936,9 @@
   "tag:google.com,2013:googlealerts/feed:1157208213541020890": {
     "score": 3,
     "reason": "初上市競拍市場反應分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:18292028909058974390": {
+    "score": 2,
+    "reason": "賣超列表提及"
   }
 }
