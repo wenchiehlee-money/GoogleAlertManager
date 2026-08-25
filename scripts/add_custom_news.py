@@ -11,7 +11,7 @@ add_custom_news.py
     - 智慧過濾：若來源為「經濟日報」且記者為「王郁倫」或「吳凱中」，會自動將新聞標註為 6 星書籤。
 
 使用方法:
-    python add_custom_news.py <GITHUB_URL> [--no-analyze]
+    python scripts/add_custom_news.py <GITHUB_URL> [--no-analyze]
 """
 
 import json
@@ -22,8 +22,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 import subprocess
 
+ROOT = Path(__file__).parent.parent
+
 # 載入專案模組
-sys.path.append(str(Path(__file__).parent))
+sys.path.append(str(ROOT))
 from src.companies.watchlist import load_companies
 
 
@@ -197,7 +199,7 @@ def main():
     }
     
     # 5. 合併至快照 JSON
-    DATA_DIR = Path(__file__).parent / "data"
+    DATA_DIR = ROOT / "data"
     alert_dir = DATA_DIR / "alerts" / date_iso
     alert_dir.mkdir(parents=True, exist_ok=True)
     json_path = alert_dir / f"{company.stock_id}.json"
@@ -227,7 +229,7 @@ def main():
     is_best_reporter = any(r in reporter for r in BEST_REPORTERS) if reporter else False
     is_best_source = any(s in source for s in BEST_SOURCES) if source else False
     
-    cli_path = Path(__file__).parent / "cli.py"
+    cli_path = ROOT / "cli.py"
     
     if is_best_reporter and is_best_source:
         print(f"\n💡 智慧過濾：偵測到此新聞由優質記者 ({reporter}) 發表於 {source}，自動指派為 6 星書籤！")
