@@ -8,15 +8,15 @@ SOP and the repository automation share the same implementation.
 from __future__ import annotations
 
 import argparse
-import csv
 import json
 import re
+import subprocess
 import sys
 import urllib.parse
 import urllib.request
-from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from typing import NamedTuple
 
 BASE_URL = "https://raw.githubusercontent.com/wenchiehlee/Selenium-Actions.Auction/refs/heads/main/"
 WATCHLIST_FILES = [
@@ -26,12 +26,7 @@ WATCHLIST_FILES = [
 REPORT_TABLE_START = "<!-- REPORT_TABLE_START -->"
 REPORT_TABLE_END = "<!-- REPORT_TABLE_END -->"
 TZ_TAIPEI = timezone(timedelta(hours=8))
-
-
-@dataclass(frozen=True)
-class Company:
-    stock_id: str
-    name: str
+MAX_LLM_ENTRY_INPUT = 40
 
 
 def today_taipei() -> date:
@@ -44,24 +39,23 @@ def resolve_repo_root(repo_root: str | Path | None = None) -> Path:
     return Path.cwd().resolve()
 
 
-def read_focus_companies(repo_root: Path) -> list[Company]:
-    return read_company_csv(repo_root / "StockID_TWSE_TPEX_focus.csv")
+def _ensure_src_importable(repo_root: Path) -> None:
+    """Make `src` (the app's library package) importable regardless of CWD.
+
+    The skill script is the single implementation of every workflow step
+    described in SKILL.md; it reuses `src` rather than reimplementing it.
+    """
+    repo_root_str = str(repo_root)
+    if repo_root_str not in sys.path:
+        sys.path.insert(0, repo_root_str)
 
 
-def read_company_csv(path: Path) -> list[Company]:
-    companies: list[Company] = []
-    if not path.exists():
-        return companies
-    with open(path, encoding="utf-8-sig", newline="") as f:
-        for row in csv.reader(f):
-            if len(row) < 2:
-                continue
-            stock_id = row[0].strip()
-            name = row[1].strip()
-            if not stock_id or not stock_id[0].isdigit():
-                continue
-            companies.append(Company(stock_id=stock_id, name=name))
-    return companies
+def read_focus_companies(repo_root: Path) -> list:
+    """回傳專注清單公司（重用 src.companies.watchlist，避免重複解析 CSV）。"""
+    _ensure_src_importable(repo_root)
+    from src.companies.watchlist import load_companies
+
+    return load_companies(focus_only=True)
 
 
 def update_watchlist(repo_root: Path) -> list[Path]:
@@ -76,7 +70,12 @@ def update_watchlist(repo_root: Path) -> list[Path]:
     return saved
 
 
-def parse_readme_rows(readme_path: Path) -> list[Company]:
+class ReadmeRow(NamedTuple):
+    stock_id: str
+    name: str
+
+
+def parse_readme_rows(readme_path: Path) -> list[ReadmeRow]:
     if not readme_path.exists():
         return []
     content = readme_path.read_text(encoding="utf-8")
@@ -87,7 +86,7 @@ def parse_readme_rows(readme_path: Path) -> list[Company]:
     )
     if not block:
         return []
-    rows: list[Company] = []
+    rows: list[ReadmeRow] = []
     for line in block.group(1).splitlines():
         if not line.startswith("| "):
             continue
@@ -95,7 +94,7 @@ def parse_readme_rows(readme_path: Path) -> list[Company]:
             continue
         parts = [p.strip() for p in line.strip("|").split("|")]
         if len(parts) >= 2:
-            rows.append(Company(stock_id=parts[1], name=parts[0]))
+            rows.append(ReadmeRow(stock_id=parts[1], name=parts[0]))
     return rows
 
 
@@ -231,6 +230,452 @@ def _print_consistency(result: dict[str, object]) -> None:
     print("order_same", result["order_same"])
 
 
+def cmd_list_companies(repo_root: Path) -> int:
+    _ensure_src_importable(repo_root)
+    from src.alerts.manager import get_rss_map
+    from src.companies.watchlist import load_companies
+
+    companies = load_companies()
+    if not companies:
+        print("找不到公司清單，請先執行 update-list。")
+        return 0
+
+    try:
+        rss_map = get_rss_map()
+    except Exception as e:
+        print(f"[警告] 無法取得 Google Alert 狀態：{e}", file=sys.stderr)
+        rss_map = {}
+
+    print(f"共 {len(companies)} 家公司：\n")
+    print(f"{'代號':<8} {'名稱':<12} {'類型':<8} {'Alert'}")
+    print("-" * 50)
+    for c in companies:
+        list_label = "⭐ 專注" if c.list_type == "focus" else "   觀察"
+        if not rss_map:
+            has_alert = "(未連線)"
+        else:
+            has_alert = "✓ RSS 已設定" if c.stock_id in rss_map else "✗ 未建立"
+        print(f"{c.stock_id:<8} {c.name:<12} {list_label:<8} {has_alert}")
+    return 0
+
+
+def cmd_sync(repo_root: Path) -> int:
+    _ensure_src_importable(repo_root)
+    from src.alerts.manager import sync_alerts
+
+    result = sync_alerts()
+    print(f"建立 : {', '.join(result['created']) or '(無)'}")
+    print(f"刪除 : {', '.join(result['deleted']) or '(無)'}")
+    print(f"保留 : {len(result['unchanged'])} 家")
+    return 0
+
+
+def cmd_fetch(repo_root: Path) -> int:
+    _ensure_src_importable(repo_root)
+    from src.alerts.fetcher import fetch_all
+    from src.companies.watchlist import load_companies
+
+    companies = load_companies()
+    if not companies:
+        print("找不到公司清單，請先執行 update-list。")
+        return 1
+
+    results = fetch_all(companies)
+    total = sum(results.values())
+    for stock_id, count in results.items():
+        print(f"  {stock_id}: {count} 篇新文章")
+    print(f"合計新增：{total} 篇")
+    return 0
+
+
+def cmd_export_rss(repo_root: Path) -> int:
+    _ensure_src_importable(repo_root)
+    from src.alerts.manager import get_rss_map
+
+    rss_map = get_rss_map()
+    output_path = repo_root / "config" / "rss_urls.json"
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(rss_map, f, ensure_ascii=False, indent=2)
+    print(f"已匯出 {len(rss_map)} 個 RSS URLs 至 {output_path}")
+    print("請記得將此檔案 git commit 後再推送，以供 GitHub Actions 使用。")
+    return 0
+
+
+def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, force: bool) -> int:
+    _ensure_src_importable(repo_root)
+    import subprocess as sp
+
+    from src.analysis import llm
+    from src.analysis.competitors import build_llm_context, build_markdown_table, load_competitor_data
+    from src.companies.watchlist import load_companies
+    from src.config import today_taipei as src_today_taipei
+    from src.storage.json_store import load_entries_by_stock_id
+    from src.storage.markdown_writer import (
+        read_report_summary,
+        summarize_llm_result,
+        write_company_report,
+        write_daily_summary,
+    )
+    from src.storage.scores_store import load_scores, update_scores
+
+    day = date.fromisoformat(day_str) if day_str else src_today_taipei()
+    companies = load_companies()
+    if not companies:
+        print("找不到公司清單，請先執行 update-list。")
+        return 1
+
+    if stock_id:
+        companies = [c for c in companies if c.stock_id == stock_id]
+        if not companies:
+            print(f"找不到股票代碼 {stock_id}。")
+            return 1
+
+    entries_by_id = load_entries_by_stock_id(day)
+    if not entries_by_id and not day_str:
+        from src.config import ALERTS_DATA_DIR
+
+        available = sorted(
+            [d for d in ALERTS_DATA_DIR.iterdir() if d.is_dir() and d.name != day.isoformat()],
+            key=lambda d: d.name,
+            reverse=True,
+        )
+        if available:
+            fallback = date.fromisoformat(available[0].name)
+            print(f"找不到 {day} 的 entries，改用最近一天 {fallback}。")
+            day = fallback
+            entries_by_id = load_entries_by_stock_id(day)
+    if not entries_by_id:
+        print(f"找不到 {day} 的 entries，請先執行 fetch。")
+        return 1
+
+    generated_at = datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d %H:%M:%S CST")
+    all_scores = load_scores()
+    company_reports = []
+
+    from src.config import REPORTS_DIR
+
+    for company in companies:
+        entries = entries_by_id.get(company.stock_id, [])
+        if not entries:
+            print(f"  {company.stock_id} {company.name}: 無資料，跳過")
+            continue
+
+        report_path = REPORTS_DIR / str(day) / f"{company.stock_id}.md"
+        if report_path.exists() and not stock_id and not force:
+            print(f"  {company.stock_id} {company.name}: 報告已存在，納入彙整")
+            top_count = sum(
+                1
+                for e in entries
+                if all_scores.get(e.get("id", ""), {}).get("score", -1) >= 4
+            )
+            company_reports.append({
+                "stock_id": company.stock_id,
+                "name": company.name,
+                "list_type": company.list_type,
+                "entry_count": len(entries),
+                "top_count": top_count,
+                "summary": read_report_summary(report_path),
+            })
+            continue
+
+        print(f"  分析+評分 {company.stock_id} {company.name}（{len(entries)} 篇）…")
+        llm_entries = entries
+        if len(entries) > MAX_LLM_ENTRY_INPUT:
+            llm_entries = entries[:MAX_LLM_ENTRY_INPUT]
+            print(f"    LLM 輸入限制為最新 {MAX_LLM_ENTRY_INPUT} / {len(entries)} 篇，避免 prompt 過長")
+
+        competitor_data = load_competitor_data(company.stock_id)
+        competitor_context = build_llm_context(competitor_data)
+        competitor_table = build_markdown_table(competitor_data)
+
+        try:
+            llm_result, new_scores = llm.analyze_and_score(
+                company, llm_entries, competitor_context, known_scores=all_scores
+            )
+        except Exception as e:
+            print(f"    合併分析+評分失敗，改用純分析：{e}", file=sys.stderr)
+            try:
+                llm_result = llm.analyze_company(
+                    company, llm_entries, competitor_context, known_scores=all_scores
+                )
+                new_scores = {}
+            except Exception as fallback_error:
+                print(f"    LLM 失敗，跳過：{fallback_error}", file=sys.stderr)
+                continue
+        update_scores(new_scores)
+        all_scores = load_scores()
+
+        top_count = sum(1 for s in new_scores.values() if s.get("score", 0) >= 4)
+        print(f"    高分文章（≥4）：{top_count} 篇")
+
+        path = write_company_report(
+            company, day, entries, llm_result, generated_at,
+            scores=all_scores, competitor_table=competitor_table,
+        )
+        print(f"    -> {path}")
+
+        sp.run(["git", "add", str(path)], check=False, capture_output=True, cwd=repo_root)
+        sp.run(
+            ["git", "commit", "-m", f"chore: report {company.stock_id} {day}"],
+            check=False, capture_output=True, cwd=repo_root,
+        )
+
+        summary = summarize_llm_result(llm_result)
+        company_reports.append({
+            "stock_id": company.stock_id,
+            "name": company.name,
+            "list_type": company.list_type,
+            "entry_count": len(entries),
+            "top_count": top_count,
+            "summary": summary,
+        })
+
+    if company_reports and not stock_id:
+        summary_path = write_daily_summary(day, company_reports, generated_at)
+        print(f"\n彙整報告：{summary_path}")
+    return 0
+
+
+def cmd_label(
+    repo_root: Path, stock_id: str, day_str: str, entry_id: str, score: int, reason: str | None
+) -> int:
+    _ensure_src_importable(repo_root)
+    import subprocess as sp
+
+    from src.storage.scores_store import update_scores
+
+    data_dir = repo_root / "data"
+    alert_path = data_dir / "alerts" / day_str / f"{stock_id}.json"
+    if not alert_path.exists():
+        print(f"找不到文章：{alert_path}")
+        return 1
+
+    with open(alert_path, encoding="utf-8") as f:
+        entries = json.load(f)
+
+    target = next((e for e in entries if e.get("id") == entry_id), None)
+    if not target:
+        print(f"在 {alert_path} 中找不到 ID 為 {entry_id} 的文章。")
+        return 1
+
+    update_scores({
+        entry_id: {
+            "score": score,
+            "reason": reason or target.get("title", ""),
+            "source": "manual",
+            "scored_at": datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d %H:%M:%S CST"),
+        }
+    })
+
+    pref_path = data_dir / "user_preferences.json"
+    prefs = []
+    if pref_path.exists():
+        with open(pref_path, encoding="utf-8") as f:
+            prefs = json.load(f)
+
+    prefs = [p for p in prefs if p["id"] != entry_id]
+    prefs.append({
+        "id": entry_id,
+        "title": target.get("title", ""),
+        "summary": target.get("summary", "")[:200],
+        "score": score,
+        "reason": reason,
+    })
+    prefs = prefs[-50:]
+    with open(pref_path, "w", encoding="utf-8") as f:
+        json.dump(prefs, f, ensure_ascii=False, indent=2)
+
+    train_path = data_dir / "training_data.jsonl"
+    train_entry = {
+        "timestamp": datetime.now(TZ_TAIPEI).isoformat(),
+        "context": {"stock_id": stock_id, "company_name": target.get("name", "")},
+        "input": {"title": target.get("title", ""), "summary": target.get("summary", "")},
+        "label": {"score": score, "reason": reason},
+    }
+    with open(train_path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(train_entry, ensure_ascii=False) + "\n")
+
+    from src.storage.markdown_writer import write_bookmarks_page
+
+    bookmark_path = data_dir / "bookmarks.json"
+    bookmarks = []
+    if bookmark_path.exists():
+        with open(bookmark_path, encoding="utf-8") as f:
+            try:
+                bookmarks = json.load(f)
+            except json.JSONDecodeError:
+                bookmarks = []
+
+    bookmarks = [b for b in bookmarks if b["id"] != entry_id]
+    if score == 6:
+        bookmarks.append({
+            "id": entry_id,
+            "stock_id": stock_id,
+            "name": target.get("name", ""),
+            "title": target.get("title", ""),
+            "link": target.get("link", ""),
+            "published": target.get("published", ""),
+            "summary": target.get("summary", "")[:200],
+            "reason": reason or target.get("title", ""),
+            "marked_at": datetime.now(TZ_TAIPEI).strftime("%Y-%m-%d %H:%M:%S CST"),
+        })
+
+    with open(bookmark_path, "w", encoding="utf-8") as f:
+        json.dump(bookmarks, f, ensure_ascii=False, indent=2)
+
+    bm_page_path = write_bookmarks_page(bookmarks)
+    print(f"已更新書籤清單網頁：{bm_page_path}")
+
+    sp.run(["git", "add", str(bookmark_path), str(bm_page_path)], check=False, capture_output=True, cwd=repo_root)
+    sp.run(["git", "commit", "-m", f"chore: update bookmarks for {stock_id}"], check=False, capture_output=True, cwd=repo_root)
+
+    print("✅ 成功：文章已標註並存入訓練數據集 (data/training_data.jsonl)。")
+    print("AI 將在下次分析時學習此偏好，且此數據可用於未來模型微調。")
+    return 0
+
+
+def _self_invoke(repo_root: Path, *args: str) -> "subprocess.CompletedProcess[str]":
+    """Re-run this script as a subprocess (used by sync-stale to reuse analyze/label)."""
+    return subprocess.run(
+        [sys.executable, str(Path(__file__).resolve()), "--repo-root", str(repo_root), *args],
+        check=False,
+    )
+
+
+def cmd_sync_stale(repo_root: Path) -> int:
+    import os
+
+    def run_gh(args: list[str], check: bool = False) -> subprocess.CompletedProcess:
+        return subprocess.run(["gh", *args], capture_output=True, text=True, check=check)
+
+    def ensure_label(name: str, color: str, description: str) -> None:
+        subprocess.run(
+            ["gh", "label", "create", name, "--color", color, "--description", description],
+            check=False, capture_output=True, text=True,
+        )
+
+    def add_label(issue_number: int, label: str) -> None:
+        run_gh(["issue", "edit", str(issue_number), "--add-label", label])
+
+    def comment(issue_number: int, body: str) -> None:
+        run_gh(["issue", "comment", str(issue_number), "--body", body])
+
+    def close_issue(issue_number: int, message: str) -> None:
+        run_gh(["issue", "close", str(issue_number), "--comment", message])
+
+    def mark_invalid(issue_number: int, message: str) -> None:
+        add_label(issue_number, "invalid-input")
+        comment(issue_number, message)
+
+    def is_allowed_author(issue: dict) -> bool:
+        allowed_authors = os.getenv("ISSUE_FEEDBACK_ALLOWED_AUTHORS", "wenchiehlee-money")
+        allowed = {a.strip() for a in allowed_authors.split(",") if a.strip()}
+        author = issue.get("author", {}).get("login", "")
+        return not allowed or author in allowed
+
+    def valid_day(day_str: str) -> bool:
+        return bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", day_str))
+
+    ensure_label("processed", "0E8A16", "Processed by issue feedback automation")
+    ensure_label("rating-feedback", "1D76DB", "Manual rating feedback for AI learning")
+    ensure_label("stale-refresh", "5319E7", "Request to refresh stale report output")
+    ensure_label("invalid-input", "D93F0B", "Issue input did not match the automation format")
+    ensure_label("processing-failed", "B60205", "Automation attempted the request but failed")
+
+    try:
+        cmd = [
+            "gh", "issue", "list",
+            "--search", "[STALE] OR [RATING] in:title",
+            "--json", "number,title,body,author",
+            "--state", "open",
+        ]
+        res = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        issues = json.loads(res.stdout)
+        if not issues:
+            print("無待處理的請求。")
+            return 0
+
+        for issue in issues:
+            num, txt = issue["number"], issue["title"]
+
+            if not is_allowed_author(issue):
+                mark_invalid(num, "此 issue 的作者不在允許清單中，因此未自動處理。")
+                print(f"跳過未授權作者的 Issue: {txt}")
+                continue
+
+            if "[STALE]" in txt:
+                parts = txt.replace("[STALE]", "").strip().split()
+                if len(parts) < 2 or not valid_day(parts[1]):
+                    mark_invalid(num, "格式錯誤。請使用：`[STALE] stock_id YYYY-MM-DD`")
+                    print(f"跳過格式錯誤的 STALE Issue: {txt}")
+                    continue
+
+                stock_id, day_str = parts[0], parts[1]
+                print(f"處理過時標記：{stock_id} ({day_str})")
+                result = _self_invoke(repo_root, "analyze", "--date", day_str, "--stock-id", stock_id, "--force")
+                if result.returncode == 0:
+                    add_label(num, "stale-refresh")
+                    add_label(num, "processed")
+                    close_issue(num, "✅ 報告已重新產生。")
+                else:
+                    add_label(num, "processing-failed")
+                    comment(num, "自動重新產生報告失敗，請查看 GitHub Actions logs。")
+
+            elif "[RATING]" in txt:
+                parts = txt.replace("[RATING]", "").strip().split()
+                if len(parts) < 4 or not valid_day(parts[1]):
+                    mark_invalid(num, "格式錯誤。請使用：`[RATING] stock_id YYYY-MM-DD entry_id score`")
+                    print(f"跳過格式錯誤的 RATING Issue: {txt}")
+                    continue
+
+                stock_id, day_str, entry_id, score_text = parts[0], parts[1], parts[2], parts[3]
+                try:
+                    score = int(score_text)
+                except ValueError:
+                    mark_invalid(num, "分數格式錯誤。`score` 必須是 1 到 6 的整數。")
+                    print(f"跳過分數格式錯誤的 RATING Issue: {txt}")
+                    continue
+                if score < 1 or score > 6:
+                    mark_invalid(num, "分數範圍錯誤。`score` 必須是 1 到 6 的整數。")
+                    print(f"跳過分數範圍錯誤的 RATING Issue: {txt}")
+                    continue
+
+                reason = ""
+                body = issue.get("body", "") or ""
+                if "Reason:" in body:
+                    reason = body.split("Reason:", 1)[1].strip()
+
+                print(f"處理重評請求：{stock_id} {entry_id} -> {score} (理由: {reason})")
+
+                label_args = ["label", stock_id, day_str, entry_id, str(score)]
+                if reason:
+                    label_args.extend(["--reason", reason])
+                label_result = _self_invoke(repo_root, *label_args)
+                if label_result.returncode != 0:
+                    add_label(num, "processing-failed")
+                    comment(num, "自動標註文章分數失敗，請查看 GitHub Actions logs。")
+                    continue
+
+                analyze_result = _self_invoke(
+                    repo_root, "analyze", "--date", day_str, "--stock-id", stock_id, "--force"
+                )
+                if analyze_result.returncode == 0:
+                    add_label(num, "rating-feedback")
+                    add_label(num, "processed")
+                    reason_suffix = f"理由：{reason}" if reason else "未提供理由。"
+                    close_issue(num, f"✅ 文章已重新評分為 {score} 分並更新報表。AI 已學習此偏好。{reason_suffix}")
+                else:
+                    add_label(num, "processing-failed")
+                    comment(num, "文章分數已標註，但重新產生報告失敗，請查看 GitHub Actions logs。")
+
+            else:
+                print(f"跳過格式錯誤的 Issue: {txt}")
+        return 0
+    except Exception as e:
+        print(f"執行 sync-stale 失敗：{e}", file=sys.stderr)
+        return 1
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", default=None, help="GoogleAlertManager repo root")
@@ -243,6 +688,25 @@ def main(argv: list[str] | None = None) -> int:
 
     check_parser = subparsers.add_parser("check-readme", help="Check README rows against focus CSV")
     check_parser.add_argument("--json", action="store_true", help="Print JSON result")
+
+    subparsers.add_parser("list-companies", help="List watchlist companies and their Alert status")
+    subparsers.add_parser("sync", help="Sync Google Alerts to match the watchlist")
+    subparsers.add_parser("fetch", help="Fetch RSS entries for all companies")
+    subparsers.add_parser("export-rss", help="Export current Google Alert RSS URLs to config/rss_urls.json")
+
+    analyze_parser = subparsers.add_parser("analyze", help="Run LLM analysis + scoring, write reports")
+    analyze_parser.add_argument("--date", dest="day_str", default=None, help="分析日期 (YYYY-MM-DD)")
+    analyze_parser.add_argument("--stock-id", dest="stock_id", default=None, help="僅分析指定股票代碼")
+    analyze_parser.add_argument("--force", action="store_true", default=False, help="強制重新分析")
+
+    label_parser = subparsers.add_parser("label", help="Manually label an article's score")
+    label_parser.add_argument("stock_id")
+    label_parser.add_argument("day_str")
+    label_parser.add_argument("entry_id")
+    label_parser.add_argument("score", type=int)
+    label_parser.add_argument("--reason", default=None)
+
+    subparsers.add_parser("sync-stale", help="Process [STALE]/[RATING] GitHub issue requests")
 
     args = parser.parse_args(argv)
     repo_root = resolve_repo_root(args.repo_root)
@@ -271,9 +735,38 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0 if ok else 1
 
+    if args.command == "list-companies":
+        return cmd_list_companies(repo_root)
+
+    if args.command == "sync":
+        return cmd_sync(repo_root)
+
+    if args.command == "fetch":
+        return cmd_fetch(repo_root)
+
+    if args.command == "export-rss":
+        return cmd_export_rss(repo_root)
+
+    if args.command == "analyze":
+        return cmd_analyze(repo_root, args.day_str, args.stock_id, args.force)
+
+    if args.command == "label":
+        return cmd_label(repo_root, args.stock_id, args.day_str, args.entry_id, args.score, args.reason)
+
+    if args.command == "sync-stale":
+        return cmd_sync_stale(repo_root)
+
     parser.error(f"unknown command: {args.command}")
     return 2
 
 
 if __name__ == "__main__":
+    import io as _io
+
+    # Windows 終端預設 cp1252，強制改為 UTF-8 以輸出中文
+    if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+        sys.stdout = _io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    if sys.stderr.encoding and sys.stderr.encoding.lower() != "utf-8":
+        sys.stderr = _io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
     raise SystemExit(main())

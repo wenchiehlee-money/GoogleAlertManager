@@ -24,6 +24,26 @@ def _get_client() -> LLMClient:
 # ── prompt builders ───────────────────────────────────────────────────────────
 
 
+MANUAL_EXCLUDE_MAX_SCORE = 1  # 人工標記 <= 此分數（幾乎無關/舊聞重複）不納入分析摘要
+
+
+def _filter_for_analysis(entries: list[dict], known_scores: dict[str, dict] | None) -> list[dict]:
+    """排除已被人工標記為低分（幾乎無關/舊聞）的文章，避免影響摘要與利多利空判斷。
+
+    僅過濾 source='manual' 的標記，避免每日 LLM 自動評分的雜訊誤刪正常文章。
+    """
+    if not known_scores:
+        return entries
+    return [
+        e
+        for e in entries
+        if not (
+            known_scores.get(e.get("id", ""), {}).get("source") == "manual"
+            and known_scores.get(e.get("id", ""), {}).get("score", 99) <= MANUAL_EXCLUDE_MAX_SCORE
+        )
+    ]
+
+
 def _analysis_items(entries: list[dict]) -> str:
     lines = []
     for e in entries:
@@ -48,17 +68,20 @@ def _score_items(entries: list[dict]) -> str:
 # ── public API ────────────────────────────────────────────────────────────────
 
 
-def analyze_company(company, entries: list[dict], competitor_context: str = "") -> str:
+def analyze_company(
+    company, entries: list[dict], competitor_context: str = "", known_scores: dict[str, dict] | None = None
+) -> str:
     """對單一公司進行分析，回傳結構化 Markdown 結論。"""
     if not entries:
         return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_"
 
+    analysis_entries = _filter_for_analysis(entries, known_scores)
     competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
 
     prompt = f"""\
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
-{_analysis_items(entries)}
+{_analysis_items(analysis_entries)}
 {competitor_block}
 請根據上述文章{"與競爭同業財務比較" if competitor_context else ""}，用繁體中文提供以下分析：
 
@@ -146,18 +169,26 @@ def _apply_source_scoring_rules(entries: list[dict], scores: dict[str, dict]) ->
     return scores
 
 
-def analyze_and_score(company, entries: list[dict], competitor_context: str = "") -> tuple[str, dict[str, dict]]:
-    """合併分析與評分為單次 API 呼叫，回傳 (analysis_text, scores)。"""
+def analyze_and_score(
+    company, entries: list[dict], competitor_context: str = "", known_scores: dict[str, dict] | None = None
+) -> tuple[str, dict[str, dict]]:
+    """合併分析與評分為單次 API 呼叫，回傳 (analysis_text, scores)。
+
+    `known_scores`（通常是既有的 data/scores.json）用於在建立「近期動態摘要／利多利空判斷」
+    的 prompt 時，排除已被人工標記為幾乎無關/舊聞的文章，避免結論被過時消息誤導；
+    文章評分（任務二）仍涵蓋全部 entries，不受影響。
+    """
     if not entries:
         return f"_近期無 {company.name}（{company.stock_id}）的相關新聞。_", {}
 
+    analysis_entries = _filter_for_analysis(entries, known_scores)
     user_prefs = _get_user_preferences_prompt()
     competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
 
     prompt = f"""\
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
-{_analysis_items(entries)}
+{_analysis_items(analysis_entries)}
 {competitor_block}
 {user_prefs}
 

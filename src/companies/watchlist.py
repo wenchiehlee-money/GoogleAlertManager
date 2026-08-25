@@ -1,23 +1,12 @@
 """讀取股票觀察名單 CSV，回傳 Company dataclass 列表。"""
 
-import importlib.util
-import sys
-from functools import cache
+import csv
 from dataclasses import dataclass, field
 from pathlib import Path
-from types import ModuleType
 
 ROOT = Path(__file__).parent.parent.parent
 FOCUS_CSV = ROOT / "StockID_TWSE_TPEX_focus.csv"
 OBSERVATION_CSV = ROOT / "StockID_TWSE_TPEX.csv"
-SKILL_SCRIPT = (
-    ROOT
-    / "skills"
-    / "common"
-    / "skill-google-alert-fetch"
-    / "scripts"
-    / "google_alert_fetch.py"
-)
 
 
 @dataclass
@@ -28,21 +17,21 @@ class Company:
     rss_url: str = field(default="")
 
 
-@cache
-def _skill_module() -> ModuleType:
-    """Load the skill implementation so CSV parsing has one source of truth."""
-    module_name = "google_alert_fetch_skill"
-    spec = importlib.util.spec_from_file_location(module_name, SKILL_SCRIPT)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"Cannot load Google Alert fetch skill script: {SKILL_SCRIPT}")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
 def _read_csv(path: Path) -> list[tuple[str, str]]:
-    return [(company.stock_id, company.name) for company in _skill_module().read_company_csv(path)]
+    """讀取 stock_id,name 格式的觀察名單 CSV。"""
+    rows: list[tuple[str, str]] = []
+    if not path.exists():
+        return rows
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        for row in csv.reader(f):
+            if len(row) < 2:
+                continue
+            stock_id = row[0].strip()
+            name = row[1].strip()
+            if not stock_id or not stock_id[0].isdigit():
+                continue
+            rows.append((stock_id, name))
+    return rows
 
 
 def load_companies(focus_only: bool = True) -> list[Company]:
