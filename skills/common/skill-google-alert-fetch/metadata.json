@@ -1,9 +1,28 @@
 {
   "name": "skill-google-alert-fetch",
-  "description": "維運 GoogleAlertManager 的 Google Alerts 抓取管線，並提供內建 scripts/google_alert_fetch.py 以更新 Selenium-Actions.Auction 股票觀察/專注清單 CSV、檢查 README/focus CSV 一致性、依 focus CSV 重建 README、同步/匯出 RSS 與排查 fetch/analyze workflows。",
+  "description": "維運 GoogleAlertManager 的 Google Alerts 抓取管線，並提供內建 scripts/google_alert_fetch.py 以更新股票觀察/專注清單 CSV、檢查 README/focus CSV 一致性、依 focus CSV 重建 README、同步/匯出 RSS、抓取文章、LLM 分析評分、人工標註與 sync-stale issue 自動化。",
   "category": "financial-data",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "maintainer": "wenchiehlee-money",
   "source": "https://github.com/wenchiehlee-money/GoogleAlertManager",
-  "updated_at": "2026-07-22"
+  "updated_at": "2026-08-25",
+  "registry": "https://github.com/wenchiehlee/skills/tree/main/common/skill-google-alert-fetch",
+  "files": [
+    "SKILL.md",
+    "metadata.json",
+    "self_update.py",
+    "scripts/google_alert_fetch.py"
+  ],
+  "deployments": [
+    {
+      "repo": "wenchiehlee/skills",
+      "role": "registry",
+      "local_path": "github.com/skills/common/skill-google-alert-fetch"
+    },
+    {
+      "repo": "wenchiehlee-money/GoogleAlertManager",
+      "role": "consumer",
+      "local_path": "github.com/GoogleAlertManager/skills/common/skill-google-alert-fetch"
+    }
+  ]
 }
