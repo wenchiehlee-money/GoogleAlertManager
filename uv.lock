@@ -534,7 +534,7 @@ wheels = [
 [[package]]
 name = "llm"
 version = "0.1.0"
-source = { git = "https://github.com/wenchiehlee/llm.git#c0eef6950875f64be49bdbc00b1a93d78651376a" }
+source = { git = "https://github.com/wenchiehlee/llm.git#d6960bb8f0dbd2e32caa04a8b839f7e191cd71e0" }
 dependencies = [
     { name = "google-genai" },
     { name = "httpx" },
