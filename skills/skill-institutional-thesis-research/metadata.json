@@ -1,0 +1,34 @@
+{
+  "name": "skill-institutional-thesis-research",
+  "description": "Maintain auditable five-institution investment thesis research and interpret articles/news through selected institutional lenses for TW-institutional-investment-theses.",
+  "category": "financial-strategy",
+  "version": "1.1.1",
+  "maintainer": "wenchiehlee-money",
+  "source": "https://github.com/wenchiehlee-money/TW-institutional-investment-theses",
+  "updated_at": "2026-08-20",
+  "registry": "https://github.com/wenchiehlee/skills/tree/main/common/skill-institutional-thesis-research",
+  "files": [
+    "metadata.json",
+    "SKILL.md",
+    "scripts/check_forecast_ledger.py",
+    "agents/openai.yaml"
+  ],
+  "deployments": [
+    {
+      "repo": "wenchiehlee/skills",
+      "role": "registry",
+      "local_path": "github.com/skills/common/skill-institutional-thesis-research"
+    },
+    {
+      "repo": "wenchiehlee-money/TW-institutional-investment-theses",
+      "role": "consumer",
+      "local_path": "github.com/TW-institutional-investment-theses/skills/skill-institutional-thesis-research"
+    },
+    {
+      "repo": "wenchiehlee-money/GoogleAlertManager",
+      "role": "reference",
+      "local_path": "github.com/GoogleAlertManager/skills/skill-institutional-thesis-research",
+      "note": "Reference-only: GoogleAlertManager reads this skill's output via data/institutional_thesis/{stock_id}.json (see src/analysis/institutional.py), not by running the skill itself, which needs TW-institutional-investment-theses's own data files."
+    }
+  ]
+}

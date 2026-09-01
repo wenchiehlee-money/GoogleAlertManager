@@ -1,0 +1,7 @@
+interface:
+  display_name: "TW Institutional Research"
+  short_description: "追蹤台股法人研究、預估修正與三大法人 flow"
+  default_prompt: "Use $skill-institutional-tw-report-research 分析指定台股公司的法人研究報告、EPS/目標價/評等修正、法說會後變化，並與外資、投信、自營商 flow 分開比較。"
+
+policy:
+  allow_implicit_invocation: true

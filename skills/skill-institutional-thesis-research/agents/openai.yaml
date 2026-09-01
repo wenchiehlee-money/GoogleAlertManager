@@ -1,0 +1,7 @@
+interface:
+  display_name: "Institutional Thesis Research"
+  short_description: "用機構 lens 解讀新聞"
+  default_prompt: "Use $skill-institutional-thesis-research 以 Goldman、Morgan Stanley、J.P. Morgan、Bank of America、UBS 的 institutional lenses 解讀這篇 article/news。"
+
+policy:
+  allow_implicit_invocation: true
