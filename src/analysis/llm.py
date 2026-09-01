@@ -10,6 +10,8 @@ import logging
 
 from llm import LLMClient
 
+from src.config import today_taipei
+
 logger = logging.getLogger(__name__)
 
 MAX_TOKENS = 8192
@@ -67,6 +69,7 @@ def _score_items(entries: list[dict]) -> str:
     for i, e in enumerate(entries):
         lines.append(
             f"[{i}] id={e.get('id', str(i))}\n"
+            f"    RSS 發布時間: {e.get('published', '（無）')}\n"
             f"    標題: {e.get('title', '')}\n"
             f"    摘要: {e.get('summary', '')[:200]}"
         )
@@ -87,6 +90,8 @@ def analyze_company(
     competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
 
     prompt = f"""\
+今日日期：{today_taipei().isoformat()}（判斷新聞時效性時請以此為基準）
+
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
 {_analysis_items(analysis_entries)}
@@ -155,6 +160,12 @@ _SCORING_CRITERIA_PROMPT = """\
 2. 內容農場/重複報導：若為多家內容農場轉載之同一公關稿且無原創觀點，上限降至 2-3 分。
 3. 垃圾/廣告過濾：標題或摘要含「飆股」、「社團/LINE」、「親愛的朋友」、「投信掃貨鎖碼」等罐頭推銷語，一律給 0-1 分。
 4. 嚴格扣分：僅條列股票代號而未有實質營運/財務分析者，最高僅給 2 分。
+5. 內容日期核實（RSS 發布時間不可盡信）：Google Alert 的「RSS 發布時間」有時只是 Google 重新索引/轉載的時間，
+   不代表新聞真正首次發生的時間。請主動比對標題與摘要裡的時間線索（提到的展會/活動名稱、財報季別「如 2026Q1」、
+   明確日期、「昨日」「上週」等相對時間用語），若內容明顯指向已經過去許久的事件（例如提到已結束數月的電腦展、
+   已公布完畢的舊季財報、已過期的展會/法說會時程），即使 RSS 發布時間看起來是最近，仍應視為舊聞，比照第 1 分
+   「幾乎無關/重複資訊」處理，並在 reason 註明「疑似舊聞：內容指向 {實際推估時間}」。無法判斷時維持原有標準評分，
+   不要過度推測。
 """
 
 TIER1_MEDIA_KEYWORDS = ["工商時報", "經濟日報", "ctee.com.tw", "money.udn.com"]
@@ -194,6 +205,8 @@ def analyze_and_score(
     competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
 
     prompt = f"""\
+今日日期：{today_taipei().isoformat()}（判斷新聞時效性時請以此為基準）
+
 以下是關於 **{company.name}（股票代碼：{company.stock_id}）** 的最新新聞/文章：
 
 {_analysis_items(analysis_entries)}
@@ -244,6 +257,8 @@ def score_entries(company, entries: list[dict]) -> dict[str, dict]:
         return {}
 
     prompt = f"""\
+今日日期：{today_taipei().isoformat()}（判斷新聞時效性時請以此為基準）
+
 針對 **{company.name}（{company.stock_id}）** 的投資決策，請對以下 {len(entries)} 篇文章逐一評分：
 
 {_SCORING_CRITERIA_PROMPT}
