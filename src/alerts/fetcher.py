@@ -9,7 +9,7 @@ import feedparser
 from src.alerts.manager import get_rss_map
 from src.companies.watchlist import Company, load_companies
 from src.config import ROOT
-from src.storage.json_store import load_entries, save_entries
+from src.storage.json_store import load_all_known_ids, load_entries, save_entries
 
 logger = logging.getLogger(__name__)
 
@@ -60,6 +60,7 @@ def fetch_all(companies: list[Company] | None = None) -> dict[str, int]:
         logger.error("RSS 映射為空，請先執行 export-rss 或設定 Google Alerts 憑證")
         return {}
     results: dict[str, int] = {}
+    known_ids = load_all_known_ids()
 
     for company in companies:
         rss_url = rss_map.get(company.stock_id, "")
@@ -69,17 +70,18 @@ def fetch_all(companies: list[Company] | None = None) -> dict[str, int]:
             continue
 
         feed = feedparser.parse(rss_url)
-        existing = load_entries(company.stock_id)
-        existing_ids = {e["id"] for e in existing}
+        existing_ids = known_ids.setdefault(company.stock_id, set())
 
         new_entries = []
         for entry in feed.entries:
             parsed = _parse_entry(entry, company)
             if parsed["id"] not in existing_ids:
                 new_entries.append(parsed)
+                existing_ids.add(parsed["id"])
 
         if new_entries:
-            save_entries(company.stock_id, existing + new_entries)
+            today_entries = load_entries(company.stock_id)
+            save_entries(company.stock_id, today_entries + new_entries)
             logger.info("Saved %d new entries for %s (%s)", len(new_entries), company.name, company.stock_id)
         else:
             logger.info("No new entries for %s (%s)", company.name, company.stock_id)

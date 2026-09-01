@@ -306,7 +306,13 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
     import subprocess as sp
 
     from src.analysis import llm
-    from src.analysis.competitors import build_llm_context, build_markdown_table, load_competitor_data
+    from src.analysis.competitors import (
+        build_health_note,
+        build_llm_context,
+        build_markdown_table,
+        check_data_health,
+        load_competitor_data,
+    )
     from src.companies.watchlist import load_companies
     from src.config import today_taipei as src_today_taipei
     from src.storage.json_store import load_entries_by_stock_id
@@ -387,6 +393,13 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
         competitor_data = load_competitor_data(company.stock_id)
         competitor_context = build_llm_context(competitor_data)
         competitor_table = build_markdown_table(competitor_data)
+
+        health = check_data_health(competitor_data)
+        if health["issues"]:
+            print(f"    ⚠️  {company.stock_id} 競爭同業資料：{'；'.join(health['issues'])}", file=sys.stderr)
+            health_note = build_health_note(health)
+            if competitor_table:
+                competitor_table = f"{health_note}\n\n{competitor_table}"
 
         try:
             llm_result, new_scores = llm.analyze_and_score(

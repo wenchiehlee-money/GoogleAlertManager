@@ -3,14 +3,33 @@
 import json
 import logging
 import re
+from datetime import datetime, timedelta, timezone
 
 from src.config import COMPETITORS_DIR
 
 logger = logging.getLogger(__name__)
 
+TZ_TAIPEI = timezone(timedelta(hours=8))
+
+# 資料新鮮度門檻：超過此時數視為 stale（My-TW-Coverage 為每日同步，48h ≈ 漏過一次同步週期）。
+STALE_AFTER_HOURS = 48
+
 _RELATIONSHIP_LABEL = {
     "target": "本公司",
     "odm_peer": "ODM同業",
+}
+
+# skill-theme-competitor-analysis（biztrends.TW）定義的 relationship_type 集合。
+# 若同步進來的資料出現集合外的值，代表兩邊 schema 已經走樣，需要人工核對。
+KNOWN_RELATIONSHIP_TYPES = {
+    "target",
+    "brand_competitor",
+    "chip_competitor",
+    "foundry_competitor",
+    "odm_peer",
+    "server_peer",
+    "supplier_or_component",
+    "product_peer",
 }
 
 # (raw 欄位, 顯示名稱, 是否用 +/- 號)
@@ -33,6 +52,63 @@ def load_competitor_data(stock_id: str) -> dict | None:
     except (json.JSONDecodeError, OSError) as e:
         logger.warning("無法讀取競爭同業資料 %s：%s", path, e)
         return None
+
+
+def _parse_as_of(as_of: str) -> datetime | None:
+    """解析 `as_of` 欄位（例："2026-08-25 03:30 CST"）為台北時區 datetime。"""
+    if not as_of:
+        return None
+    match = re.match(r"(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})", as_of.strip())
+    if not match:
+        return None
+    try:
+        naive = datetime.strptime(f"{match.group(1)} {match.group(2)}", "%Y-%m-%d %H:%M")
+    except ValueError:
+        return None
+    return naive.replace(tzinfo=TZ_TAIPEI)
+
+
+def check_data_health(data: dict | None, max_age_hours: int = STALE_AFTER_HOURS) -> dict:
+    """檢查競爭同業資料的新鮮度與 schema 一致性（不呼叫 LLM，純本地檢查）。
+
+    回傳 {"stale": bool, "age_hours": float | None, "issues": list[str]}。
+    `issues` 為人類可讀的問題描述，空清單代表資料健康。
+    此檢查僅針對「已同步進來的資料」把關（是否過期、schema 是否偏移），
+    不會、也無法重新執行 skill-theme-competitor-analysis 本身（該 skill 依賴
+    biztrends.TW 的原始資料檔，不在本 repo 內）。
+    """
+    issues: list[str] = []
+    if not data:
+        return {"stale": False, "age_hours": None, "issues": []}
+
+    as_of_raw = data.get("as_of", "")
+    parsed = _parse_as_of(as_of_raw)
+    age_hours: float | None = None
+    stale = False
+    if parsed is None:
+        issues.append(f"缺少或無法解析 as_of 時間戳（原始值：{as_of_raw!r}）")
+    else:
+        age_hours = (datetime.now(TZ_TAIPEI) - parsed).total_seconds() / 3600
+        if age_hours > max_age_hours:
+            stale = True
+            issues.append(f"資料已 {age_hours:.0f} 小時未更新（門檻 {max_age_hours} 小時），可能落後最新財報/同業變動")
+
+    rows = data.get("rows") or []
+    if not rows:
+        issues.append("rows 為空")
+    unknown_types = sorted({r.get("relationship_type") for r in rows if r.get("relationship_type") not in KNOWN_RELATIONSHIP_TYPES})
+    if unknown_types:
+        issues.append(f"出現未知 relationship_type（與 skill-theme-competitor-analysis 定義不一致）：{unknown_types}")
+
+    return {"stale": stale, "age_hours": age_hours, "issues": issues}
+
+
+def build_health_note(health: dict) -> str:
+    """把 check_data_health() 的結果轉成一行 Markdown 警示文字，健康時回傳空字串。"""
+    issues = health.get("issues") or []
+    if not issues:
+        return ""
+    return "> ⚠️ **競爭同業資料狀態提醒**：" + "；".join(issues)
 
 
 def _latest_period_rows(rows: list[dict]) -> list[dict]:

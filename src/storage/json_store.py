@@ -47,6 +47,27 @@ def load_all_entries_for_date(day: date) -> list[dict]:
     return entries
 
 
+def load_all_known_ids() -> dict[str, set[str]]:
+    """建立所有公司在所有歷史日期已抓取過的 entry id 索引（stock_id -> id set）。
+
+    供 fetcher 做跨日去重：Google Alert RSS 常是固定筆數的滾動視窗，同一篇舊文章
+    可能連續多天出現在 feed 裡；若只跟當天已存檔的 entries 比對（當天檔案一開始必為空），
+    舊文章會被誤判為「新」而每天重複寫入。
+    """
+    ids: dict[str, set[str]] = {}
+    if not ALERTS_DATA_DIR.exists():
+        return ids
+    for day_dir in ALERTS_DATA_DIR.iterdir():
+        if not day_dir.is_dir():
+            continue
+        for json_file in day_dir.glob("*.json"):
+            stock_id = json_file.stem
+            with open(json_file, encoding="utf-8") as f:
+                entries = json.load(f)
+            ids.setdefault(stock_id, set()).update(e.get("id", "") for e in entries)
+    return ids
+
+
 def load_entries_by_stock_id(day: date) -> dict[str, list[dict]]:
     """載入指定日期所有公司的 entries，以 stock_id 為 key。"""
     day_dir = ALERTS_DATA_DIR / day.isoformat()
