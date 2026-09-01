@@ -80,7 +80,11 @@ def _score_items(entries: list[dict]) -> str:
 
 
 def analyze_company(
-    company, entries: list[dict], competitor_context: str = "", known_scores: dict[str, dict] | None = None
+    company,
+    entries: list[dict],
+    competitor_context: str = "",
+    known_scores: dict[str, dict] | None = None,
+    institutional_context: str = "",
 ) -> str:
     """對單一公司進行分析，回傳結構化 Markdown 結論。"""
     if not entries:
@@ -88,6 +92,13 @@ def analyze_company(
 
     analysis_entries = _filter_for_analysis(entries, known_scores)
     competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
+    institutional_block = f"\n{institutional_context}\n" if institutional_context else ""
+    extra_sources = []
+    if competitor_context:
+        extra_sources.append("競爭同業財務比較")
+    if institutional_context:
+        extra_sources.append("法人研究情報")
+    extra_note = f"與{'、'.join(extra_sources)}" if extra_sources else ""
 
     prompt = f"""\
 今日日期：{today_taipei().isoformat()}（判斷新聞時效性時請以此為基準）
@@ -96,7 +107,8 @@ def analyze_company(
 
 {_analysis_items(analysis_entries)}
 {competitor_block}
-請根據上述文章{"與競爭同業財務比較" if competitor_context else ""}，用繁體中文提供以下分析：
+{institutional_block}
+請根據上述文章{extra_note}，用繁體中文提供以下分析：
 
 ## 1. 近期動態摘要
 （條列式，3-5 點重點）
@@ -189,7 +201,11 @@ def _apply_source_scoring_rules(entries: list[dict], scores: dict[str, dict]) ->
 
 
 def analyze_and_score(
-    company, entries: list[dict], competitor_context: str = "", known_scores: dict[str, dict] | None = None
+    company,
+    entries: list[dict],
+    competitor_context: str = "",
+    known_scores: dict[str, dict] | None = None,
+    institutional_context: str = "",
 ) -> tuple[str, dict[str, dict]]:
     """合併分析與評分為單次 API 呼叫，回傳 (analysis_text, scores)。
 
@@ -203,6 +219,13 @@ def analyze_and_score(
     analysis_entries = _filter_for_analysis(entries, known_scores)
     user_prefs = _get_user_preferences_prompt()
     competitor_block = f"\n{competitor_context}\n" if competitor_context else ""
+    institutional_block = f"\n{institutional_context}\n" if institutional_context else ""
+    extra_sources = []
+    if competitor_context:
+        extra_sources.append("競爭同業財務比較")
+    if institutional_context:
+        extra_sources.append("法人研究情報")
+    extra_note = f"若上方提供了{'、'.join(extra_sources)}，請在判斷利多/利空與投資建議時納入考量：" if extra_sources else ""
 
     prompt = f"""\
 今日日期：{today_taipei().isoformat()}（判斷新聞時效性時請以此為基準）
@@ -211,12 +234,13 @@ def analyze_and_score(
 
 {_analysis_items(analysis_entries)}
 {competitor_block}
+{institutional_block}
 {user_prefs}
 
 請用繁體中文完成以下兩項任務，以 JSON 格式回傳：
 
 ### 任務一：公司分析
-提供 Markdown 格式的分析（存入 "analysis" 欄位），若上方提供了競爭同業財務比較，請在判斷利多/利空與投資建議時納入考量：
+提供 Markdown 格式的分析（存入 "analysis" 欄位），{extra_note}
 ## 1. 近期動態摘要（條列式，3-5 點重點）
 ## 2. 利多/利空判斷（利多因素、利空因素、整體傾向：利多/利空/中性）
 ## 3. 投資建議方向（買進/持有/觀察/迴避，擇一並說明）

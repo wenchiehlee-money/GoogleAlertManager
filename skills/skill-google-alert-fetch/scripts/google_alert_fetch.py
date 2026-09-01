@@ -313,6 +313,12 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
         check_data_health,
         load_competitor_data,
     )
+    from src.analysis.institutional import (
+        build_llm_context as build_institutional_llm_context,
+        build_markdown_table as build_institutional_markdown_table,
+        load_institutional_report,
+        load_institutional_thesis,
+    )
     from src.companies.watchlist import load_companies
     from src.config import today_taipei as src_today_taipei
     from src.storage.json_store import load_entries_by_stock_id
@@ -401,15 +407,22 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
             if competitor_table:
                 competitor_table = f"{health_note}\n\n{competitor_table}"
 
+        institutional_report = load_institutional_report(company.stock_id)
+        institutional_thesis = load_institutional_thesis(company.stock_id)
+        institutional_context = build_institutional_llm_context(institutional_report, institutional_thesis)
+        institutional_table = build_institutional_markdown_table(institutional_report, institutional_thesis)
+
         try:
             llm_result, new_scores = llm.analyze_and_score(
-                company, llm_entries, competitor_context, known_scores=all_scores
+                company, llm_entries, competitor_context, known_scores=all_scores,
+                institutional_context=institutional_context,
             )
         except Exception as e:
             print(f"    合併分析+評分失敗，改用純分析：{e}", file=sys.stderr)
             try:
                 llm_result = llm.analyze_company(
-                    company, llm_entries, competitor_context, known_scores=all_scores
+                    company, llm_entries, competitor_context, known_scores=all_scores,
+                    institutional_context=institutional_context,
                 )
                 new_scores = {}
             except Exception as fallback_error:
@@ -424,6 +437,7 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
         path = write_company_report(
             company, day, entries, llm_result, generated_at,
             scores=all_scores, competitor_table=competitor_table,
+            institutional_table=institutional_table,
         )
         print(f"    -> {path}")
 

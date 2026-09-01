@@ -51,6 +51,11 @@ _COMPANY_TEMPLATE = """\
 
 {{ competitor_table }}
 {% endif %}
+{% if institutional_table %}
+## 🏦 法人研究情報
+
+{{ institutional_table }}
+{% endif %}
 ## 🛠️ 管理與更新
 
 | 方式 | 動作 |
@@ -134,6 +139,7 @@ def write_company_report(
     generated_at: str,
     scores: dict | None = None,
     competitor_table: str = "",
+    institutional_table: str = "",
 ) -> str:
     """輸出完整報告及高品質報告至 data/reports/YYYY-MM-DD/。"""
     from src.analysis.stats import analyze
@@ -194,6 +200,7 @@ def write_company_report(
         llm_result=llm_result,
         generated_at=generated_at,
         competitor_table=competitor_table,
+        institutional_table=institutional_table,
     )
     report_path = company_dir / f"{company.stock_id}.md"
     report_path.write_text(content, encoding="utf-8")

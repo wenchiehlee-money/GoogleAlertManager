@@ -21,6 +21,8 @@ DATA_DIR = ROOT / "data"
 ALERTS_DATA_DIR = DATA_DIR / "alerts"
 REPORTS_DIR = DATA_DIR / "reports"
 COMPETITORS_DIR = DATA_DIR / "competitors"
+INSTITUTIONAL_REPORTS_DIR = DATA_DIR / "institutional_reports"
+INSTITUTIONAL_THESIS_DIR = DATA_DIR / "institutional_thesis"
 CONFIG_FILE = ROOT / "config" / "alerts.yaml"
 
 
