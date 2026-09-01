@@ -1,4 +1,4 @@
-window.DOCS_PATHS_TIMESTAMP = 1788247616;
+window.DOCS_PATHS_TIMESTAMP = 1788248637;
 window.DOCS_PATHS = [
   "/",
   "/_sidebar",
