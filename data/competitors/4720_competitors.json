@@ -1,7 +1,7 @@
 {
   "ticker": "4720",
   "company_name": "德淵",
-  "as_of": "2026-09-01 16:17 CST",
+  "as_of": "2026-09-02 05:38 CST",
   "profile": {
     "sector": "Basic Materials",
     "industry": "Specialty Chemicals",
@@ -30,6 +30,14 @@
       "pe_range": "",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null,
       "valuation_price": "17.5",
       "valuation_currency": "TWD",
       "valuation_as_of": "2026-07-30",
@@ -61,6 +69,14 @@
       "pe_range": "",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null,
       "valuation_price": "11.05",
       "valuation_currency": "TWD",
       "valuation_as_of": "2026-07-30",
@@ -92,6 +108,14 @@
       "pe_range": "",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null,
       "valuation_price": "12.45",
       "valuation_currency": "TWD",
       "valuation_as_of": "2026-07-30",
@@ -122,7 +146,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "EVA",
@@ -143,7 +175,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "H.B. Fuller",
@@ -164,7 +204,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "Henkel",
@@ -185,7 +233,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "IKEA",
@@ -206,7 +262,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "PCB",
@@ -227,7 +291,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "PUR",
@@ -248,7 +320,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "UV 膠",
@@ -269,7 +349,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "李長榮化工",
@@ -290,7 +378,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "金百利克拉克",
@@ -311,7 +407,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     }
   ]
 }

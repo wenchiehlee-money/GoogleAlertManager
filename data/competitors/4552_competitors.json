@@ -1,7 +1,7 @@
 {
   "ticker": "4552",
   "company_name": "力達-KY",
-  "as_of": "2026-09-01 16:17 CST",
+  "as_of": "2026-09-02 05:38 CST",
   "profile": {
     "sector": "Industrials",
     "industry": "Specialty Industrial Machinery",
@@ -30,6 +30,14 @@
       "pe_range": "",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null,
       "valuation_price": "17.25",
       "valuation_currency": "TWD",
       "valuation_as_of": "2026-07-30",
@@ -60,7 +68,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "Ingersoll Rand",
@@ -81,7 +97,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "半導體",
@@ -102,7 +126,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "復盛",
@@ -123,7 +155,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "汽車",
@@ -144,7 +184,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "渦捲式空壓機",
@@ -165,7 +213,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "空壓機",
@@ -186,7 +242,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "紡織",
@@ -207,7 +271,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "螺桿式空壓機",
@@ -228,7 +300,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "食品加工",
@@ -249,7 +329,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     }
   ]
 }

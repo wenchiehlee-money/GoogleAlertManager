@@ -1,7 +1,7 @@
 {
   "ticker": "6682",
   "company_name": "華旭先進",
-  "as_of": "2026-09-01 16:17 CST",
+  "as_of": "2026-09-02 05:38 CST",
   "profile": {
     "sector": "Technology",
     "industry": "Semiconductor Equipment & Materials",
@@ -30,6 +30,14 @@
       "pe_range": "",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null,
       "valuation_price": "33.65",
       "valuation_currency": "TWD",
       "valuation_as_of": "2026-07-30",
@@ -60,7 +68,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "崇越科技",
@@ -81,7 +97,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "晶圓製造",
@@ -102,7 +126,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "矽材料",
@@ -123,7 +155,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "研磨液",
@@ -144,7 +184,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "製程化學品",
@@ -165,7 +213,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     }
   ]
 }

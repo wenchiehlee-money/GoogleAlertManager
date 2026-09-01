@@ -1,7 +1,7 @@
 {
   "ticker": "5871",
   "company_name": "中租-KY",
-  "as_of": "2026-09-01 16:17 CST",
+  "as_of": "2026-09-02 05:38 CST",
   "profile": {
     "sector": "Financial Services",
     "industry": "Credit Services",
@@ -30,6 +30,14 @@
       "pe_range": "",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null,
       "valuation_price": "110.5",
       "valuation_currency": "TWD",
       "valuation_as_of": "2026-07-30",
@@ -61,6 +69,14 @@
       "pe_range": "",
       "fx_currency": "",
       "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null,
       "valuation_price": "81.4",
       "valuation_currency": "TWD",
       "valuation_as_of": "2026-07-30",
@@ -91,7 +107,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "中租全民電廠",
@@ -112,7 +136,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "中租控股",
@@ -133,7 +165,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "中租迪和",
@@ -154,7 +194,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "仲利國際",
@@ -175,7 +223,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "台電",
@@ -196,7 +252,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "和潤",
@@ -217,7 +281,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     },
     {
       "stock": "金管會",
@@ -238,7 +310,15 @@
       "gross_margin_pct_raw": null,
       "pe_range": "",
       "fx_currency": "",
-      "is_monthly_revenue_only": false
+      "is_monthly_revenue_only": false,
+      "net_profit": "",
+      "net_profit_raw": null,
+      "net_profit_yoy_pct": "",
+      "net_profit_yoy_pct_raw": null,
+      "operating_margin_pct": "",
+      "operating_margin_pct_raw": null,
+      "net_margin_pct": "",
+      "net_margin_pct_raw": null
     }
   ]
 }
