@@ -22,7 +22,7 @@
     {
       "repo": "wenchiehlee-money/GoogleAlertManager",
       "role": "consumer",
-      "local_path": "github.com/GoogleAlertManager/skills/common/skill-google-alert-fetch"
+      "local_path": "github.com/GoogleAlertManager/skills/skill-google-alert-fetch"
     }
   ]
 }

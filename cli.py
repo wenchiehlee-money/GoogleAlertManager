@@ -30,7 +30,6 @@ def _google_alert_skill_script() -> Path:
     return (
         Path(__file__).parent
         / "skills"
-        / "common"
         / "skill-google-alert-fetch"
         / "scripts"
         / "google_alert_fetch.py"

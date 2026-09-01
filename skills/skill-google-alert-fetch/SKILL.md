@@ -20,7 +20,7 @@ This skill covers the `GoogleAlertManager` repo and its Google Alerts data pipel
 - Observation list: `StockID_TWSE_TPEX.csv`
 - Watchlist refresh wrapper: `Get觀察名單.py`
 - CLI entrypoint: `cli.py`
-- Skill implementation script: `skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py`
+- Skill implementation script: `skills/skill-google-alert-fetch/scripts/google_alert_fetch.py`
 - RSS fallback map: `config/rss_urls.json`
 - Alert output: `data/alerts/<YYYY-MM-DD>/<stock_id>.json`
 - Report output: `data/reports/<YYYY-MM-DD>/`
@@ -46,13 +46,13 @@ uv run python cli.py update-list
 This delegates to the bundled skill script, which downloads both CSVs from Selenium-Actions.Auction. Direct script form:
 
 ```bash
-python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py update-list
+python skills/skill-google-alert-fetch/scripts/google_alert_fetch.py update-list
 ```
 
 3. Verify README/list consistency when the user asks about the watchlist:
 
 ```bash
-python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py check-readme
+python skills/skill-google-alert-fetch/scripts/google_alert_fetch.py check-readme
 ```
 
 Use `--json` when structured output is useful.
@@ -74,7 +74,7 @@ uv run python cli.py update-readme
 This delegates to the bundled skill script. Direct script form:
 
 ```bash
-python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py update-readme
+python skills/skill-google-alert-fetch/scripts/google_alert_fetch.py update-readme
 ```
 
 The implementation initializes rows from `StockID_TWSE_TPEX_focus.csv` and only fills counts for those IDs.
@@ -153,7 +153,7 @@ Special Scoring & Priority Rules:
 ## Failure Modes
 
 - Empty fetch result plus auth warning: verify secrets or run `export-rss` locally and commit `config/rss_urls.json`.
-- README contains extra or missing rows: run `python skills/common/skill-google-alert-fetch/scripts/google_alert_fetch.py check-readme`, then update README through the same script/CLI.
+- README contains extra or missing rows: run `python skills/skill-google-alert-fetch/scripts/google_alert_fetch.py check-readme`, then update README through the same script/CLI.
 - New focus stock has `-` counts: expected until RSS exists and entries are fetched for that ID.
 - Workflow updates README but not CSV: add both `StockID_TWSE_TPEX.csv` and `StockID_TWSE_TPEX_focus.csv` to the workflow commit step.
 - `sync` deletes alerts outside focus list by design; inspect the focus CSV before running it.

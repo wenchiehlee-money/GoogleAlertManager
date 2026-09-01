@@ -8,7 +8,6 @@ ROOT = Path(__file__).parent
 SCRIPT = (
     ROOT
     / "skills"
-    / "common"
     / "skill-google-alert-fetch"
     / "scripts"
     / "google_alert_fetch.py"

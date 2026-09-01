@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """GoogleAlertManager watchlist and README maintenance helpers.
 
-This script is bundled with skills/common/skill-google-alert-fetch so the skill's
+This script is bundled with skills/skill-google-alert-fetch so the skill's
 SOP and the repository automation share the same implementation.
 """
 
