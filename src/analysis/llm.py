@@ -1,6 +1,9 @@
 """以 LLM 針對每家公司進行情緒分析與投資建議。
 
-底層使用 `llm` library（支援 Gemini key 輪轉 + Codex-API-Server fallback）。
+底層使用 `llm` library。備援鏈為 codex（CLI 橋接，經 skill-llm-api-server 執行
+gemini-cli）→ gemini（直接呼叫 Gemini API，多把 key 輪轉）→ mlx（本地推論）。
+CLI 橋接與直接 API 都固定使用 gemini-2.5-flash，只是呼叫路徑不同；CODEX_API_URL/
+CODEX_API_KEY 未設定時 codex provider 會被自動跳過，直接退回 gemini。
 """
 
 import logging
@@ -10,6 +13,7 @@ from llm import LLMClient
 logger = logging.getLogger(__name__)
 
 MAX_TOKENS = 8192
+DEFAULT_MODEL = "gemini-2.5-flash"
 
 _client: LLMClient | None = None
 
@@ -17,7 +21,11 @@ _client: LLMClient | None = None
 def _get_client() -> LLMClient:
     global _client
     if _client is None:
-        _client = LLMClient(app_name="GoogleAlertManager")
+        _client = LLMClient(
+            providers=["codex", "gemini", "mlx"],
+            model=DEFAULT_MODEL,
+            app_name="GoogleAlertManager",
+        )
     return _client
 
 
