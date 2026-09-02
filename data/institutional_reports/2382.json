@@ -21,7 +21,11 @@
       "source_tier": "private_original_report",
       "redistribution_allowed": false,
       "eps_revision": "2024E 53028->60034 (+13.2%), 2025E 71111->71759 (+0.9%), 2026E 84906->84508 (-0.5%)",
-      "stale": true
+      "stale": true,
+      "nearest_next_earnings_release": {
+        "event_id": "2382-2026-02-06-earnings_release",
+        "days_before_event": 545
+      }
     }
   ],
   "company_events": [

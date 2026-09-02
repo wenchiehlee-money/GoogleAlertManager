@@ -30,8 +30,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2454-2026-04-30-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 4
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2454-2026-07-31-earnings_release",
+        "days_before_event": 88
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "高盛",
@@ -48,8 +54,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2454-2026-04-30-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 2
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2454-2026-07-31-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "凱基",
@@ -64,7 +76,11 @@
       "source_tier": "public_official_broker_domain",
       "redistribution_allowed": false,
       "eps_revision": "2024F 56.16->57.19 (+1.8%)",
-      "stale": true
+      "stale": true,
+      "nearest_next_earnings_release": {
+        "event_id": "2454-2026-02-05-earnings_release",
+        "days_before_event": 738
+      }
     }
   ],
   "company_events": [

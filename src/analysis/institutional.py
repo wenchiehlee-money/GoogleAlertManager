@@ -88,7 +88,9 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
             if r.get("target_price_previous") and r.get("target_price_previous") != r.get("target_price"):
                 tp_change = f"（前次：{r['target_price_previous']}）"
             lines.append(
-                f"- {r.get('publisher', '未知券商')}（{r.get('report_date', '')}）："
+                f"- {r.get('publisher', '未知券商')}（{r.get('report_date', '')}"
+                + (f"・{r['timing']}" if r.get("timing") else "")
+                + f"）："
                 f"評等 {r.get('rating') or '-'}{rating_change}，"
                 f"目標價 {r.get('target_price') if r.get('target_price') is not None else '-'}{tp_change}"
                 + (f"，EPS修正 {r['eps_revision']}" if r.get("eps_revision") else "")
@@ -123,8 +125,8 @@ def build_markdown_table(report: dict | None, thesis: dict | None) -> str:
 
     if report and report.get("recent_reports"):
         header = (
-            "| 券商/機構 | 日期 | 評等 | 目標價 | EPS修正 |\n"
-            "| :--- | :---: | :---: | ---: | :---: |"
+            "| 券商/機構 | 日期 | 時序 | 評等 | 目標價 | EPS修正 |\n"
+            "| :--- | :---: | :---: | :---: | ---: | :---: |"
         )
         rows = []
         for r in report["recent_reports"]:
@@ -135,8 +137,8 @@ def build_markdown_table(report: dict | None, thesis: dict | None) -> str:
             if r.get("target_price_previous") and r["target_price_previous"] != tp:
                 tp = f"{tp}（前：{r['target_price_previous']}）"
             rows.append(
-                f"| {r.get('publisher', '-')} | {r.get('report_date', '-')} | {rating} | "
-                f"{tp} | {r.get('eps_revision', '-')} |"
+                f"| {r.get('publisher', '-')} | {r.get('report_date', '-')} | {r.get('timing') or '-'} | "
+                f"{rating} | {tp} | {r.get('eps_revision', '-')} |"
             )
         footer = f"\n*資料來源：TW-institutional-research，更新時間：{report.get('as_of', '')}*"
         blocks.append("\n".join([header, *rows]) + footer)

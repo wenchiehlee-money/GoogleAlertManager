@@ -29,8 +29,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 33
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 58
+      },
+      "timing": "後續追蹤"
     },
     {
       "publisher": "伯恩斯坦",
@@ -48,8 +54,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 25
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 66
+      },
+      "timing": "後續追蹤"
     },
     {
       "publisher": "國泰",
@@ -67,8 +79,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "麥格理",
@@ -85,8 +103,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "瑞銀",
@@ -103,8 +127,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "滙豐",
@@ -121,8 +151,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "摩根大通",
@@ -139,8 +175,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "瑞穗",
@@ -157,8 +199,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "高盛",
@@ -175,8 +223,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "大和",
@@ -193,8 +247,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "摩根士丹利",
@@ -211,8 +271,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "法國興業銀行",
@@ -229,8 +295,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 1
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 90
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "美銀",
@@ -248,8 +320,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-07-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 0
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-10-15-earnings_release",
+        "days_before_event": 91
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "花旗",
@@ -266,8 +344,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-05-29-invited_investor_forum",
+        "event_type": "invited_investor_forum",
         "days_after_event": 45
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_before_event": 3
+      },
+      "timing": "前瞻預測"
     },
     {
       "publisher": "野村",
@@ -284,8 +368,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-05-29-invited_investor_forum",
+        "event_type": "invited_investor_forum",
         "days_after_event": 33
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_before_event": 15
+      },
+      "timing": "前瞻預測"
     },
     {
       "publisher": "永豐",
@@ -302,8 +392,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-04-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 12
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_before_event": 79
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "元大",
@@ -320,8 +416,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-04-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 3
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_before_event": 88
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "瑞穗",
@@ -338,8 +440,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-04-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 2
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_before_event": 89
+      },
+      "timing": "財報後"
     },
     {
       "publisher": "法國興業銀行",
@@ -356,8 +464,14 @@
       "stale": false,
       "nearest_prior_company_event": {
         "event_id": "2330-2026-04-16-earnings_release",
+        "event_type": "earnings_release",
         "days_after_event": 2
-      }
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_before_event": 89
+      },
+      "timing": "財報後"
     }
   ],
   "company_events": [
