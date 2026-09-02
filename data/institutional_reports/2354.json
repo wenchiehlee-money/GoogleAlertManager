@@ -1,0 +1,47 @@
+{
+  "stock_id": "2354",
+  "as_of": "2026-09-02",
+  "source_repo": "TW-institutional-research",
+  "source_repo_path": "data/revisions/2354/",
+  "sync_method": "automated_export_script",
+  "stale_days_threshold": 540,
+  "target_price_range": null,
+  "target_price_range_scope": null,
+  "rating_distribution": {},
+  "publisher_count_current_cycle": 0,
+  "publisher_count_all_time": 0,
+  "target_price_range_by_timing": {},
+  "external_consensus": null,
+  "recent_reports": [],
+  "company_events": [
+    {
+      "event_id": "2354-2026-10-21-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-10-21",
+      "event_name": "鴻準(2354) 2026 Q3 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2354-2026-08-06-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-08-06",
+      "event_name": "鴻準(2354) 2026 Q2 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2354-2026-06-30-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-06-30",
+      "event_name": "鴻準(2354) 2026 Q1 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2354-2026-03-18-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-03-18",
+      "event_name": "鴻準(2354) 2025 Q4 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    }
+  ],
+  "view_flow_divergence": null
+}

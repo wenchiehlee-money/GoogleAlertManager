@@ -1,0 +1,50 @@
+{
+  "stock_id": "8299",
+  "as_of": "2026-09-02",
+  "source_repo": "TW-institutional-research",
+  "source_repo_path": "data/revisions/8299/",
+  "sync_method": "automated_export_script",
+  "stale_days_threshold": 540,
+  "target_price_range": null,
+  "target_price_range_scope": null,
+  "rating_distribution": {},
+  "publisher_count_current_cycle": 0,
+  "publisher_count_all_time": 0,
+  "target_price_range_by_timing": {},
+  "external_consensus": {
+    "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
+    "as_of": "2026-07-02",
+    "days_since_as_of": 62,
+    "stale": false,
+    "analyst_count": 13.0,
+    "target_price": 3000.0,
+    "eps_current_fy": "2026",
+    "eps_current_fy_avg": 338.1,
+    "eps_current_fy_median": 340.55
+  },
+  "recent_reports": [],
+  "company_events": [
+    {
+      "event_id": "8299-2026-08-28-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-08-28",
+      "event_name": "群聯(8299) 2026 Q2 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "8299-2026-06-12-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-06-12",
+      "event_name": "群聯(8299) 2026 Q1 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "8299-2026-03-17-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-03-17",
+      "event_name": "群聯(8299) 2025 Q4 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    }
+  ],
+  "view_flow_divergence": null
+}

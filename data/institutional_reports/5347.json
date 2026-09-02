@@ -1,0 +1,28 @@
+{
+  "stock_id": "5347",
+  "as_of": "2026-09-02",
+  "source_repo": "TW-institutional-research",
+  "source_repo_path": "data/revisions/5347/",
+  "sync_method": "automated_export_script",
+  "stale_days_threshold": 540,
+  "target_price_range": null,
+  "target_price_range_scope": null,
+  "rating_distribution": {},
+  "publisher_count_current_cycle": 0,
+  "publisher_count_all_time": 0,
+  "target_price_range_by_timing": {},
+  "external_consensus": {
+    "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
+    "as_of": "2026-08-04",
+    "days_since_as_of": 29,
+    "stale": false,
+    "analyst_count": 17.0,
+    "target_price": 187.0,
+    "eps_current_fy": "2026",
+    "eps_current_fy_avg": 5.88,
+    "eps_current_fy_median": 5.88
+  },
+  "recent_reports": [],
+  "company_events": [],
+  "view_flow_divergence": null
+}

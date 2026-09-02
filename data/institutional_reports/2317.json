@@ -1,0 +1,78 @@
+{
+  "stock_id": "2317",
+  "as_of": "2026-09-02",
+  "source_repo": "TW-institutional-research",
+  "source_repo_path": "data/revisions/2317/",
+  "sync_method": "automated_export_script",
+  "stale_days_threshold": 540,
+  "target_price_range": null,
+  "target_price_range_scope": null,
+  "rating_distribution": {},
+  "publisher_count_current_cycle": 0,
+  "publisher_count_all_time": 0,
+  "target_price_range_by_timing": {},
+  "external_consensus": {
+    "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
+    "as_of": "2026-08-13",
+    "days_since_as_of": 20,
+    "stale": false,
+    "analyst_count": 22.0,
+    "target_price": 340.79,
+    "eps_current_fy": "2026",
+    "eps_current_fy_avg": 18.36,
+    "eps_current_fy_median": 18.22
+  },
+  "recent_reports": [],
+  "company_events": [
+    {
+      "event_id": "2317-2026-11-12-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-11-12",
+      "event_name": "鴻海(2317) 2026 Q3 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2317-2026-08-28-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-08-28",
+      "event_name": "鴻海(2317) 2026 Q2 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2317-2026-08-12-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-08-12",
+      "event_name": "鴻海(2317) 2026 Q2 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2317-2026-06-24-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-06-24",
+      "event_name": "鴻海(2317) 2026 Q1 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2317-2026-05-14-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-05-14",
+      "event_name": "鴻海(2317) 2026 Q1 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2317-2026-03-30-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-03-30",
+      "event_name": "鴻海(2317) 2025 Q4 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2317-2026-03-16-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-03-16",
+      "event_name": "鴻海(2317) 2025 Q4 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    }
+  ],
+  "view_flow_divergence": null
+}
