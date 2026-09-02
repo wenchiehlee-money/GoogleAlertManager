@@ -11,7 +11,15 @@
   "publisher_count_current_cycle": 0,
   "publisher_count_all_time": 1,
   "target_price_range_by_timing": {},
-  "external_consensus": null,
+  "external_consensus": {
+    "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
+    "as_of": "2026-08-15",
+    "analyst_count": 22.0,
+    "target_price": 425.0,
+    "eps_current_fy": "2026",
+    "eps_current_fy_avg": 26.17,
+    "eps_current_fy_median": 26.52
+  },
   "recent_reports": [
     {
       "publisher": "高盛",
