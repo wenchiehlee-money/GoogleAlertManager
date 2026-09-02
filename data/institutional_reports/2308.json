@@ -10,8 +10,22 @@
     "high": 2565,
     "median": 2565
   },
+  "target_price_range_scope": "財報後",
   "rating_distribution": {
     "Buy": 1
+  },
+  "target_price_range_by_timing": {
+    "財報後": {
+      "target_price_range": {
+        "low": 2565,
+        "high": 2565,
+        "median": 2565
+      },
+      "rating_distribution": {
+        "Buy": 1
+      },
+      "report_count": 1
+    }
   },
   "recent_reports": [
     {
@@ -27,9 +41,69 @@
       "source_tier": "public_official_broker_domain",
       "redistribution_allowed": false,
       "eps_revision": "2026F 35.56->41.54 (+16.8%)",
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2308-2026-04-29-earnings_release",
+        "event_type": "earnings_release",
+        "days_after_event": 5
+      },
+      "nearest_next_earnings_release": {
+        "event_id": "2308-2026-07-29-earnings_release",
+        "days_before_event": 86
+      },
+      "timing": "財報後"
     }
   ],
-  "company_events": [],
+  "company_events": [
+    {
+      "event_id": "2308-2026-10-28-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-10-28",
+      "event_name": "台達電(2308) 2026 Q3 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2308-2026-07-30-investor_conference",
+      "event_type": "investor_conference",
+      "date": "2026-07-30",
+      "event_name": "台達電(2308) 2026 Q2 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2308-2026-07-29-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-07-29",
+      "event_name": "台達電(2308) 2026 Q2 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2308-2026-05-29-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-05-29",
+      "event_name": "台達電(2308) 2026 Q1 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2308-2026-04-29-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-04-29",
+      "event_name": "台達電(2308) 2026 Q1 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2308-2026-03-10-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-03-10",
+      "event_name": "台達電(2308) 2025 Q4 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2308-2026-02-13-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-02-13",
+      "event_name": "台達電(2308) 2025 Q4 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    }
+  ],
   "view_flow_divergence": null
 }

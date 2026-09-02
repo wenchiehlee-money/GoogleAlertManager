@@ -76,8 +76,10 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
 
         tp = report.get("target_price_range") or {}
         if tp:
+            scope = report.get("target_price_range_scope")
+            scope_note = f"，僅同時序「{scope}」" if scope else ""
             lines.append(
-                f"目標價區間：{tp.get('low', '-')} ~ {tp.get('high', '-')}（中位數 {tp.get('median', '-')}）"
+                f"目標價區間：{tp.get('low', '-')} ~ {tp.get('high', '-')}（中位數 {tp.get('median', '-')}{scope_note}）"
             )
 
         for r in report.get("recent_reports", [])[:5]:
