@@ -33,10 +33,14 @@ KNOWN_RELATIONSHIP_TYPES = {
 }
 
 # (raw 欄位, 顯示名稱, 是否用 +/- 號)
+# 注意：底層 `profit`/`profit_yoy_pct` 來自 skill-theme-competitor-analysis 的
+# 獲利金額_億_營業_利益（營業利益），不是稅後淨利；真正的稅後淨利是 `net_profit`。
 _RANKING_METRICS = [
     ("revenue_yoy_pct_raw", "營收YoY", True),
-    ("profit_yoy_pct_raw", "淨利YoY", True),
+    ("profit_yoy_pct_raw", "營業利益YoY", True),
+    ("net_profit_yoy_pct_raw", "淨利YoY", True),
     ("gross_margin_pct_raw", "毛利率", False),
+    ("net_margin_pct_raw", "淨利率", False),
 ]
 
 _WIKILINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
@@ -192,8 +196,10 @@ def build_llm_context(data: dict | None) -> str:
         lines.append(
             f"- {row.get('company')}（{row.get('stock')}，{label}）{row.get('period')}："
             f"營收 {row.get('revenue')}（YoY {row.get('revenue_yoy_pct')}），"
-            f"淨利 {row.get('profit')}（YoY {row.get('profit_yoy_pct')}），"
-            f"毛利率 {row.get('gross_margin_pct')}，P/E {row.get('pe_range')}"
+            f"營業利益 {row.get('profit')}（YoY {row.get('profit_yoy_pct')}），"
+            f"淨利 {row.get('net_profit')}（YoY {row.get('net_profit_yoy_pct')}），"
+            f"毛利率 {row.get('gross_margin_pct')}，營業利益率 {row.get('operating_margin_pct')}，"
+            f"淨利率 {row.get('net_margin_pct')}，P/E {row.get('pe_range')}"
         )
 
     ranking = build_ranking_highlights(data)
@@ -217,8 +223,8 @@ def build_markdown_table(data: dict | None) -> str:
         return ""
 
     header = (
-        "| 股票代碼 | 公司 | 關係 | 期間 | 營收 | YoY | 淨利 | YoY | 毛利率 | P/E |\n"
-        "| :--- | :--- | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: |"
+        "| 股票代碼 | 公司 | 關係 | 期間 | 營收 | YoY | 營業利益 | YoY | 淨利 | YoY | 毛利率 | 營業利益率 | 淨利率 | P/E |\n"
+        "| :--- | :--- | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"
     )
     body_lines = []
     for row in latest_rows:
@@ -226,7 +232,9 @@ def build_markdown_table(data: dict | None) -> str:
         body_lines.append(
             f"| {row.get('stock')} | {row.get('company')} | {label} | {row.get('period')} | "
             f"{row.get('revenue')} | {row.get('revenue_yoy_pct')} | {row.get('profit')} | "
-            f"{row.get('profit_yoy_pct')} | {row.get('gross_margin_pct')} | {row.get('pe_range')} |"
+            f"{row.get('profit_yoy_pct')} | {row.get('net_profit')} | {row.get('net_profit_yoy_pct')} | "
+            f"{row.get('gross_margin_pct')} | {row.get('operating_margin_pct')} | {row.get('net_margin_pct')} | "
+            f"{row.get('pe_range')} |"
         )
     footer = f"\n*資料來源：My-TW-Coverage，更新時間：{data.get('as_of', '')}*"
     table = "\n".join([header, *body_lines]) + footer
