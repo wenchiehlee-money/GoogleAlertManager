@@ -6,43 +6,48 @@
   "sync_method": "automated_export_script",
   "stale_days_threshold": 540,
   "target_price_range": {
-    "low": 3300,
-    "high": 3700,
-    "median": 3500.0
+    "low": 2890,
+    "high": 4200,
+    "median": 3200
   },
-  "target_price_range_scope": "後續追蹤",
+  "target_price_range_scope": "2026-07-16 財報後（含後續追蹤）",
   "rating_distribution": {
     "Outperform": 1
   },
+  "publisher_count_current_cycle": 13,
+  "publisher_count_all_time": 17,
   "target_price_range_by_timing": {
-    "後續追蹤": {
+    "2026-07-16 財報後（含後續追蹤）": {
       "target_price_range": {
-        "low": 3300,
-        "high": 3700,
-        "median": 3500.0
+        "low": 2890,
+        "high": 4200,
+        "median": 3200
       },
       "rating_distribution": {
         "Outperform": 1
       },
-      "report_count": 2
+      "report_count": 13,
+      "publisher_count": 13
     },
-    "財報後": {
-      "target_price_range": {
-        "low": 2450,
-        "high": 4200,
-        "median": 3000
-      },
-      "rating_distribution": {},
-      "report_count": 15
-    },
-    "前瞻預測": {
+    "2026-07-16 財報前瞻": {
       "target_price_range": {
         "low": 3425,
         "high": 3800,
         "median": 3612.5
       },
       "rating_distribution": {},
-      "report_count": 2
+      "report_count": 2,
+      "publisher_count": 2
+    },
+    "2026-04-16 財報後（含後續追蹤）": {
+      "target_price_range": {
+        "low": 2450,
+        "high": 2615,
+        "median": 2560.0
+      },
+      "rating_distribution": {},
+      "report_count": 4,
+      "publisher_count": 4
     }
   },
   "external_consensus": {

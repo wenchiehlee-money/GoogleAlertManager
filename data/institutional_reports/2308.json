@@ -10,12 +10,14 @@
     "high": 2565,
     "median": 2565
   },
-  "target_price_range_scope": "財報後",
+  "target_price_range_scope": "2026-04-29 財報後（含後續追蹤）",
   "rating_distribution": {
     "Buy": 1
   },
+  "publisher_count_current_cycle": 1,
+  "publisher_count_all_time": 1,
   "target_price_range_by_timing": {
-    "財報後": {
+    "2026-04-29 財報後（含後續追蹤）": {
       "target_price_range": {
         "low": 2565,
         "high": 2565,
@@ -24,7 +26,8 @@
       "rating_distribution": {
         "Buy": 1
       },
-      "report_count": 1
+      "report_count": 1,
+      "publisher_count": 1
     }
   },
   "external_consensus": {

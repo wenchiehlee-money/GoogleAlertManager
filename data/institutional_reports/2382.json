@@ -8,6 +8,8 @@
   "target_price_range": null,
   "target_price_range_scope": null,
   "rating_distribution": {},
+  "publisher_count_current_cycle": 0,
+  "publisher_count_all_time": 1,
   "target_price_range_by_timing": {},
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
