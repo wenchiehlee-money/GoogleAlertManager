@@ -99,6 +99,15 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
                 + (f"｜{r['thesis']}" if r.get("thesis") else "")
             )
 
+        ext = report.get("external_consensus")
+        if ext and ext.get("target_price") is not None:
+            n = ext.get("analyst_count")
+            n_str = f"，{int(n)}位分析師" if n is not None else ""
+            lines.append(
+                f"外部共識參考（FactSet 聚合共識，非本 repo 發布者觀點，擷取日 {ext.get('as_of', '-')}{n_str}）："
+                f"目標價 {ext['target_price']:g}"
+            )
+
         divergence = report.get("view_flow_divergence")
         if divergence:
             lines.append(f"\n法人觀點與籌碼流向分歧：{divergence}")
@@ -143,6 +152,14 @@ def build_markdown_table(report: dict | None, thesis: dict | None) -> str:
                 f"{rating} | {tp} | {r.get('eps_revision', '-')} |"
             )
         footer = f"\n*資料來源：TW-institutional-research，更新時間：{report.get('as_of', '')}*"
+        ext = report.get("external_consensus")
+        if ext and ext.get("target_price") is not None:
+            n = ext.get("analyst_count")
+            n_str = f"，{int(n)}位分析師" if n is not None else ""
+            footer += (
+                f"\n*外部共識參考（FactSet 聚合共識，非上表發布者觀點，擷取日 {ext.get('as_of', '-')}"
+                f"{n_str}）：目標價 {ext['target_price']:g}*"
+            )
         blocks.append("\n".join([header, *rows]) + footer)
 
     if thesis and thesis.get("theses"):

@@ -45,6 +45,15 @@
       "report_count": 2
     }
   },
+  "external_consensus": {
+    "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
+    "as_of": "2026-07-19",
+    "analyst_count": 42.0,
+    "target_price": 3160.0,
+    "eps_current_fy": "2026",
+    "eps_current_fy_avg": 105.77,
+    "eps_current_fy_median": 107.74
+  },
   "recent_reports": [
     {
       "publisher": "里昂",
