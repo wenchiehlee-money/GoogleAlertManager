@@ -15,7 +15,7 @@ dependencies = [
     "pyyaml",
     "python-dotenv",
     "jinja2",
-    "nltk>=3.10.0",
+    "nltk>=3.10.3",
     "llm",
     "cryptography>=50.0.0",
     "requests>=2.34.2",
