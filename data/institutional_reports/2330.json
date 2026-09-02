@@ -53,6 +53,8 @@
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
     "as_of": "2026-07-19",
+    "days_since_as_of": 45,
+    "stale": false,
     "analyst_count": 42.0,
     "target_price": 3160.0,
     "eps_current_fy": "2026",
