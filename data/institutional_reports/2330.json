@@ -15,7 +15,8 @@
   },
   "recent_reports": [
     {
-      "publisher": "clsa",
+      "publisher": "里昂",
+      "publisher_id": "clsa",
       "report_date": "2026-08-18",
       "report_id": "2330-2026-08-18-clsa-secondary-candidate",
       "rating": null,
@@ -25,10 +26,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 33
+      }
     },
     {
-      "publisher": "bernstein",
+      "publisher": "伯恩斯坦",
+      "publisher_id": "bernstein",
       "report_date": "2026-08-10",
       "report_id": "bernstein-2330-2026-08-10-promotion-candidate",
       "rating": "Outperform",
@@ -39,10 +45,15 @@
       "source_tier": "private_original_report",
       "redistribution_allowed": false,
       "eps_revision": "F26E 101.62->110.7 (+8.9%), F27E 124.63->144.85 (+16.2%)",
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 25
+      }
     },
     {
-      "publisher": "cathay",
+      "publisher": "國泰",
+      "publisher_id": "cathay",
       "report_date": "2026-07-17",
       "report_id": "cathay-2330-2026-07-17-metadata-only-draft",
       "rating": null,
@@ -53,10 +64,15 @@
       "source_tier": "private_original_report",
       "redistribution_allowed": false,
       "eps_revision": "3Q26E 26.75->27.61 (+3.2%)",
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "macquarie",
+      "publisher": "麥格理",
+      "publisher_id": "macquarie",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-17-macquarie-secondary-metadata",
       "rating": null,
@@ -66,10 +82,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "ubs",
+      "publisher": "瑞銀",
+      "publisher_id": "ubs",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -79,10 +100,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "hsbc",
+      "publisher": "滙豐",
+      "publisher_id": "hsbc",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -92,10 +118,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "jpmorgan",
+      "publisher": "摩根大通",
+      "publisher_id": "jpmorgan",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -105,10 +136,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "mizuho",
+      "publisher": "瑞穗",
+      "publisher_id": "mizuho",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -118,10 +154,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "goldman-sachs",
+      "publisher": "高盛",
+      "publisher_id": "goldman-sachs",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -131,10 +172,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "daiwa",
+      "publisher": "大和",
+      "publisher_id": "daiwa",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -144,10 +190,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "morgan-stanley",
+      "publisher": "摩根士丹利",
+      "publisher_id": "morgan-stanley",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -157,10 +208,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "societe-generale",
+      "publisher": "法國興業銀行",
+      "publisher_id": "societe-generale",
       "report_date": "2026-07-17",
       "report_id": "2330-2026-07-18-worldjournal-secondary-roundup",
       "rating": null,
@@ -170,10 +226,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 1
+      }
     },
     {
-      "publisher": "bank-of-america",
+      "publisher": "美銀",
+      "publisher_id": "bank-of-america",
       "report_date": "2026-07-16",
       "report_id": "2330-2026-07-16-bofa-secondary-pre-event",
       "rating": null,
@@ -184,10 +245,15 @@
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
       "eps_revision": "FY2026 103->107 (+3.9%), FY2027 150->153 (+2.0%), FY2028 177->178 (+0.6%)",
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-07-16-earnings_release",
+        "days_after_event": 0
+      }
     },
     {
-      "publisher": "citi",
+      "publisher": "花旗",
+      "publisher_id": "citi",
       "report_date": "2026-07-13",
       "report_id": "2330-2026-07-13-citi-secondary-candidate",
       "rating": null,
@@ -197,10 +263,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-05-29-invited_investor_forum",
+        "days_after_event": 45
+      }
     },
     {
-      "publisher": "nomura",
+      "publisher": "野村",
+      "publisher_id": "nomura",
       "report_date": "2026-07-01",
       "report_id": "2330-2026-07-01-nomura-secondary-candidate",
       "rating": null,
@@ -210,10 +281,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-05-29-invited_investor_forum",
+        "days_after_event": 33
+      }
     },
     {
-      "publisher": "sinopac",
+      "publisher": "永豐",
+      "publisher_id": "sinopac",
       "report_date": "2026-04-28",
       "report_id": "2330-2026-04-28-sinopac-secondary-candidate",
       "rating": null,
@@ -223,10 +299,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-04-16-earnings_release",
+        "days_after_event": 12
+      }
     },
     {
-      "publisher": "yuanta",
+      "publisher": "元大",
+      "publisher_id": "yuanta",
       "report_date": "2026-04-19",
       "report_id": "2330-2026-04-19-yuanta-secondary-candidate",
       "rating": null,
@@ -236,10 +317,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-04-16-earnings_release",
+        "days_after_event": 3
+      }
     },
     {
-      "publisher": "mizuho",
+      "publisher": "瑞穗",
+      "publisher_id": "mizuho",
       "report_date": "2026-04-18",
       "report_id": "2330-2026-04-18-ten-brokers-secondary-roundup",
       "rating": null,
@@ -249,10 +335,15 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-04-16-earnings_release",
+        "days_after_event": 2
+      }
     },
     {
-      "publisher": "societe-generale",
+      "publisher": "法國興業銀行",
+      "publisher_id": "societe-generale",
       "report_date": "2026-04-18",
       "report_id": "2330-2026-04-18-ten-brokers-secondary-roundup",
       "rating": null,
@@ -262,7 +353,62 @@
       "confidence": "medium",
       "source_tier": "secondary_media_roundup",
       "redistribution_allowed": false,
-      "stale": false
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "2330-2026-04-16-earnings_release",
+        "days_after_event": 2
+      }
+    }
+  ],
+  "company_events": [
+    {
+      "event_id": "2330-2026-10-15-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-10-15",
+      "event_name": "台積電(2330) 2026 Q3 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2330-2026-08-24-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-08-24",
+      "event_name": "台積電(2330) 2026 Q2 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2330-2026-07-16-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-07-16",
+      "event_name": "台積電(2330) 2026 Q2 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2330-2026-05-29-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-05-29",
+      "event_name": "台積電(2330) 2026 Q1 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2330-2026-04-16-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-04-16",
+      "event_name": "台積電(2330) 2026 Q1 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2330-2026-03-12-invited_investor_forum",
+      "event_type": "invited_investor_forum",
+      "date": "2026-03-12",
+      "event_name": "台積電(2330) 2025 Q4 法說會",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
+    },
+    {
+      "event_id": "2330-2026-01-15-earnings_release",
+      "event_type": "earnings_release",
+      "date": "2026-01-15",
+      "event_name": "台積電(2330) 2025 Q4 財報",
+      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
     }
   ],
   "view_flow_divergence": null
