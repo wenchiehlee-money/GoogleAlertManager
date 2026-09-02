@@ -1,0 +1,35 @@
+{
+  "stock_id": "2308",
+  "as_of": "2026-09-02",
+  "source_repo": "TW-institutional-research",
+  "source_repo_path": "data/revisions/2308/",
+  "sync_method": "automated_export_script",
+  "stale_days_threshold": 540,
+  "target_price_range": {
+    "low": 2565,
+    "high": 2565,
+    "median": 2565
+  },
+  "rating_distribution": {
+    "Buy": 1
+  },
+  "recent_reports": [
+    {
+      "publisher": "永豐",
+      "publisher_id": "sinopac",
+      "report_date": "2026-05-04",
+      "report_id": "sinopac-2308-2026-05-04-promotion-candidate",
+      "rating": "Buy",
+      "rating_previous": null,
+      "target_price": 2565,
+      "target_price_previous": 2165,
+      "confidence": "high",
+      "source_tier": "public_official_broker_domain",
+      "redistribution_allowed": false,
+      "eps_revision": "2026F 35.56->41.54 (+16.8%)",
+      "stale": false
+    }
+  ],
+  "company_events": [],
+  "view_flow_divergence": null
+}
