@@ -103,9 +103,10 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
         if ext and ext.get("target_price") is not None:
             n = ext.get("analyst_count")
             n_str = f"，{int(n)}位分析師" if n is not None else ""
+            stale_note = "・⚠️已過期，可能非最新共識" if ext.get("stale") else ""
             lines.append(
-                f"外部共識參考（FactSet 聚合共識，非本 repo 發布者觀點，擷取日 {ext.get('as_of', '-')}{n_str}）："
-                f"目標價 {ext['target_price']:g}"
+                f"外部共識參考（FactSet 聚合共識，非本 repo 發布者觀點，資料日期 {ext.get('as_of', '-')}"
+                f"{n_str}{stale_note}）：目標價 {ext['target_price']:g}"
             )
 
         divergence = report.get("view_flow_divergence")
@@ -156,9 +157,10 @@ def build_markdown_table(report: dict | None, thesis: dict | None) -> str:
         if ext and ext.get("target_price") is not None:
             n = ext.get("analyst_count")
             n_str = f"，{int(n)}位分析師" if n is not None else ""
+            stale_note = "・⚠️已過期" if ext.get("stale") else ""
             footer += (
-                f"\n*外部共識參考（FactSet 聚合共識，非上表發布者觀點，擷取日 {ext.get('as_of', '-')}"
-                f"{n_str}）：目標價 {ext['target_price']:g}*"
+                f"\n*外部共識參考（FactSet 聚合共識，非上表發布者觀點，資料日期 {ext.get('as_of', '-')}"
+                f"{n_str}{stale_note}）：目標價 {ext['target_price']:g}*"
             )
         blocks.append("\n".join([header, *rows]) + footer)
 
