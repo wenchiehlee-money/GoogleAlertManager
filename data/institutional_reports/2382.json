@@ -1,0 +1,27 @@
+{
+  "stock_id": "2382",
+  "as_of": "2026-09-02",
+  "source_repo": "TW-institutional-research",
+  "source_repo_path": "data/revisions/2382/",
+  "sync_method": "automated_export_script",
+  "stale_days_threshold": 540,
+  "target_price_range": null,
+  "rating_distribution": {},
+  "recent_reports": [
+    {
+      "publisher": "goldman-sachs",
+      "report_date": "2024-08-10",
+      "report_id": "goldman-sachs-2382-2024-08-10-promotion-candidate",
+      "rating": "Buy",
+      "rating_previous": null,
+      "target_price": 408,
+      "target_price_previous": 405,
+      "confidence": "high",
+      "source_tier": "private_original_report",
+      "redistribution_allowed": false,
+      "eps_revision": "2024E 53028->60034 (+13.2%), 2025E 71111->71759 (+0.9%), 2026E 84906->84508 (-0.5%)",
+      "stale": true
+    }
+  ],
+  "view_flow_divergence": null
+}

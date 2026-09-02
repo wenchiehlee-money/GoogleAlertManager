@@ -1,52 +1,59 @@
 {
+  "stock_id": "2454",
   "as_of": "2026-09-02",
   "source_repo": "TW-institutional-research",
-  "source_repo_path": "data/revisions/2454/2024-2026-revisions.yaml",
-  "sync_method": "manual_pilot_not_automated",
+  "source_repo_path": "data/revisions/2454/",
+  "sync_method": "automated_export_script",
+  "stale_days_threshold": 540,
   "target_price_range": {
     "low": 3650,
     "high": 5000,
-    "median": 4325,
-    "note": "Range computed from the two most recent (2026) target prices only (SinoPac 3,650 and Goldman Sachs-secondary 5,000). KGI's 976 (2024-01-29, over 2.5 years stale) is excluded from the range as not comparable to current price levels."
+    "median": 4325.0
   },
-  "rating_distribution": {},
-  "rating_distribution_note": "Not meaningful yet -- only 3 publisher records exist, spanning 2024-2026, and one (Goldman Sachs, secondary-media) does not state an explicit rating action. Left empty rather than fabricating a distribution.",
+  "rating_distribution": {
+    "Buy": 1
+  },
   "recent_reports": [
     {
-      "publisher": "Goldman Sachs (secondary/Facebook-cited, no primary PDF)",
+      "publisher": "sinopac",
+      "report_date": "2026-05-04",
+      "report_id": "sinopac-2454-2026-05-04-promotion-candidate",
+      "rating": "Buy",
+      "rating_previous": null,
+      "target_price": 3650,
+      "target_price_previous": 2100,
+      "confidence": "high",
+      "source_tier": "public_official_broker_domain",
+      "redistribution_allowed": false,
+      "eps_revision": "2026F 66.34->61.23 (-7.7%), 2027F 83.93->112.01 (+33.5%)",
+      "stale": false
+    },
+    {
+      "publisher": "goldman-sachs",
       "report_date": "2026-05-02",
+      "report_id": "2454-2026-05-02-goldman-sachs-secondary-candidate",
       "rating": null,
       "rating_previous": null,
       "target_price": 5000,
       "target_price_previous": 2454,
-      "eps_revision": "2028E EPS NT$406.51 (new estimate, no prior comparison)",
-      "thesis": "AI ASIC revenue upsized to US$48B by 2028E (66% of total revenue); cloud ASIC TAM pulled forward to 2027E",
       "confidence": "medium",
-      "source_tier": "secondary_media"
+      "source_tier": "secondary_media",
+      "redistribution_allowed": false,
+      "stale": false
     },
     {
-      "publisher": "SinoPac",
-      "report_date": "2026-05-04",
-      "rating": "Buy",
-      "rating_previous": "Buy",
-      "target_price": 3650,
-      "target_price_previous": 2100,
-      "eps_revision": "2026F 66.34->61.23 (down 7.7%), 2027F 83.93->112.01 (up 33.5%)",
-      "thesis": "ASIC business upsized; smartphone business remains weak, offset by Smart Edge Platform and ASIC",
-      "confidence": "high",
-      "source_tier": "public_official_broker_domain"
-    },
-    {
-      "publisher": "KGI (Asia)",
+      "publisher": "kgi",
       "report_date": "2024-01-29",
+      "report_id": "kgi-2454-2024-01-29-promotion-candidate",
       "rating": "Neutral",
       "rating_previous": "Outperform",
       "target_price": 976,
       "target_price_previous": 956,
-      "eps_revision": "2024F 56.16->57.19 (up 1.9%)",
-      "thesis": "STALE (over 2.5 years old, kept for publisher-coverage history only): smartphone restocking already priced in, ASIC/auto catalysts premature",
       "confidence": "high",
-      "source_tier": "public_official_broker_domain"
+      "source_tier": "public_official_broker_domain",
+      "redistribution_allowed": false,
+      "eps_revision": "2024F 56.16->57.19 (+1.8%)",
+      "stale": true
     }
   ],
   "view_flow_divergence": null
