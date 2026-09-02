@@ -89,8 +89,8 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
                 tp_change = f"（前次：{r['target_price_previous']}）"
             lines.append(
                 f"- {r.get('publisher', '未知券商')}（{r.get('report_date', '')}）："
-                f"評等 {r.get('rating', '-')}{rating_change}，"
-                f"目標價 {r.get('target_price', '-')}{tp_change}"
+                f"評等 {r.get('rating') or '-'}{rating_change}，"
+                f"目標價 {r.get('target_price') if r.get('target_price') is not None else '-'}{tp_change}"
                 + (f"，EPS修正 {r['eps_revision']}" if r.get("eps_revision") else "")
                 + (f"｜{r['thesis']}" if r.get("thesis") else "")
             )
@@ -128,10 +128,10 @@ def build_markdown_table(report: dict | None, thesis: dict | None) -> str:
         )
         rows = []
         for r in report["recent_reports"]:
-            rating = r.get("rating", "-")
+            rating = r.get("rating") or "-"
             if r.get("rating_previous") and r["rating_previous"] != rating:
                 rating = f"{rating}（前：{r['rating_previous']}）"
-            tp = r.get("target_price", "-")
+            tp = r.get("target_price") if r.get("target_price") is not None else "-"
             if r.get("target_price_previous") and r["target_price_previous"] != tp:
                 tp = f"{tp}（前：{r['target_price_previous']}）"
             rows.append(
