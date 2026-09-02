@@ -27,17 +27,7 @@
       "source_tier": "public_official_broker_domain",
       "redistribution_allowed": false,
       "eps_revision": "2026F 66.34->61.23 (-7.7%), 2027F 83.93->112.01 (+33.5%)",
-      "stale": false,
-      "nearest_prior_company_event": {
-        "event_id": "2454-2026-04-30-earnings_release",
-        "event_type": "earnings_release",
-        "days_after_event": 4
-      },
-      "nearest_next_earnings_release": {
-        "event_id": "2454-2026-07-31-earnings_release",
-        "days_before_event": 88
-      },
-      "timing": "財報後"
+      "stale": false
     },
     {
       "publisher": "高盛",
@@ -51,17 +41,7 @@
       "confidence": "medium",
       "source_tier": "secondary_media",
       "redistribution_allowed": false,
-      "stale": false,
-      "nearest_prior_company_event": {
-        "event_id": "2454-2026-04-30-earnings_release",
-        "event_type": "earnings_release",
-        "days_after_event": 2
-      },
-      "nearest_next_earnings_release": {
-        "event_id": "2454-2026-07-31-earnings_release",
-        "days_before_event": 90
-      },
-      "timing": "財報後"
+      "stale": false
     },
     {
       "publisher": "凱基",
@@ -76,63 +56,9 @@
       "source_tier": "public_official_broker_domain",
       "redistribution_allowed": false,
       "eps_revision": "2024F 56.16->57.19 (+1.8%)",
-      "stale": true,
-      "nearest_next_earnings_release": {
-        "event_id": "2454-2026-02-05-earnings_release",
-        "days_before_event": 738
-      }
+      "stale": true
     }
   ],
-  "company_events": [
-    {
-      "event_id": "2454-2026-10-30-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-10-30",
-      "event_name": "聯發科(2454) 2026 Q3 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2454-2026-07-31-investor_conference",
-      "event_type": "investor_conference",
-      "date": "2026-07-31",
-      "event_name": "聯發科(2454) 2026 Q2 法說會",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2454-2026-07-31-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-07-31",
-      "event_name": "聯發科(2454) 2026 Q2 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2454-2026-06-23-invited_investor_forum",
-      "event_type": "invited_investor_forum",
-      "date": "2026-06-23",
-      "event_name": "聯發科(2454) 2026 Q1 法說會",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2454-2026-04-30-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-04-30",
-      "event_name": "聯發科(2454) 2026 Q1 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2454-2026-03-19-invited_investor_forum",
-      "event_type": "invited_investor_forum",
-      "date": "2026-03-19",
-      "event_name": "聯發科(2454) 2025 Q4 法說會",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2454-2026-02-05-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-02-05",
-      "event_name": "聯發科(2454) 2025 Q4 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    }
-  ],
+  "company_events": [],
   "view_flow_divergence": null
 }

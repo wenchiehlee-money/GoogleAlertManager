@@ -21,63 +21,9 @@
       "source_tier": "private_original_report",
       "redistribution_allowed": false,
       "eps_revision": "2024E 53028->60034 (+13.2%), 2025E 71111->71759 (+0.9%), 2026E 84906->84508 (-0.5%)",
-      "stale": true,
-      "nearest_next_earnings_release": {
-        "event_id": "2382-2026-02-06-earnings_release",
-        "days_before_event": 545
-      }
+      "stale": true
     }
   ],
-  "company_events": [
-    {
-      "event_id": "2382-2026-11-10-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-11-10",
-      "event_name": "廣達(2382) 2026 Q3 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2382-2026-08-13-investor_conference",
-      "event_type": "investor_conference",
-      "date": "2026-08-13",
-      "event_name": "廣達(2382) 2026 Q2 法說會",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2382-2026-08-13-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-08-13",
-      "event_name": "廣達(2382) 2026 Q2 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2382-2026-06-05-invited_investor_forum",
-      "event_type": "invited_investor_forum",
-      "date": "2026-06-05",
-      "event_name": "廣達(2382) 2026 Q1 法說會",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2382-2026-05-14-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-05-14",
-      "event_name": "廣達(2382) 2026 Q1 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2382-2026-03-20-invited_investor_forum",
-      "event_type": "invited_investor_forum",
-      "date": "2026-03-20",
-      "event_name": "廣達(2382) 2025 Q4 法說會",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    },
-    {
-      "event_id": "2382-2026-02-06-earnings_release",
-      "event_type": "earnings_release",
-      "date": "2026-02-06",
-      "event_name": "廣達(2382) 2025 Q4 財報",
-      "source": "InvestorEvents/raw_event_upcoming_earnings.csv"
-    }
-  ],
+  "company_events": [],
   "view_flow_divergence": null
 }
