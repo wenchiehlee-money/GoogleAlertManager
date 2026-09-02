@@ -109,6 +109,21 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
                 f"{n_str}{stale_note}）：目標價 {ext['target_price']:g}"
             )
 
+        yahoo = report.get("yahoo_earnings_track_record")
+        if yahoo and yahoo.get("eps_forward_current_fy_avg") is not None:
+            up30, down30 = yahoo.get("eps_revision_0q_up_30d"), yahoo.get("eps_revision_0q_down_30d")
+            revision_str = f"，近 30 天 {int(up30)}升/{int(down30)}降" if None not in (up30, down30) else ""
+            cur_now, cur_ago = yahoo.get("eps_trend_current_fy_now"), yahoo.get("eps_trend_current_fy_90d_ago")
+            trend_str = ""
+            if cur_now is not None and cur_ago is not None:
+                arrow = "↑" if cur_now > cur_ago else ("↓" if cur_now < cur_ago else "→")
+                trend_str = f"，今年 EPS 共識 90 天內 {cur_ago:.2f}→{cur_now:.2f} {arrow}"
+            lines.append(
+                f"Yahoo Finance EPS 共識（非目標價，資料日期 {yahoo.get('forecast_asof_date', '-')}）："
+                f"今年 {yahoo['eps_forward_current_fy_avg']:.2f}、明年 {yahoo.get('eps_forward_next_fy_avg', '-')}"
+                f"{revision_str}{trend_str}"
+            )
+
         divergence = report.get("view_flow_divergence")
         if divergence:
             lines.append(f"\n法人觀點與籌碼流向分歧：{divergence}")
