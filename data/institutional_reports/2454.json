@@ -30,15 +30,7 @@
       "publisher_count": 2
     }
   },
-  "external_consensus": {
-    "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
-    "as_of": "2026-08-04",
-    "analyst_count": 26.0,
-    "target_price": 5485.0,
-    "eps_current_fy": "2026",
-    "eps_current_fy_avg": 68.12,
-    "eps_current_fy_median": 68.57
-  },
+  "external_consensus": null,
   "recent_reports": [
     {
       "publisher": "永豐",
