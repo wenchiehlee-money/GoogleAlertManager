@@ -62,7 +62,19 @@
     "current_fy_eps_range": {
       "low": 510.0,
       "high": 1183.0
-    }
+    },
+    "pe_multiple_low_ab": [
+      10.89,
+      7.15
+    ],
+    "pe_multiple_high_ab": [
+      15.1,
+      16.59
+    ]
+  },
+  "pe_band_valuation_range_yahoo_eps": {
+    "low": 548.37926,
+    "high": 1272.393276
   },
   "recent_reports": [],
   "company_events": [
