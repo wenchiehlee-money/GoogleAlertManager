@@ -118,9 +118,11 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
             if cur_now is not None and cur_ago is not None:
                 arrow = "↑" if cur_now > cur_ago else ("↓" if cur_now < cur_ago else "→")
                 trend_str = f"，今年 EPS 共識 90 天內 {cur_ago:.2f}→{cur_now:.2f} {arrow}"
+            nxt = yahoo.get("eps_forward_next_fy_avg")
+            nxt_str = f"{nxt:.2f}" if nxt is not None else "-"
             lines.append(
                 f"Yahoo Finance EPS 共識（非目標價，資料日期 {yahoo.get('forecast_asof_date', '-')}）："
-                f"今年 {yahoo['eps_forward_current_fy_avg']:.2f}、明年 {yahoo.get('eps_forward_next_fy_avg', '-')}"
+                f"今年 {yahoo['eps_forward_current_fy_avg']:.2f}、明年 {nxt_str}"
                 f"{revision_str}{trend_str}"
             )
 
@@ -163,6 +165,17 @@ def build_markdown_table(report: dict | None, thesis: dict | None) -> str:
     blocks = []
 
     if report and report.get("recent_reports"):
+        scope_lines = []
+        scope = report.get("target_price_range_scope")
+        tp_range = report.get("target_price_range")
+        dist = report.get("rating_distribution") or {}
+        if tp_range or dist:
+            scope_note = f"（同財報週期「{scope}」）" if scope else ""
+            if tp_range:
+                scope_lines.append(f"*TP 區間{scope_note}：{tp_range['low']} ~ {tp_range['high']}*")
+            if dist:
+                scope_lines.append(f"*評等分布{scope_note}：{_format_rating_distribution(dist)}*")
+
         header = (
             "| 券商/機構 | 日期 | 時序 | 評等 | 目標價 | EPS修正 |\n"
             "| :--- | :---: | :---: | :---: | ---: | :---: |"
@@ -189,7 +202,38 @@ def build_markdown_table(report: dict | None, thesis: dict | None) -> str:
                 f"\n*外部共識參考（FactSet 聚合共識，非上表發布者觀點，資料日期 {ext.get('as_of', '-')}"
                 f"{n_str}{stale_note}）：目標價 {ext['target_price']:g}*"
             )
-        blocks.append("\n".join([header, *rows]) + footer)
+
+        yahoo = report.get("yahoo_earnings_track_record")
+        if yahoo and yahoo.get("eps_forward_current_fy_avg") is not None:
+            up30, down30 = yahoo.get("eps_revision_0q_up_30d"), yahoo.get("eps_revision_0q_down_30d")
+            revision_str = f"，近 30 天 {int(up30)}升/{int(down30)}降" if None not in (up30, down30) else ""
+            cur_now, cur_ago = yahoo.get("eps_trend_current_fy_now"), yahoo.get("eps_trend_current_fy_90d_ago")
+            trend_str = ""
+            if cur_now is not None and cur_ago is not None:
+                arrow = "↑" if cur_now > cur_ago else ("↓" if cur_now < cur_ago else "→")
+                trend_str = f"，今年 EPS 共識 90 天內 {cur_ago:.2f}→{cur_now:.2f} {arrow}"
+            nxt = yahoo.get("eps_forward_next_fy_avg")
+            nxt_str = f"{nxt:.2f}" if nxt is not None else "-"
+            footer += (
+                f"\n*Yahoo Finance EPS 共識（非目標價，資料日期 {yahoo.get('forecast_asof_date', '-')}）："
+                f"今年 {yahoo['eps_forward_current_fy_avg']:.2f}、明年 {nxt_str}"
+                f"{revision_str}{trend_str}*"
+            )
+
+        pe_range = report.get("pe_band_valuation_range")
+        pe_range_yahoo = report.get("pe_band_valuation_range_yahoo_eps")
+        if pe_range and pe_range.get("current_fy_eps_range"):
+            fy = pe_range["current_fy_eps_range"]
+            pe_yahoo_str = ""
+            if pe_range_yahoo:
+                pe_yahoo_str = f"；Yahoo EPS 版本 {pe_range_yahoo['low']:,.0f} ~ {pe_range_yahoo['high']:,.0f}"
+            footer += (
+                f"\n*PE-band 估值範圍（沿用既有 μ-2σ~μ+2σ PE-band，非本 repo 估值觀點）："
+                f"FactSet EPS 版本 {fy['low']:,.0f} ~ {fy['high']:,.0f}{pe_yahoo_str}*"
+            )
+
+        scope_prefix = ("\n".join(scope_lines) + "\n\n") if scope_lines else ""
+        blocks.append(scope_prefix + "\n".join([header, *rows]) + footer)
 
     if thesis and thesis.get("theses"):
         header = "| 機構 | 立場 | 論點 |\n| :--- | :---: | :--- |"
