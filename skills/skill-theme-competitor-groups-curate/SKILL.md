@@ -33,18 +33,33 @@ keeps that grouping consistent with each company's own canonical competitor list
 [skill-company-enrichment-json](../skill-company-enrichment-json/SKILL.md)
 (`data/enrichment_all/{ticker}.json` → `relationships.competitors`).
 
-**Alignment requirement**: every theme's `competitive_groups` boundaries must agree with the
-`relationship_type` classification (`brand_competitor`/`foundry_competitor`/`odm_peer`/
-`server_peer`/`chip_competitor`) that `skill-theme-competitor-analysis` produces per stock in
-`output/focus/{stock}/company_competitor_analysis_{stock}.csv`. Today `check_group_consistency.py`
-only cross-checks against `relationships.competitors` in `data/enrichment_all/*.json` — a
+**Alignment requirement (authority direction corrected 2026-09-03 — see
+`references/known_gaps.md` for the full history of the earlier, backwards version of this
+paragraph, and `skill-theme-competitor-analysis`'s own SKILL.md for the matching correction
+there)**: `competitive_groups` in this skill's `data/themes/*.json` is the authoritative
+definition of **which companies belong to which competitive group** for a theme. Every member of
+one of this skill's groups should also be classifiable by `skill-theme-competitor-analysis`'s
+`relationship_type` (`brand_competitor`/`foundry_competitor`/`odm_peer`/`server_peer`/
+`chip_competitor`, in `output/focus/{stock}/company_competitor_analysis_{stock}.csv`) — that
+skill does not decide group *membership*, it supplies the detailed per-stock
+financial/relationship data for members this skill's groups already define. A finer split that
+skill's `relationship_type` draws within one group (e.g. `odm_peer` vs `server_peer` inside AI
+伺服器's merged `ODM/系統整合` group) is not by itself a reason to split the group here — see the
+worked example in `references/known_gaps.md`.
+
+The check that *is* this skill's own responsibility: does every `relationship_type`-classified
+peer for a stock in one of this skill's groups actually appear somewhere in that theme's
+`competitive_groups` (in the right group or a defensible adjacent one)? `check_group_consistency.py`
+today only cross-checks against `relationships.competitors` in `data/enrichment_all/*.json` — a
 separate, text-extracted competitor list that is not guaranteed to be derived from
 `skill-theme-competitor-analysis`'s own output. Treat that as an indirect proxy, not proof of
 alignment: when curating a theme, spot-check disputed group members against
 `skill-theme-competitor-analysis`'s actual `relationship_type` output for that stock, and prefer
-its rule-based classification over `relationships.competitors` when the two disagree. Extending
+its rule-based classification over `relationships.competitors` when deciding whether a company
+is *missing from this skill's theme dataset entirely* (a real gap to fix here) — not as license to
+re-split or re-define groups that already contain the company. Extending
 `check_group_consistency.py` to diff directly against `skill-theme-competitor-analysis`'s CSV
-output is a known follow-up, not yet implemented.
+output for this membership check is a known follow-up, not yet implemented.
 
 ## Operating Modes
 
