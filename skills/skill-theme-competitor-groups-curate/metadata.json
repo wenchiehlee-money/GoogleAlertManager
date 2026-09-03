@@ -1,0 +1,22 @@
+{
+  "name": "skill-theme-competitor-groups-curate",
+  "description": "維護 data/themes/*.json 的 competitive_groups 與 extra_entities，讓 output/themes/*.md 主題頁面依真實產品/商業模式競爭關係分組，並與 data/enrichment_all/*.json 的 relationships.competitors 交叉比對一致性。",
+  "category": "financial-strategy",
+  "version": "0.1.0",
+  "maintainer": "wenchiehlee-money",
+  "source": "https://github.com/wenchiehlee-money/My-TW-Coverage",
+  "updated_at": "2026-08-04",
+  "dependencies": [
+    {
+      "name": "skill-theme-competitor-analysis",
+      "version": ">=0.1.0"
+    },
+    {
+      "name": "skill-company-enrichment-json",
+      "version": ">=0.1.0"
+    }
+  ],
+  "files": [
+    "self_update.py"
+  ]
+}
