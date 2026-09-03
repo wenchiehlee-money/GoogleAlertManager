@@ -124,6 +124,18 @@ def build_llm_context(report: dict | None, thesis: dict | None) -> str:
                 f"{revision_str}{trend_str}"
             )
 
+        pe_range = report.get("pe_band_valuation_range")
+        pe_range_yahoo = report.get("pe_band_valuation_range_yahoo_eps")
+        if pe_range and pe_range.get("current_fy_eps_range"):
+            fy = pe_range["current_fy_eps_range"]
+            yahoo_str = ""
+            if pe_range_yahoo:
+                yahoo_str = f"；Yahoo EPS 版本 {pe_range_yahoo['low']:,.0f} ~ {pe_range_yahoo['high']:,.0f}"
+            lines.append(
+                f"PE-band 估值範圍（沿用既有 μ-2σ~μ+2σ PE-band，非本 repo 估值觀點）："
+                f"FactSet EPS 版本 {fy['low']:,.0f} ~ {fy['high']:,.0f}{yahoo_str}"
+            )
+
         divergence = report.get("view_flow_divergence")
         if divergence:
             lines.append(f"\n法人觀點與籌碼流向分歧：{divergence}")
