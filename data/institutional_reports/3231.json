@@ -9,8 +9,21 @@
   "target_price_range_scope": null,
   "rating_distribution": {},
   "publisher_count_current_cycle": 0,
-  "publisher_count_all_time": 0,
-  "target_price_range_by_timing": {},
+  "publisher_count_all_time": 1,
+  "target_price_range_by_timing": {
+    "未分類": {
+      "target_price_range": {
+        "low": 246,
+        "high": 246,
+        "median": 246
+      },
+      "rating_distribution": {
+        "買進": 1
+      },
+      "report_count": 1,
+      "publisher_count": 1
+    }
+  },
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
     "as_of": "2026-08-04",
@@ -76,7 +89,27 @@
     "low": 123.712104,
     "high": 322.69692480000003
   },
-  "recent_reports": [],
+  "recent_reports": [
+    {
+      "publisher": "高盛",
+      "publisher_id": "goldman-sachs",
+      "report_date": "2026-06-16",
+      "report_id": "3231-2026-06-16-goldman-sachs-secondary-candidate",
+      "rating": "買進",
+      "rating_previous": null,
+      "target_price": 246,
+      "target_price_previous": null,
+      "confidence": "medium",
+      "source_tier": "secondary",
+      "redistribution_allowed": false,
+      "stale": false,
+      "nearest_prior_company_event": {
+        "event_id": "3231-2026-06-04-invited_investor_forum",
+        "event_type": "invited_investor_forum",
+        "days_after_event": 12
+      }
+    }
+  ],
   "company_events": [
     {
       "event_id": "3231-2026-08-04-investor_conference",
