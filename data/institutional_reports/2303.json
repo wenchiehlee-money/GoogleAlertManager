@@ -1,6 +1,6 @@
 {
   "stock_id": "2303",
-  "as_of": "2026-09-02",
+  "as_of": "2026-09-03",
   "source_repo": "TW-institutional-research",
   "source_repo_path": "data/revisions/2303/",
   "sync_method": "automated_export_script",
@@ -14,7 +14,7 @@
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
     "as_of": "2026-07-29",
-    "days_since_as_of": 35,
+    "days_since_as_of": 36,
     "stale": false,
     "analyst_count": 22.0,
     "target_price": 120.0,
@@ -27,12 +27,12 @@
     "forecast_asof_date": "2026-09-02",
     "eps_forward_next_q_avg": 1.41678,
     "eps_forward_q_after_next_avg": 1.49451,
-    "eps_forward_current_fy_avg": 7.01602,
-    "eps_forward_next_fy_avg": 7.13435,
+    "eps_forward_current_fy_avg": 6.9915,
+    "eps_forward_next_fy_avg": 7.20625,
     "revenue_forward_next_q_avg": 75740573940.0,
     "revenue_forward_q_after_next_avg": 78450427810.0,
-    "revenue_forward_current_fy_avg": 283245541480.0,
-    "revenue_forward_next_fy_avg": 343367158540.0,
+    "revenue_forward_current_fy_avg": 283204786670.0,
+    "revenue_forward_next_fy_avg": 344818365820.0,
     "last_earnings_date": "2026-06-30",
     "last_eps_estimate": 1.11131,
     "last_eps_actual": 3.37,
@@ -43,13 +43,26 @@
     "eps_revision_0q_down_7d": 0.0,
     "eps_revision_0q_up_30d": 10.0,
     "eps_revision_0q_down_30d": 0.0,
-    "eps_trend_current_fy_now": 7.01602,
+    "eps_trend_current_fy_now": 6.9915,
     "eps_trend_current_fy_90d_ago": 4.60754,
-    "eps_trend_next_fy_now": 7.13435,
-    "eps_trend_next_fy_90d_ago": 5.1581,
-    "growth_5y_stock": 1.1006,
+    "eps_trend_next_fy_now": 7.20625,
+    "eps_trend_next_fy_90d_ago": 5.32505,
+    "growth_5y_stock": 1.0933,
     "factset_cross_check_status": "large_diff",
     "forecast_confidence": 60.0
+  },
+  "pe_band_valuation_range": {
+    "source_file": "sources/2303/valuation-pe-based-estimation.md",
+    "source_link": "[valuation](2303/valuation-pe-based-estimation.md) (2026-08-27)",
+    "fy_column_label": "x FY2026E EPS A/B",
+    "ttm_eps_range": {
+      "low": 41.0,
+      "high": 179.0
+    },
+    "current_fy_eps_range": {
+      "low": 48.0,
+      "high": 209.0
+    }
   },
   "recent_reports": [],
   "company_events": [

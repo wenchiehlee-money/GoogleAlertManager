@@ -1,6 +1,6 @@
 {
   "stock_id": "2330",
-  "as_of": "2026-09-02",
+  "as_of": "2026-09-03",
   "source_repo": "TW-institutional-research",
   "source_repo_path": "data/revisions/2330/",
   "sync_method": "automated_export_script",
@@ -53,7 +53,7 @@
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
     "as_of": "2026-07-19",
-    "days_since_as_of": 45,
+    "days_since_as_of": 46,
     "stale": false,
     "analyst_count": 42.0,
     "target_price": 3160.0,
@@ -89,6 +89,19 @@
     "growth_5y_stock": 0.6248,
     "factset_cross_check_status": "matched",
     "forecast_confidence": 85.0
+  },
+  "pe_band_valuation_range": {
+    "source_file": "sources/2330/valuation-pe-based-estimation.md",
+    "source_link": "[valuation](2330/valuation-pe-based-estimation.md) (2026-08-23)",
+    "fy_column_label": "x FY2026E EPS A/B",
+    "ttm_eps_range": {
+      "low": 1412.0,
+      "high": 2924.0
+    },
+    "current_fy_eps_range": {
+      "low": 1731.0,
+      "high": 3585.0
+    }
   },
   "recent_reports": [
     {

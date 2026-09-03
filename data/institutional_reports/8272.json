@@ -1,6 +1,6 @@
 {
   "stock_id": "8272",
-  "as_of": "2026-09-02",
+  "as_of": "2026-09-03",
   "source_repo": "TW-institutional-research",
   "source_repo_path": "data/revisions/8272/",
   "sync_method": "automated_export_script",
@@ -41,6 +41,7 @@
     "factset_cross_check_status": "missing_factset",
     "forecast_confidence": 70.0
   },
+  "pe_band_valuation_range": null,
   "recent_reports": [],
   "company_events": [
     {
