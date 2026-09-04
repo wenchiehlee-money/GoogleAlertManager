@@ -1,6 +1,6 @@
 {
   "stock_id": "2308",
-  "as_of": "2026-09-03",
+  "as_of": "2026-09-04",
   "source_repo": "TW-institutional-research",
   "source_repo_path": "data/revisions/2308/",
   "sync_method": "automated_export_script",
@@ -15,7 +15,7 @@
     "Buy": 1
   },
   "publisher_count_current_cycle": 1,
-  "publisher_count_all_time": 1,
+  "publisher_count_all_time": 3,
   "target_price_range_by_timing": {
     "2026-04-29 財報後（含後續追蹤）": {
       "target_price_range": {
@@ -28,12 +28,22 @@
       },
       "report_count": 1,
       "publisher_count": 1
+    },
+    "2026-02-13 財報前瞻": {
+      "target_price_range": {
+        "low": 1111,
+        "high": 1600,
+        "median": 1300
+      },
+      "rating_distribution": {},
+      "report_count": 3,
+      "publisher_count": 2
     }
   },
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
     "as_of": "2026-05-02",
-    "days_since_as_of": 124,
+    "days_since_as_of": 125,
     "stale": true,
     "analyst_count": 23.0,
     "target_price": 2340.0,
@@ -43,7 +53,7 @@
   },
   "yahoo_earnings_track_record": {
     "source": "Yahoo Finance (via sibling repo Yahoo.Finance, own forward-EPS + earnings-surprise track record)",
-    "forecast_asof_date": "2026-09-02",
+    "forecast_asof_date": "2026-09-03",
     "eps_forward_next_q_avg": 10.81189,
     "eps_forward_q_after_next_avg": 12.0969,
     "eps_forward_current_fy_avg": 40.69735,
@@ -120,6 +130,61 @@
         "days_before_event": 86
       },
       "timing": "財報後"
+    },
+    {
+      "publisher": "高盛",
+      "publisher_id": "goldman-sachs",
+      "report_date": "2026-01-16",
+      "report_id": "2308-2026-01-16-goldman-sachs-secondary-candidate",
+      "rating": null,
+      "rating_previous": null,
+      "target_price": 1600,
+      "target_price_previous": 1300,
+      "confidence": "medium",
+      "source_tier": "social_media",
+      "redistribution_allowed": false,
+      "stale": false,
+      "nearest_next_earnings_release": {
+        "event_id": "2308-2026-02-13-earnings_release",
+        "days_before_event": 28
+      },
+      "timing": "前瞻預測"
+    },
+    {
+      "publisher": "高盛",
+      "publisher_id": "goldman-sachs",
+      "report_date": "2025-10-02",
+      "report_id": "2308-2025-10-02-goldman-sachs-secondary-candidate",
+      "rating": null,
+      "rating_previous": null,
+      "target_price": 1300,
+      "target_price_previous": null,
+      "confidence": "medium",
+      "source_tier": "social_media",
+      "redistribution_allowed": false,
+      "stale": false,
+      "nearest_next_earnings_release": {
+        "event_id": "2308-2026-02-13-earnings_release",
+        "days_before_event": 134
+      }
+    },
+    {
+      "publisher": "摩根士丹利",
+      "publisher_id": "morgan-stanley",
+      "report_date": "2025-10-02",
+      "report_id": "2308-2025-10-02-morgan-stanley-secondary-candidate",
+      "rating": null,
+      "rating_previous": null,
+      "target_price": 1111,
+      "target_price_previous": null,
+      "confidence": "medium",
+      "source_tier": "social_media",
+      "redistribution_allowed": false,
+      "stale": false,
+      "nearest_next_earnings_release": {
+        "event_id": "2308-2026-02-13-earnings_release",
+        "days_before_event": 134
+      }
     }
   ],
   "company_events": [

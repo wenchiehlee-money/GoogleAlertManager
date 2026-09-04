@@ -1,6 +1,6 @@
 {
   "stock_id": "2458",
-  "as_of": "2026-09-03",
+  "as_of": "2026-09-04",
   "source_repo": "TW-institutional-research",
   "source_repo_path": "data/revisions/2458/",
   "sync_method": "automated_export_script",
@@ -14,7 +14,7 @@
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
     "as_of": "2026-08-26",
-    "days_since_as_of": 8,
+    "days_since_as_of": 9,
     "stale": false,
     "analyst_count": 10.0,
     "target_price": 184.0,
@@ -24,7 +24,7 @@
   },
   "yahoo_earnings_track_record": {
     "source": "Yahoo Finance (via sibling repo Yahoo.Finance, own forward-EPS + earnings-surprise track record)",
-    "forecast_asof_date": "2026-09-02",
+    "forecast_asof_date": "2026-09-03",
     "eps_forward_next_q_avg": 2.30333,
     "eps_forward_q_after_next_avg": 2.21,
     "eps_forward_current_fy_avg": 9.58571,

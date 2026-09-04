@@ -1,6 +1,6 @@
 {
   "stock_id": "2324",
-  "as_of": "2026-09-03",
+  "as_of": "2026-09-04",
   "source_repo": "TW-institutional-research",
   "source_repo_path": "data/revisions/2324/",
   "sync_method": "automated_export_script",
@@ -14,7 +14,7 @@
   "external_consensus": {
     "source": "FactSet (via sibling repo GoogleSearch.Factset, multi-analyst aggregator consensus)",
     "as_of": "2026-08-24",
-    "days_since_as_of": 10,
+    "days_since_as_of": 11,
     "stale": false,
     "analyst_count": 10.0,
     "target_price": 40.0,
@@ -24,15 +24,15 @@
   },
   "yahoo_earnings_track_record": {
     "source": "Yahoo Finance (via sibling repo Yahoo.Finance, own forward-EPS + earnings-surprise track record)",
-    "forecast_asof_date": "2026-09-02",
-    "eps_forward_next_q_avg": 0.53769,
-    "eps_forward_q_after_next_avg": 0.48955,
-    "eps_forward_current_fy_avg": 2.10965,
-    "eps_forward_next_fy_avg": 2.77913,
-    "revenue_forward_next_q_avg": 256788572180.0,
-    "revenue_forward_q_after_next_avg": 259032381030.0,
-    "revenue_forward_current_fy_avg": 955419240060.0,
-    "revenue_forward_next_fy_avg": 1137508703110.0,
+    "forecast_asof_date": "2026-09-03",
+    "eps_forward_next_q_avg": 0.54798,
+    "eps_forward_q_after_next_avg": 0.52836,
+    "eps_forward_current_fy_avg": 2.21558,
+    "eps_forward_next_fy_avg": 2.80691,
+    "revenue_forward_next_q_avg": 256136734750.0,
+    "revenue_forward_q_after_next_avg": 262979338219.0,
+    "revenue_forward_current_fy_avg": 958714344850.0,
+    "revenue_forward_next_fy_avg": 1147030406110.0,
     "last_earnings_date": "2026-06-30",
     "last_eps_estimate": 0.49592,
     "last_eps_actual": 0.72,
@@ -43,11 +43,11 @@
     "eps_revision_0q_down_7d": 1.0,
     "eps_revision_0q_up_30d": 0.0,
     "eps_revision_0q_down_30d": 0.0,
-    "eps_trend_current_fy_now": 2.10965,
-    "eps_trend_current_fy_90d_ago": 2.07444,
-    "eps_trend_next_fy_now": 2.77913,
+    "eps_trend_current_fy_now": 2.21558,
+    "eps_trend_current_fy_90d_ago": 2.11943,
+    "eps_trend_next_fy_now": 2.80691,
     "eps_trend_next_fy_90d_ago": 2.48036,
-    "growth_5y_stock": 0.5399,
+    "growth_5y_stock": 0.6172,
     "factset_cross_check_status": "matched",
     "forecast_confidence": 85.0
   },
@@ -73,8 +73,8 @@
     ]
   },
   "pe_band_valuation_range_yahoo_eps": {
-    "low": 27.003519999999998,
-    "high": 67.90963349999998
+    "low": 28.359424000000004,
+    "high": 71.3195202
   },
   "recent_reports": [],
   "company_events": [
