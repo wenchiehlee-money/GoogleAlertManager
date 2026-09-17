@@ -1,7 +1,7 @@
 {
   "ticker": "2453",
   "company_name": "凌群",
-  "as_of": "2026-09-17 05:56 CST",
+  "as_of": "2026-09-18 05:56 CST",
   "profile": {
     "sector": "Technology",
     "industry": "Information Technology Services",
@@ -1057,8 +1057,8 @@
       "relationship_type": "product_peer",
       "period": "2026Q2",
       "financial_report_event_date": "",
-      "ir_event_date": "",
-      "event_date": "",
+      "ir_event_date": "2026-09-17",
+      "event_date": "法說: 2026-09-17",
       "market": "Taiwan",
       "unit": "百萬台幣",
       "revenue": "15,400.0",
