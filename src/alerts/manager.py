@@ -87,7 +87,7 @@ def sync_alerts() -> dict[str, list]:
     # 刪除清單以外的
     for term, alert in existing_by_term.items():
         if term not in desired_terms:
-            ga.delete(alert["id"])
+            ga.delete(alert["monitor_id"])
             deleted.append(term)
             logger.info("Deleted alert not in watchlist: %s", term)
 

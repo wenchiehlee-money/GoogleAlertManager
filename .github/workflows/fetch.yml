@@ -32,6 +32,11 @@ jobs:
       - name: Download watchlist CSVs
         run: uv run python cli.py update-list
 
+      - name: Restore Google Alerts session
+        run: |
+          mkdir -p ~/.config/google_alerts
+          echo "${{ secrets.GOOGLE_ALERTS_SESSION_B64 }}" | base64 -d > ~/.config/google_alerts/session
+
       - name: Sync Google Alert subscriptions
         continue-on-error: true
         run: uv run python cli.py sync
