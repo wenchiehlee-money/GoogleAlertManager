@@ -1,7 +1,7 @@
 {
   "ticker": "ORCL",
   "company_name": "Oracle",
-  "as_of": "2026-09-25 06:03 CST",
+  "as_of": "2026-09-26 06:01 CST",
   "profile": {
     "sector": "Technology",
     "industry": "Software & Cloud Infrastructure",
@@ -477,9 +477,9 @@
       "company": "Oracle Corporation",
       "relationship_type": "target",
       "period": "2026Q3",
-      "financial_report_event_date": "2026-09-10",
-      "ir_event_date": "2026-09-10",
-      "event_date": "財報: 2026-09-10 (Ready)<br>法說: 2026-09-10 (Ready)",
+      "financial_report_event_date": "",
+      "ir_event_date": "",
+      "event_date": "",
       "market": "US",
       "unit": "百萬台幣",
       "revenue": "624,843.5",
