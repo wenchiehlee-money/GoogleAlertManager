@@ -36,3 +36,38 @@ def get_env(key: str) -> str:
     if not value:
         raise RuntimeError(f"Missing environment variable: {key}")
     return value
+
+
+
+def llm_environment_status(env: dict[str, str] | None = None) -> dict[str, dict[str, object]]:
+    """Return safe LLM configuration status without exposing secret values."""
+    values = os.environ if env is None else env
+    gemini_keys = [values.get("GEMINI_API_KEY", "")] + [
+        values.get(f"GEMINI_API_KEY_{i}", "") for i in range(1, 20)
+    ]
+    return {
+        "codex": {
+            "ready": bool(values.get("CODEX_API_URL") and values.get("CODEX_API_KEY")),
+            "missing": [name for name in ("CODEX_API_URL", "CODEX_API_KEY") if not values.get(name)],
+        },
+        "gemini": {
+            "ready": any(gemini_keys),
+            "missing": [] if any(gemini_keys) else ["GEMINI_API_KEY"],
+        },
+        "mlx": {
+            "ready": bool(values.get("MLX_API_URL") and values.get("MLX_SERVER_API_KEY")),
+            "missing": [name for name in ("MLX_API_URL", "MLX_SERVER_API_KEY") if not values.get(name)],
+        },
+    }
+
+
+def require_llm_environment(env: dict[str, str] | None = None) -> dict[str, dict[str, object]]:
+    """Validate that at least one provider has both config and secret values."""
+    status = llm_environment_status(env)
+    if not any(provider["ready"] for provider in status.values()):
+        missing = "; ".join(
+            f"{name}: {', '.join(provider['missing'])}"
+            for name, provider in status.items()
+        )
+        raise RuntimeError(f"No LLM provider configured ({missing})")
+    return status

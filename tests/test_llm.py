@@ -1,10 +1,4 @@
 """Tests for src/analysis/llm.py — mocks LLMClient, no real API calls."""
-import sys
-import os
-
-# 讓 test 能找到 llm library（本地路徑）
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../llm"))
-
 import pytest
 from unittest.mock import MagicMock, patch
 
@@ -28,7 +22,8 @@ def entries():
 
 
 @pytest.fixture
-def mock_client():
+def mock_client(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "test-gemini-key")
     with patch("src.analysis.llm._client", None):
         with patch("src.analysis.llm.LLMClient") as MockClass:
             instance = MagicMock()
@@ -92,22 +87,23 @@ def test_analysis_items_empty():
 
 # ── with mock LLM ─────────────────────────────────────────────────────────────
 
-def test_analyze_company_calls_generate(company, entries, mock_client):
+def test_analyze_company_calls_smart_generate(company, entries, mock_client):
     from src.analysis import llm as llm_mod
     llm_mod._client = None  # reset singleton
-    mock_client.generate.return_value = "## 分析結果"
+    mock_client.generate_smart.return_value = "## 分析結果"
 
     from src.analysis.llm import analyze_company
     result = analyze_company(company, entries)
 
-    mock_client.generate.assert_called_once()
+    assert mock_client.generate_smart.call_args.args[0] == "google-alert-company-analysis"
+    assert mock_client.generate_smart.call_args.kwargs["draft_provider"] == "codex"
     assert "分析結果" in result
 
 
-def test_analyze_and_score_calls_generate_json(company, entries, mock_client):
+def test_analyze_and_score_calls_smart_generate_json(company, entries, mock_client):
     from src.analysis import llm as llm_mod
     llm_mod._client = None
-    mock_client.generate_json.return_value = {
+    mock_client.generate_json_smart.return_value = {
         "analysis": "## 分析",
         "scores": [{"id": "e1", "score": 4, "reason": "重要"}],
     }
@@ -115,15 +111,15 @@ def test_analyze_and_score_calls_generate_json(company, entries, mock_client):
     from src.analysis.llm import analyze_and_score
     text, scores = analyze_and_score(company, entries)
 
-    mock_client.generate_json.assert_called_once()
+    assert mock_client.generate_json_smart.call_args.args[0] == "google-alert-company-analysis-and-score"
     assert text == "## 分析"
     assert scores == {"e1": {"score": 4, "reason": "重要"}}
 
 
-def test_score_entries_calls_generate_json(company, entries, mock_client):
+def test_score_entries_calls_smart_generate_json(company, entries, mock_client):
     from src.analysis import llm as llm_mod
     llm_mod._client = None
-    mock_client.generate_json.return_value = [
+    mock_client.generate_json_smart.return_value = [
         {"id": "e1", "score": 5, "reason": "財報"},
         {"id": "e2", "score": 3, "reason": "擴廠"},
     ]
@@ -138,7 +134,7 @@ def test_score_entries_calls_generate_json(company, entries, mock_client):
 def test_analyze_and_score_non_dict_response(company, entries, mock_client):
     from src.analysis import llm as llm_mod
     llm_mod._client = None
-    mock_client.generate_json.return_value = ["unexpected", "list"]
+    mock_client.generate_json_smart.return_value = ["unexpected", "list"]
 
     from src.analysis.llm import analyze_and_score
     text, scores = analyze_and_score(company, entries)
@@ -148,8 +144,26 @@ def test_analyze_and_score_non_dict_response(company, entries, mock_client):
 def test_score_entries_non_list_response(company, entries, mock_client):
     from src.analysis import llm as llm_mod
     llm_mod._client = None
-    mock_client.generate_json.return_value = {"unexpected": "dict"}
+    mock_client.generate_json_smart.return_value = {"unexpected": "dict"}
 
     from src.analysis.llm import score_entries
     result = score_entries(company, entries)
     assert result == {}
+
+
+
+def test_llm_environment_status_checks_secrets_without_exposing_values():
+    from src.config import llm_environment_status, require_llm_environment
+
+    status = llm_environment_status({"CODEX_API_URL": "https://example.test", "CODEX_API_KEY": "secret"})
+    assert status["codex"]["ready"] is True
+    assert status["gemini"]["ready"] is False
+
+    try:
+        require_llm_environment({})
+    except RuntimeError as exc:
+        message = str(exc)
+        assert "GEMINI_API_KEY" in message
+        assert "secret" not in message
+    else:
+        raise AssertionError("missing provider configuration should fail")

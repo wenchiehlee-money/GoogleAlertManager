@@ -10,7 +10,11 @@ import logging
 
 from llm import LLMClient
 
+<<<<<<< HEAD
 from src.config import today_taipei
+=======
+from src.config import require_llm_environment
+>>>>>>> 755db46fb (standardize LLM client and validate provider secrets)
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +24,30 @@ DEFAULT_MODEL = "gemini-2.5-flash"
 _client: LLMClient | None = None
 
 
+def _generate(task_name: str, prompt: str, *, max_tokens: int = MAX_TOKENS) -> str:
+    """Generate through the shared smart-routing entry point."""
+    return _get_client().generate_smart(
+        task_name,
+        prompt,
+        draft_provider="codex",
+        max_tokens=max_tokens,
+    )
+
+
+def _generate_json(task_name: str, prompt: str, *, max_tokens: int = MAX_TOKENS) -> dict | list:
+    """Generate JSON through the shared smart-routing entry point."""
+    return _get_client().generate_json_smart(
+        task_name,
+        prompt,
+        draft_provider="codex",
+        max_tokens=max_tokens,
+    )
+
+
 def _get_client() -> LLMClient:
     global _client
     if _client is None:
+require_llm_environment()
         _client = LLMClient(
             providers=["codex", "gemini", "mlx"],
             model=DEFAULT_MODEL,
@@ -128,7 +153,7 @@ def analyze_company(
 > 注意：此分析僅供參考，不構成投資建議。
 """
     logger.info("Analyzing %s (%s) with %d entries", company.name, company.stock_id, len(entries))
-    return _get_client().generate(prompt, max_tokens=MAX_TOKENS)
+    return _generate("google-alert-company-analysis", prompt)
 
 
 def _get_user_preferences_prompt() -> str:
@@ -260,7 +285,7 @@ def analyze_and_score(
 
     score_tokens = max(MAX_TOKENS, len(entries) * 160 + MAX_TOKENS)
     logger.info("Analyzing+scoring %s (%s) with %d entries in 1 call", company.name, company.stock_id, len(entries))
-    data = _get_client().generate_json(prompt, max_tokens=score_tokens)
+    data = _generate_json("google-alert-company-analysis-and-score", prompt, max_tokens=score_tokens)
 
     if not isinstance(data, dict):
         return str(data), {}
@@ -294,7 +319,7 @@ def score_entries(company, entries: list[dict]) -> dict[str, dict]:
 [{{"id": "<原始id>", "score": <0-6整數>, "reason": "<15字內理由>"}}]
 """
     score_tokens = max(4096, len(entries) * 160)
-    results = _get_client().generate_json(prompt, max_tokens=score_tokens)
+    results = _generate_json("google-alert-entry-score", prompt, max_tokens=score_tokens)
 
     if not isinstance(results, list):
         return {}
@@ -329,4 +354,4 @@ def summarize(entries: list[dict]) -> str:
 2. **值得關注的個股**（最多 3 則，說明原因）
 3. **整體市場觀察**（1-3 點建議）
 """
-    return _get_client().generate(prompt, max_tokens=MAX_TOKENS)
+    return _generate("google-alert-daily-summary", prompt)
