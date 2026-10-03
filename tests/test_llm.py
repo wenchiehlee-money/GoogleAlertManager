@@ -155,7 +155,7 @@ def test_score_entries_non_list_response(company, entries, mock_client):
 def test_llm_environment_status_checks_secrets_without_exposing_values():
     from src.config import llm_environment_status, require_llm_environment
 
-    status = llm_environment_status({"CODEX_API_URL": "https://example.test", "CODEX_API_KEY": "secret"})
+    status = llm_environment_status({"CODEX_API_KEY": "secret"})
     assert status["codex"]["ready"] is True
     assert status["gemini"]["ready"] is False
 

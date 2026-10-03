@@ -2,8 +2,7 @@
 
 底層使用 `llm` library。備援鏈為 codex（CLI 橋接，經 skill-llm-api-server 執行
 gemini-cli）→ gemini（直接呼叫 Gemini API，多把 key 輪轉）→ mlx（本地推論）。
-CLI 橋接與直接 API 都固定使用 gemini-2.5-flash，只是呼叫路徑不同；CODEX_API_URL/
-CODEX_API_KEY 未設定時 codex provider 會被自動跳過，直接退回 gemini。
+CLI 橋接與直接 API 都固定使用 gemini-2.5-flash，只是呼叫路徑不同；CODEX_API_KEY 未設定時 codex provider 會被自動跳過，直接退回 gemini。
 """
 
 import logging

@@ -2,11 +2,11 @@
   "name": "skill-llm-api-client",
   "description": "統一的 LLM 客戶端函式庫（llm），封裝 Gemini API 金鑰輪轉、skill-llm-api-server 的 codex-cli/gemini-cli 橋接、以及本地 MLX 推論，內建 codex → gemini → mlx 自動備援鏈與智慧路由（Smart Routing）。",
   "category": "library",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "author": "wenchiehlee",
   "maintainer": "wenchiehlee",
   "source": "https://github.com/wenchiehlee/llm",
-  "updated_at": "2026-09-01",
+  "updated_at": "2026-10-03",
   "license": "MIT",
   "tags": [
     "client",
@@ -27,7 +27,6 @@
     ],
     "env": [
       "GEMINI_API_KEY",
-      "CODEX_API_URL",
       "CODEX_API_KEY",
       "MLX_API_URL",
       "MLX_SERVER_API_KEY"
@@ -45,6 +44,7 @@
     "scripts/providers/mlx.py",
     "scripts/analytics/__init__.py",
     "scripts/analytics/amplitude.py",
+    "scripts/check_env_consistency.py",
     "scripts/check_endpoints.py"
   ],
   "deployments": [
@@ -56,11 +56,6 @@
     {
       "repo": "wenchiehlee/llm",
       "local_path": "github.com/llm/skills/skill-llm-api-client",
-      "role": "consumer"
-    },
-    {
-      "repo": "wenchiehlee-money/GoogleAlertManager",
-      "local_path": "github.com/GoogleAlertManager/skills/skill-llm-api-client",
       "role": "consumer"
     }
   ],

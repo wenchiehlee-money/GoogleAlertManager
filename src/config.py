@@ -47,8 +47,8 @@ def llm_environment_status(env: dict[str, str] | None = None) -> dict[str, dict[
     ]
     return {
         "codex": {
-            "ready": bool(values.get("CODEX_API_URL") and values.get("CODEX_API_KEY")),
-            "missing": [name for name in ("CODEX_API_URL", "CODEX_API_KEY") if not values.get(name)],
+            "ready": bool(values.get("CODEX_API_KEY")),
+            "missing": [name for name in ("CODEX_API_KEY",) if not values.get(name)],
         },
         "gemini": {
             "ready": any(gemini_keys),
