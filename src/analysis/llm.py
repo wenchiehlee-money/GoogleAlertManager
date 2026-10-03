@@ -10,11 +10,7 @@ import logging
 
 from llm import LLMClient
 
-<<<<<<< HEAD
-from src.config import today_taipei
-=======
-from src.config import require_llm_environment
->>>>>>> 755db46fb (standardize LLM client and validate provider secrets)
+from src.config import require_llm_environment, today_taipei
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +43,7 @@ def _generate_json(task_name: str, prompt: str, *, max_tokens: int = MAX_TOKENS)
 def _get_client() -> LLMClient:
     global _client
     if _client is None:
-require_llm_environment()
+        require_llm_environment()
         _client = LLMClient(
             providers=["codex", "gemini", "mlx"],
             model=DEFAULT_MODEL,
