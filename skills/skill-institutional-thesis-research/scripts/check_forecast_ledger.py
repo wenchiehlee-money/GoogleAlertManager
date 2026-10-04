@@ -10,7 +10,12 @@ from pathlib import Path
 
 
 ALLOWED_CONFIDENCE = {"low", "medium", "high"}
-ALLOWED_LAYERS = {"fact", "institution_interpretation", "repository_inference"}
+ALLOWED_LAYERS = {
+    "fact",
+    "institution_interpretation",
+    "repository_inference",
+    "social_media_reported_institution_view",
+}
 FIELD_RE = re.compile(r"^\s*([A-Za-z0-9_]+):\s*(.*)\s*$")
 
 

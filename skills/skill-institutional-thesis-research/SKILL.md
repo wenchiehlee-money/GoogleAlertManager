@@ -5,11 +5,6 @@ description: Maintain and extend the TW-institutional-investment-theses reposito
 
 # Institutional Thesis Research
 
-> **本 repo（GoogleAlertManager）僅供參考，不會在此執行此 skill。** 這個 skill 的家在
-> `TW-institutional-investment-theses`，依賴該 repo 自己的資料檔。GoogleAlertManager 只透過
-> `data/institutional_thesis/{stock_id}.json`（見 `src/analysis/institutional.py`）讀取這個
-> skill 產出的精簡快照——若該同步管線尚未建立，讀到的會是空值，分析報告會優雅降級、不受影響。
-
 使用此 skill 時，把本 repository 當成可長期維護的 institutional thesis database，而不是文章剪貼簿。預設以繁體中文輸出；但 official titles、URLs、entity names、taxonomy keys、schema field names、status values、quotes 與檔案路徑，在準確性需要時保留原文。
 
 ## 必讀脈絡
@@ -30,6 +25,29 @@ description: Maintain and extend the TW-institutional-investment-theses reposito
 - forecast revision 必須 append chronologically，不得覆蓋舊 forecast。
 - 不強迫形成 consensus；disagreement、scope mismatch、不可比數字都是研究結果。
 - 不從 article 直接跳到 ticker；必須先寫清楚 transmission chain。
+
+## Routing A New Post / News Item (Which Mode, Which Tier)
+
+當使用者丟進來一篇新文章、貼文或新聞，先回答兩個問題再動手，順序不可顛倒：
+
+**問題一：這則內容該不該進本 repo？**（Cross-Repo Fetch Triage，與 sibling repo `TW-institutional-research` 共用同一套三選一判準，見其 `SOURCE_POLICY.md`）
+
+1. 內容綁定**單一個股**的具體 rating/TP/EPS 數字 → 屬於 `TW-institutional-research` 的範疇，不在本 repo 建任何 record，即使該數字來自本 repo 追蹤的五家機構之一。
+2. 內容是**總經／產業主題**，明確歸屬本 repo 追蹤的機構（Goldman Sachs、Morgan Stanley、J.P. Morgan、Bank of America、UBS）之一，且未綁定單一個股 → 屬於本 repo，繼續問題二。
+3. 兩者皆非（無機構歸屬的市場閒聊、純情緒、無數字內容）→ 兩邊都不收，不算積壓。
+
+**問題二：這則內容的來源等級決定走 Mode A（durable ingest）還是 Mode B（interpretation only）？**
+
+| 來源 | Tier | 對應動作 |
+|---|---|---|
+| 機構官方頁／官方報告 | Tier 1 | Mode A 正常 ingest，`primary_source: true` |
+| 可信財經媒體對機構報告的明確引用 | Tier 2 | Mode A ingest，標 `source_quality.tier: 2`，secondary 註記 |
+| `Facebook.Fetch`／`YoutubeAudio.Fetch` **已追蹤（curated）** 頁面／頻道貼文，明確引用五家機構之一的具體量化預測 | Tier 3 curated exception | Mode A ingest，epistemic layer 用 `social_media_reported_institution_view`（**不是** `institution_interpretation`），`confidence: low`，frontmatter 依 `SOURCE_POLICY.md`「Tier 3 — Curated Social Media Exception」補齊，ledger `record_type: institution_research_forecast_social_media_reported` |
+| 使用者臨時貼上的文章／新聞／截圖、來源未查證、或 ad-hoc 搜尋找到的內容 | 未定 | 先走 Mode B（interpretation only，不建 durable record）；只有找到可驗證的 primary source（Tier 1）後才切回 Mode A，見「Switching Back To Core Workflow」 |
+
+Curated Facebook.Fetch/YoutubeAudio.Fetch 的判斷關鍵是**該頁面/頻道本身有沒有被預先加入追蹤清單**（provenance of the fetch），不是內容本身像不像新聞——同一則貼文，若來自清單外的帳號或使用者手動轉貼，就只能當 Mode B 或退回一般 Tier 3（discovery only，不得建 record）。
+
+Ingest 前一律先做 duplicate check（同 URL、normalized title、institution+date、syndicated copies）。
 
 ## Two Operating Modes
 
