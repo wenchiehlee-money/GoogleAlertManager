@@ -137,6 +137,17 @@ class GeminiProvider(BaseProvider):
                         logger.warning("%s RPM 限速，%d 秒後重試…", key_label, wait)
                         time.sleep(wait)
                         continue
-                    raise
-
         raise last_exc  # type: ignore[misc]
+
+    def get_quota_status(self) -> dict:
+        """回傳當前 API Key 配額耗盡與剩餘狀態。"""
+        all_keys = self._get_keys()
+        total = len(all_keys)
+        exhausted = len(self._exhausted)
+        return {
+            "provider": self.name,
+            "total_keys": total,
+            "exhausted_keys": exhausted,
+            "available_keys": total - exhausted,
+            "last_key_used": self.last_key_used,
+        }

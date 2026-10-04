@@ -310,3 +310,13 @@ class CodexProvider(BaseProvider):
         # 紀錄最後使用的 provider (可能是 draft 或 judge)
         self.last_provider_used = data.get("provider", self.name)
         return data.get("output", "")
+
+    def get_quota_status(self) -> dict:
+        """回傳當前 CLI API 伺服器連線與配置狀態。"""
+        return {
+            "provider": self.name,
+            "active_url": self.get_active_url(),
+            "candidate_urls": self.candidate_urls,
+            "model": self.model,
+            "effort": self.effort,
+        }

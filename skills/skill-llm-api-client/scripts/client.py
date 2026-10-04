@@ -368,3 +368,13 @@ class LLMClient:
                 logger.warning("%s 失敗：%s", p.name, e)
                 last_exc = e
         raise RuntimeError("所有 provider 均失敗") from last_exc
+
+    def get_quota_status(self) -> dict[str, dict]:
+        """查詢各已載入 Provider 當前的配額、可用金鑰與健康狀態。"""
+        status: dict[str, dict] = {}
+        for p in self._providers:
+            if hasattr(p, "get_quota_status"):
+                status[p.name] = p.get_quota_status()
+            else:
+                status[p.name] = {"provider": p.name, "model": p.model}
+        return status
