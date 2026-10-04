@@ -378,6 +378,11 @@ def deploy_all(nas_root: Path, no_git: bool = False) -> None:
             src = registry_dir / rel_path
             dst = target_dir / rel_path
             if src.exists():
+                try:
+                    if src.resolve() == dst.resolve():
+                        continue
+                except Exception:
+                    pass
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, dst)
                 print(f"  ✓ {rel_path}")
