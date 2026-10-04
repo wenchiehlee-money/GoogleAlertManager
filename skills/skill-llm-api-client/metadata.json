@@ -44,7 +44,6 @@
     "scripts/providers/mlx.py",
     "scripts/analytics/__init__.py",
     "scripts/analytics/amplitude.py",
-    "scripts/check_env_consistency.py",
     "scripts/check_endpoints.py"
   ],
   "deployments": [
@@ -56,6 +55,16 @@
     {
       "repo": "wenchiehlee/llm",
       "local_path": "github.com/llm/skills/skill-llm-api-client",
+      "role": "consumer"
+    },
+    {
+      "repo": "wenchiehlee-money/GoogleAlertManager",
+      "local_path": "github.com/GoogleAlertManager/skills/skill-llm-api-client",
+      "role": "consumer"
+    },
+    {
+      "repo": "ZhongZheng782/Llm-Cli-APIServer",
+      "local_path": "github.com/Llm-Cli-APIServer/skills/skill-llm-api-client",
       "role": "consumer"
     }
   ],
