@@ -14,7 +14,7 @@ asks for a specific theme.
 | Theme | Companies | competitive_groups | extra_entities | Notes |
 |---|---:|---:|---:|---|
 | AI 伺服器 | 380 | 12 | 1 (聯想, TPEx 伺服器子分類缺漏) | Also has `theme_supply_chain` (IC taxonomy F000/5300); see `references/known_gaps.md` |
-| 資料中心 | 111 | 21 | 4 (鴻海/仁寶/和碩/華擎 — enrichment 文字缺「[[資料中心]]」wikilink) | No `theme_supply_chain` — pure context-match theme, so this class of gap (relevant company simply never mentions the theme's exact tag string) is systemic, not a one-off; see note below. One intentional boundary case left un-merged: 3163 波若威 (光被動元件) vs 4979 華星光 (光收發模組主動元件) — `relationships.competitors` links them but they're genuinely different product segments |
+| 資料中心 | 111 | 21 | 4 (鴻海/仁寶/和碩/華擎 — enrichment 文字缺「[[資料中心]]」wikilink) | No `theme_supply_chain` — pure context-match theme, so this class of gap (relevant company simply never mentions the theme's exact tag string) is systemic, not a one-off; see note below. One intentional boundary case left un-merged: 3163 波若威 (光被動元件) vs 4979 華星光 (光收發模組主動元件) — `relationships.competitors` links them but they're genuinely different product segments. 2480 敦陽科 (GPUaaS AI 算力租賃) durably fixed by adding `[[資料中心]]` to its own `data/enrichment_all/2480.json` business summary (not `extra_entities` — the wikilink now exists for real) and added to the `IT 系統整合服務` group alongside 8099 大世科/6751 智聯服務. 6214 精誠 checked but left out: its business summary has no explicit data-center-build/hosting claim, only 雲端服務/資安/大數據 — do not force it in without real evidence. |
 
 ## Not yet cooked
 

@@ -58,15 +58,16 @@ AI_CYCLE_COLUMNS = [
     "AI_Memory_HBM",
     "Cloud_AI_Compute",
 ]
-SEGMENT_WEIGHTS_PATH = ROOT.parent / "biztrends.TW" / "output" / "company_cycle_major_weights.csv"
+BIZTRENDS_ROOT_DEFAULT = ROOT.parent / "biztrends.TW"
 
 
-def load_segment_weights() -> dict[str, dict[str, Any]]:
+def load_segment_weights(biztrends_root: Path = BIZTRENDS_ROOT_DEFAULT) -> dict[str, dict[str, Any]]:
     """ticker -> {period, weights: {cycle: pct}} for AI-related canonical cycles, latest row per ticker."""
     weights: dict[str, dict[str, Any]] = {}
-    if not SEGMENT_WEIGHTS_PATH.exists():
+    segment_weights_path = biztrends_root / "output" / "company_cycle_major_weights.csv"
+    if not segment_weights_path.exists():
         return weights
-    with SEGMENT_WEIGHTS_PATH.open("r", encoding="utf-8-sig", newline="") as f:
+    with segment_weights_path.open("r", encoding="utf-8-sig", newline="") as f:
         for row in csv.DictReader(f):
             ticker = str(row.get("代號", "")).strip()
             if not ticker:
@@ -253,6 +254,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--theme", help="Theme tag, e.g. 'AI 伺服器'")
     parser.add_argument("--all", action="store_true", help="Check every theme with competitive_groups")
+    parser.add_argument("--biztrends-root", default=str(BIZTRENDS_ROOT_DEFAULT), help="Path to a biztrends.TW checkout or CI clone (private repo; read-only, never committed here).")
     args = parser.parse_args()
 
     if not args.theme and not args.all:
@@ -261,7 +263,7 @@ def main() -> int:
     theme_definitions = load_theme_definitions()
     theme_map = scan_theme_links(theme_definitions)
     name_index = build_name_index()
-    segment_weights = load_segment_weights()
+    segment_weights = load_segment_weights(Path(args.biztrends_root).resolve())
 
     tags = list(theme_definitions.keys()) if args.all else [args.theme]
 

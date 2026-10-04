@@ -33,33 +33,18 @@ keeps that grouping consistent with each company's own canonical competitor list
 [skill-company-enrichment-json](../skill-company-enrichment-json/SKILL.md)
 (`data/enrichment_all/{ticker}.json` → `relationships.competitors`).
 
-**Alignment requirement (authority direction corrected 2026-09-03 — see
-`references/known_gaps.md` for the full history of the earlier, backwards version of this
-paragraph, and `skill-theme-competitor-analysis`'s own SKILL.md for the matching correction
-there)**: `competitive_groups` in this skill's `data/themes/*.json` is the authoritative
-definition of **which companies belong to which competitive group** for a theme. Every member of
-one of this skill's groups should also be classifiable by `skill-theme-competitor-analysis`'s
-`relationship_type` (`brand_competitor`/`foundry_competitor`/`odm_peer`/`server_peer`/
-`chip_competitor`, in `output/focus/{stock}/company_competitor_analysis_{stock}.csv`) — that
-skill does not decide group *membership*, it supplies the detailed per-stock
-financial/relationship data for members this skill's groups already define. A finer split that
-skill's `relationship_type` draws within one group (e.g. `odm_peer` vs `server_peer` inside AI
-伺服器's merged `ODM/系統整合` group) is not by itself a reason to split the group here — see the
-worked example in `references/known_gaps.md`.
-
-The check that *is* this skill's own responsibility: does every `relationship_type`-classified
-peer for a stock in one of this skill's groups actually appear somewhere in that theme's
-`competitive_groups` (in the right group or a defensible adjacent one)? `check_group_consistency.py`
-today only cross-checks against `relationships.competitors` in `data/enrichment_all/*.json` — a
+**Alignment requirement**: every theme's `competitive_groups` boundaries must agree with the
+`relationship_type` classification (`brand_competitor`/`foundry_competitor`/`odm_peer`/
+`server_peer`/`chip_competitor`) that `skill-theme-competitor-analysis` produces per stock in
+`output/focus/{stock}/company_competitor_analysis_{stock}.csv`. Today `check_group_consistency.py`
+only cross-checks against `relationships.competitors` in `data/enrichment_all/*.json` — a
 separate, text-extracted competitor list that is not guaranteed to be derived from
 `skill-theme-competitor-analysis`'s own output. Treat that as an indirect proxy, not proof of
 alignment: when curating a theme, spot-check disputed group members against
 `skill-theme-competitor-analysis`'s actual `relationship_type` output for that stock, and prefer
-its rule-based classification over `relationships.competitors` when deciding whether a company
-is *missing from this skill's theme dataset entirely* (a real gap to fix here) — not as license to
-re-split or re-define groups that already contain the company. Extending
+its rule-based classification over `relationships.competitors` when the two disagree. Extending
 `check_group_consistency.py` to diff directly against `skill-theme-competitor-analysis`'s CSV
-output for this membership check is a known follow-up, not yet implemented.
+output is a known follow-up, not yet implemented.
 
 ## Operating Modes
 
@@ -80,30 +65,6 @@ Use the mode that matches the current workspace.
 Use this workflow when the current repo lacks `data/themes/` or `output/themes/`. Keep the user
 update neutral: say that the current repo is a consumer of theme mappings, not that the workflow
 will not run.
-
-> [!IMPORTANT]
-> A prior local annotation is **not** trustworthy just because it exists and cites a canonical
-> source path — a `TW-institutional-research` copy of the AI 伺服器 theme was stale from the day
-> it was created (captured only 2 of canonical's 13 `competitive_groups`, and even those 2
-> predated a canonical commit that had already expanded one of them) and sat undetected for
-> weeks before a user caught it by asking. Step 0 exists specifically to prevent that recurring
-> silently in any consumer repo, this one included.
-
-0. **If a local annotation for this theme already exists, verify it before reusing it — do not
-   assume it's current.** Run:
-
-   ```bash
-   cd <canonical repo>
-   git log -1 --format="%H %ci %s" -- data/themes/<theme>.json
-   git status --short -- data/themes/<theme>.json   # confirm no uncommitted local drift on the canonical side itself
-   ```
-
-   Compare the canonical commit hash/date against the local annotation's own "Canonical commit
-   checked" / "Last synced" line (add these fields if the existing annotation predates this rule
-   and lacks them). If canonical has moved since the annotation was last synced — or the
-   annotation has no recorded sync point at all — re-derive it from steps 1-4 below rather than
-   trusting the existing content. Spot-check at least the `competitive_groups` count and one
-   group's ticker list against canonical; do not assume "it looks complete" without counting.
 
 1. **Locate the canonical theme repository.** Prefer an explicit user path if provided. Otherwise
    check likely sibling repositories and require these files before using one:
@@ -133,10 +94,7 @@ will not run.
 4. **Write a local annotation.** Add a clearly labeled `theme` / `competitive_groups` block to
    the current repo's requested output file, note the canonical source path used, and state that
    the mapping is a classification layer only. It must not validate financial figures, OCR cells,
-   research views, market-flow facts, or company facts. Always record the canonical commit hash
-   and sync date (e.g. "Canonical commit checked: `<hash>`" / "Last synced: `<date>`") so a future
-   step-0 check has something to compare against — an annotation without this is exactly what let
-   the AI 伺服器 drift above go undetected.
+   research views, market-flow facts, or company facts.
 
 5. **Validate only what applies locally.** Run local repository validators and formatting checks.
    Skip `scripts/build_themes.py` and `check_group_consistency.py` unless you are operating in
@@ -225,6 +183,31 @@ layout.
      `skill-company-enrichment-json`, not this skill; do not edit
      `data/enrichment_all/*.json` from this skill without the user's explicit go-ahead.
 
+Before editing, compare similarly named or potentially overlapping groups using the
+Jaccard metric (intersection tickers divided by union tickers):
+
+```bash
+python skills/skill-theme-competitor-groups-curate/scripts/report_group_overlap.py --threshold 0.30
+```
+
+Group A and Group B are reported only when they are in different themes, have different
+names, and their Jaccard overlap is strictly above the threshold. Use this report to
+identify candidates for canonical-name review; overlap alone does not authorize merging
+groups with different products or business models.
+
+Also check competitor-group names before finalizing:
+
+```bash
+python skills/skill-theme-competitor-groups-curate/scripts/check_group_names.py
+```
+
+A group name is a cross-theme label, not a theme-specific caption. Reuse the canonical
+name in `references/canonical_group_names.json` when the same product/business-model
+competitor set appears in another theme. Do not create a second name merely by adding a
+market context such as `CSP`, `AI`, or `機櫃`. Keep that context in the theme name, group
+note, or company role instead. If an existing name is a true alias, add it to the registry
+and rename the data in the same change; do not silently leave both names in use.
+
 5. **Edit `data/themes/<theme>.json`.**
 
    - `competitive_groups`: an ordered list of `{"name": "...", "tickers": [...]}`. Order
@@ -238,6 +221,10 @@ layout.
      the same segment are tagged, or `related` if there's no clean match.
    - Group names should be a real segment name in Traditional Chinese (e.g. `ODM/系統整合 (AI
      伺服器代工)`, `散熱模組/液冷`), not a copy of the raw subcategory/GICS string.
+   - Before inventing a name, search `references/canonical_group_names.json` and all existing
+     `competitive_groups`. Similar product/business-model groups must reuse one canonical
+     name across themes. For example, `CSP 主力 AI 伺服器/機櫃 ODM 代工` is an alias of
+     `ODM/系統整合 (AI 伺服器代工)`, not a separate group.
 
 6. **Rebuild the full site, not just one theme.** `build_themes.py "<tag>"` (single-theme mode)
    overwrites `output/themes/README.md` with only that one theme's entry, wiping every other
