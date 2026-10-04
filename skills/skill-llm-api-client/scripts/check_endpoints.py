@@ -1,112 +1,157 @@
 #!/usr/bin/env python3
-"""Probe Codex-API-Server endpoints configured in .env.
+"""SOP 工具：驗證 Codex 伺服器存活狀態與各端點回應時間 (Latency / Response Time)。
 
-Status checks are unauthenticated; inference checks use CODEX_API_KEY.
-Secret values are never printed. The command succeeds when at least one endpoint
-passes, which allows a healthy fallback endpoint while another route is offline.
+用法：
+    python skills/skill-llm-api-client/scripts/check_endpoints.py
+    python skills/skill-llm-api-client/scripts/check_endpoints.py --url https://api.wenchiehlee.synology.me:8443
 """
 from __future__ import annotations
 
 import argparse
 import os
+import sys
 import time
-from pathlib import Path
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 import httpx
 
-from providers.codex import CODEX_ENDPOINTS
+DEFAULT_CANDIDATES = [
+    "https://api.wenchiehlee.synology.me:8443",
+    "http://llm-cli-api.tail28f10.ts.net:5001",
+]
 
 
-CONNECT_TIMEOUT = 10.0
-READ_TIMEOUT = 180.0
+def test_endpoint(url: str, api_key: str, check_exec: bool = True) -> dict:
+    url = url.rstrip("/")
+    headers = {"X-API-Key": api_key} if api_key else {}
+    results = {
+        "url": url,
+        "alive": False,
+        "codex_status": None,
+        "codex_latency_ms": None,
+        "gemini_status": None,
+        "gemini_latency_ms": None,
+        "exec_ok": False,
+        "exec_latency_s": None,
+        "error": None,
+    }
 
-
-def load_dotenv_literal(path: Path) -> dict[str, str]:
-    """Load simple KEY=value lines without shell-evaluating secret values."""
-    values: dict[str, str] = {}
-    for raw in path.read_text(encoding="utf-8").splitlines():
-        line = raw.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        values[key.strip()] = value
-    return values
-
-
-def probe_status(url: str, path: str) -> tuple[bool, float, str]:
-    started = time.monotonic()
+    # 1. 探測 /codex/status
+    t0 = time.perf_counter()
     try:
-        response = httpx.get(url + path, timeout=httpx.Timeout(CONNECT_TIMEOUT))
-        elapsed = (time.monotonic() - started) * 1000
-        return response.is_success, elapsed, f"HTTP {response.status_code}"
-    except Exception as exc:
-        elapsed = (time.monotonic() - started) * 1000
-        return False, elapsed, f"{type(exc).__name__}: {exc}"
+        r = httpx.get(f"{url}/codex/status", headers=headers, timeout=httpx.Timeout(connect=2.0, read=3.0, write=2.0, pool=2.0))
+        elapsed_ms = round((time.perf_counter() - t0) * 1000, 1)
+        if r.status_code == 200:
+            results["alive"] = True
+            results["codex_status"] = r.json()
+            results["codex_latency_ms"] = elapsed_ms
+        else:
+            results["codex_status"] = f"HTTP {r.status_code}"
+    except Exception as e:
+        results["error"] = type(e).__name__
 
-
-def probe_inference(url: str, api_key: str) -> tuple[bool, float, str]:
-    started = time.monotonic()
+    # 2. 探測 /gemini/status
+    t0 = time.perf_counter()
     try:
-        response = httpx.post(
-            url + "/exec",
-            json={"prompt": "Reply with exactly pong.", "json_mode": False},
-            headers={"X-API-Key": api_key, "Content-Type": "application/json"},
-            timeout=httpx.Timeout(connect=CONNECT_TIMEOUT, read=READ_TIMEOUT,
-                                  write=CONNECT_TIMEOUT, pool=CONNECT_TIMEOUT),
-        )
-        response.raise_for_status()
-        output = " ".join(str(response.json().get("output", "")).split())
-        elapsed = time.monotonic() - started
-        return bool(output), elapsed, output[:120] if output else "<empty response>"
-    except Exception as exc:
-        elapsed = time.monotonic() - started
-        return False, elapsed, f"{type(exc).__name__}: {exc}"
+        r = httpx.get(f"{url}/gemini/status", headers=headers, timeout=httpx.Timeout(connect=2.0, read=3.0, write=2.0, pool=2.0))
+        elapsed_ms = round((time.perf_counter() - t0) * 1000, 1)
+        if r.status_code == 200:
+            results["gemini_status"] = r.json()
+            results["gemini_latency_ms"] = elapsed_ms
+        else:
+            results["gemini_status"] = f"HTTP {r.status_code}"
+    except Exception:
+        pass
+
+    # 3. 測試 /exec 推論回應時間（若主機存活且要求測試）
+    if results["alive"] and check_exec:
+        t0 = time.perf_counter()
+        try:
+            r = httpx.post(
+                f"{url}/exec",
+                json={"prompt": "Reply with pong"},
+                headers=headers,
+                timeout=httpx.Timeout(connect=3.0, read=30.0, write=3.0, pool=3.0),
+            )
+            elapsed_s = round(time.perf_counter() - t0, 2)
+            if r.status_code == 200:
+                results["exec_ok"] = True
+                results["exec_latency_s"] = elapsed_s
+                results["exec_output"] = r.json().get("output", "").strip()
+            else:
+                results["exec_output"] = f"HTTP {r.status_code}"
+        except Exception as e:
+            results["exec_output"] = f"Error: {type(e).__name__}"
+
+    return results
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--env-file", type=Path, default=Path(".env"))
-    parser.add_argument("--skip-exec", action="store_true", help="Only run status probes")
+    parser = argparse.ArgumentParser(description="驗證 Codex 伺服器存活狀態與回應時間")
+    parser.add_argument("--url", help="指定單一 URL 進行測試（預設自動檢查所有候選端點）")
+    parser.add_argument("--skip-exec", action="store_true", help="跳過 /exec 推論測試，只測試 status 端點")
     args = parser.parse_args()
 
-    if not args.env_file.is_file():
-        print(f"ERROR missing env file: {args.env_file}")
-        return 2
+    api_key = os.getenv("CODEX_API_KEY", "")
 
-    values = load_dotenv_literal(args.env_file)
-    for key, value in values.items():
-        os.environ.setdefault(key, value)
-    urls = list(CODEX_ENDPOINTS)
+    candidates = [args.url] if args.url else list(DEFAULT_CANDIDATES)
 
-    api_key = values.get("CODEX_API_KEY", os.getenv("CODEX_API_KEY", ""))
+    print("📡 Codex 伺服器健康度與回應時間驗證 (SOP)")
     print("=" * 80)
-    print("LLM endpoint health check")
-    print("=" * 80)
-    print(f"Configured endpoints: {len(urls)}")
-    print(f"API key status: {'configured' if api_key else 'missing'}")
-    print(f"Inference: {'skipped' if args.skip_exec else 'enabled'}")
+    print(f"API 金鑰狀態     : {'已設定 (' + str(len(api_key)) + ' chars)' if api_key else '未設定'}")
+    print(f"預計檢查端點數   : {len(candidates)}")
+    print("-" * 80)
 
-    healthy = 0
-    for url in urls:
-        print(f"\nTesting: {url}")
-        statuses_ok = True
-        for path in ("/codex/status", "/gemini/status"):
-            ok, elapsed, detail = probe_status(url, path)
-            statuses_ok &= ok
-            print(f"  {path}: {'PASS' if ok else 'FAIL'} ({detail}, {elapsed:.1f} ms)")
-        inference_ok = True
-        if not args.skip_exec:
-            if not api_key:
-                inference_ok = False
-                print("  inference: FAIL (CODEX_API_KEY is missing)")
+    best_url = None
+    best_latency = float("inf")
+
+    for url in candidates:
+        print(f"\n🔍 正在測試: {url} ...")
+        res = test_endpoint(url, api_key, check_exec=not args.skip_exec)
+
+        if res["alive"]:
+            status_desc = f"✅ 存活 (/codex/status: {res['codex_latency_ms']} ms"
+            if res["gemini_latency_ms"]:
+                status_desc += f", /gemini/status: {res['gemini_latency_ms']} ms"
+            status_desc += ")"
+            print(f"   狀態: {status_desc}")
+
+            if not args.skip_exec:
+                if res["exec_ok"]:
+                    print(f"   推論: ✅ 成功 (耗時: {res['exec_latency_s']}s, 回應: {repr(res.get('exec_output'))})")
+                    if res["exec_latency_s"] < best_latency:
+                        best_latency = res["exec_latency_s"]
+                        best_url = url
+                else:
+                    print(f"   推論: ⚠️ 失敗 ({res.get('exec_output')})")
             else:
-                inference_ok, elapsed, detail = probe_inference(url, api_key)
-                print(f"  inference: {'PASS' if inference_ok else 'FAIL'} ({elapsed:.2f} s, response={detail!r})")
-        if statuses_ok and inference_ok:
-            healthy += 1
+                if res["codex_latency_ms"] < best_latency:
+                    best_latency = res["codex_latency_ms"]
+                    best_url = url
+        else:
+            print(f"   狀態: ❌ 無法連線 ({res['error'] or 'No response'})")
 
-    print(f"\nHealthy endpoints: {healthy}/{len(urls)}")
-    return 0 if healthy else 1
+    print("\n" + "=" * 80)
+    if best_url:
+        print(f"🏆 最佳推薦端點: {best_url}")
+        print("=" * 80)
+        return 0
+    else:
+        print("❌ 警告：所有端點皆無法正常連線！請檢查 NAS、Tailscale 或網路連線。")
+        print("=" * 80)
+        return 1
 
 
 if __name__ == "__main__":

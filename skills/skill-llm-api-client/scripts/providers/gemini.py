@@ -118,11 +118,11 @@ class GeminiProvider(BaseProvider):
                         continue
                     raise
                 except genai_errors.ClientError as e:
-                    if e.code == 403:
+                    if e.code == 403 or (e.code == 400 and "API_KEY_INVALID" in str(e)):
                         self._exhausted.add(api_key)
                         last_exc = e
-                        logger.warning("%s 無效（403），永久跳過（剩餘 %d 把）…",
-                                       key_label, len(available) - len(self._exhausted))
+                        logger.warning("%s 無效（%s），永久跳過（剩餘 %d 把）…",
+                                       key_label, e.code, len(available) - len(self._exhausted))
                         break
                     if e.code == 429:
                         last_exc = e

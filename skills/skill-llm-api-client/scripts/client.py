@@ -12,7 +12,7 @@ from .analytics.amplitude import LLMCallTracker, configure as amplitude_configur
 
 logger = logging.getLogger(__name__)
 
-_DEFAULT_CHAIN = ["codex", "gemini", "mlx"]  # 優先順序：codex → gemini → mlx(本機)
+_DEFAULT_CHAIN = ["gemini", "codex", "mlx"]  # 優先順序：gemini → codex → mlx(本機)
 MAX_PROMPT_LENGTH = 50_000
 
 
@@ -55,7 +55,7 @@ class LLMClient:
     使用方式：
         from llm import LLMClient
 
-        # 自動偵測 provider（codex → gemini）
+        # 自動偵測 provider（gemini → codex）
         client = LLMClient()
 
         # 指定 provider

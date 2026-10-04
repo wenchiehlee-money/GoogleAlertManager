@@ -122,8 +122,6 @@ class LLMCallTracker:
         success = exc_type is None
 
         props: dict[str, Any] = {
-            "service":        "llm-api-client",
-            "stage":          "generate",
             "provider":       self.provider,
             "model":          self.model,
             "model_repo":     self.model_repo,

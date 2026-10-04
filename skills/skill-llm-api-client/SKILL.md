@@ -1,6 +1,6 @@
 ---
 name: skill-llm-api-client
-description: 統一的 LLM 客戶端函式庫（llm package），封裝 Gemini API 金鑰輪轉、skill-llm-api-server 的 codex-cli/gemini-cli 遠端橋接、以及本地 MLX 推論，內建 codex → gemini → mlx 自動備援鏈與 Draft/Judge 智慧路由。
+description: 統一的 LLM 客戶端函式庫（llm package），封裝 Gemini API 金鑰輪轉、skill-llm-api-server 的 codex-cli/gemini-cli 遠端橋接、以及本地 MLX 推論，內建 gemini → codex → mlx 自動備援鏈與 Draft/Judge 智慧路由。
 ---
 
 # LLM API Client 技能 (skill-llm-api-client)
@@ -19,7 +19,7 @@ description: 統一的 LLM 客戶端函式庫（llm package），封裝 Gemini A
 - **`gemini`**：直接呼叫 Google Gemini API，支援最多 20 把金鑰（`GEMINI_API_KEY` + `_1`~`_19`）的每日配額偵測與 round-robin 輪轉
 - **`mlx`**：呼叫本地 Apple Silicon 上的 MLX 推論伺服器（見 `common/skill-mlx-api-server`）
 
-預設備援鏈：`codex → gemini → mlx`。
+預設備援鏈：`gemini → codex → mlx`。
 
 ## 📦 技能結構說明
 
@@ -173,7 +173,7 @@ GitHub Actions secret 本身是否已建立，需在有 repository secret 讀取
 ```python
 from llm import LLMClient
 
-# 初始化（自動偵測可用 provider：codex → gemini → mlx）
+# 初始化（自動偵測可用 provider：gemini → codex → mlx）
 client = LLMClient(app_name="NewsAnalyzer")
 
 text = client.generate("請簡述台積電在 2024 年的營收表現。")

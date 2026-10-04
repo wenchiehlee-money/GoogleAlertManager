@@ -2,11 +2,11 @@
   "name": "skill-llm-api-client",
   "description": "統一的 LLM 客戶端函式庫（llm），封裝 Gemini API 金鑰輪轉、skill-llm-api-server 的 codex-cli/gemini-cli 橋接、以及本地 MLX 推論，內建 codex → gemini → mlx 自動備援鏈與智慧路由（Smart Routing）。",
   "category": "library",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "wenchiehlee",
   "maintainer": "wenchiehlee",
   "source": "https://github.com/wenchiehlee/llm",
-  "updated_at": "2026-10-03",
+  "updated_at": "2026-10-04",
   "license": "MIT",
   "tags": [
     "client",
@@ -65,6 +65,31 @@
     {
       "repo": "ZhongZheng782/Llm-Cli-APIServer",
       "local_path": "github.com/Llm-Cli-APIServer/skills/skill-llm-api-client",
+      "role": "consumer"
+    },
+    {
+      "repo": "wenchiehlee-money/biztrends.TW",
+      "local_path": "github.com/biztrends.TW/skills/skill-llm-api-client",
+      "role": "consumer"
+    },
+    {
+      "repo": "wenchiehlee-investment/ConceptStocks",
+      "local_path": "github.com/ConceptStocks/skills/skill-llm-api-client",
+      "role": "consumer"
+    },
+    {
+      "repo": "wenchiehlee-investment/Python-Actions.GoodInfo.CompanyInfo",
+      "local_path": "github.com/Python-Actions.GoodInfo.CompanyInfo/skills/skill-llm-api-client",
+      "role": "consumer"
+    },
+    {
+      "repo": "wenchiehlee-money/TW-institutional-investment-theses",
+      "local_path": "github.com/TW-institutional-investment-theses/skills/skill-llm-api-client",
+      "role": "consumer"
+    },
+    {
+      "repo": "ZhongZheng782/YoutubeAudio.Fetch",
+      "local_path": "github.com/YoutubeAudio.Fetch/skills/skill-llm-api-client",
       "role": "consumer"
     }
   ],
