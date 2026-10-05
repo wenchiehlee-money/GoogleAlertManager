@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """GoogleAlertManager watchlist and README maintenance helpers.
 
-This script is bundled with skills/skill-google-alert-fetch so the skill's
+This script is bundled with skills/common/skill-google-alert-fetch so the skill's
 SOP and the repository automation share the same implementation.
 """
 
@@ -293,12 +293,6 @@ def cmd_export_rss(repo_root: Path) -> int:
     from src.alerts.manager import get_rss_map
 
     rss_map = get_rss_map()
-    if not rss_map:
-        print(
-            "Google Alerts 未回傳任何 RSS URL；保留既有 fallback，請更新有效 session/credentials。",
-            file=sys.stderr,
-        )
-        return 1
     output_path = repo_root / "config" / "rss_urls.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(rss_map, f, ensure_ascii=False, indent=2)
@@ -312,19 +306,7 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
     import subprocess as sp
 
     from src.analysis import llm
-    from src.analysis.competitors import (
-        build_health_note,
-        build_llm_context,
-        build_markdown_table,
-        check_data_health,
-        load_competitor_data,
-    )
-    from src.analysis.institutional import (
-        build_llm_context as build_institutional_llm_context,
-        build_markdown_table as build_institutional_markdown_table,
-        load_institutional_report,
-        load_institutional_thesis,
-    )
+    from src.analysis.competitors import build_llm_context, build_markdown_table, load_competitor_data
     from src.companies.watchlist import load_companies
     from src.config import today_taipei as src_today_taipei
     from src.storage.json_store import load_entries_by_stock_id
@@ -406,29 +388,15 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
         competitor_context = build_llm_context(competitor_data)
         competitor_table = build_markdown_table(competitor_data)
 
-        health = check_data_health(competitor_data)
-        if health["issues"]:
-            print(f"    ⚠️  {company.stock_id} 競爭同業資料：{'；'.join(health['issues'])}", file=sys.stderr)
-            health_note = build_health_note(health)
-            if competitor_table:
-                competitor_table = f"{health_note}\n\n{competitor_table}"
-
-        institutional_report = load_institutional_report(company.stock_id)
-        institutional_thesis = load_institutional_thesis(company.stock_id)
-        institutional_context = build_institutional_llm_context(institutional_report, institutional_thesis)
-        institutional_table = build_institutional_markdown_table(institutional_report, institutional_thesis)
-
         try:
             llm_result, new_scores = llm.analyze_and_score(
-                company, llm_entries, competitor_context, known_scores=all_scores,
-                institutional_context=institutional_context,
+                company, llm_entries, competitor_context, known_scores=all_scores
             )
         except Exception as e:
             print(f"    合併分析+評分失敗，改用純分析：{e}", file=sys.stderr)
             try:
                 llm_result = llm.analyze_company(
-                    company, llm_entries, competitor_context, known_scores=all_scores,
-                    institutional_context=institutional_context,
+                    company, llm_entries, competitor_context, known_scores=all_scores
                 )
                 new_scores = {}
             except Exception as fallback_error:
@@ -443,7 +411,6 @@ def cmd_analyze(repo_root: Path, day_str: str | None, stock_id: str | None, forc
         path = write_company_report(
             company, day, entries, llm_result, generated_at,
             scores=all_scores, competitor_table=competitor_table,
-            institutional_table=institutional_table,
         )
         print(f"    -> {path}")
 
