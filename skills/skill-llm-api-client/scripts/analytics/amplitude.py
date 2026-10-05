@@ -101,6 +101,7 @@ class LLMCallTracker:
         routing_task: str | None = None,
         draft_provider: str | None = None,
         smart_route_status: str | None = None,
+        effort: str | None = None,
     ):
         self.provider = provider
         self.model = model
@@ -109,6 +110,7 @@ class LLMCallTracker:
         self.routing_task = routing_task
         self.draft_provider = draft_provider
         self.smart_route_status = smart_route_status
+        self.effort = effort or ""
         self.result: str = ""
         self.key_used: str = ""
         self._start: float = 0.0
@@ -132,6 +134,8 @@ class LLMCallTracker:
             "duration_sec":   duration_sec,
             "success":        success,
         }
+        if self.effort:
+            props["effort"] = self.effort
         if self.routing_task:
             props["routing_task"] = self.routing_task
         if self.draft_provider:

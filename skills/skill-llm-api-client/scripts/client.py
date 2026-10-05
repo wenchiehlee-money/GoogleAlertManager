@@ -17,13 +17,17 @@ MAX_PROMPT_LENGTH = 50_000
 
 
 def _build_provider(name: str, model: str | None = None) -> BaseProvider:
-    if name == "gemini":
+    n = (name or "").lower().strip()
+    if n in ("gemini", "gemini-api"):
         from .providers.gemini import GeminiProvider
         return GeminiProvider(model=model)
-    if name in ("codex", "llm-cli"):
+    if n in ("agy", "gemini-cli"):
+        from .providers.codex import CodexProvider
+        return CodexProvider(model=model or "Gemini 3.8 Flash (Medium)")
+    if n in ("codex", "codex-cli", "llm-cli", "chatgpt"):
         from .providers.codex import CodexProvider
         return CodexProvider(model=model)
-    if name == "mlx":
+    if n == "mlx":
         from .providers.mlx import MLXProvider
         return MLXProvider(model=model)
     raise ValueError(f"Unknown provider: {name}")
@@ -307,7 +311,7 @@ class LLMClient:
                 with LLMCallTracker(
                     p.name, p.model, prompt, model_repo=getattr(p, "model_repo", ""),
                     routing_task=routing_task, draft_provider=draft_provider,
-                    smart_route_status=smart_route_status
+                    smart_route_status=smart_route_status, effort=getattr(p, "effort", "")
                 ) as tracker:
                     result = p.generate(prompt, json_mode=json_mode, max_tokens=max_tokens)
                     tracker.result = result
@@ -342,7 +346,7 @@ class LLMClient:
             with LLMCallTracker(
                 p.name, p.model, prompt, model_repo=getattr(p, "model_repo", ""),
                 routing_task=routing_task, draft_provider=draft_provider,
-                smart_route_status=smart_route_status
+                smart_route_status=smart_route_status, effort=getattr(p, "effort", "")
             ):
                 raise ValueError(f"prompt 超過長度上限（{len(prompt)} > {MAX_PROMPT_LENGTH}）")
 
@@ -352,7 +356,7 @@ class LLMClient:
                 with LLMCallTracker(
                     p.name, p.model, prompt, model_repo=getattr(p, "model_repo", ""),
                     routing_task=routing_task, draft_provider=draft_provider,
-                    smart_route_status=smart_route_status
+                    smart_route_status=smart_route_status, effort=getattr(p, "effort", "")
                 ) as tracker:
                     text = p.generate(prompt, json_mode=True, max_tokens=max_tokens)
                     tracker.result = text
@@ -378,3 +382,63 @@ class LLMClient:
             else:
                 status[p.name] = {"provider": p.name, "model": p.model}
         return status
+
+    def check_quota(self, provider: str | None = None, model: str | None = None) -> dict[str, dict]:
+        """向 Provider 探測真實配額可用度，判斷是否還能使用或已耗盡 (Almost Exhausted / Exhausted)。"""
+        results: dict[str, dict] = {}
+        target_providers = self._resolve_providers(provider, model)
+        for p in target_providers:
+            info = {
+                "provider": p.name,
+                "model": p.model,
+                "usable": False,
+                "status": "unknown",
+                "detail": "",
+            }
+            if p.name == "gemini":
+                q = getattr(p, "get_quota_status", lambda: {})()
+                avail = q.get("available_keys", 0)
+                total = q.get("total_keys", 0)
+                info["available_keys"] = avail
+                info["total_keys"] = total
+                info["exhausted_keys"] = q.get("exhausted_keys", 0)
+                if avail > 1:
+                    info["usable"] = True
+                    info["status"] = "ready"
+                    info["detail"] = f"正常可用（剩餘 {avail}/{total} 把有效金鑰）"
+                elif avail == 1:
+                    info["usable"] = True
+                    info["status"] = "almost_exhausted"
+                    info["detail"] = f"接近耗盡警訊（僅剩最後 1/{total} 把金鑰）"
+                else:
+                    info["usable"] = False
+                    info["status"] = "quota_exhausted"
+                    info["detail"] = f"配額已全數耗盡（所有 {total} 把金鑰皆達今日限額）"
+            elif p.name in ("llm-cli", "codex", "agy"):
+                try:
+                    p.generate("Reply with 1", max_tokens=5)
+                    info["usable"] = True
+                    info["status"] = "ready"
+                    info["detail"] = "Provider 官方配額正常，可即時推論"
+                except Exception as e:
+                    err_msg = str(e)
+                    err_lower = err_msg.lower()
+                    if any(m in err_lower for m in ("quota", "rate limit", "429", "usage cap", "exhaust")):
+                        info["usable"] = False
+                        info["status"] = "quota_exhausted"
+                        info["detail"] = f"Provider 官方回報配額耗盡：{err_msg}"
+                    elif any(m in err_lower for m in ("auth", "401", "token", "unauthorized")):
+                        info["usable"] = False
+                        info["status"] = "unauthorized"
+                        info["detail"] = f"憑證或授權失效：{err_msg}"
+                    else:
+                        info["usable"] = False
+                        info["status"] = "error"
+                        info["detail"] = err_msg
+            elif p.name == "mlx":
+                info["usable"] = True
+                info["status"] = "unlimited"
+                info["detail"] = "本地 Apple Silicon 推論，無配額上限"
+
+            results[p.name] = info
+        return results
