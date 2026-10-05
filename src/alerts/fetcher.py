@@ -57,8 +57,9 @@ def fetch_all(companies: list[Company] | None = None) -> dict[str, int]:
         rss_map = _load_rss_urls_from_file()
 
     if not rss_map:
-        logger.error("RSS 映射為空，請先執行 export-rss 或設定 Google Alerts 憑證")
-        return {}
+        raise RuntimeError(
+            "RSS 映射為空；Google Alerts 認證失敗且沒有可用的 config/rss_urls.json fallback"
+        )
     results: dict[str, int] = {}
     known_ids = load_all_known_ids()
 

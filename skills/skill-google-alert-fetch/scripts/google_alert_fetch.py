@@ -293,6 +293,12 @@ def cmd_export_rss(repo_root: Path) -> int:
     from src.alerts.manager import get_rss_map
 
     rss_map = get_rss_map()
+    if not rss_map:
+        print(
+            "Google Alerts 未回傳任何 RSS URL；保留既有 fallback，請更新有效 session/credentials。",
+            file=sys.stderr,
+        )
+        return 1
     output_path = repo_root / "config" / "rss_urls.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(rss_map, f, ensure_ascii=False, indent=2)
