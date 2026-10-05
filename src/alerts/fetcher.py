@@ -2,13 +2,14 @@
 
 import json
 import logging
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
+from email.utils import parsedate_to_datetime
 
 import feedparser
 
 from src.alerts.manager import get_rss_map
 from src.companies.watchlist import Company, load_companies
-from src.config import ROOT
+from src.config import ROOT, TZ_TAIPEI, today_taipei
 from src.storage.json_store import load_all_known_ids, load_entries, save_entries
 
 logger = logging.getLogger(__name__)
@@ -25,6 +26,23 @@ def _parse_entry(entry: dict, company: Company) -> dict:
         "name": company.name,
         "fetched_at": datetime.now(timezone.utc).isoformat(),
     }
+
+
+def _published_day(published: str) -> date:
+    """Return the Taiwan-local publication date, falling back to today."""
+    if not published:
+        return today_taipei()
+    value = str(published).strip()
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        try:
+            parsed = parsedate_to_datetime(value)
+        except (TypeError, ValueError, OverflowError):
+            return today_taipei()
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(TZ_TAIPEI).date()
 
 
 def _load_rss_urls_from_file() -> dict[str, str]:
@@ -81,9 +99,13 @@ def fetch_all(companies: list[Company] | None = None) -> dict[str, int]:
                 existing_ids.add(parsed["id"])
 
         if new_entries:
-            today_entries = load_entries(company.stock_id)
-            save_entries(company.stock_id, today_entries + new_entries)
-            logger.info("Saved %d new entries for %s (%s)", len(new_entries), company.name, company.stock_id)
+            entries_by_day: dict[date, list[dict]] = {}
+            for parsed in new_entries:
+                entries_by_day.setdefault(_published_day(parsed["published"]), []).append(parsed)
+            for day, day_entries in entries_by_day.items():
+                existing_entries = load_entries(company.stock_id, day)
+                save_entries(company.stock_id, existing_entries + day_entries, day)
+            logger.info("Saved %d new entries for %s (%s) across %d publication dates", len(new_entries), company.name, company.stock_id, len(entries_by_day))
         else:
             logger.info("No new entries for %s (%s)", company.name, company.stock_id)
 
