@@ -7,7 +7,7 @@ description: 統一的 LLM 客戶端函式庫（llm package），封裝 Gemini A
 
 | 項目 | 內容 |
 | :--- | :--- |
-| 版本 | 1.0.5（詳見 `metadata.json`） |
+| 版本 | 1.0.8（詳見 `metadata.json`） |
 | 來源 | https://github.com/wenchiehlee/llm |
 | 登錄庫 | https://github.com/wenchiehlee/skills （`common/skill-llm-api-client`） |
 | 維護者 | wenchiehlee |
@@ -124,7 +124,7 @@ MLX_API_URL=
 MLX_SERVER_API_KEY=
 # MLX_MODEL=mlx-qwen3
 
-# Amplitude（不填則預設關閉追蹤）
+# Amplitude（必填，未填則 API 呼叫失敗）
 AMPLITUDE_API_KEY=
 LLM_APP_NAME=my-app
 ```

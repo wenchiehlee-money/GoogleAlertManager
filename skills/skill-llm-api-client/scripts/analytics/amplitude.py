@@ -26,7 +26,7 @@ def _get_api_key() -> str:
         pass
     _api_key = os.getenv("AMPLITUDE_API_KEY", "")
     if not _api_key:
-        logger.debug("AMPLITUDE_API_KEY 未設定，Amplitude 追蹤停用")
+        raise RuntimeError("AMPLITUDE_API_KEY is required but not set in environment or .env file.")
     return _api_key
 
 
@@ -116,6 +116,7 @@ class LLMCallTracker:
         self._start: float = 0.0
 
     def __enter__(self) -> "LLMCallTracker":
+        _get_api_key()
         self._start = time.monotonic()
         return self
 
