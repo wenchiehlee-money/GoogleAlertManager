@@ -294,6 +294,10 @@ def cmd_export_rss(repo_root: Path) -> int:
 
     rss_map = get_rss_map()
     output_path = repo_root / "config" / "rss_urls.json"
+    rss_map = {stock_id: url for stock_id, url in rss_map.items() if url}
+    if not rss_map:
+        print("Google Alerts 未回傳有效 RSS URLs；保留既有 RSS 映射供 fetch 使用。", file=sys.stderr)
+        return 1
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(rss_map, f, ensure_ascii=False, indent=2)
     print(f"已匯出 {len(rss_map)} 個 RSS URLs 至 {output_path}")
