@@ -1,12 +1,12 @@
 /* ==========================================================================
    GoogleAlertManager: SaaS Signal Intelligence Design System
-   Identity: Peregrine Radar Falcon 🦅 (銳眼遊隼雷達)
+   Identity: Alert Bird 🐦 (破曉警報鳥)
    ========================================================================== */
 
 :root {
-  --gam-primary:       #4f46e5;       /* Indigo 600 - High-signal Tech */
-  --gam-primary-light: #e0e7ff;       /* Indigo 100 */
-  --gam-primary-dark:  #3730a3;       /* Indigo 800 */
+  --gam-primary:       #ea580c;       /* Orange 600 - High-signal Alert */
+  --gam-primary-light: #ffedd5;       /* Orange 100 */
+  --gam-primary-dark:  #c2410c;       /* Orange 700 */
   --gam-accent:        #0284c7;       /* Sky 600 - Radar Blue */
   --gam-accent-light:  #e0f2fe;       /* Sky 100 */
   --gam-emerald:       #059669;       /* Emerald 600 - Bullish / High Score */
