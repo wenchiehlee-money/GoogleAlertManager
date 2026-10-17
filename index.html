@@ -6,73 +6,45 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="自動化股票分析與 Google Alerts 管理系統">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <!-- 使用現代化的主題 -->
+  <!-- 使用現代化的主題與專屬 SaaS Signal Intelligence 設計系統 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <style>
-    :root {
-      --theme-color: #2c3e50;
-    }
-    .markdown-section {
-      max-width: 95%;
-      margin: 0 auto;
-      padding: 30px;
-    }
-    /* 優化表格顯示 */
-    table {
-      display: table !important;
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 2rem;
-    }
-    th {
-      background-color: #f8f9fa;
-    }
-    /* 連結顏色 */
-    section.markdown-section a {
-      color: #3498db;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    section.markdown-section a:hover {
-      text-decoration: underline;
-    }
-    /* 側邊欄樣式 */
-    .sidebar {
-      background-color: #fff;
-    }
-    /* 搜尋框優化，使其更加顯眼 */
-    .search {
-      margin-bottom: 15px;
-      padding: 15px 15px 0 15px;
-    }
-    .search input {
-      padding: 10px 15px 10px 30px !important;
-      font-size: 14px !important;
-      border: 2px solid #3498db !important; /* 醒目的藍色外框 */
-      border-radius: 20px !important;       /* 圓角樣式 */
-      background-color: #f8f9fa !important;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05) !important;
-      transition: all 0.3s ease-in-out !important;
-      color: #2c3e50 !important;
-      font-weight: 500 !important;
-    }
-    .search input:focus {
-      border-color: #2c3e50 !important;     /* focus 時轉換為深灰色 */
-      box-shadow: 0 0 8px rgba(52,152,219,0.3) !important;
-      background-color: #fff !important;
-      outline: none;
-    }
-    .search::after {
-      top: 27px !important;
-      left: 25px !important;
-    }
-    .search input::placeholder {
-      color: #95a5a6 !important;
-      font-weight: 400;
-    }
-  </style>
+  <link rel="stylesheet" href="gam-theme.css">
 </head>
 <body>
+  <!-- 銳眼遊隼雷達 (Peregrine Radar Falcon) SVG Symbol 定義 -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-falcon-radar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 4a4 4 0 0 1 2 3.5" />
+      <path d="M16 8h.01" />
+      <path d="M3.5 18H12a8 8 0 0 0 8-8V8a4 4 0 0 0-7.3-2.3L2 20" />
+      <path d="m20 8 2.5.5-2.5.5" />
+      <path d="M7 18a6 6 0 0 0 3.8-10.6" />
+      <path d="M10 18v3" />
+      <path d="M14 18v3" />
+    </symbol>
+  </svg>
+
+  <!-- 常駐頂部品牌欄 (Brand Bar) 與跨專案導航鈕 -->
+  <header id="gam-brand-bar" class="gam-brand-bar">
+    <a href="#/" class="gam-brand-badge" title="回到首頁">
+      <div class="gam-mascot-glow">
+        <svg class="gam-falcon-icon"><use href="#icon-falcon-radar"/></svg>
+      </div>
+      <div class="gam-brand-text">
+        <span class="gam-brand-title">GoogleAlertManager</span>
+        <span class="gam-brand-sub">SaaS Signal Intelligence · 銳眼遊隼雷達</span>
+      </div>
+    </a>
+    <div class="gam-top-nav">
+      <a href="https://wenchiehlee-money.github.io/UX-Deck/" class="gam-nav-pill" title="回到主題首頁">
+        <span class="gam-nav-icon">🏠</span> 主題首頁
+      </a>
+      <a href="https://github.com/wenchiehlee-money/GoogleAlertManager" target="_blank" rel="noopener noreferrer" class="gam-nav-pill gam-nav-pill-github" title="前往 GitHub 儲存庫">
+        <span class="gam-nav-icon">📦</span> GitHub 儲存庫
+      </a>
+    </div>
+  </header>
+
   <div id="app">🚀 正在載入分析數據...</div>
   <script src="paths.js"></script>
   <script>
@@ -100,6 +72,7 @@
     window.$docsify = {
       name: 'GoogleAlertManager',
       repo: 'wenchiehlee-money/GoogleAlertManager',
+      corner: false,
       loadSidebar: true,
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
@@ -115,7 +88,34 @@
         noData: '找不到符合的文章',
         depth: 6,
         hideOtherSidebarContent: false
-      }
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            // 自動為利多/利空分析區塊套用 Callout 高亮容器
+            const headings = document.querySelectorAll('.markdown-section h3');
+            headings.forEach(function(h3) {
+              const text = h3.innerText || '';
+              if (text.includes('利多因素')) {
+                let next = h3.nextElementSibling;
+                if (next && next.tagName === 'UL') {
+                  next.classList.add('gam-callout', 'gam-callout-bullish');
+                }
+              } else if (text.includes('利空因素')) {
+                let next = h3.nextElementSibling;
+                if (next && next.tagName === 'UL') {
+                  next.classList.add('gam-callout', 'gam-callout-bearish');
+                }
+              } else if (text.includes('整體傾向')) {
+                let next = h3.nextElementSibling;
+                if (next && (next.tagName === 'P' || next.tagName === 'UL')) {
+                  next.classList.add('gam-callout', 'gam-callout-neutral');
+                }
+              }
+            });
+          });
+        }
+      ]
     }
   </script>
   <!-- Docsify v4 -->

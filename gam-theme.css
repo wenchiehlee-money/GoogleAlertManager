@@ -1,0 +1,414 @@
+/* ==========================================================================
+   GoogleAlertManager: SaaS Signal Intelligence Design System
+   Identity: Peregrine Radar Falcon 🦅 (銳眼遊隼雷達)
+   ========================================================================== */
+
+:root {
+  --gam-primary:       #4f46e5;       /* Indigo 600 - High-signal Tech */
+  --gam-primary-light: #e0e7ff;       /* Indigo 100 */
+  --gam-primary-dark:  #3730a3;       /* Indigo 800 */
+  --gam-accent:        #0284c7;       /* Sky 600 - Radar Blue */
+  --gam-accent-light:  #e0f2fe;       /* Sky 100 */
+  --gam-emerald:       #059669;       /* Emerald 600 - Bullish / High Score */
+  --gam-emerald-light: #d1fae5;       /* Emerald 100 */
+  --gam-rose:          #e11d48;       /* Rose 600 - Bearish / Alert */
+  --gam-rose-light:    #ffe4e6;       /* Rose 100 */
+  --gam-amber:         #d97706;       /* Amber 600 - Neutral / Watch */
+  --gam-amber-light:   #fef3c7;       /* Amber 100 */
+  --gam-surface:       #ffffff;
+  --gam-bg:            #f8fafc;       /* Slate 50 */
+  --gam-border:        #e2e8f0;       /* Slate 200 */
+  --gam-border-light:  #f1f5f9;       /* Slate 100 */
+  --gam-text:          #0f172a;       /* Slate 900 */
+  --gam-text-muted:    #64748b;       /* Slate 500 */
+  --gam-header-height: 56px;
+}
+
+/* 隱藏 Docsify 預設的右上角 GitHub Corner (改由頂部常駐導航鈕取代) */
+.github-corner {
+  display: none !important;
+}
+
+/* ==========================================================================
+   1. Brand Bar Header (常駐頂部品牌欄與遊隼雷達徽章)
+   ========================================================================== */
+.gam-brand-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--gam-header-height);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gam-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 90;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.gam-brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gam-mascot-glow {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gam-brand-badge:hover .gam-mascot-glow {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.45);
+}
+
+.gam-falcon-icon {
+  width: 22px;
+  height: 22px;
+  color: #ffffff;
+}
+
+.gam-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.gam-brand-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--gam-text);
+  line-height: 1.2;
+}
+
+.gam-brand-sub {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gam-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* 頂部快捷導航按鈕 */
+.gam-top-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.gam-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--gam-border);
+  background: #ffffff;
+  color: #334155;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.gam-nav-pill:hover {
+  border-color: var(--gam-primary);
+  color: var(--gam-primary);
+  background: var(--gam-primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(79, 70, 229, 0.15);
+  text-decoration: none !important;
+}
+
+.gam-nav-pill-github {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.gam-nav-pill-github:hover {
+  background: #1e293b;
+  color: #ffffff;
+  border-color: #1e293b;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.25);
+}
+
+/* ==========================================================================
+   2. Docsify 側邊欄與搜尋優化
+   ========================================================================== */
+.sidebar {
+  top: var(--gam-header-height) !important;
+  height: calc(100vh - var(--gam-header-height)) !important;
+  border-right: 1px solid var(--gam-border);
+  background-color: #fafbfc;
+}
+
+.sidebar .search {
+  margin-top: 0.5rem;
+  padding: 10px 15px 12px 15px !important;
+  border-bottom: 1px solid var(--gam-border-light);
+}
+
+.sidebar .search input {
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  font-size: 0.88rem !important;
+  padding-left: 2.2rem !important;
+}
+
+.sidebar .search input:focus {
+  border-color: var(--gam-primary) !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
+}
+
+.sidebar-nav ul li a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #475569;
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  transition: all 0.15s ease;
+}
+
+.sidebar-nav ul li.active > a,
+.sidebar-nav ul li a:hover {
+  color: var(--gam-primary) !important;
+  background: var(--gam-primary-light);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   3. 主內容區與排版
+   ========================================================================== */
+.content {
+  top: var(--gam-header-height) !important;
+  min-height: calc(100vh - var(--gam-header-height)) !important;
+}
+
+.markdown-section {
+  max-width: 1040px !important;
+  padding: 2.5rem 3rem 4rem 3rem !important;
+  color: var(--gam-text);
+  line-height: 1.68;
+}
+
+.markdown-section h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  border-bottom: 2px solid var(--gam-border);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.markdown-section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.markdown-section h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #334155;
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   4. 表格升級 (Financial & Report Table)
+   ========================================================================== */
+.markdown-section table {
+  display: table !important;
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--gam-border) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin: 1.5rem 0 2.5rem 0 !important;
+  background: #ffffff;
+}
+
+.markdown-section th {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.75rem 0.85rem !important;
+  border-bottom: 1.5px solid #cbd5e1 !important;
+  border-right: 1px solid #f1f5f9 !important;
+  text-align: center;
+}
+
+.markdown-section th:last-child {
+  border-right: none !important;
+}
+
+.markdown-section td {
+  padding: 0.65rem 0.85rem !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  border-right: 1px solid #f8fafc !important;
+  font-size: 0.88rem;
+  color: #1e293b;
+}
+
+.markdown-section td:last-child {
+  border-right: none !important;
+}
+
+.markdown-section tr:last-child td {
+  border-bottom: none !important;
+}
+
+.markdown-section tr:hover td {
+  background-color: #f8faff !important;
+}
+
+/* 表格內的文章數 Badge 化 (如 [6] ([5])) */
+.markdown-section td a {
+  display: inline-block;
+  padding: 2px 7px;
+  background: var(--gam-accent-light);
+  color: var(--gam-accent) !important;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none !important;
+  font-size: 0.82rem;
+  transition: all 0.15s ease;
+}
+
+.markdown-section td a:hover {
+  background: var(--gam-accent);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(2, 132, 199, 0.25);
+}
+
+/* ==========================================================================
+   5. 信號卡片化 (Signal Feed & High-Score Articles)
+   ========================================================================== */
+/* 列表項目卡片化 */
+.markdown-section ul > li {
+  list-style: none !important;
+  background: #ffffff;
+  border: 1px solid var(--gam-border);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: all 0.18s ease;
+  position: relative;
+}
+
+.markdown-section ul > li:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* 文章標題連結 */
+.markdown-section ul > li a {
+  color: var(--gam-primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.markdown-section ul > li a:hover {
+  text-decoration: underline;
+  color: var(--gam-primary-dark);
+}
+
+/* 修正評分標籤 <sup> 微型按鈕 */
+.markdown-section sup {
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--gam-text-muted);
+}
+
+.markdown-section sup a {
+  display: inline-block;
+  padding: 1px 5px !important;
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  margin: 0 1px;
+}
+
+.markdown-section sup a:hover {
+  background: var(--gam-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--gam-primary);
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+   6. 深度研究結論卡片 (LLM Insight Callouts)
+   ========================================================================== */
+.gam-callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
+  margin: 1.25rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.gam-callout-bullish {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid var(--gam-emerald);
+}
+
+.gam-callout-bearish {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-left: 4px solid var(--gam-rose);
+}
+
+.gam-callout-neutral {
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  border-left: 4px solid var(--gam-amber);
+}
+
+/* 針對自動 markdown 標題進行智慧上色裝飾 */
+.markdown-section h3:has(+ p, + ul) {
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.markdown-section h3:has(+ p, + ul)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3.5px;
+  border-radius: 2px;
+  background: var(--gam-primary);
+}
