@@ -405480,5 +405480,141 @@
   "tag:google.com,2013:googlealerts/feed:4832152568139937449": {
     "score": 2,
     "reason": "簡短提及公司財務數據"
+  },
+  "tag:google.com,2013:googlealerts/feed:5315308679968916952": {
+    "score": 3,
+    "reason": "證券公司簡報，含短期營運資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:15754837020976274452": {
+    "score": 3,
+    "reason": "分析師市場觀點，提及買進時機。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3480263399727431666": {
+    "score": 2,
+    "reason": "股市爆料同學會，資訊簡短偏摘要。"
+  },
+  "tag:google.com,2013:googlealerts/feed:14849742624234463785": {
+    "score": 2,
+    "reason": "股市爆料同學會，資訊簡短偏摘要。"
+  },
+  "tag:google.com,2013:googlealerts/feed:8288417839119327211": {
+    "score": 2,
+    "reason": "僅列出股價數據，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:7535914319718031890": {
+    "score": 2,
+    "reason": "僅列出股價數據，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:5391328921809191436": {
+    "score": 1,
+    "reason": "重複文章，僅列股價"
+  },
+  "tag:google.com,2013:googlealerts/feed:123030962407386676": {
+    "score": 3,
+    "reason": "提供單月報酬率數據，具參考性"
+  },
+  "tag:google.com,2013:googlealerts/feed:14812105897685514659": {
+    "score": 3,
+    "reason": "提及公司客戶鞏固策略"
+  },
+  "tag:google.com,2013:googlealerts/feed:10791317278901554791": {
+    "score": 2,
+    "reason": "僅作為同業比較中的對照股提及，無深入分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:738415023009620505": {
+    "score": 1,
+    "reason": "股市爆料同學會，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:17776320747327598936": {
+    "score": 1,
+    "reason": "僅條列股票代號，無實質內容"
+  },
+  "tag:google.com,2013:googlealerts/feed:2681319585866761617": {
+    "score": 4,
+    "reason": "聯發科傳拿下字節跳動AI晶片訂單"
+  },
+  "tag:google.com,2013:googlealerts/feed:9546116304703719574": {
+    "score": 2,
+    "reason": "台股盤後報導，僅提及個股"
+  },
+  "tag:google.com,2013:googlealerts/feed:795268949356186228": {
+    "score": 3,
+    "reason": "產業龍頭與二線股比較分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:17508253033891747946": {
+    "score": 3,
+    "reason": "全球半導體市場分析，提及聯發科"
+  },
+  "tag:google.com,2013:googlealerts/feed:4976976278667836907": {
+    "score": 2,
+    "reason": "僅列表提及股價，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:17961405049231286510": {
+    "score": 3,
+    "reason": "用作產業比較範例，具參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:17972267644354217505": {
+    "score": 2,
+    "reason": "僅於列表中提及個股行情。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12377674937479098293": {
+    "score": 3,
+    "reason": "個股比較分析與潛在估值討論。"
+  },
+  "tag:google.com,2013:googlealerts/feed:1124550819689375359": {
+    "score": 2,
+    "reason": "文章列表中提及股票代號"
+  },
+  "tag:google.com,2013:googlealerts/feed:16581992293835920233": {
+    "score": 2,
+    "reason": "文章列表中提及股票代號"
+  },
+  "tag:google.com,2013:googlealerts/feed:4871211914725415801": {
+    "score": 1,
+    "reason": "股市論壇用戶討論，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:13811869949704373393": {
+    "score": 3,
+    "reason": "產業龍頭與二線股對比分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:5787607988794598483": {
+    "score": 4,
+    "reason": "提及美337調查與三菱電機結盟，具實質消息。"
+  },
+  "tag:google.com,2013:googlealerts/feed:2219432330173124666": {
+    "score": 4,
+    "reason": "報導台灣大新機預購實績"
+  },
+  "tag:google.com,2013:googlealerts/feed:13257155983830710778": {
+    "score": 2,
+    "reason": "盤後列表提及無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:7778433477402491893": {
+    "score": 3,
+    "reason": "提及台灣大新機預購影響"
+  },
+  "tag:google.com,2013:googlealerts/feed:7988128189368912854": {
+    "score": 2,
+    "reason": "文章僅列表提及緯創股價，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3469803372021762975": {
+    "score": 2,
+    "reason": "盤中行情提及股價"
+  },
+  "tag:google.com,2013:googlealerts/feed:8124834826316595449": {
+    "score": 2,
+    "reason": "盤後行情提及股價"
+  },
+  "tag:google.com,2013:googlealerts/feed:5329788593778027074": {
+    "score": 4,
+    "reason": "低軌衛星與5G營收顯著成長"
+  },
+  "tag:google.com,2013:googlealerts/feed:2474744436330304917": {
+    "score": 2,
+    "reason": "僅列表提及，無實質個股分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:7753980027301831014": {
+    "score": 2,
+    "reason": "僅列表提及股價，無深入分析"
   }
 }
