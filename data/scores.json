@@ -418576,5 +418576,37 @@
   "tag:google.com,2013:googlealerts/feed:5020630988668007420": {
     "score": 1,
     "reason": "社群討論，內容簡短且僅預估EPS，資訊有限"
+  },
+  "tag:google.com,2013:googlealerts/feed:3759640522611526389": {
+    "score": 2,
+    "reason": "股民討論非權威報導，內容偏技術分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:18257050817400111672": {
+    "score": 2,
+    "reason": "僅列表提及，無實質個股分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:15483717992855405345": {
+    "score": 6,
+    "reason": "經濟日報報導，揭示AI趨勢新機遇"
+  },
+  "tag:google.com,2013:googlealerts/feed:32711919315028205": {
+    "score": 4,
+    "reason": "連結AI伺服器擴量出貨與營收成長"
+  },
+  "tag:google.com,2013:googlealerts/feed:9513081044894765605": {
+    "score": 1,
+    "reason": "個人主觀負面情緒言論，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:839603258668981235": {
+    "score": 4,
+    "reason": "提及力積電AI先進封裝戰略布局"
+  },
+  "tag:google.com,2013:googlealerts/feed:13816087344723072953": {
+    "score": 3,
+    "reason": "提及輝達先進封裝中介層商機"
+  },
+  "tag:google.com,2013:googlealerts/feed:15192104204190586120": {
+    "score": 6,
+    "reason": "經濟日報報導，提及AI先進封裝商機"
   }
 }
