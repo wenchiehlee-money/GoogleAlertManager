@@ -10,6 +10,16 @@
   <link rel="icon" type="image/svg+xml" href="falcon-favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="falcon-favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
+  <!-- Global site tag (gtag.js) - Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-913Z6DSVD2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-913Z6DSVD2', {
+      send_page_view: false
+    });
+  </script>
   <!-- 使用現代化的主題與專屬 SaaS Signal Intelligence 設計系統 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="gam-theme.css">
@@ -95,6 +105,14 @@
       plugins: [
         function(hook, vm) {
           hook.doneEach(function() {
+            // 派發 GA4 page_view 事件（配合 SPA Hash 路由）
+            if (typeof gtag === 'function') {
+              gtag('event', 'page_view', {
+                page_title: document.title,
+                page_location: window.location.href,
+                page_path: window.location.pathname + window.location.hash
+              });
+            }
             // 自動為利多/利空分析區塊套用 Callout 高亮容器
             const headings = document.querySelectorAll('.markdown-section h3');
             headings.forEach(function(h3) {
