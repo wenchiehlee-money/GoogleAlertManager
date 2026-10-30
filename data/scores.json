@@ -422848,5 +422848,25 @@
   "tag:google.com,2013:googlealerts/feed:17276210076668089607": {
     "score": 2,
     "reason": "僅列出股價跌幅，無實質個股分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:4871199334705476656": {
+    "score": 2,
+    "reason": "盤前分析中一般性提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:9085790773806994466": {
+    "score": 2,
+    "reason": "僅於盤前分析中提及，無深入個股分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:138611623498644790": {
+    "score": 6,
+    "reason": "經濟日報報導且為近期財報法說會消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:9045616261006198437": {
+    "score": 6,
+    "reason": "經濟日報報導且為重大投資決策"
+  },
+  "tag:google.com,2013:googlealerts/feed:6723866370049321667": {
+    "score": 5,
+    "reason": "報導最新財報與營運新高，具關鍵價值"
   }
 }
