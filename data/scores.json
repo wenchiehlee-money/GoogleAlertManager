@@ -427328,5 +427328,305 @@
   "tag:google.com,2013:googlealerts/feed:16557751856631613301": {
     "score": 1,
     "reason": "來自社群媒體的個人股價預測，非實質新聞。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11595057190589330421": {
+    "score": 1,
+    "reason": "工具摘要，資訊量少"
+  },
+  "tag:google.com,2013:googlealerts/feed:77624850773040421": {
+    "score": 2,
+    "reason": "盤中短評，無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:8800865658031499017": {
+    "score": 2,
+    "reason": "盤中短評，無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:8754955601754780645": {
+    "score": 2,
+    "reason": "盤中短評，無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:8232682651406837133": {
+    "score": 3,
+    "reason": "提及特定業務挑戰與展望"
+  },
+  "tag:google.com,2013:googlealerts/feed:11728306451037291663": {
+    "score": 3,
+    "reason": "市場聯動與開盤預期討論"
+  },
+  "tag:google.com,2013:googlealerts/feed:1967757705605089223": {
+    "score": 4,
+    "reason": "台積電是市場指標，政府救市"
+  },
+  "tag:google.com,2013:googlealerts/feed:10578043509902408467": {
+    "score": 3,
+    "reason": "探討股價行為對市場情緒影響"
+  },
+  "tag:google.com,2013:googlealerts/feed:10122903626954576527": {
+    "score": 5,
+    "reason": "重大戰略考量，新業務潛力"
+  },
+  "tag:google.com,2013:googlealerts/feed:11698071291639151122": {
+    "score": 5,
+    "reason": "重大戰略考量，新業務潛力"
+  },
+  "tag:google.com,2013:googlealerts/feed:15994209146011831418": {
+    "score": 5,
+    "reason": "重大戰略考量，新業務潛力"
+  },
+  "tag:google.com,2013:googlealerts/feed:9937279191378661132": {
+    "score": 3,
+    "reason": "投資策略討論，具參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:6031114583606648764": {
+    "score": 4,
+    "reason": "台積電跌停觸發融資斷頭，影響廣泛"
+  },
+  "tag:google.com,2013:googlealerts/feed:18402218174880513156": {
+    "score": 3,
+    "reason": "政策討論，影響台積電與大盤"
+  },
+  "tag:google.com,2013:googlealerts/feed:16122226983603330839": {
+    "score": 4,
+    "reason": "具體市場交易行為，展現信心"
+  },
+  "tag:google.com,2013:googlealerts/feed:15551708267179745657": {
+    "score": 3,
+    "reason": "市場情緒，台積電股價反彈"
+  },
+  "tag:google.com,2013:googlealerts/feed:6872220602141655634": {
+    "score": 4,
+    "reason": "台積電為亞股下跌主因，宏觀分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:14073036113421784240": {
+    "score": 5,
+    "reason": "重大戰略考量，新業務潛力"
+  },
+  "tag:google.com,2013:googlealerts/feed:8328255224973909120": {
+    "score": 2,
+    "reason": "僅列表提及，無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:9488193550785588941": {
+    "score": 2,
+    "reason": "僅列表提及，無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:17301530844033194972": {
+    "score": 3,
+    "reason": "提及Q3 EPS超越財測，具參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:4540298885869700096": {
+    "score": 6,
+    "reason": "工商時報報導，提供Q4展望與關鍵資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:6978803277856577495": {
+    "score": 5,
+    "reason": "涵蓋Q3財報與Q4業績展望，重大事件。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5608767163455741399": {
+    "score": 5,
+    "reason": "官方公告Q3財報與Q4業績展望，重大事件。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12742585776404265260": {
+    "score": 4,
+    "reason": "法說會重點摘要，提供重要業務資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:683630792812384960": {
+    "score": 3,
+    "reason": "市場與個股壓力分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:1507393824612341264": {
+    "score": 3,
+    "reason": "籌碼面與觀察訊號"
+  },
+  "tag:google.com,2013:googlealerts/feed:17562987274488190702": {
+    "score": 2,
+    "reason": "股價列表提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:17778597892661008771": {
+    "score": 2,
+    "reason": "討論過去股價與操作"
+  },
+  "tag:google.com,2013:googlealerts/feed:7795048673462694231": {
+    "score": 3,
+    "reason": "國安基金護盤相關"
+  },
+  "tag:google.com,2013:googlealerts/feed:16553051705207295673": {
+    "score": 2,
+    "reason": "零股成交量列表提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:5406098870679876508": {
+    "score": 4,
+    "reason": "具體業務新訂單消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:4894713035818496815": {
+    "score": 1,
+    "reason": "通用性討論問題"
+  },
+  "tag:google.com,2013:googlealerts/feed:5842656027088367750": {
+    "score": 2,
+    "reason": "股價列表提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:5160727415946567893": {
+    "score": 3,
+    "reason": "每日籌碼與股價分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:10508093344591680163": {
+    "score": 2,
+    "reason": "股價列表提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:12527238336016771501": {
+    "score": 3,
+    "reason": "籌碼面分析，具參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:9040703180567039434": {
+    "score": 2,
+    "reason": "文章主體非仁寶，僅周邊提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:3928036555186981152": {
+    "score": 2,
+    "reason": "僅列表中提及，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:13574966939287059908": {
+    "score": 2,
+    "reason": "提及股價變動，無營運分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:5434742857262790932": {
+    "score": 2,
+    "reason": "提及股價及一般產業訊息"
+  },
+  "tag:google.com,2013:googlealerts/feed:17174038901073955112": {
+    "score": 2,
+    "reason": "僅列表提及，非主要內容"
+  },
+  "tag:google.com,2013:googlealerts/feed:13244702901950318706": {
+    "score": 1,
+    "reason": "僅列公司名稱，無實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:7075359644556110976": {
+    "score": 2,
+    "reason": "提及股價變動，無營運分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:11868344868957220287": {
+    "score": 2,
+    "reason": "僅簡短提及華碩盤中表現與市場焦點"
+  },
+  "tag:google.com,2013:googlealerts/feed:13432096203103603167": {
+    "score": 2,
+    "reason": "標題與內文不符，且來自投資網誌"
+  },
+  "tag:google.com,2013:googlealerts/feed:8124269033034499970": {
+    "score": 1,
+    "reason": "社群平台貼文，內容簡短無分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:3192576292456955053": {
+    "score": 4,
+    "reason": "提供微星市場定位與AI PC受惠分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:17430116491794037796": {
+    "score": 5,
+    "reason": "聯陽10月營收公告，具實質財報資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7334285210845928908": {
+    "score": 4,
+    "reason": "獲得2奈米AI ASIC大訂單。"
+  },
+  "tag:google.com,2013:googlealerts/feed:14701595427390030406": {
+    "score": 2,
+    "reason": "提及股價與產業概況，無深入分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:6569136356210409491": {
+    "score": 1,
+    "reason": "僅在列表提及，無實質內容。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12894045992113933194": {
+    "score": 4,
+    "reason": "分析Q3營收、毛利率與業外獲利。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11159723044501800353": {
+    "score": 4,
+    "reason": "分析併購精誠策略與資金流向。"
+  },
+  "tag:google.com,2013:googlealerts/feed:8712357105811550692": {
+    "score": 2,
+    "reason": "僅列表提及股價表現。"
+  },
+  "tag:google.com,2013:googlealerts/feed:9287987266150488528": {
+    "score": 5,
+    "reason": "重大併購案達成及未來營收目標。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11392348398509014124": {
+    "score": 5,
+    "reason": "重大併購案達成及深化策略結盟。"
+  },
+  "tag:google.com,2013:googlealerts/feed:8743990634828432976": {
+    "score": 1,
+    "reason": "僅為ETF持股數據列表。"
+  },
+  "tag:google.com,2013:googlealerts/feed:9177799164996226038": {
+    "score": 3,
+    "reason": "提及併購後策略方向與三大綜效。"
+  },
+  "tag:google.com,2013:googlealerts/feed:2730373038735485985": {
+    "score": 2,
+    "reason": "僅列表提及股價表現。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12576353684276073883": {
+    "score": 2,
+    "reason": "標題含飆股，內容一般性提及收購案"
+  },
+  "tag:google.com,2013:googlealerts/feed:16303747259206632180": {
+    "score": 1,
+    "reason": "標題含飆股，內容與前文重複"
+  },
+  "tag:google.com,2013:googlealerts/feed:16226082685696767157": {
+    "score": 6,
+    "reason": "工商時報報導，收購案成功達標"
+  },
+  "tag:google.com,2013:googlealerts/feed:4969529824998490569": {
+    "score": 2,
+    "reason": "僅於列表提及股價表現"
+  },
+  "tag:google.com,2013:googlealerts/feed:1865669523957876294": {
+    "score": 2,
+    "reason": "僅於列表提及股價表現"
+  },
+  "tag:google.com,2013:googlealerts/feed:11996314816950096549": {
+    "score": 5,
+    "reason": "官方財報提報董事會通過，關鍵事件"
+  },
+  "tag:google.com,2013:googlealerts/feed:3766804405886610728": {
+    "score": 4,
+    "reason": "新產品出貨時程，重要業務消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:3118096732729507235": {
+    "score": 4,
+    "reason": "2026Q3毛利率與展望，實質消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:3507650736306652920": {
+    "score": 2,
+    "reason": "股市同學會討論，簡短提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:7542486934536020937": {
+    "score": 2,
+    "reason": "股市同學會討論，簡短提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:17035603872495356970": {
+    "score": 3,
+    "reason": "重複訊息，非原創媒體轉載"
+  },
+  "tag:google.com,2013:googlealerts/feed:15195614487932764988": {
+    "score": 4,
+    "reason": "資本支出與產能擴張，重要消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:1360820903269697458": {
+    "score": 5,
+    "reason": "法說會Q3毛利率與展望，關鍵消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:10700032662829625407": {
+    "score": 4,
+    "reason": "營收結構與未來成長率，重要業務"
+  },
+  "tag:google.com,2013:googlealerts/feed:11131971282461546850": {
+    "score": 4,
+    "reason": "報導打入台積電CoWoS供應鏈，重要業務進展"
   }
 }
