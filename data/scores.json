@@ -431240,5 +431240,61 @@
   "tag:google.com,2013:googlealerts/feed:9746862967897079136": {
     "score": 2,
     "reason": "僅在列表中提及研華，無深入分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:8723548237021133106": {
+    "score": 5,
+    "reason": "提及Q3 EPS、記憶體獲利及AI影響"
+  },
+  "tag:google.com,2013:googlealerts/feed:5095133069595196241": {
+    "score": 2,
+    "reason": "個人想法討論，提及股價無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:12235365859540368179": {
+    "score": 3,
+    "reason": "帳務系統異常公告，參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:544035143861461356": {
+    "score": 1,
+    "reason": "內容為個人短評與股價列表，缺乏實質資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10928485022000132119": {
+    "score": 3,
+    "reason": "標題與來源非正式新聞，但摘要含重要即時資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:8939999543396398038": {
+    "score": 6,
+    "reason": "來自經濟日報，市場趨勢與個股關聯"
+  },
+  "tag:google.com,2013:googlealerts/feed:4899309552682255668": {
+    "score": 6,
+    "reason": "來自經濟日報，市場趨勢與個股關聯"
+  },
+  "tag:google.com,2013:googlealerts/feed:10553112301470652919": {
+    "score": 2,
+    "reason": "即時新聞摘要，內容過於簡短。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3734951430359906499": {
+    "score": 4,
+    "reason": "討論AI/ASIC趨勢帶動股價，具實質消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:18057297649853321794": {
+    "score": 6,
+    "reason": "僅列表中提及，無實質個股分析 (工商時報/經濟日報 6分書籤)"
+  },
+  "tag:google.com,2013:googlealerts/feed:16153323713308912532": {
+    "score": 4,
+    "reason": "券商給予看多評等與目標價，具參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:514196982598573200": {
+    "score": 1,
+    "reason": "股市論壇個人觀點，無實質公司資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:13396684341208379494": {
+    "score": 3,
+    "reason": "提及借券比分析，有參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:5650627326559437790": {
+    "score": 2,
+    "reason": "僅條列股價資訊，無實質分析"
   }
 }
