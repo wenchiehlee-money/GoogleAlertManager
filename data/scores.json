@@ -433424,5 +433424,729 @@
   "tag:google.com,2013:googlealerts/feed:4215063721782311413": {
     "score": 3,
     "reason": "投資網誌，提及近期股價與個人觀點。"
+  },
+  "tag:google.com,2013:googlealerts/feed:13403885280098698758": {
+    "score": 3,
+    "reason": "市場討論與輝達高層異動"
+  },
+  "tag:google.com,2013:googlealerts/feed:640033419267896534": {
+    "score": 1,
+    "reason": "行情列表與短評，資訊量低"
+  },
+  "tag:google.com,2013:googlealerts/feed:60574834096056382": {
+    "score": 2,
+    "reason": "僅提及法人賣超，非重點分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:9271958503703073734": {
+    "score": 2,
+    "reason": "名人投資資訊，非產業分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:2335301480839696119": {
+    "score": 4,
+    "reason": "分析台積電產能與營運風險"
+  },
+  "tag:google.com,2013:googlealerts/feed:10869694101433292239": {
+    "score": 4,
+    "reason": "英特爾獲18A訂單，威脅台積電"
+  },
+  "tag:google.com,2013:googlealerts/feed:5286694029708514018": {
+    "score": 4,
+    "reason": "大摩重申目標價與評等"
+  },
+  "tag:google.com,2013:googlealerts/feed:709546833848439679": {
+    "score": 2,
+    "reason": "僅提及與供應鏈關聯"
+  },
+  "tag:google.com,2013:googlealerts/feed:13502232773081365712": {
+    "score": 6,
+    "reason": "英特爾獲18A訂單，威脅台積電 (工商時報/經濟日報 6分書籤)"
+  },
+  "tag:google.com,2013:googlealerts/feed:7620187629411510101": {
+    "score": 1,
+    "reason": "股市論壇短文，資訊量低"
+  },
+  "tag:google.com,2013:googlealerts/feed:3759439725922605175": {
+    "score": 3,
+    "reason": "八大行庫買超台積電"
+  },
+  "tag:google.com,2013:googlealerts/feed:5776067941946040413": {
+    "score": 3,
+    "reason": "討論美中晶片出口管制影響"
+  },
+  "tag:google.com,2013:googlealerts/feed:17308467829618122420": {
+    "score": 1,
+    "reason": "極度誇張之假設性討論"
+  },
+  "tag:google.com,2013:googlealerts/feed:486757251569325028": {
+    "score": 2,
+    "reason": "提及台積電於市場重挫"
+  },
+  "tag:google.com,2013:googlealerts/feed:8239325827597864242": {
+    "score": 2,
+    "reason": "提及台積電股價與市場分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:17088850069921869343": {
+    "score": 3,
+    "reason": "分析師點評台積電買點"
+  },
+  "tag:google.com,2013:googlealerts/feed:5656069452278669528": {
+    "score": 3,
+    "reason": "社群媒體提及台積電與輝達互動"
+  },
+  "tag:google.com,2013:googlealerts/feed:13911311475864690129": {
+    "score": 5,
+    "reason": "美國出口管制影響台積電出貨"
+  },
+  "tag:google.com,2013:googlealerts/feed:12043556076254336723": {
+    "score": 2,
+    "reason": "名人投資資訊重複報導"
+  },
+  "tag:google.com,2013:googlealerts/feed:16423328078366324268": {
+    "score": 4,
+    "reason": "執行長表態看好明年營運，實質消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:13144990068616777557": {
+    "score": 3,
+    "reason": "分析師預估EPS與營運展望，有參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:14843130702490289741": {
+    "score": 3,
+    "reason": "提及股價創新高、EPS預估及觀察重點"
+  },
+  "tag:google.com,2013:googlealerts/feed:4730587311295430589": {
+    "score": 4,
+    "reason": "深入分析公司在AI儲存領域的定位與技術"
+  },
+  "tag:google.com,2013:googlealerts/feed:17689287114092339074": {
+    "score": 4,
+    "reason": "營運策略變動，影響研發布局的重要消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:2984927891842484467": {
+    "score": 3,
+    "reason": "重複報導，但來源具可信度"
+  },
+  "tag:google.com,2013:googlealerts/feed:16077065994796109736": {
+    "score": 0,
+    "reason": "標題與內文主體無關，內容農場導流舊聞"
+  },
+  "tag:google.com,2013:googlealerts/feed:14237141682070710951": {
+    "score": 6,
+    "reason": "重複報導 (工商時報/經濟日報 6分書籤)"
+  },
+  "tag:google.com,2013:googlealerts/feed:9880608214278181846": {
+    "score": 2,
+    "reason": "僅提及多份報告，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:13746040250893585763": {
+    "score": 3,
+    "reason": "重複報導執行長對明年營運展望"
+  },
+  "tag:google.com,2013:googlealerts/feed:11528245398123214283": {
+    "score": 3,
+    "reason": "個股籌碼/技術面分析報導"
+  },
+  "tag:google.com,2013:googlealerts/feed:4592218355243236442": {
+    "score": 3,
+    "reason": "重複報導執行長對明年營運展望"
+  },
+  "tag:google.com,2013:googlealerts/feed:15388009487899568902": {
+    "score": 4,
+    "reason": "討論匯損影響評估，具實質參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:11126077220186682569": {
+    "score": 2,
+    "reason": "僅在列表中提及廣達，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:11518968421385769173": {
+    "score": 3,
+    "reason": "台股盤前分析，廣達表現亮眼"
+  },
+  "tag:google.com,2013:googlealerts/feed:16926173798938113813": {
+    "score": 1,
+    "reason": "股市論壇貼文，無實質分析價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:853074024909956238": {
+    "score": 4,
+    "reason": "提及廣達2027伺服器營收佔比預估"
+  },
+  "tag:google.com,2013:googlealerts/feed:3191032702725033543": {
+    "score": 3,
+    "reason": "討論廣達本益比與估值問題"
+  },
+  "tag:google.com,2013:googlealerts/feed:14755841522003434555": {
+    "score": 4,
+    "reason": "提及廣達2027伺服器營收佔比預估"
+  },
+  "tag:google.com,2013:googlealerts/feed:12468332446675821951": {
+    "score": 2,
+    "reason": "與理財週刊內容重複，廣達表現亮眼"
+  },
+  "tag:google.com,2013:googlealerts/feed:11029504213046751188": {
+    "score": 2,
+    "reason": "僅一般性提及中華電，無實質個股分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:4059422786661122811": {
+    "score": 4,
+    "reason": "提及中華電股價、市值及最新營收數據。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11462381846277317848": {
+    "score": 3,
+    "reason": "分析中華電營收EPS走勢及防禦成長性。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10622920232768745295": {
+    "score": 3,
+    "reason": "分析中華電防禦特性及其在震盪盤中受關注。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3775423274539074262": {
+    "score": 3,
+    "reason": "報導中華電創新高，分析穩定現金流防禦屬性。"
+  },
+  "tag:google.com,2013:googlealerts/feed:18045338073396476828": {
+    "score": 6,
+    "reason": "來自工商時報，具高參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11860784686716285185": {
+    "score": 4,
+    "reason": "報導中華電股價創新高及其資金避風港角色。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11873951257025868877": {
+    "score": 3,
+    "reason": "報導中華電股價創新高，提及電信類股避風港。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3905327160921948363": {
+    "score": 3,
+    "reason": "報導中華電股價創新高，提及電信類股避風港。"
+  },
+  "tag:google.com,2013:googlealerts/feed:14285919847314496987": {
+    "score": 6,
+    "reason": "來自經濟日報，具高參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:9101584020089991847": {
+    "score": 3,
+    "reason": "預測第四季獲利下滑，具參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:11912909129614369636": {
+    "score": 4,
+    "reason": "公司受邀參加法人說明會，重要公告"
+  },
+  "tag:google.com,2013:googlealerts/feed:7254196811194384506": {
+    "score": 4,
+    "reason": "具體財報數據與未來展望"
+  },
+  "tag:google.com,2013:googlealerts/feed:4100603193673771673": {
+    "score": 3,
+    "reason": "市場趨勢與法人動向分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:13631877436669706319": {
+    "score": 1,
+    "reason": "股民個人情緒發言，無實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:17502098024053170562": {
+    "score": 2,
+    "reason": "大盤分析提及，非個股深入報導"
+  },
+  "tag:google.com,2013:googlealerts/feed:9344263838358871895": {
+    "score": 2,
+    "reason": "大盤分析提及，非個股深入報導，重複性高"
+  },
+  "tag:google.com,2013:googlealerts/feed:5963404394899721669": {
+    "score": 4,
+    "reason": "鉅額成交數據，重要交易資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:5755448637000847446": {
+    "score": 3,
+    "reason": "市場交易制度變革，提及聯發科"
+  },
+  "tag:google.com,2013:googlealerts/feed:8983642164474853873": {
+    "score": 3,
+    "reason": "報導股價重挫與外資提款，有實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:5827313445389174108": {
+    "score": 4,
+    "reason": "提及AI晶片出貨，有新業務進展"
+  },
+  "tag:google.com,2013:googlealerts/feed:9941010904322521501": {
+    "score": 1,
+    "reason": "股民個人情緒發言，無實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:2777281014270082603": {
+    "score": 4,
+    "reason": "國家隊買超清單，重要籌碼資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:432655445347074294": {
+    "score": 1,
+    "reason": "股民個人情緒發言，無實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:8205103527258978971": {
+    "score": 1,
+    "reason": "股民個人情緒發言，無實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:10194558256384353670": {
+    "score": 3,
+    "reason": "分析師推薦名單，有參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:13193607415799144355": {
+    "score": 2,
+    "reason": "僅提及受益AI，無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:7977644291606732804": {
+    "score": 3,
+    "reason": "個股當日技術面分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:8517092385207731139": {
+    "score": 6,
+    "reason": "經濟日報報導，提及聯電外資買超數據。"
+  },
+  "tag:google.com,2013:googlealerts/feed:225457575828330945": {
+    "score": 3,
+    "reason": "技術面分析，有參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12220566283418833122": {
+    "score": 2,
+    "reason": "主題為友達，聯電僅列表提及。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7400534307788451507": {
+    "score": 3,
+    "reason": "個股數據分析，有一定參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:13697012230593550661": {
+    "score": 3,
+    "reason": "提供操作建議與判斷邏輯。"
+  },
+  "tag:google.com,2013:googlealerts/feed:16391376974139715542": {
+    "score": 6,
+    "reason": "工商時報報導，提及聯電成交量。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12582459043168604473": {
+    "score": 1,
+    "reason": "僅為行情列表，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5749444487549009075": {
+    "score": 1,
+    "reason": "僅為行情列表，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3741251108963980040": {
+    "score": 4,
+    "reason": "重要業務合作與市場拓展"
+  },
+  "tag:google.com,2013:googlealerts/feed:14158300604627813672": {
+    "score": 2,
+    "reason": "僅提及股價，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:15805027740352917950": {
+    "score": 3,
+    "reason": "實時股價波動報導"
+  },
+  "tag:google.com,2013:googlealerts/feed:10193633243949394175": {
+    "score": 1,
+    "reason": "個人觀點討論，內容簡短"
+  },
+  "tag:google.com,2013:googlealerts/feed:9146568919504683066": {
+    "score": 1,
+    "reason": "個人觀點討論，內容簡短"
+  },
+  "tag:google.com,2013:googlealerts/feed:6007499050276761756": {
+    "score": 1,
+    "reason": "個人觀點討論，內容簡短"
+  },
+  "tag:google.com,2013:googlealerts/feed:15906211271596109182": {
+    "score": 2,
+    "reason": "總體市場分析，提及個股"
+  },
+  "tag:google.com,2013:googlealerts/feed:3023630837236325877": {
+    "score": 4,
+    "reason": "重要籌碼面消息，具體數據"
+  },
+  "tag:google.com,2013:googlealerts/feed:11755376605016254201": {
+    "score": 4,
+    "reason": "產能擴建與全球佈局"
+  },
+  "tag:google.com,2013:googlealerts/feed:10811913395438039666": {
+    "score": 4,
+    "reason": "提供個股估值與營收分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:5708893781523794791": {
+    "score": 3,
+    "reason": "個股盤後與技術面分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:2053510894150750460": {
+    "score": 1,
+    "reason": "內容無關，僅列表提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:17264958664500190919": {
+    "score": 1,
+    "reason": "內容無關，僅列表提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:7342815668148227960": {
+    "score": 2,
+    "reason": "投資網誌、股價資訊，缺乏深度分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:1813301137702055260": {
+    "score": 5,
+    "reason": "第三季獲利創新高，AI伺服器需求強勁"
+  },
+  "tag:google.com,2013:googlealerts/feed:15974596663573816129": {
+    "score": 4,
+    "reason": "亞馬遜AI算力需求，輝達合作消息"
+  },
+  "tag:google.com,2013:googlealerts/feed:18254763824356212913": {
+    "score": 3,
+    "reason": "股利估算資訊，市場討論"
+  },
+  "tag:google.com,2013:googlealerts/feed:114914869732443159": {
+    "score": 3,
+    "reason": "法人籌碼分析，買賣超分歧"
+  },
+  "tag:google.com,2013:googlealerts/feed:5183292285091851086": {
+    "score": 1,
+    "reason": "個人投資者情緒發言，無實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:14334304992200876641": {
+    "score": 3,
+    "reason": "探討股價抗跌性與估值定位"
+  },
+  "tag:google.com,2013:googlealerts/feed:2868115089731464293": {
+    "score": 1,
+    "reason": "個人投資者情緒發言，無實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:8438327112122913960": {
+    "score": 3,
+    "reason": "探討股價抗跌性與法人買超"
+  },
+  "tag:google.com,2013:googlealerts/feed:3299135409196973735": {
+    "score": 5,
+    "reason": "收購Sony車載相機事業，重要策略佈局"
+  },
+  "tag:google.com,2013:googlealerts/feed:17917547379355914949": {
+    "score": 4,
+    "reason": "亞馬遜AI需求強勁，利好鴻海供應鏈"
+  },
+  "tag:google.com,2013:googlealerts/feed:9423190587413729562": {
+    "score": 4,
+    "reason": "探討鴻海EV策略，搶攻電動車商機"
+  },
+  "tag:google.com,2013:googlealerts/feed:16979017229944938419": {
+    "score": 3,
+    "reason": "討論股價表現與獲利結構"
+  },
+  "tag:google.com,2013:googlealerts/feed:2923781243400230072": {
+    "score": 2,
+    "reason": "提及鴻海被加碼，但非主要焦點"
+  },
+  "tag:google.com,2013:googlealerts/feed:14087791277574297645": {
+    "score": 1,
+    "reason": "投資者討論，主要為股價資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:9577716323367580254": {
+    "score": 1,
+    "reason": "市場行情討論，非鴻海實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:4903247515312679010": {
+    "score": 3,
+    "reason": "提及抗跌性與長線布局，券商新聞快訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:12078858089384834515": {
+    "score": 6,
+    "reason": "來自「經濟日報」報導。"
+  },
+  "tag:google.com,2013:googlealerts/feed:13687729120592272298": {
+    "score": 3,
+    "reason": "個股籌碼/技術面分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11695941117331512949": {
+    "score": 5,
+    "reason": "官方活動公告，具重要性。"
+  },
+  "tag:google.com,2013:googlealerts/feed:6766836150607756488": {
+    "score": 1,
+    "reason": "內容過於簡短，且多為舊聞連結。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10710002622165228436": {
+    "score": 1,
+    "reason": "內容偏離主題，僅提及股票代號。"
+  },
+  "tag:google.com,2013:googlealerts/feed:1609977152685202105": {
+    "score": 3,
+    "reason": "個股籌碼/技術面分析報導。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10592961215311339110": {
+    "score": 4,
+    "reason": "報導外資賣超重要市場數據。"
+  },
+  "tag:google.com,2013:googlealerts/feed:2520929585527369625": {
+    "score": 4,
+    "reason": "報導官股買超重要市場數據。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12676108661380256924": {
+    "score": 4,
+    "reason": "報導外資賣超重要市場數據。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10535796386564131439": {
+    "score": 2,
+    "reason": "僅列表提及，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11618770043662025847": {
+    "score": 2,
+    "reason": "僅列表提及，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:14194603901258916078": {
+    "score": 2,
+    "reason": "僅列表提及，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:10618035836190527293": {
+    "score": 3,
+    "reason": "提及營收創高重挫，有討論價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:2295230353696614440": {
+    "score": 1,
+    "reason": "情緒化個人評論，資訊雜亂不具參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7945417161075423813": {
+    "score": 3,
+    "reason": "提及EPS預估與初步分析，具參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:3403626386012606537": {
+    "score": 4,
+    "reason": "新產品上市及市場策略，具實質消息。"
+  },
+  "tag:google.com,2013:googlealerts/feed:14382860539427265249": {
+    "score": 1,
+    "reason": "內容主要關於中鋼，華碩為舊聞提及。"
+  },
+  "tag:google.com,2013:googlealerts/feed:15868588696689960799": {
+    "score": 2,
+    "reason": "大盤分析為主，華碩僅為簡短提及。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5870382718541916156": {
+    "score": 4,
+    "reason": "法人報告調降目標價，具重要性。"
+  },
+  "tag:google.com,2013:googlealerts/feed:744550494776485075": {
+    "score": 2,
+    "reason": "主要內容非華碩，僅列表提及無分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:6156646488647416740": {
+    "score": 2,
+    "reason": "僅列表提及，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:11006512624959792548": {
+    "score": 3,
+    "reason": "討論市場傳聞及股價表現"
+  },
+  "tag:google.com,2013:googlealerts/feed:16569019403264681046": {
+    "score": 4,
+    "reason": "微星推出AI系列新產品與企業AI平台，符合策略方向。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7724654879689988962": {
+    "score": 1,
+    "reason": "盤中速報，資訊過於簡短，無深度分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:902418970772747598": {
+    "score": 3,
+    "reason": "提供公司穩定成長與獲利展望的社群觀點"
+  },
+  "tag:google.com,2013:googlealerts/feed:16913643372172264889": {
+    "score": 2,
+    "reason": "僅在列表提及，無實質分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:16932453017510677835": {
+    "score": 2,
+    "reason": "主要談聯電，智原僅被提及。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5517756458409594060": {
+    "score": 3,
+    "reason": "說明被列為注意股原因。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7903919316187616998": {
+    "score": 3,
+    "reason": "詳細描述智原當日股價走勢。"
+  },
+  "tag:google.com,2013:googlealerts/feed:12648978575119845612": {
+    "score": 3,
+    "reason": "提及Intel與IP族群市場動態。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5200527590085679414": {
+    "score": 4,
+    "reason": "提供智原近期股價技術分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:1998302747081514409": {
+    "score": 4,
+    "reason": "補充說明公司債發行細節"
+  },
+  "tag:google.com,2013:googlealerts/feed:12795090852844512821": {
+    "score": 5,
+    "reason": "頻譜爭議一審敗訴"
+  },
+  "tag:google.com,2013:googlealerts/feed:14968309733647928869": {
+    "score": 1,
+    "reason": "與文章 [0] 內容高度重複"
+  },
+  "tag:google.com,2013:googlealerts/feed:16557545520165756761": {
+    "score": 2,
+    "reason": "台灣大非主軸，僅部分提及分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:14166835932493018321": {
+    "score": 2,
+    "reason": "僅列出外資買超名單，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:1279732468992530552": {
+    "score": 2,
+    "reason": "僅列出投信買超名單，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:706271471258189059": {
+    "score": 2,
+    "reason": "僅列為資安概念股之一，無深入分析。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7572143358863700505": {
+    "score": 2,
+    "reason": "個人策略貼文，缺乏公司實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:17073994485838796913": {
+    "score": 6,
+    "reason": "來自「工商時報」之報導，具高價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7108580165212361847": {
+    "score": 3,
+    "reason": "個股籌碼/技術面分析，有參考價值。"
+  },
+  "tag:google.com,2013:googlealerts/feed:1249496371317123450": {
+    "score": 2,
+    "reason": "僅列股價資訊，分析不足。"
+  },
+  "tag:google.com,2013:googlealerts/feed:17007823108693427093": {
+    "score": 1,
+    "reason": "股友個人評論，缺乏實質資訊"
+  },
+  "tag:google.com,2013:googlealerts/feed:17219699848896048843": {
+    "score": 2,
+    "reason": "股友討論，僅提及Trainium 3利多"
+  },
+  "tag:google.com,2013:googlealerts/feed:9653234554991613756": {
+    "score": 3,
+    "reason": "股友討論，提及Trainium 3代工潛在利多"
+  },
+  "tag:google.com,2013:googlealerts/feed:16249015278156186860": {
+    "score": 3,
+    "reason": "股友討論，提及Trainium 3代工潛在利多"
+  },
+  "tag:google.com,2013:googlealerts/feed:12851529330195692437": {
+    "score": 4,
+    "reason": "明確法人目標價、EPS預估與評等"
+  },
+  "tag:google.com,2013:googlealerts/feed:3427390358963177620": {
+    "score": 1,
+    "reason": "內容與前一篇重複"
+  },
+  "tag:google.com,2013:googlealerts/feed:5180702908532075297": {
+    "score": 2,
+    "reason": "列於概念股清單，無深入分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:8674924558511495364": {
+    "score": 6,
+    "reason": "工商時報報導，具價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:17316673830864659363": {
+    "score": 6,
+    "reason": "引用經濟日報精選，有價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:14578905997566113271": {
+    "score": 3,
+    "reason": "提及股價動態及產業趨勢"
+  },
+  "tag:google.com,2013:googlealerts/feed:13197146480853502549": {
+    "score": 2,
+    "reason": "僅於股價列表中提及，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:5225868543888627898": {
+    "score": 3,
+    "reason": "個股籌碼/技術面分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:16072658769948272920": {
+    "score": 2,
+    "reason": "股市社群貼文，一般性提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:17175384626895413808": {
+    "score": 6,
+    "reason": "來自工商時報報導"
+  },
+  "tag:google.com,2013:googlealerts/feed:17179600805431878001": {
+    "score": 5,
+    "reason": "重大事件：違約交割案"
+  },
+  "tag:google.com,2013:googlealerts/feed:11156662806823595262": {
+    "score": 5,
+    "reason": "重大事件：違約交割案"
+  },
+  "tag:google.com,2013:googlealerts/feed:15969994909291104707": {
+    "score": 5,
+    "reason": "重大事件：違約交割案"
+  },
+  "tag:google.com,2013:googlealerts/feed:15204457873130151843": {
+    "score": 5,
+    "reason": "重大事件：違約交割案"
+  },
+  "tag:google.com,2013:googlealerts/feed:69564905045890101": {
+    "score": 5,
+    "reason": "重大事件：違約交割案"
+  },
+  "tag:google.com,2013:googlealerts/feed:8638192493915285595": {
+    "score": 3,
+    "reason": "股市社群討論與分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:7046850744719142233": {
+    "score": 5,
+    "reason": "重大事件：違約交割案"
+  },
+  "tag:google.com,2013:googlealerts/feed:15501890271807777914": {
+    "score": 1,
+    "reason": "股市社群情緒化貼文"
+  },
+  "tag:google.com,2013:googlealerts/feed:7945575113245879564": {
+    "score": 1,
+    "reason": "股市社群情緒化貼文"
+  },
+  "tag:google.com,2013:googlealerts/feed:3046125593788158568": {
+    "score": 5,
+    "reason": "重大事件：違約交割案"
+  },
+  "tag:google.com,2013:googlealerts/feed:14712853200346501718": {
+    "score": 1,
+    "reason": "股市社群情緒化貼文"
+  },
+  "tag:google.com,2013:googlealerts/feed:506579973674406012": {
+    "score": 1,
+    "reason": "股市社群情緒化貼文"
+  },
+  "tag:google.com,2013:googlealerts/feed:17467816041175654194": {
+    "score": 2,
+    "reason": "僅在列表中提及，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:776001897835086574": {
+    "score": 3,
+    "reason": "提及股價變動及力晶股東訴求"
+  },
+  "tag:google.com,2013:googlealerts/feed:12036838567845225745": {
+    "score": 3,
+    "reason": "詳細描述當日股價表現"
+  },
+  "tag:google.com,2013:googlealerts/feed:3493790606263873255": {
+    "score": 3,
+    "reason": "技術面分析，具參考價值"
+  },
+  "tag:google.com,2013:googlealerts/feed:10189445741657579566": {
+    "score": 1,
+    "reason": "股民個人主觀預測，參考性低"
+  },
+  "tag:google.com,2013:googlealerts/feed:11650097080728742689": {
+    "score": 3,
+    "reason": "詳細盤後分析，提供轉弱訊號"
+  },
+  "tag:google.com,2013:googlealerts/feed:12556652283490390371": {
+    "score": 2,
+    "reason": "泛產業趨勢討論，僅提及股票名稱"
+  },
+  "tag:google.com,2013:googlealerts/feed:7420337303246161552": {
+    "score": 1,
+    "reason": "僅在無關內容的標籤中提及"
   }
 }
