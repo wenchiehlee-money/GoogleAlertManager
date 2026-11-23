@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "google-alert-manager"
 version = "0.1.0"
 description = "Manage Google Alerts, collect notifications, and extract conclusions via LLM"
-requires-python = ">=3.11"
+requires-python = ">=3.11.5"
 dependencies = [
     "google-alerts",
     "feedparser",
@@ -15,16 +15,16 @@ dependencies = [
     "pyyaml",
     "python-dotenv",
     "jinja2",
-    "nltk>=3.10.3",
+    "nltk>=3.10.4",
     "llm",
     "cryptography>=50.0.0",
     "requests>=2.34.2",
-    "urllib3>=2.7.0",
+    "urllib3>=2.8.0",
     "idna>=3.18",
-    "pyasn1>=0.6.4",
+    "pyasn1>=0.6.5",
     "pygments>=2.20.0",
-    "soupsieve>=2.9.1",
-    "certifi>=2026.7.22",
+    "soupsieve>=4.0.0",
+    "certifi>=2026.10.18",
 ]
 
 [dependency-groups]
