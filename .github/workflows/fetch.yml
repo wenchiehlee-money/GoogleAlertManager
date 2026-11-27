@@ -67,4 +67,5 @@ jobs:
           git add config/rss_urls.json data/alerts/ README.md
           git add -f StockID_TWSE_TPEX.csv StockID_TWSE_TPEX_focus.csv
           git diff --cached --quiet || git commit -m "chore: fetch alerts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git pull --rebase --autostash origin main
           git push
