@@ -438044,5 +438044,57 @@
   "tag:google.com,2013:googlealerts/feed:15791443359329939205": {
     "score": 3,
     "reason": "包含即時新聞摘要"
+  },
+  "tag:google.com,2013:googlealerts/feed:13255802865589983003": {
+    "score": 2,
+    "reason": "列入處置股，僅列表提及無詳情。"
+  },
+  "tag:google.com,2013:googlealerts/feed:5012917772914220930": {
+    "score": 2,
+    "reason": "列入處置股，僅列表提及無詳情。"
+  },
+  "tag:google.com,2013:googlealerts/feed:16413046037226127181": {
+    "score": 1,
+    "reason": "股市論壇短文，主觀情緒無實質資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:4543225526946548255": {
+    "score": 1,
+    "reason": "自動化盤中速報，僅股價量能資訊。"
+  },
+  "tag:google.com,2013:googlealerts/feed:11957111385856172116": {
+    "score": 1,
+    "reason": "自動化盤中速報，與前文重複。"
+  },
+  "tag:google.com,2013:googlealerts/feed:1180680668187783716": {
+    "score": 2,
+    "reason": "盤中速報，無實質分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:15817641726760574075": {
+    "score": 2,
+    "reason": "股市論壇短文，僅提及股價波動。"
+  },
+  "tag:google.com,2013:googlealerts/feed:7890324050010830510": {
+    "score": 2,
+    "reason": "融券排行列表，僅列出數據。"
+  },
+  "tag:google.com,2013:googlealerts/feed:1204601418409771584": {
+    "score": 2,
+    "reason": "僅在列表提及"
+  },
+  "tag:google.com,2013:googlealerts/feed:11305745841761060376": {
+    "score": 1,
+    "reason": "社群短文，無分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:2519876897770610507": {
+    "score": 1,
+    "reason": "疑似舊聞：2022Q4"
+  },
+  "tag:google.com,2013:googlealerts/feed:41237960486501657": {
+    "score": 1,
+    "reason": "社群短文，無分析"
+  },
+  "tag:google.com,2013:googlealerts/feed:5802598009338687422": {
+    "score": 1,
+    "reason": "社群短文，無分析"
   }
 }
